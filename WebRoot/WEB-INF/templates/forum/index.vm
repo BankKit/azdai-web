@@ -1,0 +1,65 @@
+#set($title="论坛首页")
+<div class="container">
+	<div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+            <li>论坛首页</li>
+        </ol>
+		
+		<div class="well well-sm"><strong><i class="glyphicon glyphicon-fire"></i>安众贷论坛</strong> 用先进的理念和创新的技术建立了一个安全、高效、诚信、透明的互联网金融平台，规范了个人借贷行为，让借入者改善生产生活，让借出者增加投资渠道。<kbd>安众贷</kbd>相信，随着互联网的发展和中国个人信用体系的健全，先进的理念和创新的技术将给民间借贷带来历史性的变革，<kbd>安众贷</kbd>将是这场变革的领导者。</div>
+		
+		<div class="row forum_list">
+    		<div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+        				<h3 class="text-success"><img src="$ctx/public/img/forum_new.gif" /> 安众贷测试论坛-1</h3>
+        				<p><strong>说明：</strong>安众贷测试论坛-1-论坛的发展也如同网络雨后春笋般的出现，并迅速的发展壮大。论坛几乎涵盖了人们生活的各个方面，几乎每一个人都可以找到自己感兴趣或者需要了解的专题性论坛，而各类网站，综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</p>
+                        <p><strong>版主：</strong>张三、李四</p>
+                        <p><a href="$ctx/forum/forum.htm" class="btn btn-primary" role="button"><i class="glyphicon glyphicon-fire"></i> 进入论坛 <i class="glyphicon glyphicon-forward"></i></a></p>
+                    </div>
+                </div>
+            </div>
+			<div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+        				<h3 class="text-success"><img src="$ctx/public/img/forum_new.gif" /> 安众贷测试论坛-2</h3>
+        				<p><strong>说明：</strong>安众贷测试论坛-2-论坛的发展也如同网络雨后春笋般的出现，并迅速的发展壮大。论坛几乎涵盖了人们生活的各个方面，几乎每一个人都可以找到自己感兴趣或者需要了解的专题性论坛，而各类网站，综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</p>
+                        <p><strong>版主：</strong>张三、李四</p>
+                        <p><a href="$ctx/forum/forum.htm" class="btn btn-primary" role="button"><i class="glyphicon glyphicon-fire"></i> 进入论坛 <i class="glyphicon glyphicon-forward"></i></a></p>
+                    </div>
+                </div>
+            </div>
+			<div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+        				<h3 class="text-success"><img src="$ctx/public/img/forum_new.gif" /> 安众贷测试论坛-3</h3>
+        				<p><strong>说明：</strong>安众贷测试论坛-3-论坛的发展也如同网络雨后春笋般的出现，并迅速的发展壮大。论坛几乎涵盖了人们生活的各个方面，几乎每一个人都可以找到自己感兴趣或者需要了解的专题性论坛，而各类网站，综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</p>
+                        <p><strong>版主：</strong>张三、李四</p>
+                        <p><a href="$ctx/forum/forum.htm" class="btn btn-primary" role="button"><i class="glyphicon glyphicon-fire"></i> 进入论坛 <i class="glyphicon glyphicon-forward"></i></a></p>
+                    </div>
+                </div>
+            </div>
+			<div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+        				<h3 class="text-success"><img src="$ctx/public/img/forum_new.gif" /> 安众贷测试论坛-4</h3>
+        				<p><strong>说明：</strong>安众贷测试论坛-4-论坛的发展也如同网络雨后春笋般的出现，并迅速的发展壮大。论坛几乎涵盖了人们生活的各个方面，几乎每一个人都可以找到自己感兴趣或者需要了解的专题性论坛，而各类网站，综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</p>
+                        <p><strong>版主：</strong>张三、李四</p>
+                        <p><a href="$ctx/forum/forum.htm" class="btn btn-primary" role="button"><i class="glyphicon glyphicon-fire"></i> 进入论坛 <i class="glyphicon glyphicon-forward"></i></a></p>
+                    </div>
+                </div>
+            </div>
+			<div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+        				<h3 class="text-success"><img src="$ctx/public/img/forum_new.gif" /> 安众贷测试论坛-5</h3>
+        				<p><strong>说明：</strong>安众贷测试论坛-5-论坛的发展也如同网络雨后春笋般的出现，并迅速的发展壮大。论坛几乎涵盖了人们生活的各个方面，几乎每一个人都可以找到自己感兴趣或者需要了解的专题性论坛，而各类网站，综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</p>
+                        <p><strong>版主：</strong>张三、李四</p>
+                        <p><a href="$ctx/forum/forum.htm" class="btn btn-primary" role="button"><i class="glyphicon glyphicon-fire"></i> 进入论坛 <i class="glyphicon glyphicon-forward"></i></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+#parse("/forum/snip/index.vm")

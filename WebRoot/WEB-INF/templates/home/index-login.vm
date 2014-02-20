@@ -1,0 +1,203 @@
+#set($title="安众贷首页-安全 大众 不等贷")
+<div class="row">
+	<div class="page-header-bg">
+		<div class="container">
+			<div class="col-md-12">
+				<div class="row">
+        			<!-- 幻灯片 -->
+        			<div class="col-md-9">
+                        <div id="logo-slide" class="carousel logo-slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#logo-slide" data-slide-to="0" class="active"></li>
+                                <li data-target="#logo-slide" data-slide-to="1" class=""></li>
+                                <li data-target="#logo-slide" data-slide-to="2" class=""></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <a href="$ctx/forum/topic.htm"><img class="img-responsive" width="900" height="300" src="$ctx/upload/testimgs/logo-side-01.jpg" /></a>
+                                    <div class="carousel-caption">
+                						<h3>第1张幻灯片</h3>
+                						<p>综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</p>
+                					</div>
+                				</div>
+                                <div class="item">
+                                    <a href="$ctx/forum/topic.htm"><img class="img-responsive" width="900" height="300" src="$ctx/upload/testimgs/logo-side-02.jpg" /></a>
+                                    <div class="carousel-caption">
+                                        <h3>第2张幻灯片</h3>
+                                        <p>综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</p>
+                    				</div>
+                                </div>
+                                <div class="item">
+                                    <a href="$ctx/forum/topic.htm"><img class="img-responsive" width="900" height="300" src="$ctx/upload/testimgs/logo-side-03.jpg" /></a>
+                                    <div class="carousel-caption">
+                    					<h3>第3张幻灯片</h3>
+                    					<p>综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</p>
+                    				</div>
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#logo-slide" data-slide="prev">
+                				<span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#logo-slide" data-slide="next">
+                				<span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                		</div>
+                    </div>
+        			<!-- 登录表单 -->
+                	<div class="col-md-3">
+                        <div class="panel panel-default">
+                			<div class="panel-heading"><strong><i class="glyphicon glyphicon-plus-sign"></i> 快速申请借钱</strong></div>
+                			<div class="panel-body">
+                				<div style="margin-bottom:15px">
+                					<a href="$ctx/home/product.htm" class="btn btn-info btn-lg pull-left">工薪贷</a>
+                					<a href="$ctx/home/product.htm" class="btn btn-info btn-lg pull-right">学生贷</a>
+                					<span class="clearfix"></span>
+                				</div>
+                				<div style="margin-bottom:15px">
+                					<a href="$ctx/home/product.htm" class="btn btn-info btn-lg btn-block">生意贷</a>
+                				</div>
+                				<div>
+                					<a href="$ctx/home/product.htm" class="btn btn-success btn-lg btn-block">网商贷</a>
+                				</div>
+                			</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="col-md-9">
+		<div class="panel panel-info">
+			<div class="panel-heading"><strong>投资列表</strong></div>
+            <table class="table table-hover">
+				<thead>
+            		<tr>
+                    	<th class="col-md-3">投资标的</th>
+                    	<th>信用等级</th>
+                    	<th>年利率</th>
+                    	<th>金额</th>
+						<th>期限</th>
+						<th>进度</th>
+						<th>状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+					<tr>
+						<td>日常生活消费</td>
+						<td>AA</td>
+						<td>13.2%</td>
+						<td>8000元</td>
+						<td>6个月</td>
+						<td>36%</td>
+						<td>正在投标</td>
+                    </tr>
+                    <tr>
+						<td>房子装修</td>
+						<td>B</td>
+						<td>11%</td>
+						<td>10000元</td>
+						<td>3个月</td>
+						<td>100%</td>
+						<td>已满标</td>
+                    </tr>
+					<tr>
+						<td>日常生活消费</td>
+						<td>AA</td>
+						<td>13.2%</td>
+						<td>8000元</td>
+						<td>6个月</td>
+						<td>36%</td>
+						<td>正在投标</td>
+                    </tr>
+                    <tr>
+						<td>房子装修</td>
+						<td>B</td>
+						<td>11%</td>
+						<td>10000元</td>
+						<td>3个月</td>
+						<td>100%</td>
+						<td>已满标</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading"><strong>投资知识</strong></div>
+            <table class="table table-hover">
+                <tbody>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 隐私和资料安全如何保证？</a></td>
+                    </tr>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 隐私和资料安全如何保证？</a></td>
+                    </tr>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 隐私和资料安全如何保证？</a></td>
+                    </tr>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 隐私和资料安全如何保证？</a></td>
+                    </tr>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 隐私和资料安全如何保证？</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading"><strong>安装社区动态</strong></div>
+            <table class="table table-hover">
+                <tbody>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 平安集团旗下的陆金所近期也悄然推出了“陆金宝”业务</a></td>
+                    </tr>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 平安集团旗下的陆金所近期也悄然推出了“陆金宝”业务</a></td>
+                    </tr>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 平安集团旗下的陆金所近期也悄然推出了“陆金宝”业务</a></td>
+                    </tr>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 平安集团旗下的陆金所近期也悄然推出了“陆金宝”业务</a></td>
+                    </tr>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 平安集团旗下的陆金所近期也悄然推出了“陆金宝”业务</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+	<div class="col-md-6">
+		<div class="panel panel-default">
+			<div class="panel-heading"><strong>行业资讯</strong></div>
+            <table class="table table-hover">
+                <tbody>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 隐私和资料安全如何保证？</a></td>
+                    </tr>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 隐私和资料安全如何保证？</a></td>
+                    </tr>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 隐私和资料安全如何保证？</a></td>
+                    </tr>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 隐私和资料安全如何保证？</a></td>
+                    </tr>
+					<tr>
+						<td><a href="/help/detail-325.htm"><i class="fa fa-question"></i> 隐私和资料安全如何保证？</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

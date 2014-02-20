@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>#if($title) $title -#end 安众贷</title>
+#parse("/public/uniform-resources.vm")
+</head>
+<body id="body">
+<div id="wrap">
+#parse("/public/uniform-header.vm")
+$screen_placeholder
+</div>
+#parse("/public/uniform-footer.vm")
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".list-group a").prepend("<i class=\"fa fa-caret-right\"></i> ");
+#if($StringUtils.isNotBlank($userOperation))
+	if($("#user-$!userOperation").length > 0) {
+		$("#user-$!userOperation").addClass("list-group-item-success");
+		$("#user-$!userOperation i").attr("class", "glyphicon glyphicon-chevron-right");
+	}
+#end
+});
+</script>
+</body>
+</html>

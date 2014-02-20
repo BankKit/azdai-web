@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>#if($title)$title -#end 后台管理</title>
+#parse("/mngt/inc/inc-header.vm")
+</head>
+<body id="body">
+<div id="wrap">
+$screen_placeholder
+</div>
+#parse("/mngt/inc/inc-resource.vm")
+<link rel="stylesheet" type="text/css" media="screen" href="$ctx/public/css/back-to-top.css?v=2.0.1" />
+</body>
+</html>

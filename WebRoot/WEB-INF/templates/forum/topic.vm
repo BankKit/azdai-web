@@ -1,0 +1,92 @@
+#set($code="test-forum-5")
+#set($id="1")
+#set($postUserNo="0001")
+#set($forum=$ForumWebX.findForum($code))
+#set($topic=$ForumWebX.findTopic($id))
+#set($postUser=$ForumWebX.findPostUser($postUserNo))
+#set($title=$topic.title)
+<div class="container">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+            <li><a href="$ctx/forum/index.htm">论坛首页</a></li>
+        	<li><a href="$ctx/forum/forum.htm">安众贷测试论坛</a></li>
+        	<li>论坛主题测试主题标题02</li>
+        </ol>
+		
+        <div class="panel panel-default">
+        	<div class="panel-body text-success bg-info"><kbd>安众贷测试论坛-3</kbd>论坛的发展也如同网络雨后春笋般的出现，并迅速的发展壮大。论坛几乎涵盖了人们生活的各个方面，几乎每一个人都可以找到自己感兴趣或者需要了解的专题性论坛，而各类网站，综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</div>
+        </div>
+		
+        <div class="panel panel-default">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-3 info">
+							<div class="text-center">
+								<i class="glyphicon glyphicon-comment"></i> 回复：<span class="text-danger">97</span>
+                                | <i class="glyphicon glyphicon-eye-open"></i> 评论：<span class="text-danger">346</span>
+							</div>
+						</td>
+                        <td><strong>论坛主题测试主题标题02</strong></td>
+                    </tr>
+					<tr>
+                        <td class="info">
+                            <div class="text-center"><strong><i class="glyphicon glyphicon-user"></i> 西门吹雪</strong></div>
+							<p/>
+							<div class="text-center"><img src="http://avatar.ppdai.com/crop/maoleiyu-092215298f0752f4.bmp_120" width="120px" height="120px" /></div>
+							<p/>
+                            <div class="text-center"><i class="glyphicon glyphicon-heart"></i> 注册日期：<span class="text-success">2013-03-06</span></div>
+						</td>
+                        <td>
+                            <div><i class="glyphicon glyphicon-calendar"></i> 发表于：2014-02-03 13:13:03</div>
+							<hr/>
+							<div>论坛的发展也如同网络雨后春笋般的出现，并迅速的发展壮大。论坛几乎涵盖了人们生活的各个方面，几乎每一个人都可以找到自己感兴趣或者需要了解的专题性论坛，而各类网站，综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</div>
+						</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+		<div class="panel panel-default">
+            <table class="table table-bordered">
+                <tbody>
+					<tr>
+                        <td class="col-md-3 active">
+                            <div class="text-center"><strong><i class="glyphicon glyphicon-user"></i> 陆小凤</strong></div>
+							<p/>
+							<div class="text-center"><img src="http://avatar.ppdai.com/crop/maoleiyu-092215298f0752f4.bmp_120" width="120px" height="120px" /></div>
+							<p/>
+							<div class="text-center"><i class="glyphicon glyphicon-heart"></i> 注册日期：2014-02-13</div>
+						</td>
+                        <td>
+							<div><i class="glyphicon glyphicon-calendar"></i> 发表于：2014-02-03 13:13:03</div>
+							<hr/>
+							<div>虽然我们一直强调硬件配置并不等于实际的用户体验，但对大多数用户来说，硬件配置却是性能最直接的体现。国产中高端手机中，目前四核已经成为主流，而采用的四核芯片普遍都是联发科的MT6589。但诺米却意外地采用了MT6582这颗四核处理器。MT6582是基于28纳米的四核芯片ARMCortex-A7架构，主频为1.3GHz，搭配的GPU型号为SGX 544。作为联发科第三季度推出的新处理器，MT6582可以看作是MT6589的改良版本，集成了TD网络的基带芯片，这也是诺米可以支持TD网络和GSM网络双卡双待的原因。得益于较强的配置，在《安兔兔测试》中，诺米的得分达到17000多，已经超越了三星i9300这样的旗舰手机。</div>
+						</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+		<div class="clearfix"></div>
+		<div class="panel panel-info">
+            <div class="panel-heading"><strong><i class="glyphicon glyphicon-edit"></i> 主题回复</strong></div>
+			<div class="panel-body">
+    			<form role="form" method="post">
+					<div class="form-group">
+                        <div class="form-control-static"><strong>标题：</strong><span class="text-success">论坛主题测试主题标题02</span></div>
+                    </div>
+					<div class="form-group">
+						<textarea id="tpcContent" name="tpcContent" required="required"></textarea>
+                    </div>
+					<button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus-sign"></i> 提交回复</button>
+                </form>
+			</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+#set($editor="ON")
+$(document).ready(function() {
+	UE.getEditor("tpcContent");
+});
+</script>

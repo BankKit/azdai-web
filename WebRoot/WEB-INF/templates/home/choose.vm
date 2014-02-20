@@ -1,0 +1,230 @@
+#set($title="我要投资 - 投资项目列表")
+<div class="container">
+	<div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+            <li>我要投资 - 投资项目列表</li>
+        </ol>
+    </div>
+</div>
+
+<div class="container">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading"><strong>筛选投资项目：</strong></div>
+			<div class="panel-body bg-info">
+        		<form class="form-inline" role="form">
+					<div class="row">
+                    	<div class="form-group col-md-6">
+                            <label>标的类型：</label>
+							<label class="checkbox-inline">
+        						<input type="checkbox" value="option1" /> 普通标
+                            </label>
+                            <label class="checkbox-inline">
+        						<input type="checkbox" value="option2" /> 净值标
+                            </label>
+                            <label class="checkbox-inline">
+        						<input type="checkbox" value="option3" /> 一天标
+                            </label>
+                    	</div>
+						<div class="form-group col-md-6">
+                            <label>借款人群：</label>
+							<label class="radio-inline">
+        						<input type="radio" name="optionsRadios" value="option1" checked="checked" /> 工薪族
+                            </label>
+                            <label class="radio-inline">
+        						<input type="radio" name="optionsRadios" value="option2" /> 学生族
+                            </label>
+                            <label class="radio-inline">
+        						<input type="radio" name="optionsRadios" value="option3" /> 网商卖家
+                            </label>
+                    	</div>
+						<div class="form-group col-md-6">
+                            <label>借款期限：</label>
+							<label class="radio-inline">
+        						<input type="radio" name="optionsRadios2" value="option1" checked="checked" /> 6个月以下
+                            </label>
+                            <label class="radio-inline">
+        						<input type="radio" name="optionsRadios2" value="option2" /> 9-12个月
+                            </label>
+                            <label class="radio-inline">
+        						<input type="radio" name="optionsRadios2" value="option3" /> 18-24个月
+                            </label>
+							<label class="radio-inline">
+        						<input type="radio" name="optionsRadios2" value="option3" /> 24月以上
+                            </label>
+                    	</div>
+						<div class="form-group col-md-6">
+                            <label>信用等级：</label>
+							<label class="radio-inline">
+        						<input type="radio" name="optionsRadios3" value="option1" checked="checked" /> AAA
+                            </label>
+                            <label class="radio-inline">
+        						<input type="radio" name="optionsRadios3" value="option2" /> AA
+                            </label>
+                            <label class="radio-inline">
+        						<input type="radio" name="optionsRadios3" value="option3" /> BBB
+                            </label>
+							<label class="radio-inline">
+        						<input type="radio" name="optionsRadios3" value="option3" /> C
+                            </label>
+							<label class="radio-inline">
+        						<input type="radio" name="optionsRadios3" value="option3" /> D
+                            </label>
+                    	</div>
+                    </div>
+					<div class="row">
+						<div class="col-md-offset-4 col-md-6 pull-right">
+							<button type="submit" class="btn btn-primary">查询投资项目</button>
+                        </div>
+                    </div>
+                </form>
+			</div>
+		</div>
+    </div>
+</div>
+
+<div class="container">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+                <span class="pull-left"><strong>投资列表：</strong></span>
+                <span class="pull-right">
+                    <span>账户可用资金：<span class="color-red">XXX</span>元</span>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span><a href="#" class="btn btn-default btn-sm">理财计算器</a></span>
+				</span>
+                <span class="clearfix"></span>
+			</div>
+        	<div class="panel-body">
+                <table class="table table-hover" #MarginBottomNO()>
+            		<thead>
+                		<tr>
+                        	<th class="col-md-3">项目名称</th>
+                        	<th>信用等级</th>
+                        	<th>年利率</th>
+                        	<th>金额</th>
+    						<th>期限</th>
+    						<th>进度</th>
+    						<th>状态</th>
+							<th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            			<tr>
+    						<td><a href="$ctx/home/detail.htm">日常生活消费</a></td>
+    						<td>AA</td>
+    						<td>13.2%</td>
+    						<td>8000元</td>
+    						<td>6个月</td>
+    						<td>36%</td>
+    						<td>正在投标</td>
+                            <td><div class="pull-right"><a href="$ctx/home/detail.htm" class="btn btn-default btn-sm">详情</a></div></td>
+                        </tr>
+                        <tr>
+    						<td><a href="$ctx/home/detail.htm">房子装修</a></td>
+    						<td>B</td>
+    						<td>11%</td>
+    						<td>10000元</td>
+    						<td>3个月</td>
+    						<td>100%</td>
+    						<td>已满标</td>
+							<td><div class="pull-right"><a href="$ctx/home/detail.htm" class="btn btn-default btn-sm">详情</a></div></td>
+                        </tr>
+						<tr>
+    						<td><a href="$ctx/home/detail.htm">日常生活消费</a></td>
+    						<td>AA</td>
+    						<td>13.2%</td>
+    						<td>8000元</td>
+    						<td>6个月</td>
+    						<td>36%</td>
+    						<td>正在投标</td>
+                            <td><div class="pull-right"><a href="$ctx/home/detail.htm" class="btn btn-default btn-sm">详情</a></div></td>
+                        </tr>
+                        <tr>
+    						<td><a href="$ctx/home/detail.htm">房子装修</a></td>
+    						<td>B</td>
+    						<td>11%</td>
+    						<td>10000元</td>
+    						<td>3个月</td>
+    						<td>100%</td>
+    						<td>已满标</td>
+							<td><div class="pull-right"><a href="$ctx/home/detail.htm" class="btn btn-default btn-sm">详情</a></div></td>
+                        </tr>
+						<tr>
+    						<td><a href="$ctx/home/detail.htm">日常生活消费</a></td>
+    						<td>AA</td>
+    						<td>13.2%</td>
+    						<td>8000元</td>
+    						<td>6个月</td>
+    						<td>36%</td>
+    						<td>正在投标</td>
+                            <td><div class="pull-right"><a href="$ctx/home/detail.htm" class="btn btn-default btn-sm">详情</a></div></td>
+                        </tr>
+                        <tr>
+    						<td><a href="$ctx/home/detail.htm">房子装修</a></td>
+    						<td>B</td>
+    						<td>11%</td>
+    						<td>10000元</td>
+    						<td>3个月</td>
+    						<td>100%</td>
+    						<td>已满标</td>
+							<td><div class="pull-right"><a href="$ctx/home/detail.htm" class="btn btn-default btn-sm">详情</a></div></td>
+                        </tr>
+						<tr>
+    						<td><a href="$ctx/home/detail.htm">日常生活消费</a></td>
+    						<td>AA</td>
+    						<td>13.2%</td>
+    						<td>8000元</td>
+    						<td>6个月</td>
+    						<td>36%</td>
+    						<td>正在投标</td>
+                            <td><div class="pull-right"><a href="$ctx/home/detail.htm" class="btn btn-default btn-sm">详情</a></div></td>
+                        </tr>
+                        <tr>
+    						<td><a href="$ctx/home/detail.htm">房子装修</a></td>
+    						<td>B</td>
+    						<td>11%</td>
+    						<td>10000元</td>
+    						<td>3个月</td>
+    						<td>100%</td>
+    						<td>已满标</td>
+							<td><div class="pull-right"><a href="$ctx/home/detail.htm" class="btn btn-default btn-sm">详情</a></div></td>
+                        </tr>
+						<tr>
+    						<td><a href="$ctx/home/detail.htm">日常生活消费</a></td>
+    						<td>AA</td>
+    						<td>13.2%</td>
+    						<td>8000元</td>
+    						<td>6个月</td>
+    						<td>36%</td>
+    						<td>正在投标</td>
+                            <td><div class="pull-right"><a href="$ctx/home/detail.htm" class="btn btn-default btn-sm">详情</a></div></td>
+                        </tr>
+                        <tr>
+    						<td><a href="$ctx/home/detail.htm">房子装修</a></td>
+    						<td>B</td>
+    						<td>11%</td>
+    						<td>10000元</td>
+    						<td>3个月</td>
+    						<td>100%</td>
+    						<td>已满标</td>
+							<td><div class="pull-right"><a href="$ctx/home/detail.htm" class="btn btn-default btn-sm">详情</a></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pull-right">
+                    <ul class="pagination" #MarginBottomNO()>
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>

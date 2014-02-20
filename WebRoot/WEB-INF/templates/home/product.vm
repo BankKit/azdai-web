@@ -1,0 +1,56 @@
+#set($title="投资产品介绍")
+<div class="container">
+	<div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+            <li>投资产品介绍</li>
+        </ol>
+    </div>
+</div>
+
+<div class="container">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+        	<div class="panel-body">
+                <table class="table table-hover" #MarginBottomNO()>
+            		<thead>
+                		<tr>
+                        	<th class="col-md-3">标的类型</th>
+                        	<th>标的标志</th>
+                        	<th>标的说明</th>
+                        	<th>平均利率</th>
+            				<th>借款期限</th>
+							<th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            			<tr>
+            				<td>普通标<br/>（一般信用标）</td>
+            				<td><button type="button" class="btn btn-danger btn-sm">普</button></td>
+            				<td>通过用户上传资料取得信用借款</td>
+            				<td>16%左右</td>
+            				<td>中短期</td>
+                            <td><div class="pull-right"><a href="$ctx/home/choose.htm" class="btn btn-danger btn-sm">去投标</a></div></td>
+                        </tr>
+                        <tr>
+            				<td>净值标<br/>（应收账款保障）</td>
+            				<td><button type="button" class="btn btn-warning btn-sm">净</button></td>
+            				<td>用待收款、账户余额进行借款</td>
+            				<td>12%左右</td>
+            				<td>短期</td>
+                            <td><div class="pull-right"><a href="$ctx/home/choose.htm" class="btn btn-warning btn-sm">去投标</a></div></td>
+                        </tr>
+            			<tr>
+            				<td>一天标<br/>（网络借款体验标）</td>
+            				<td><button type="button" class="btn btn-primary btn-sm">１</button></td>
+            				<td>借款完成后自动审核并次日还款的体验标</td>
+            				<td>8%左右</td>
+            				<td>1天</td>
+                            <td><div class="pull-right"><a href="$ctx/home/choose.htm" class="btn btn-primary btn-sm">去投标</a></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

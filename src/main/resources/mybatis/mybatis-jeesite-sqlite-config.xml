@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="CrawlDTO" type="com.github.obullxl.jeesite.dal.dto.CrawlDTO"/>
+		<typeAlias alias="ImageDTO" type="com.github.obullxl.jeesite.dal.dto.ImageDTO"/>
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="mybatis/jeesite/sqlite/Crawl-mapper.xml" />
+		<mapper resource="mybatis/jeesite/sqlite/Image-mapper.xml" />
+	</mappers>
+</configuration>
