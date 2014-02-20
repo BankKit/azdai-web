@@ -4,10 +4,10 @@
 	<property name="logPath" value="logs" />
 
 	<appender name="JeeSite" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${logPath}/jeesite.log</file>
+		<file>${logPath}/azdai.log</file>
 		<append>true</append>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>jeesite.log.%d{yyyyMMdd}</fileNamePattern>
+			<fileNamePattern>azdai.log.%d{yyyyMMdd}</fileNamePattern>
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 		<encoder>

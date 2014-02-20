@@ -7,15 +7,11 @@
 /.settings
 
 /dist
-/webapps
-
 /logs
 /target
 
 
 /resources/main-resources
-
-/WebRoot/albums
 
 /dalgen/logs
 /dalgen/dalgen-mysql/logs
