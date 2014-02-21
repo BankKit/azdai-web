@@ -1,21 +1,19 @@
 <div class="clearfix"></div>
 <div id="footer">
-	<div class="container-fluid">
-		<div class="col-md-12">
-    		<div class="bottom_nav">
-        		<ul>
-        			<li><a href="#"><span class="web_index"></span>网站首页</a></li>
-        			<li class="split">|</li>
-        			<li><a href="#"><span class="web_aboutus"></span>关于我们</a></li>
-                    <li class="split">|</li>
-        			<li><a href="#"><span class="web_map"></span>网站地图</a></li>
-        			<li class="split">|</li>
-        			<li><a href="$ctx/help/center.htm"><span class="web_service"></span>客服中心</a></li>
-        		</ul>
-        		<p>上海安众贷金融信息服务有限公司 版权所有 2007-2014</p>
-        		<p>Copyright Reserved 2007-2014©安众贷（www.azdai.com） <span class="split">|</span> 沪ICP备05063398号</p>
-    		</div>
-        </div>
+	<div class="container">
+		<div class="bottom_nav">
+    		<ul>
+    			<li><a href="$ctx/index.htm"><span class="web_index"></span>网站首页</a></li>
+    			<li class="split">|</li>
+    			<li><a href="#"><span class="web_aboutus"></span>关于我们</a></li>
+                <li class="split">|</li>
+    			<li><a href="#"><span class="web_map"></span>网站地图</a></li>
+    			<li class="split">|</li>
+    			<li><a href="$ctx/help/center.htm"><span class="web_service"></span>客服中心</a></li>
+    		</ul>
+    		<p>上海安众贷金融信息服务有限公司 版权所有 2007-2014</p>
+    		<p>Copyright Reserved 2007-2014©安众贷（www.azdai.com） <span class="split">|</span> 沪ICP备05063398号</p>
+		</div>
     </div>
 </div>
 <link rel="stylesheet" type="text/css" href="$ctx/public/twbs/css/bootstrap.min.css?v=3.1.0" media="screen" />
