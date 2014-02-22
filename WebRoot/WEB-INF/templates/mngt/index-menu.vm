@@ -22,6 +22,7 @@
             <a class="list-group-item" href="$ctx/admin/crawl/create.htm" #TargetURL()>新增爬虫</a>
             <a class="list-group-item" href="$ctx/admin/crawl/input.htm" #TargetURL()>数据抓取</a>
             <a class="list-group-item" href="$ctx/admin/file/fetch.htm" #TargetURL()>文件下载</a>
+			<a class="list-group-item" href="$ctx/uitest/twbs-modal.htm" #TargetURL()>模态对话框</a>
         </div>
     </div>
 	

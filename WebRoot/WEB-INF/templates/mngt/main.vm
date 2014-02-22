@@ -5,9 +5,7 @@
         <div class="col-md-3">论坛的发展也如同网络雨后春笋般的出现，并迅速的发展壮大。论坛几乎涵盖了人们生活的各个方面，几乎每一个人都可以找到自己感兴趣或者需要了解的专题性论坛，而各类网站，综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</div>
         <div class="col-md-3">论坛的发展也如同网络雨后春笋般的出现，并迅速的发展壮大。论坛几乎涵盖了人们生活的各个方面，几乎每一个人都可以找到自己感兴趣或者需要了解的专题性论坛，而各类网站，综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</div>
 	</div>
-</div>
 
-<div class="container-fluid">
     <div class="panel panel-default">
     	<div class="panel-body bg-warning">
             <p><strong><i class="glyphicon glyphicon-headphones"></i> 无诚信借入者网络曝光：</strong></p>
@@ -17,9 +15,7 @@
             <p>4、未经授权，本页面内容不得私自转载，<kbd>安众贷</kbd>对非法转载本页面内容到其他任何网站不负任何法律责任。</p>
         </div>
     </div>
-</div>
 
-<div class="container-fluid">
     <div class="panel panel-default">
     	<div class="panel-body bg-warning">
             <p><strong><i class="glyphicon glyphicon-headphones"></i> 无诚信借入者网络曝光：</strong></p>
@@ -29,9 +25,7 @@
             <p>4、未经授权，本页面内容不得私自转载，<kbd>安众贷</kbd>对非法转载本页面内容到其他任何网站不负任何法律责任。</p>
         </div>
     </div>
-</div>
-	
-<div class="container-fluid">
+
     <div class="panel panel-default">
     	<div class="panel-body bg-warning">
             <p><strong><i class="glyphicon glyphicon-headphones"></i> 无诚信借入者网络曝光：</strong></p>
@@ -41,9 +35,7 @@
             <p>4、未经授权，本页面内容不得私自转载，<kbd>安众贷</kbd>对非法转载本页面内容到其他任何网站不负任何法律责任。</p>
         </div>
     </div>
-</div>
-	
-<div class="container-fluid">
+
     <div class="panel panel-default" #MarginBottomNO()>
     	<div class="panel-body bg-warning">
             <p><strong><i class="glyphicon glyphicon-headphones"></i> 无诚信借入者网络曝光：</strong></p>

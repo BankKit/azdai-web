@@ -1,0 +1,14 @@
+#set($modal="ON")
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Ajax模态框</h4>
+</div>
+<div class="modal-body">
+	This content is coming from the <code>ajax-modal.htm</code> file. It has been loaded remotely via ajax.
+	<br/><br/>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quam massa, venenatis sit amet eleifend at, scelerisque et purus. Sed interdum nulla quis erat congue ut hendrerit nulla consequat. Suspendisse potenti. Aenean ut viverra nisi. Nullam ac consequat nulla. Nam rutrum blandit eros, sed tempor enim semper faucibus. Nullam at risus tortor, id consectetur est. Maecenas et ipsum sed lacus ultricies pulvinar. Sed varius metus blandit leo malesuada ornare. Nam neque tellus, commodo eu congue non, scelerisque in felis.
+</div>
+<div class="modal-footer">
+    <button type="button" data-dismiss="modal" class="btn btn-default">关闭窗口</button>
+    <button type="button" data-dismiss="modal" class="btn btn-primary" onclick="javascript:onModalSave('$ts', '456');">保存数据</button>
+</div>

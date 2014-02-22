@@ -5,45 +5,47 @@
             <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
             <li>我要投资 - 投资项目详情 - <span class="text-danger">日常生活消费</span></li>
         </ol>
-    </div>
-</div>
 
-<div class="container">
-	<div class="col-md-12">
-		<div class="well well-sm">
-            <span class="col-md-3"><strong>项目名称：</strong>婚房装修</span>
-            <span class="col-md-3"><strong>债务人：</strong><a href="#">老牛啊</a></span>
-			<span class="col-md-3"><strong>注册日期：</strong>2014-01-01</span>
-			<span class="col-md-3"><strong>最后登录：</strong>2014-02-17</span>
-			<div class="clearfix"></div>
-		</div>
+    	<div class="well well-sm">
+            <span class="col-md-2"><strong>项目名称：</strong>婚房装修</span>
+    		<span class="col-md-2"><strong>标的类型：</strong><button type="button" class="btn btn-danger btn-sm">普</button></span>
+    		<span class="col-md-2"><strong>标的总额：</strong>6000元</span>
+    		<span class="col-md-2"><strong>年利率：</strong>12%</span>
+            <span class="col-md-2"><strong>债务人：</strong><a href="#">老牛啊</a></span>
+    		<span class="col-md-2"><strong>注册日期：</strong>2014-01-01</span>
+    		<div class="clearfix"></div>
+    	</div>
+	
         <div class="row">
-			<div class="col-md-8">
+    		<div class="col-md-8">
                 <div class="panel panel-default">
-					<table class="table table-hover">
-						<tbody>
-							<tr>
+    				<table class="table table-hover">
+    					<tbody>
+    						<tr>
                                 <td><div class="pull-right">标的总额：</div></td>
-								<td>哈哈</td>
-								<td><div class="pull-right">年利率：</div></td>
-								<td>哈哈</td>
-								<td><div class="pull-right">标的类型：</div></td>
-								<td><button type="button" class="btn btn-danger">普</button></td>
+    							<td>哈哈</td>
+    							<td><div class="pull-right">年利率：</div></td>
+    							<td>哈哈</td>
+    							<td><div class="pull-right">标的类型：</div></td>
+    							<td><button type="button" class="btn btn-danger">普</button></td>
                             </tr>
-							<tr>
+    						<tr>
                                 <td>哈哈</td>
-								<td>哈哈</td>
-								<td>哈哈</td>
-								<td>哈哈</td>
-								<td>哈哈</td>
-								<td>哈哈</td>
+    							<td>哈哈</td>
+    							<td>哈哈</td>
+    							<td>哈哈</td>
+    							<td>哈哈</td>
+    							<td>哈哈</td>
                             </tr>
                         </tbody>
                     </table>
-				</div>
+    			</div>
             </div>
-			<div class="col-md-4">
+    		<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-body">哈哈</div>
+                </div>
             </div>
-		</div>
+    	</div>
     </div>
 </div>
