@@ -12,9 +12,18 @@ if(typeof jQuery === 'undefined') {
  */
 var AZD = {};
 
+// 空函数
+AZD.noop = function() {
+};
+
+// 是否存在DOM
+AZD.existDOM = function(domId) {
+	return ($("#" + domId).length > 0);
+};
+
 // 设置CSS类
 AZD.addClass = function(domId, clazz) {
-	if($("#" + domId).length > 0) {
+	if(AZD.existDOM(domId)) {
 		$("#" + domId).addClass(clazz);
 	}
 };
@@ -46,6 +55,120 @@ AZD.toggleClass = function(object, remove, add) {
 	}
 };
 
+// 模态窗体
+AZD.modal = function(msg, title, btnMsg) {
+	var id = "___modal_azd_modal_";
+	if(!AZD.existDOM(id)) {
+		var txt = '';
+		txt += '<div id="' + id + '" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">';
+		txt += '    <div class="modal-dialog">';
+		txt += '        <div class="modal-content">';
+		txt += '			<div class="modal-header">';
+		txt += '                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+		txt += '                <h4 class="modal-title">标题</h4>';
+		txt += '            </div>';
+		txt += '            <div class="modal-body">内容提示！</div>';
+		txt += '            <div class="modal-footer">';
+		txt += '                <button type="button" class="btn btn-danger btn-modal" data-dismiss="modal">确定</button>';
+		txt += '            </div>';
+		txt += '        </div>';
+		txt += '    </div>';
+		txt += '</div>';
+
+		// 增加DOM树
+		$("body").append(txt);
+	}
+
+	// 参数设置
+	$("#" + id + " .modal-body").html(msg);
+	$("#" + id + " .modal-title").html((title || "标题"));
+	$("#" + id + " .btn-modal").html((btnMsg || "确定"));
+	
+	// 弹出对话框
+	$("#" + id).modal({
+		backdrop: "static"
+	});
+};
+
+// 警告提示
+AZD.alert = function(msg, title, btnMsg) {
+	var id = "___alert_azd_modal_";
+	if(!AZD.existDOM(id)) {
+		var txt = '';
+		txt += '<div id="' + id + '" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">';
+		txt += '    <div class="modal-dialog">';
+		txt += '        <div class="modal-content">';
+		txt += '			<div class="modal-header">';
+		txt += '                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+		txt += '                <h4 class="modal-title">警告提示</h4>';
+		txt += '            </div>';
+		txt += '            <div class="modal-body text-danger">警告内容提示！</div>';
+		txt += '            <div class="modal-footer">';
+		txt += '                <button type="button" class="btn btn-danger btn-alert" data-dismiss="modal">确定</button>';
+		txt += '            </div>';
+		txt += '        </div>';
+		txt += '    </div>';
+		txt += '</div>';
+
+		// 增加DOM树
+		$("body").append(txt);
+	}
+
+	// 参数设置
+	$("#" + id + " .modal-body").html(msg);
+	$("#" + id + " .modal-title").html((title || "警告提示"));
+	$("#" + id + " .btn-alert").html((btnMsg || "确定"));
+
+	// 弹出对话框
+	$("#" + id).modal({
+		backdrop: "static"
+	});
+};
+
+// 确认提示
+AZD.confirm = function(callback, msg, btnYes, btnNo) {
+	var id = "___confirm_azd_modal_";
+	if(!AZD.existDOM(id)) {
+		var txt = '';
+		txt += '<div id="' + id + '" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">';
+		txt += '    <div class="modal-dialog">';
+		txt += '        <div class="modal-content">';
+		txt += '            <div class="modal-body text-danger">确认提示内容！</div>';
+		txt += '            <div class="modal-footer">';
+		txt += '                <button type="button" class="btn btn-default btn-no" data-dismiss="modal">取消</button>';
+		txt += '                <button type="button" class="btn btn-danger btn-yes" data-dismiss="modal">确定</button>';
+		txt += '            </div>';
+		txt += '        </div>';
+		txt += '    </div>';
+		txt += '</div>';
+
+		// 增加DOM树
+		$("body").append(txt);
+	}
+
+	// 参数设置
+	$("#" + id + " .modal-body").html(msg);
+	$("#" + id + " .btn-no").html((btnNo || "取消"));
+	$("#" + id + " .btn-yes").html((btnYes || "确定"));
+
+	// 回调函数绑定
+	var func = (callback || AZD.noop);
+	$("#" + id + " .btn-no").unbind("click");
+	$("#" + id + " .btn-no").click(function(e) {
+		func("no");
+	});
+
+	$("#" + id + " .btn-yes").unbind("click");
+	$("#" + id + " .btn-yes").click(function(e) {
+		func("yes");
+	});
+
+	// 弹出对话框
+	$("#" + id).modal({
+		backdrop: "static"
+	});
+};
+
 /**
  * 初始化
  */
@@ -66,7 +189,7 @@ $(document).ready(function() {
 		}, 300);
 		return false;
 	});
-	
+
 	$("#back-to-top").tooltip({
 		animation: false,
 		trigger: "hover",
@@ -102,7 +225,7 @@ $(document).ready(function() {
 			"hideMethod": "fadeOut"
 		};
 	}
-	
+
 	// F12页面提示
 	if(window.console) {
 		window.console.info("%c对于那些看到一个页面就要按F12的web开发者来说，你是喜欢我们的代码呢，还是发现了什么bug？不如直接和我们联系吧！", "font-size:14px;");

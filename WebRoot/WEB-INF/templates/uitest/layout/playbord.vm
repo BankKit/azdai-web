@@ -12,14 +12,11 @@ $screen_placeholder
 </head>
 <body id="body">
 <div id="wrap">
-#parse("/public/uniform-header.vm")
+##parse("/public/uniform-header.vm")
 $screen_placeholder
 </div>
 #parse("/public/uniform-footer.vm")
-
-## XTabPanel测试
-<link rel="stylesheet" type="text/css" href="$ctx/public/css/xtabpanel.css?v=2.0" />
-<script type="text/javascript" charset="utf-8" src="$ctx/public/js/xtabpanel.js?v=2.0"></script>
+<link rel="stylesheet" type="text/css" href="$ctx/public/css/playbord.css?v=1.0.1" />
 </body>
 </html>
 #end

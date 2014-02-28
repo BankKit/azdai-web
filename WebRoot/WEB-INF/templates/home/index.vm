@@ -1,73 +1,30 @@
 #set($title="安众贷首页-安全 大众 不等贷")
-<div class="page-header-bg">
-	<div class="container">
-		<!-- 幻灯片 -->
-		<div class="col-md-8">
-            <div id="logo-slide" class="carousel logo-slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#logo-slide" data-slide-to="0" class="active"></li>
-                    <li data-target="#logo-slide" data-slide-to="1" class=""></li>
-                    <li data-target="#logo-slide" data-slide-to="2" class=""></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <a href="$ctx/forum/topic.htm"><img class="img-responsive" width="900" height="300" src="$ctx/upload/testimgs/logo-side-01.jpg" /></a>
-                        <div class="carousel-caption">
-    						<h3>第1张幻灯片</h3>
-    						<p>综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</p>
-    					</div>
-    				</div>
-                    <div class="item">
-                        <a href="$ctx/forum/topic.htm"><img class="img-responsive" width="900" height="300" src="$ctx/upload/testimgs/logo-side-02.jpg" /></a>
-                        <div class="carousel-caption">
-                            <h3>第2张幻灯片</h3>
-                            <p>综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</p>
-        				</div>
-                    </div>
-                    <div class="item">
-                        <a href="$ctx/forum/topic.htm"><img class="img-responsive" width="900" height="300" src="$ctx/upload/testimgs/logo-side-03.jpg" /></a>
-                        <div class="carousel-caption">
-        					<h3>第3张幻灯片</h3>
-        					<p>综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</p>
-        				</div>
-                    </div>
+#set($bgstretcher="ON")
+<div class="bgstretcher-slidebox">
+    <div class="container">
+		<div class="col-md-9 slidebox">
+            <p class="slidebox-space"></p>
+			<p class="slidebox-pages text-right"></p>
+        </div>
+        <div class="col-md-3">
+            <div class="login">
+                <div class="loginBox">
+                    <form role="form" method="get" action="$ctx/home/index-login.htm">
+                        <div class="form-group">
+    						<label for="userName">用户名：</label>
+    						<input id="userName" name="userName" type="text" class="form-control" placeholder="注册用户名" />
+                        </div>
+						<div class="form-group">
+    						<label for="passwd">登陆密码：</label>
+    						<input id="passwd" name="passwd" type="password" class="form-control" placeholder="登录密码" />
+                        </div>
+						<button type="submit" class="btn btn-primary btn-block"><strong>快速登录</strong></button>
+                    </form>
                 </div>
-                <a class="left carousel-control" href="#logo-slide" data-slide="prev">
-    				<span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a class="right carousel-control" href="#logo-slide" data-slide="next">
-    				<span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
-    		</div>
-        </div>
-		<!-- 登录表单 -->
-    	<div class="col-md-4">
-            <div class="panel panel-default">
-    			<div class="panel-heading"><strong><i class="glyphicon glyphicon-plus-sign"></i> 快速登录</strong></div>
-    			<div class="panel-body">
-    				<form role="form" method="get" action="$ctx/home/index-login.htm">
-                        <div class="input-group input-group-lg form-group">
-    						<span class="input-group-addon">用户：</span>
-    						<input type="text" class="form-control" placeholder="注册用户名" />
-                        </div>
-    					<div class="input-group input-group-lg form-group">
-    						<span class="input-group-addon">密码：</span>
-    						<input type="text" class="form-control" placeholder="系统登录密码" />
-                        </div>
-                        <div class="form-group" #MarginBottomNO()>
-    						<span class="pull-left">
-    							<button type="submit" class="btn btn-success btn-lg"><i class="glyphicon glyphicon-upload"></i> 登录系统</button>
-                            </span>
-    						<span class="pull-right">
-    							<a href="#" class="btn btn-default btn-lg" role="button">忘记密码？</a>
-                            </span>
-                            <span class="clearfix"></span>
-                        </div>
-    				</form>
-    			</div>
             </div>
-        </div>
-    </div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
 </div>
 
 <div class="container">

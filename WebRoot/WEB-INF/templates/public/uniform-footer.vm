@@ -16,12 +16,12 @@
 		</div>
     </div>
 </div>
-<link rel="stylesheet" type="text/css" href="$ctx/public/twbs/css/bootstrap.min.css?v=3.1.0" media="screen" />
-<link rel="stylesheet" type="text/css" href="$ctx/public/twbs/css/bootstrap-theme.min.css?v=3.1.0" media="screen" />
+<link rel="stylesheet" type="text/css" href="$ctx/public/twbs/css/bootstrap.min.css?v=3.1.1" media="screen" />
+<link rel="stylesheet" type="text/css" href="$ctx/public/twbs/css/bootstrap-theme.min.css?v=3.1.1" media="screen" />
 <link rel="stylesheet" type="text/css" href="$ctx/public/fa/css/font-awesome.min.css?v=4.0.3" media="screen" />
 <link rel="stylesheet" type="text/css" href="$ctx/public/css/toastr.min.css" />
 <link rel="stylesheet" type="text/css" href="$ctx/public/css/anzhongdai.css?v=2.0.1" />
-<script type="text/javascript" charset="utf-8" src="$ctx/public/twbs/js/bootstrap.min.js?v=3.1.0"></script>
+<script type="text/javascript" charset="utf-8" src="$ctx/public/twbs/js/bootstrap.min.js?v=3.1.1"></script>
 <script type="text/javascript" charset="utf-8" src="$ctx/public/js/toastr.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="$ctx/public/js/anzhongdai.js?v=2.0.1"></script>
 <!--[if lt IE 9]>
@@ -37,6 +37,14 @@
 <link rel="stylesheet" type="text/css" href="$ctx/public/css/password-strength.css" />
 <script type="text/javascript" charset="utf-8" src="$ctx/public/js/jquery.password-strength.js"></script>
 #end
+#if($!StringUtils.equals($slidebox, "ON"))
+<link rel="stylesheet" type="text/css" href="$ctx/public/css/jquery.slidebox.css?v=1.2.0314" />
+<script type="text/javascript" charset="utf-8" src="$ctx/public/js/jquery.slidebox.min.js?v=1.2.0314"></script>
+#end
+#if($!StringUtils.equals($bgstretcher, "ON"))
+<link rel="stylesheet" type="text/css" href="$ctx/public/css/bgstretcher.css?v=3.1.2" />
+<script type="text/javascript" charset="utf-8" src="$ctx/public/js/bgstretcher.min.js?v=3.1.2"></script>
+#end
 <script type="text/javascript">
 $(document).ready(function(){
 #if($!StringUtils.isNotBlank($navbar))
@@ -44,5 +52,31 @@ $(document).ready(function(){
 		$("#navbar-id-$!navbar").addClass("active");
 	}
 #end
+
+#if($!StringUtils.equals($slidebox, "ON"))
+$("#pagetop-slidebox").slideBox({
+	duration : 0.5,//滚动持续时间，单位：秒
+	easing : "linear",//swing,linear//滚动特效
+	delay : 5,//滚动延迟时间，单位：秒
+	hideClickBar : false,//不自动隐藏点选按键
+	clickBarRadius : 10
+});
+#end
+
+#if($!StringUtils.equals($bgstretcher, "ON"))
+var bgStretcherCallback = function() {
+	console.log("bgStretcherCallback-" + new Date().getTime());
+};
+
+$(".bgstretcher-slidebox").bgStretcher({
+	images: ["$ctx/upload/testimgs/slidebox-06.jpg", "$ctx/upload/testimgs/slidebox-07.jpg", "$ctx/upload/testimgs/slidebox-08.jpg"],
+	imageWidth: 1600,
+	imageHeight: 260,
+	nextSlideDelay: 5000,
+	pagination: ".slidebox-pages",
+	sliderCallbackFunc: bgStretcherCallback
+});
+#end
+
 });
 </script>

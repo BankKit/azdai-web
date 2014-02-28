@@ -5,47 +5,78 @@
             <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
             <li>我要投资 - 投资项目详情 - <span class="text-danger">日常生活消费</span></li>
         </ol>
-
-    	<div class="well well-sm">
-            <span class="col-md-2"><strong>项目名称：</strong>婚房装修</span>
-    		<span class="col-md-2"><strong>标的类型：</strong><button type="button" class="btn btn-danger btn-sm">普</button></span>
-    		<span class="col-md-2"><strong>标的总额：</strong>6000元</span>
-    		<span class="col-md-2"><strong>年利率：</strong>12%</span>
-            <span class="col-md-2"><strong>债务人：</strong><a href="#">老牛啊</a></span>
-    		<span class="col-md-2"><strong>注册日期：</strong>2014-01-01</span>
-    		<div class="clearfix"></div>
-    	</div>
-	
-        <div class="row">
-    		<div class="col-md-8">
-                <div class="panel panel-default">
-    				<table class="table table-hover">
-    					<tbody>
-    						<tr>
-                                <td><div class="pull-right">标的总额：</div></td>
-    							<td>哈哈</td>
-    							<td><div class="pull-right">年利率：</div></td>
-    							<td>哈哈</td>
-    							<td><div class="pull-right">标的类型：</div></td>
-    							<td><button type="button" class="btn btn-danger">普</button></td>
-                            </tr>
-    						<tr>
-                                <td>哈哈</td>
-    							<td>哈哈</td>
-    							<td>哈哈</td>
-    							<td>哈哈</td>
-    							<td>哈哈</td>
-    							<td>哈哈</td>
-                            </tr>
-                        </tbody>
-                    </table>
-    			</div>
-            </div>
-    		<div class="col-md-4">
-				<div class="panel panel-default">
-					<div class="panel-body">哈哈</div>
-                </div>
-            </div>
-    	</div>
     </div>
+	
+	<div class="col-md-12">
+    	<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="row row-control">
+        			<div class="col-md-2"><strong>项目名称：</strong>婚房装修</div>
+            		<div class="col-md-2"><strong>标的类型：</strong><button type="button" class="btn btn-danger btn-sm">普</button></div>
+            		<div class="col-md-2"><strong>标的总额：</strong>6000元</div>
+            		<div class="col-md-2"><strong>年利率：</strong>12%</div>
+                    <div class="col-md-2"><strong>债务人：</strong><a href="#">老牛啊</a></div>
+            		<div class="col-md-2"><strong>注册日期：</strong>2014-01-01</div>
+                </div>
+				<div class="row row-control">
+        			<div class="col-md-4"><strong>还款方式：</strong>按月还款 等额本息</div>
+            		<div class="col-md-2"><strong>还款期限：</strong>12个月</div>
+            		<div class="col-md-2"><strong>月换本息：</strong>6512元</div>
+            		<div class="col-md-2"><strong>以还本息：</strong>523.20元</div>
+                    <div class="col-md-2"><strong>待还本息：</strong>61250元</div>
+                </div>
+				<div class="row">
+        			<div class="col-md-2"><strong>本息合计：</strong>62000元</div>
+            		<div class="col-md-4"><strong>投标截止时间：</strong>2014-08-06 15:20:32</div>
+            		<div class="col-md-2"><strong>总投标数：</strong>19次</div>
+                    <div class="col-md-2"><strong>项目进度：</strong><kbd>88%</kbd></div>
+                    <div class="col-md-2"><strong>借款协议：</strong><a id="loan-term" href="#">借款协议</a></div>
+                </div>
+    		</div>
+        </div>
+    </div>
+	
+	<div class="col-md-12">
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+                <span><strong>我要投资</strong>（账户余额：102元）</span>
+			</div>
+			<div class="panel-body">
+                <form class="form-inline" role="form">
+                	<div class="form-group has-success has-feedback">
+                        <label class="control-label" for="amount">投资金额（金额必须为<kbd>20</kbd>的整数倍）：</label>
+                		<input id="amount" class="form-control" type="text" placeholder="投标金额"/>
+						<span class="form-control-feedback">元</span>
+                	</div>
+                	<button id="btn-submit" type="button" class="btn btn-danger">立刻投资</button>
+                </form>
+			</div>
+        </div>
+    </div>
+	
+    <div class="col-md-12">
+    	<div class="panel panel-default">
+			<div class="panel-body">
+                <ul class="nav nav-pills">
+                	<li class="active"><a href="#">信用记录</a></li>
+                	<li><a href="#">基本信息</a></li>
+                	<li><a href="#">资料审核</a></li>
+					<li><a href="#">投标记录</a></li>
+                	<li><a href="#">还款表现</a></li>
+                </ul>
+            </div>
+		</div>
+	</div>
+	
 </div>
+<script type="text/javascript">
+$("#loan-term").click(function() {
+	AZD.modal("哈哈，这就是借款协议了！！");
+});
+
+$("#btn-submit").click(function() {
+    AZD.confirm(function(type) {
+		console.log("HAHA");
+	}, "你确定投资<kbd>300</kbd>元吗？");
+});
+</script>

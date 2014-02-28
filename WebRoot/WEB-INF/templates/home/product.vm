@@ -5,7 +5,9 @@
             <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
             <li>投资产品介绍</li>
         </ol>
-
+    </div>
+	
+	<div class="col-md-12">
 		<!-- 标的说明 -->
 		<div class="panel panel-default">
         	<div class="panel-body">

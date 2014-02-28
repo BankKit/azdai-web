@@ -1,0 +1,117 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" #MarginBottomNO()>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                    <span class="sr-only">菜单导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="$ctx/home/index.htm"><img src="$ctx/public/logo.png" /></a>
+            </div>
+			
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav">
+					<li>&nbsp;&nbsp;</li>
+					<li>&nbsp;&nbsp;</li>
+					<li>&nbsp;&nbsp;</li>
+					<li>&nbsp;&nbsp;</li>
+					<li>&nbsp;&nbsp;</li>
+					<li>&nbsp;&nbsp;</li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+						<input type="text" class="form-control" placeholder="搜索关键字"/>
+                    </div>
+					<button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-search"></i> 搜索</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+					<button type="button" class="btn btn-info navbar-btn">注册</button>
+					<button type="button" class="btn btn-primary navbar-btn">登录</button>
+				</ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-top" role="navigation">
+	<div class="container">
+		<div class="col-md-12">
+			<div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-2">
+                    <span class="sr-only">菜单导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+			
+			<div class="collapse navbar-collapse navbar-subnav" id="navbar-collapse-2">
+                <ul class="nav navbar-nav">
+                    <li><a class="otip subnavbar" href="$ctx/home/product.htm" title="我要理财"><i class="glyphicon glyphicon-share"></i> 我要投资</a></li>
+                    <li><a class="otip" href="#" title="我要资金周转"><i class="glyphicon glyphicon-check"></i> 我要借入</a></li>
+					<li><a class="otip" href="$ctx/user/blacklist.htm" title="黑名单"><i class="glyphicon glyphicon-remove-circle"></i> 黑名单</a></li>
+					<li class="active"><a class="otip" href="$ctx/user/regist.htm" title="免费注册"><i class="glyphicon glyphicon-heart"></i> 注册</a></li>
+					<li><a class="otip" href="$ctx/forum/index.htm" title="会员论坛"><i class="glyphicon glyphicon-fire"></i> 论坛</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="otip" href="$ctx/help/center.htm" title="关于"><i class="glyphicon glyphicon-question-sign"></i> 关于</a></li>
+				</ul>
+            </div>
+        </div>
+	</div>
+</div>
+
+<!-- https://wrapbootstrap.com/support/download-resender -->
+<!--
+<div class="page-header-top">
+    <div class="container">
+		<div class="col-md-12">
+			<h1>Support <small>for buyers and sellers</small></h1>
+		</div>
+    </div>
+</div>
+-->
+
+<div class="container">
+	<div class="col-md-12">
+		<h1>Support <small>for buyers and sellers</small></h1>
+	</div>
+</div>
+	
+<style>
+.navbar-top {
+	margin-top: 50px !important;
+}
+
+.navbar-brand {
+	display: block;
+	margin: 0 !important;
+	padding: 0 !important;
+	min-width: 50px !important;
+	height: 50px !important;
+	min-height: 50px !important;
+	max-height: 50px !important;
+}
+
+.navbar-brand img {
+	margin: 0 !important;
+	padding: 0 !important;
+	width: 50px !important;
+	min-width: 50px !important;
+	max-width: 50px !important;
+	height: 50px !important;
+	min-height: 50px !important;
+	max-height: 50px !important;
+}
+
+.navbar-subnav ul {
+	border-left: 1px solid #EEE;
+}
+
+.navbar-subnav ul li {
+	font-weight: bold;
+	border-right: 1px solid #EEE;
+}
+</style>
