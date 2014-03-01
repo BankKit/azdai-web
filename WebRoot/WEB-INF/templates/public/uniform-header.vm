@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" #MarginBottomNO()>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" #MarginBottomNO()>
     <div class="container">
         <div class="col-md-12">
             <div class="navbar-header">
@@ -26,11 +26,12 @@
                             <li><a href="$ctx/user/center.htm"><i class="glyphicon glyphicon-log-out"></i> 退出登录</a></li>
                         </ul>
                     </li>
+					<!--
 					<li id="navbar-id-regist"><a class="otip" href="$ctx/user/regist.htm" title="免费注册"><i class="glyphicon glyphicon-heart"></i> 注册</a></li>
+					-->
 					<li id="navbar-id-forum"><a class="otip" href="$ctx/forum/index.htm" title="会员论坛"><i class="glyphicon glyphicon-fire"></i> 论坛</a></li>
-					<li id="navbar-id-help" class="active"><a class="otip" href="$ctx/help/center.htm" title="帮助中心"><i class="glyphicon glyphicon-question-sign"></i> 帮助中心</a></li>
-					<li><button type="button" class="btn btn-info navbar-btn">注册</button></li>
-					<li><button type="button" class="btn btn-primary navbar-btn">登录</button></li>
+					<li id="navbar-id-help"><a class="otip" href="$ctx/help/center.htm" title="帮助中心"><i class="glyphicon glyphicon-question-sign"></i> 帮助中心</a></li>
+					<li><button type="button" class="btn btn-info navbar-btn navbar-btn-regist">注册</button></li>
 				</ul>
             </div>
         </div>

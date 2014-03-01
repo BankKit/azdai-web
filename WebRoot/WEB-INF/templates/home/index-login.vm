@@ -1,64 +1,32 @@
 #set($title="安众贷首页-安全 大众 不等贷")
-<div class="page-header-bg">
-	<div class="container">
-		<!-- 幻灯片 -->
-		<div class="col-md-9">
-            <div id="logo-slide" class="carousel logo-slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#logo-slide" data-slide-to="0" class="active"></li>
-                    <li data-target="#logo-slide" data-slide-to="1" class=""></li>
-                    <li data-target="#logo-slide" data-slide-to="2" class=""></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <a href="$ctx/forum/topic.htm"><img class="img-responsive" width="900" height="300" src="$ctx/upload/testimgs/logo-side-01.jpg" /></a>
-                        <div class="carousel-caption">
-    						<h3>第1张幻灯片</h3>
-    						<p>综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</p>
-    					</div>
-    				</div>
-                    <div class="item">
-                        <a href="$ctx/forum/topic.htm"><img class="img-responsive" width="900" height="300" src="$ctx/upload/testimgs/logo-side-02.jpg" /></a>
-                        <div class="carousel-caption">
-                            <h3>第2张幻灯片</h3>
-                            <p>综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</p>
-        				</div>
-                    </div>
-                    <div class="item">
-                        <a href="$ctx/forum/topic.htm"><img class="img-responsive" width="900" height="300" src="$ctx/upload/testimgs/logo-side-03.jpg" /></a>
-                        <div class="carousel-caption">
-        					<h3>第3张幻灯片</h3>
-        					<p>综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</p>
-        				</div>
-                    </div>
-                </div>
-                <a class="left carousel-control" href="#logo-slide" data-slide="prev">
-    				<span class="glyphicon glyphicon-chevron-left"></span>
-                </a>
-                <a class="right carousel-control" href="#logo-slide" data-slide="next">
-    				<span class="glyphicon glyphicon-chevron-right"></span>
-                </a>
-    		</div>
+#set($bgstretcher="ON")
+<div class="bgstretcher-slidebox">
+    <div class="container">
+		<div class="col-xs-12 col-sm-7 col-md-9 slidebox">
+            <div class="slidebox-subs">
+				<a href="#"><img class="slidesub01" src="$ctx/upload/testimgs/slidebox-sub-01.png" alt="" /></a>
+				<a href="#"><img class="slidesub02" src="$ctx/upload/testimgs/slidebox-sub-02.png" alt="" /></a>
+				<a href="#"><img class="slidesub03" src="$ctx/upload/testimgs/slidebox-sub-03.png" alt="" /></a>
+			</div>
+			<div class="slidebox-pages text-center"></div>
         </div>
-		<!-- 登录表单 -->
-    	<div class="col-md-3">
-            <div class="panel panel-default">
-    			<div class="panel-heading"><strong><i class="glyphicon glyphicon-plus-sign"></i> 快速申请借钱</strong></div>
-    			<div class="panel-body">
-    				<div style="margin-bottom:15px">
-    					<a href="$ctx/home/product.htm" class="btn btn-info btn-lg pull-left">工薪贷</a>
-    					<a href="$ctx/home/product.htm" class="btn btn-info btn-lg pull-right">学生贷</a>
-    					<span class="clearfix"></span>
-    				</div>
-    				<div style="margin-bottom:15px">
-    					<a href="$ctx/home/product.htm" class="btn btn-info btn-lg btn-block">生意贷</a>
-    				</div>
-    				<div>
-    					<a href="$ctx/home/product.htm" class="btn btn-success btn-lg btn-block">网商贷</a>
-    				</div>
-    			</div>
+        <div class="col-xs-12 col-sm-5 col-md-3 loginbox">
+            <div class="loginwrap">
+                <h4>欢迎来到安众贷！</h4>
+				<hr/>
+				<div class="row-control">
+					<a href="$ctx/home/product.htm" class="btn btn-success btn-lg btn-block">生意贷</a>
+				</div>
+				<div class="row-control">
+					<a href="$ctx/home/product.htm" class="btn btn-info btn-lg pull-left">工薪贷</a>
+					<a href="$ctx/home/product.htm" class="btn btn-info btn-lg pull-right">学生贷</a>
+					<span class="clearfix"></span>
+				</div>
+				<div>
+					<a href="$ctx/home/product.htm" class="btn btn-primary btn-lg btn-block">网商贷</a>
+				</div>
             </div>
-        </div>
+		</div>
 	</div>
 </div>
 

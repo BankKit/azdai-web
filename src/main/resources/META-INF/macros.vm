@@ -84,6 +84,8 @@
 #macro(MarginBottomNO)style="margin-bottom:0px"#end
 #macro(MarginBottomYES)style="margin-bottom:5px"#end
 
+#macro(ColBS $xs $sm $md)col-xs-$xs col-sm-$sm col-md-$md#end
+
 #################
 ## 导航
 #################
