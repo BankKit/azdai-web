@@ -3,8 +3,7 @@
 	<div class="col-md-12">
         <ol class="breadcrumb">
             <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
-            <li><a href="$ctx/home/borrow-projects.htm">我要借款</a></li>
-			<li>普通借款标</li>
+            <li>我要借款</li>
         </ol>
     </div>
 	
