@@ -1,0 +1,87 @@
+#set($title="我要投资 - 投资项目列表")
+<div class="container">
+	<div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+            <li>我要投资</li>
+        </ol>
+    </div>
+	
+	<div class="col-md-12">
+		<div class="panel panel-default">
+            <div class="panel-heading">
+        		<ul class="nav nav-pills">
+                    <li class="active"><a href="#">热投区</a></li>
+                    <li><a href="#"><span class="pull-right"><img src="$ctx/public/img/hot.gif" /></span>安全表专区</a></li>
+                    <li><a href="#">审错即赔区</a></li>
+        			<li><a href="#">网商专区</a></li>
+        			<li><a href="#">二次借款</a></li>
+        			<li><a href="#">优先计划</a></li>
+        			<li><a href="#">合作机构专区</a></li>
+                </ul>
+            </div>
+			<div class="table-responsive">
+        		<table class="table table-hover" #MarginBottomNO()>
+					<thead>
+						<tr>
+                            <th><div class="text-center">标题/借款人</div></th>
+							<th><div class="text-center">认证</div></th>
+							<th><div class="text-center">金额(元)</div></th>
+							<th><div class="text-center">当前利率</div></th>
+							<th><div class="text-center">期限</div></th>
+							<th><div class="text-center">信用等级</div></th>
+							<th><div class="text-center">进度/剩余时间</div></th>
+                        </tr>
+                    </thead>
+        			<tr>
+        				<td>haha</td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+        			</tr>
+					<tr>
+        				<td>haha</td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+        			</tr>
+					<tr>
+        				<td>haha</td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+        			</tr>
+					<tr>
+        				<td>haha</td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+						<td><div class="text-center">haha</div></td>
+        			</tr>
+        		</table>
+				<div class="text-center">
+                    <ul class="pagination" #MarginBottomNO()>
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>

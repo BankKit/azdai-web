@@ -1,0 +1,92 @@
+#set($title="网商用户标 - 我要借款")
+<div class="container">
+	<div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+            <li><a href="$ctx/home/borrow-projects.htm">我要借款</a></li>
+			<li>网商用户标</li>
+        </ol>
+    </div>
+	
+	<div class="col-md-12">
+		<div class="panel panel-default">
+            <div class="panel-body">
+                <div><strong>亮点：</strong>专为网商卖家网店进货、参加活动以及资金周转而设的借款标。借款额度根据卖家店铺经营情况一步到位，借款手续简单便捷，通过网商卖家身份认证即可。 </div>
+				<div>&nbsp;</div>
+				<div><strong>推荐人群：</strong>网店卖家。</div>
+            </div>
+			<div class="panel-footer">
+				<div class="text-center"><a href="#" class="btn btn-danger btn-lg">我要发布此借款</a></div>
+			</div>
+        </div>
+	
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>产品描述</strong></h3>
+            </div>
+			<div class="table-responsive">
+                <table class="table table-bordered" #MarginBottomNO()>
+                    <tr>
+                        <td class="bg-default">额度</td>
+						<td>3000元~50万元</td>
+						<td class="bg-default">贷款利率</td>
+						<td>16%~26.24%(即月利率：1.33%~2.18%)</td>
+					</tr>
+					<tr>
+                        <td class="bg-default">贷款期限</td>
+						<td>3~12个月</td>
+						<td class="bg-default">投标时间</td>
+						<td>1~9天</td>
+					</tr>
+					<tr>
+                        <td class="bg-default">审核时间</td>
+						<td>优先审核</td>
+						<td class="bg-default">还款方式</td>
+						<td>等额本息，按月还款</td>
+					</tr>
+					<tr>
+                        <td class="bg-default">手续费</td>
+						<td colspan="3">借款期限6个月（含）以下，借款成功后，本金的2%；借款期限6个月以上，借款成功后，本金的4%（不成功不收取成交服务费）</td>
+					</tr>
+				</table>
+			</div>
+        </div>
+		
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>申请指南</strong></h3>
+            </div>
+			<ul class="list-group" #MarginBottomNO()>
+                <li class="list-group-item">申请借款需通过网商认证</li>
+                <li class="list-group-item">网商用户额度可一步到位</li>
+                <li class="list-group-item">
+					申请额度：申请额度需要网商店铺等级2钻（含）以上或商城经营时间需≥6个月。
+					<a href="#" class="btn btn-primary">申请额度</a>
+				</li>
+            </ul>
+        </div>
+		
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>准备资料</strong></h3>
+            </div>
+			<ul class="list-group" #MarginBottomNO()>
+                <li class="list-group-item">身份证</li>
+                <li class="list-group-item"><strong>居住证明文件：</strong>银行对账单、公用事业缴费单、房产证、户口簿</li>
+                <li class="list-group-item"><strong>收入证明文件：</strong>央行征信记录、交易流水或银行存折、行驶证</li>
+				<li class="list-group-item"><strong>淘宝证明文件：</strong>淘宝/支付宝近三月交易明细，支付宝12个月账单截屏，淘宝信用& 订单贷款账户截屏，淘宝处罚积分页面截屏，本人经营的其他网点，本人经营的其他实体店，近期参加淘宝宣传、推广活动证明，知名品牌授权经营的相关证明</li>
+            </ul>
+        </div>
+		
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>还款指南</strong></h3>
+            </div>
+			<ul class="list-group" #MarginBottomNO()>
+                <li class="list-group-item">通过网上银行或第三方支付(如支付宝、财付通)还款</li>
+            </ul>
+        </div>
+		
+		<div class="well well-lg text-center"><a href="#" class="btn btn-danger btn-lg">我要发布此借款</a></div>
+	</div>
+</div>

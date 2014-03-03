@@ -14,7 +14,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a class="otip" href="$ctx/home/product.htm" title="我要理财"><i class="glyphicon glyphicon-share"></i> 我要投资</a></li>
-                    <li><a class="otip" href="#" title="我要资金周转"><i class="glyphicon glyphicon-check"></i> 我要借入</a></li>
+                    <li><a class="otip" href="$ctx/home/borrow-projects.htm" title="我要资金周转"><i class="glyphicon glyphicon-check"></i> 我要借款</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="navbar-id-blacklist"><a class="otip" href="$ctx/user/blacklist.htm" title="黑名单"><i class="glyphicon glyphicon-remove-circle"></i> 黑名单</a></li>

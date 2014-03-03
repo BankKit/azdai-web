@@ -13,18 +13,20 @@
         <div class="col-xs-12 col-sm-5 col-md-3 loginbox">
             <div class="loginwrap">
                 <h4>欢迎来到安众贷！</h4>
-				<hr/>
-				<div class="row-control">
-					<a href="$ctx/home/product.htm" class="btn btn-success btn-lg btn-block">生意贷</a>
-				</div>
-				<div class="row-control">
-					<a href="$ctx/home/product.htm" class="btn btn-info btn-lg pull-left">工薪贷</a>
-					<a href="$ctx/home/product.htm" class="btn btn-info btn-lg pull-right">学生贷</a>
-					<span class="clearfix"></span>
-				</div>
-				<div>
-					<a href="$ctx/home/product.htm" class="btn btn-primary btn-lg btn-block">网商贷</a>
-				</div>
+				<table class="table" #MarginBottomNO()>
+                    <tbody>
+                        <tr>
+                            <td colspan="2"><a href="$ctx/home/product.htm" class="btn btn-success btn-lg btn-block">生意贷</a></td>
+						</tr>
+						<tr>
+                            <td><a href="$ctx/home/product.htm" class="btn btn-info btn-lg btn-block">工薪贷</a></td>
+							<td><a href="$ctx/home/product.htm" class="btn btn-info btn-lg btn-block">学生贷</a></td>
+						</tr>
+						<tr>
+                            <td colspan="2"><a href="$ctx/home/product.htm" class="btn btn-primary btn-lg btn-block">网商贷</a></td>
+						</tr>
+					</tbody>
+				</table>
             </div>
 		</div>
 	</div>

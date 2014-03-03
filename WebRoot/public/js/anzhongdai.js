@@ -18,7 +18,7 @@ AZD.noop = function() {
 
 // 是否存在DOM
 AZD.existDOM = function(domId) {
-	return ($("#" + domId).length > 0);
+	return($("#" + domId).length > 0);
 };
 
 // 设置CSS类
@@ -83,7 +83,7 @@ AZD.modal = function(msg, title, btnMsg) {
 	$("#" + id + " .modal-body").html(msg);
 	$("#" + id + " .modal-title").html((title || "标题"));
 	$("#" + id + " .btn-modal").html((btnMsg || "确定"));
-	
+
 	// 弹出对话框
 	$("#" + id).modal({
 		backdrop: "static"
@@ -208,6 +208,13 @@ $(document).ready(function() {
 		placement: "bottom"
 	});
 
+	$(".opop").popover({
+		trigger: "hover"
+	});
+	$(".kpop").popover({
+		trigger: "click"
+	});
+
 	// Toastr提示
 	if(typeof toastr !== 'undefined') {
 		toastr.options = {
@@ -231,6 +238,11 @@ $(document).ready(function() {
 		window.console.info("%c对于那些看到一个页面就要按F12的web开发者来说，你是喜欢我们的代码呢，还是发现了什么bug？不如直接和我们联系吧！", "font-size:14px;");
 		window.console.info("%c邮件联系 老牛啊 obullxl@gmail.com", "color:red;font-size:14px;");
 	}
+
+	// 禁用右键
+	/*
+	 * $(document).bind("contextmenu", function(e) { return false; });
+	 */
 	;
 });
 

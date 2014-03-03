@@ -1,0 +1,150 @@
+#set($title="我要借款")
+<div class="container">
+	<div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+            <li><a href="$ctx/home/borrow-projects.htm">我要借款</a></li>
+			<li>普通借款标</li>
+        </ol>
+    </div>
+	
+	<div class="col-xs-12 col-sm-6 col-md-4">
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>普通借款标</strong></h3>
+            </div>
+            <div class="panel-body">
+				<h4>适用工薪族</h4>
+				<p>申请条件</p>
+                <ul>
+                    <li>21-55周岁中国大陆公民</li>
+                    <li>手机绑定</li>
+                    <li>有固定工作</li>
+				</ul>
+				<div>&nbsp;</div>
+				<div class="text-center"><a href="$ctx/home/borrow-project-01.htm" target="_blank">查看该产品的详细说明</a></div>
+				<div>&nbsp;</div>
+			</div>
+			<div class="panel-footer text-center">
+				<a href="#" class="btn btn-info">立即申请</a>
+			</div>
+        </div>
+	</div>
+	
+	<div class="col-xs-12 col-sm-6 col-md-4">
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+				<h3 class="panel-title"><strong>网购达人标</strong></h3>
+            </div>
+            <div class="panel-body">
+				<h4>适用网购达人</h4>
+				<p>申请条件</p>
+                <ul>
+                    <li>21-55周岁中国大陆公民</li>
+                    <li>支付宝实名关联</li>
+                    <li>年度消费金额不少于2000元</li>
+				</ul>
+				<div>&nbsp;</div>
+				<div class="text-center"><a href="$ctx/home/borrow-project-02.htm" target="_blank">查看该产品的详细说明</a></div>
+				<div>&nbsp;</div>
+			</div>
+			<div class="panel-footer text-center">
+				<a href="#" class="btn btn-info">立即申请</a>
+			</div>
+        </div>
+	</div>
+	
+	<div class="col-xs-12 col-sm-6 col-md-4">
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+				<h3 class="panel-title"><strong>应收款安全标</strong></h3>
+			</div>
+            <div class="panel-body">
+				<h4>适用借出者</h4>
+				<p>申请条件</p>
+                <ul>
+                    <li>安众贷借出者用户</li>
+                    <li>借出信用大于200分</li>
+                    <li>第三方关联1个以上</li>
+				</ul>
+				<div>&nbsp;</div>
+				<div class="text-center"><a href="$ctx/home/borrow-project-03.htm" target="_blank">查看该产品的详细说明</a></div>
+				<div>&nbsp;</div>
+			</div>
+			<div class="panel-footer text-center">
+				<a href="#" class="btn btn-info">立即申请</a>
+			</div>
+        </div>
+	</div>
+	
+	<div class="col-xs-12 col-sm-6 col-md-4">
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+				<h3 class="panel-title"><strong>网商用户标</strong></h3>
+			</div>
+            <div class="panel-body">
+				<h4>适用网店卖家</h4>
+				<p>申请条件</p>
+                <ul>
+                    <li>通过网商认证</li>
+                    <li>网上店铺等级达到2钻可申请借款额度</li>
+                    <li>商城经营时间满半年可申请借款额度</li>
+				</ul>
+				<div>&nbsp;</div>
+				<div class="text-center"><a href="$ctx/home/borrow-project-04.htm" target="_blank">查看该产品的详细说明</a></div>
+				<div>&nbsp;</div>
+			</div>
+			<div class="panel-footer text-center">
+				<a href="#" class="btn btn-primary" target="_blank">申请借款额度</a>
+				<a href="javascript:;" class="opop" data-container="body" data-toggle="popover" data-placement="top" data-content="通过网商认证，网商店铺等级达到2钻或商城经营时间达到6个月，即可申请提升额度，最高50万元，一步到位！"><i class="glyphicon glyphicon-question-sign"></i></a>
+				<a href="#" class="btn btn-info">立即申请</a>
+			</div>
+        </div>
+	</div>
+	
+	<div class="col-xs-12 col-sm-6 col-md-4">
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+				<h3 class="panel-title"><strong>私营企业主标</strong></h3>
+			</div>
+            <div class="panel-body">
+				<h4>适用私营业主</h4>
+				<p>申请条件</p>
+                <ul>
+                    <li>相关资质证明</li>
+                    <li>有效营业执照满一年可申请借款额度</li>
+					<li>企业缴税证明</li>
+				</ul>
+				<div>&nbsp;</div>
+				<div class="text-center"><a href="$ctx/home/borrow-project-05.htm" target="_blank">查看该产品的详细说明</a></div>
+				<div>&nbsp;</div>
+			</div>
+			<div class="panel-footer text-center">
+				<a href="#" class="btn btn-info">立即申请</a>
+			</div>
+        </div>
+	</div>
+	
+	<div class="col-xs-12 col-sm-6 col-md-4">
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+				<h3 class="panel-title"><strong>莘莘学子标</strong></h3>
+			</div>
+            <div class="panel-body">
+				<h4>适用大学</h4>
+				<p>申请条件</p>
+                <ul>
+                    <li>19-25周岁中国大陆公民</li>
+                    <li>学籍认证</li>
+					<li>视频认证</li>
+				</ul>
+				<div>&nbsp;</div>
+				<div class="text-center"><a href="$ctx/home/borrow-project-06.htm" target="_blank">查看该产品的详细说明</a></div>
+				<div>&nbsp;</div>
+			</div>
+			<div class="panel-footer text-center">
+				<a href="#" class="btn btn-info">立即申请</a>
+			</div>
+        </div>
+	</div>
+</div>

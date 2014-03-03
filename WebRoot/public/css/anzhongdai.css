@@ -58,6 +58,10 @@ a:hover {
 	border: 1px solid #F00;
 }
 
+.bg-default {
+	background-color: #CCC;
+}
+
 .navbar-brand {
 	display: block;
 	margin: 0 !important;
@@ -220,6 +224,11 @@ a:hover {
 	border-radius: 4px;
 	background: rgba(0, 0, 0, 0.2);
 	filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#88000000, endcolorstr=#88000000);
+}
+
+.loginwrap td,.loginwrap tr {
+	border: 0 !important;
+	border-style: none !important;
 }
 
 .top-loginbox {

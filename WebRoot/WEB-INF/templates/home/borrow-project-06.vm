@@ -1,0 +1,99 @@
+#set($title="莘莘学子标 - 我要借款")
+<div class="container">
+	<div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+            <li><a href="$ctx/home/borrow-projects.htm">我要借款</a></li>
+			<li>莘莘学子标</li>
+        </ol>
+    </div>
+	
+	<div class="col-md-12">
+		<div class="panel panel-default">
+            <div class="panel-body">
+                <div><strong>亮点：</strong>只需通过学籍认证等即可获得无抵押信用贷款。首次申请全额还款后拍拍贷将全额退还成交服务费。</div>
+				<div>&nbsp;</div>
+				<div><strong>推荐人群：</strong>安众贷助学产品，为在校大学生量身定做。</div>
+            </div>
+			<div class="panel-footer">
+				<div class="text-center"><a href="#" class="btn btn-danger btn-lg">我要发布此借款</a></div>
+			</div>
+        </div>
+	
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>产品描述</strong></h3>
+            </div>
+			<div class="table-responsive">
+                <table class="table table-bordered" #MarginBottomNO()>
+                    <tr>
+                        <td class="bg-default">固定额度</td>
+						<td>1000元</td>
+						<td class="bg-default">固定年贷款利率</td>
+						<td>23%(即月利率：1.92%)</td>
+					</tr>
+					<tr>
+                        <td class="bg-default">贷款期限</td>
+						<td>7个月</td>
+						<td class="bg-default">投标时间</td>
+						<td>1~15天</td>
+					</tr>
+					<tr>
+                        <td class="bg-default">审核时间</td>
+						<td>满标后1~3个工作日</td>
+						<td class="bg-default">还款方式</td>
+						<td>等额本息，按月还款</td>
+					</tr>
+					<tr>
+                        <td class="bg-default">手续费</td>
+						<td colspan="3">借款成功后，本金的4%（不成功不收取成交服务费）</td>
+					</tr>
+				</table>
+			</div>
+        </div>
+		
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>申请指南</strong></h3>
+            </div>
+			<ul class="list-group" #MarginBottomNO()>
+                <li class="list-group-item">持中国居民身份证的中国大陆公民</li>
+                <li class="list-group-item">21~55周岁</li>
+                <li class="list-group-item">手机绑定</li>
+				<li class="list-group-item">学籍认证</li>
+				<li class="list-group-item">视频认证</li>
+            </ul>
+        </div>
+		
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>准备资料</strong></h3>
+            </div>
+			<ul class="list-group" #MarginBottomNO()>
+                <li class="list-group-item">身份证</li>
+                <li class="list-group-item">学生证或一卡通正反面</li>
+            </ul>
+        </div>
+		
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>还款指南</strong></h3>
+            </div>
+			<ul class="list-group">
+                <li class="list-group-item">通过网上银行或第三方支付(如支付宝、财付通)还款</li>
+            </ul>
+        </div>
+		
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>增值服务</strong></h3>
+            </div>
+			<ul class="list-group" #MarginBottomNO()>
+                <li class="list-group-item">成功申请学生贷 — 首次申请莘莘学子标，并在之后的每期还款中无逾期，且还清所有本息后，拍拍贷将全额退还成交服务费。</li>
+				<li class="list-group-item">免费为学生建立金融征信档案。诚信从大学开始！为学生量身定做属于自己的“诚信报告”。</li>
+            </ul>
+        </div>
+		
+		<div class="well well-lg text-center"><a href="#" class="btn btn-danger btn-lg">我要发布此借款</a></div>
+	</div>
+</div>
