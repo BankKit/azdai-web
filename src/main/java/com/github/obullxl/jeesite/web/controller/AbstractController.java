@@ -16,27 +16,18 @@ import org.springframework.validation.Validator;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 
-import com.github.obullxl.jeesite.dal.dao.CrawlDAO;
-import com.github.obullxl.jeesite.dal.dao.ImageDAO;
 import com.github.obullxl.lang.biz.BizResponse;
 import com.github.obullxl.lang.enums.EnumBase;
 import com.github.obullxl.lang.enums.ValveBoolEnum;
 import com.github.obullxl.lang.spring.DatePropertyEditor;
 import com.github.obullxl.lang.utils.LogUtils;
 import com.github.obullxl.lang.web.WebContext;
-import com.github.obullxl.model.catg.service.CatgService;
-import com.github.obullxl.model.cfg.service.CfgService;
-import com.github.obullxl.model.cfg.service.RightService;
-import com.github.obullxl.model.relate.service.UserRightService;
 import com.github.obullxl.model.topic.TopicModel;
 import com.github.obullxl.model.topic.TopicModelEnum;
 import com.github.obullxl.model.topic.enums.TopicMediaEnum;
 import com.github.obullxl.model.topic.enums.TopicStateEnum;
 import com.github.obullxl.model.topic.enums.TopicTopEnum;
-import com.github.obullxl.model.topic.service.TopicService;
 import com.github.obullxl.model.user.UserModel;
-import com.github.obullxl.model.user.service.UserService;
-import com.github.obullxl.ticket.TicketService;
 
 /**
  * 控制器基类
@@ -95,42 +86,6 @@ public abstract class AbstractController {
     public static final String    VOPT_CRAWL_INPUT   = "crawl-input";
     public static final String    VOPT_CRAWL_CREATE  = "crawl-create";
     public static final String    VOPT_CRAWL_MANAGE  = "crawl-manage";
-
-    /** 系统参数服务 */
-    @Autowired
-    protected CfgService          cfgService;
-
-    /** 模块分类服务 */
-    @Autowired
-    protected CatgService         catgService;
-
-    /** 用户模型服务 */
-    @Autowired
-    protected UserService         userService;
-
-    /** 用户票据服务 */
-    @Autowired
-    protected TicketService       userTicketService;
-
-    /** 权限服务 */
-    @Autowired
-    protected RightService        rightService;
-
-    /** 用户权限服务 */
-    @Autowired
-    protected UserRightService    userRightService;
-
-    /** 主题模型服务 */
-    @Autowired
-    protected TopicService        topicService;
-
-    /** 爬虫DAO */
-    @Autowired
-    protected CrawlDAO            crawlDAO;
-
-    /** 图片DAO */
-    @Autowired
-    protected ImageDAO            imageDAO;
 
     /** 校验器 */
     @Autowired

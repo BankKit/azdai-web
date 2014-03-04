@@ -21,7 +21,7 @@
                 </ul>
             </div>
 			<div class="table-responsive">
-        		<table class="table table-hover" #MarginBottomNO()>
+        		<table class="table table-hover lend-projects" #MarginBottomNO()>
 					<thead>
 						<tr>
                             <th><div class="text-center">标题/借款人</div></th>
@@ -34,7 +34,33 @@
                         </tr>
                     </thead>
         			<tr>
-        				<td>haha</td>
+        				<td>
+							<div class="pull-left avatar"><img width="52" height="52" src="$ctx/upload/users/tstuser/avatar_120.jpg" /></div>
+							<div>
+    							<p>
+                        			<a href="/list/454501" target="_blank" title="【其他】有时会出现点小资金问题。因本人平时花销没依据。所以。。。">【其他】有时会出现点小资金问题...</a>
+                        		</p>
+                        		<p>
+                        			<a href="/user/leilei3733" target="_blank">leilei3733</a>
+                        		</p>
+							</div>
+							<!--
+							<ul>
+                            	<li><img width="52" height="52" src="$ctx/upload/users/tstuser/avatar_120.jpg"></li>
+                            	<li>
+                            		<p>
+                            			<a href="/list/454501" target="_blank" title="【其他】有时会出现点小资金问题。因本人平时花销没依据。所以。。。">
+                            			【其他】有时会出现点小资金问题...
+                            			</a>
+                            			<br/>
+                            		</p>
+                            		<p>
+                            			<a href="/user/leilei3733" target="_blank">leilei3733</a>
+                            		</p>
+                            	</li>
+                            </ul>
+							-->
+						</td>
 						<td><div class="text-center">haha</div></td>
 						<td><div class="text-center">haha</div></td>
 						<td><div class="text-center">haha</div></td>
@@ -75,7 +101,7 @@
                         <li><a href="#">&laquo;</a></li>
                         <li><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
+                        <li class="active"><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
                         <li><a href="#">&raquo;</a></li>

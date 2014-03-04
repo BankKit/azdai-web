@@ -29,4 +29,11 @@ public class UtilWebX implements WebX {
         return StringUtils.equals(today, DateUtils.toStringDS(date));
     }
     
+    /**
+     * 转换为日期格式
+     */
+    public static final String toDateFormat(long value) {
+        return DateUtils.toStringDL(new Date(value));
+    }
+    
 }

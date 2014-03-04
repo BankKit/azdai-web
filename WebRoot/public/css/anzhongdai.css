@@ -356,6 +356,49 @@ a:hover {
 }
 
 /**-----------------------------------------------------------------
+ * 标的列表
+ */
+.lend-projects {
+	
+}
+
+.lend-projects ul {
+	margin: 0;
+	height: auto;
+	display: block;
+	overflow: hidden;
+	list-style: none;
+}
+
+.lend-projects table ul li {
+	float: left;
+	font-weight: bold;
+}
+
+.lend-projects .avatar {
+	width: 52px;
+	max-width: 60px;
+	border: 1px solid red;
+}
+
+.lend-projects .avatar img {
+	display: block;
+	border: 1px solid #CCC;
+	border-radius: 6px;
+	height: 52px;
+	max-height: 52px;
+}
+
+.lend-projects li p {
+	font-size: 13px;
+	display: block;
+	width: 237px;
+	line-height: 20px;
+	margin: 0;
+	margin-top: 9px;
+}
+
+/**-----------------------------------------------------------------
  * 账户绑定
  */
 .account_bind_nav .bind_nav .bind_img {

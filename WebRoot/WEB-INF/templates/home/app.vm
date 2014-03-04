@@ -1,0 +1,51 @@
+#set($title="APP管理")
+<div class="container">
+	<div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+            <li>APP管理</li>
+        </ol>
+    </div>
+	
+    <div class="col-md-12">
+		<div class="well well-sm">
+    		<form class="form-inline" role="form" method="post" action="$ctx/app-upload.htm" enctype="multipart/form-data" #MarginBottomNO()>
+    			<div class="form-group">
+                    <label for="exampleInputFile">选择APP文件</label>
+                    <input type="file" name="app" />
+                </div>
+    			<button type="submit" class="btn btn-primary">上传APP</button>
+        	</form>
+        </div>
+		
+		<div class="panel panel-default">
+            <div class="panel-body">
+        		<div class="table-responsive">
+        			<table class="table" #MarginBottomNO()>
+                        <thead>
+        					<tr>
+        						<th>文件名</th>
+        						<th>文件大小</th>
+        						<th>修改时间</th>
+        						<th>下载/删除</th>
+        					</tr>
+        				</thead>
+        				<tbody>
+        					#foreach($file in $apps)
+        					<tr>
+        						<td>$file.getName()</td>
+        						<td>$FileUtils.byteCountToDisplaySize($file.length())</td>
+        						<td>$UtilWebX.toDateFormat($file.lastModified())</td>
+        						<td>
+        							<a href="$ctx/app-download.htm?name=${file.getName()}" class="btn btn-primary">下载</a>
+        							<a href="$ctx/app-delete.htm?name=${file.getName()}" class="btn btn-danger">删除</a>
+        						</td>
+        					</tr>
+        					#end
+        				</tbody>
+        			</table>
+                </div>
+			</div>
+        </div>
+	</div>
+</div>
