@@ -400,8 +400,13 @@ a:hover {
 
 .lend-projects .fast-lend {
 	width: 120px;
+	max-width: 120px;
 	text-align: center;
-	font-size: 12px !important;
+}
+
+.fast-lend .amount {
+	width: 100px;
+	max-width: 100px;
 }
 
 .fast-lend .plus {
@@ -508,6 +513,58 @@ a:hover {
 	border-radius: 8px;
 	-moz-border-radius: 8px;
 	*/
+}
+
+/**-----------------------------------------------------------------
+ * 标的详情
+ */
+.project-detail {
+	
+}
+
+.project-detail-title {
+	height: 40px;
+	line-height: 40px;
+	margin: 0 auto !important;
+}
+
+.project-detail-label {
+	color: #999;
+	width: 90px;
+	line-height: 60px;
+	display: block;
+	float: left;
+}
+
+.project-detail-text {
+	font-size: 26px;
+	color: #ff9900;
+	width: 120px;
+	font-weight: 600;
+	line-height: 60px;
+	display: block;
+	float: right;
+}
+
+.project-detail-state {
+	width: 160px;
+	height: 160px;
+	line-height: 160px;
+	display: block;
+}
+
+.project-detail-avatar {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.project-detail-item {
+	height: 30px;
+	line-height: 30px;
+}
+
+.project-detail-notebook {
+	margin-bottom: 15px;
 }
 
 /**-----------------------------------------------------------------
