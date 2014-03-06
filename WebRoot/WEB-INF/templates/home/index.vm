@@ -31,63 +31,226 @@
 
 <div class="container">
 	<!-- 投资列表 -->
-	<div class="col-md-9">
-		<div class="panel panel-info">
+	<div class="col-md-12">
+		<div class="panel panel-default">
 			<div class="panel-heading"><strong>投资列表</strong></div>
-            <table class="table table-hover">
-				<thead>
-            		<tr>
-                    	<th class="col-md-3">投资标的</th>
-                    	<th>信用等级</th>
-                    	<th>年利率</th>
-                    	<th>金额</th>
-						<th>期限</th>
-						<th>进度</th>
-						<th>状态</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="table-responsive">
+        		<table class="table table-hover lend-projects" #MarginBottomNO()>
+					<thead>
+						<tr>
+                            <th><div class="text-center">标题/借款人</div></th>
+							<th><div class="text-center">认证</div></th>
+							<th><div class="text-center">金额(元)</div></th>
+							<th><div class="text-center">当前利率</div></th>
+							<th><div class="text-center">期限</div></th>
+							<th><div class="text-center">信用等级</div></th>
+							<th><div class="text-center">进度/剩余时间</div></th>
+							<th><div class="text-center">快速投标</div></th>
+                        </tr>
+                    </thead>
+        			<tr>
+        				<td>
+							<div class="pull-left avatar"><img width="52" height="52" src="$ctx/avatar/tstuser/avatar_120.jpg" /></div>
+							<div>
+                                <p><a href="$ctx/home/project-detail.htm" target="_blank" title="【其他】有时会出现点小资金问题。因本人平时花销没依据。所以。。。"><strong>【其他】有时会出现点小资金问题...</strong></a></p>
+                        		<p><a href="#" target="_blank">leilei3733</a></p>
+							</div>
+						</td>
+						<td align="center">
+							<div class="auth-icons-box">
+								<i class="auth-icons auth-hukou otip" title="户口认证"></i>
+								<i class="clearfix"></i>
+                            </div>
+						</td>
+						<td align="center"><div class="text-danger">¥3,000</div></td>
+						<td align="center"><div class="text-danger">9%</div></td>
+						<td align="center"><div class="text-muted">3 个月</div></td>
+                        <td align="center"><div class="credit bg-danger">E</div></td>
+						<td align="center">
+							<div class="lend-progress">
+								<div class="progress-value" style="width:81%;background:#f7971a;">81%</div>
+							</div>
+							<div class="clearfix"></div>
+							<div>23笔投标 已完成97%</div>
+							<div class="text-muted">22天03时27分</div>
+						</td>
+                        <td align="center">
+							<div class="fast-lend">
+    							<div class="input-group has-error">
+                                	<input type="text" class="form-control"  placeholder="金额"/>
+                                	<span class="input-group-btn">
+                                		<button class="btn btn-danger" type="button">投标</button>
+                                	</span>
+                                </div>
+                            </div>
+							<!--
+							<p class="fast-lend" style="height:24px;">
+								<a href="javascript:;" class="minus" style="margin-top: 5px; margin-right:5px;margin-left:10px;"></a>
+								<input type="text" value="100" class="amount" style="float:left;" />
+								<a href="javascript:;" class="plus" style="margin-left:5px;margin-top:5px;"></a>
+                            </p>
+							<p><button class="btn btn-primary btn-sm">投 标</button></p>
+							-->
+						</td>
+        			</tr>
 					<tr>
-						<td>日常生活消费</td>
-						<td>AA</td>
-						<td>13.2%</td>
-						<td>8000元</td>
-						<td>6个月</td>
-						<td>36%</td>
-						<td>正在投标</td>
-                    </tr>
-                    <tr>
-						<td>房子装修</td>
-						<td>B</td>
-						<td>11%</td>
-						<td>10000元</td>
-						<td>3个月</td>
-						<td>100%</td>
-						<td>已满标</td>
-                    </tr>
+        				<td>
+							<div class="pull-left avatar"><img width="52" height="52" src="$ctx/avatar/avatar01.gif" /></div>
+							<div>
+    							<p><a href="#" target="_blank" title="第三标，非提现，积累信用，增加额度"><strong>第三标，非提现，积累信用，增加额度</strong></a></p>
+                        		<p><a href="#" target="_blank">tingfeng00</a></p>
+							</div>
+						</td>
+						<td align="center">
+							<div class="auth-icons-box">
+								&nbsp;
+                            </div>
+						</td>
+						<td align="center"><div class="text-danger">¥3,000</div></td>
+						<td align="center"><div class="text-danger">9%</div></td>
+						<td align="center"><div class="text-muted">3 个月</div></td>
+                        <td align="center"><div class="credit bg-warning">D</div></td>
+						<td align="center">
+							<div class="lend-progress">
+								<div class="progress-value" style="width:78%;background:#7cae4a;">78%</div>
+							</div>
+							<div class="clearfix"></div>
+							<div>23笔投标 已完成78%</div>
+							<div class="text-muted">22天03时27分</div>
+						</td>
+						<td align="center">
+							<div class="fast-lend">
+    							<div class="input-group has-error">
+                                	<input type="text" class="form-control"  placeholder="金额"/>
+                                	<span class="input-group-btn">
+                                		<button class="btn btn-danger" type="button">投标</button>
+                                	</span>
+                                </div>
+                            </div>
+						</td>
+        			</tr>
 					<tr>
-						<td>日常生活消费</td>
-						<td>AA</td>
-						<td>13.2%</td>
-						<td>8000元</td>
-						<td>6个月</td>
-						<td>36%</td>
-						<td>正在投标</td>
-                    </tr>
-                    <tr>
-						<td>房子装修</td>
-						<td>B</td>
-						<td>11%</td>
-						<td>10000元</td>
-						<td>3个月</td>
-						<td>100%</td>
-						<td>已满标</td>
-                    </tr>
-                </tbody>
-            </table>
+        				<td>
+							<div class="pull-left avatar"><img width="52" height="52" src="$ctx/avatar/avatar02.gif" /></div>
+							<div>
+    							<p><a href="#" target="_blank" title="149标 非提现 安全标 稳健投资 收益保障 6000标2"><strong>149标 非提现 安全标 稳健投资 收益保障 6000标2</strong></a></p>
+                        		<p><a href="#" target="_blank">sk63</a></p>
+							</div>
+						</td>
+						<td align="center">
+                            <div class="auth-icons-box">
+    							<i class="auth-icons auth-hukou otip" title="户口认证"></i>
+    							<i class="auth-icons auth-video otip" title="视频认证"></i>
+    							<i class="auth-icons auth-phone otip" title="手机认证"></i>
+    							<i class="auth-icons auth-educate otip" title="学历认证"></i>
+								<i class="clearfix"></i>
+							</div>
+						</td>
+						<td align="center"><div class="text-danger">¥3,000</div></td>
+						<td align="center"><div class="text-danger">9%</div></td>
+						<td align="center"><div class="text-muted">3 个月</div></td>
+                        <td align="center"><div class="credit bg-info">C</div></td>
+						<td align="center">
+							<div class="lend-progress">
+								<div class="progress-value" style="width:100%;background:#39a1ea;">100%</div>
+							</div>
+							<div class="clearfix"></div>
+							<div>10笔投标 已完成100%</div>
+							<div class="text-muted">结束时间：2014-03-04</div>
+						</td>
+						<td align="center">
+							<div class="fast-lend">
+    							<div class="input-group has-error">
+                                	<input type="text" class="form-control"  placeholder="金额"/>
+                                	<span class="input-group-btn">
+                                		<button class="btn btn-danger" type="button">投标</button>
+                                	</span>
+                                </div>
+                            </div>
+						</td>
+        			</tr>
+					<tr>
+        				<td>
+							<div class="pull-left avatar"><img width="52" height="52" src="$ctx/avatar/avatar03.gif" /></div>
+							<div>
+    							<p><a href="#" target="_blank" title="安非周转，谢谢大家。"><strong>安非周转，谢谢大家。</strong></a></p>
+                        		<p><a href="#" target="_blank">wujixian8</a></p>
+							</div>
+						</td>
+						<td align="center">
+							<div class="auth-icons-box">
+								<i class="auth-icons auth-hukou otip" title="户口认证"></i>
+								<i class="clearfix"></i>
+                            </div>
+						</td>
+						<td align="center"><div class="text-danger">¥3,000</div></td>
+						<td align="center"><div class="text-danger">9%</div></td>
+						<td align="center"><div class="text-muted">3 个月</div></td>
+                        <td align="center"><div class="credit bg-success">B</div></td>
+						<td align="center">
+							<div class="lend-progress">
+								<div class="progress-value" style="width:0%;background:#7cae4a;">0%</div>
+							</div>
+							<div class="clearfix"></div>
+							<div>0笔投标 已完成0%</div>
+							<div class="text-muted">8天21时10分</div>
+						</td>
+						<td align="center">
+							<div class="fast-lend">
+    							<div class="input-group has-error">
+                                	<input type="text" class="form-control"  placeholder="金额"/>
+                                	<span class="input-group-btn">
+                                		<button class="btn btn-danger" type="button">投标</button>
+                                	</span>
+                                </div>
+                            </div>
+						</td>
+        			</tr>
+					<tr>
+        				<td>
+							<div class="pull-left avatar"><img width="52" height="52" src="$ctx/avatar/avatar04.gif" /></div>
+							<div>
+    							<p><a href="#" target="_blank" title="应收款保证标 请大家支持 非提现 A003"><strong>应收款保证标 请大家支持 非提现 A003</strong></a></p>
+                        		<p><a href="#" target="_blank">lzwanghb</a></p>
+							</div>
+						</td>
+						<td align="center">
+							<div class="auth-icons-box">
+								<i class="auth-icons auth-hukou otip" title="户口认证"></i>
+								<i class="auth-icons auth-video otip" title="视频认证"></i>
+    							<i class="auth-icons auth-phone otip" title="手机认证"></i>
+								<i class="clearfix"></i>
+                            </div>
+						</td>
+						<td align="center"><div class="text-danger">¥3,000</div></td>
+						<td align="center"><div class="text-danger">9%</div></td>
+						<td align="center"><div class="text-muted">3 个月</div></td>
+                        <td align="center"><div class="credit bg-primary">A</div></td>
+						<td align="center">
+							<div class="lend-progress">
+								<div class="progress-value" style="width:0%;background:#7cae4a;">0%</div>
+							</div>
+							<div class="clearfix"></div>
+							<div>0笔投标 已完成0%</div>
+							<div class="text-muted">8天21时10分</div>
+						</td>
+						<td align="center">
+							<div class="fast-lend">
+    							<div class="input-group has-error">
+                                	<input type="text" class="form-control"  placeholder="金额"/>
+                                	<span class="input-group-btn">
+                                		<button class="btn btn-danger" type="button">投标</button>
+                                	</span>
+                                </div>
+                            </div>
+						</td>
+        			</tr>
+        		</table>
+            </div>
         </div>
     </div>
 	<!-- 投资知识 -->
+	<!--
 	<div class="col-md-3">
 		<div class="panel panel-default">
 			<div class="panel-heading"><strong>投资知识</strong></div>
@@ -112,7 +275,8 @@
             </table>
         </div>
     </div>
-
+	-->
+	
 	<!-- 安众社区 -->
 	<div class="col-md-6">
 		<div class="panel panel-default">
