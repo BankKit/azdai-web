@@ -10,16 +10,41 @@
 <body id="body">
 <div id="wrap">
 #parse("/public/uniform-header.vm")
+<div class="container">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+        	<li><a href="$ctx/user/index.htm">用户中心</a></li>
+			#if($StringUtils.isBlank($!breadcrumbURL))
+			<li>$!breadcrumbTitle</li>
+			#else
+			<li><a href="$!breadcrumbURL">$!breadcrumbTitle</a></li>
+			#end
+        </ol>
+    </div>
+</div>
+
+<div class="container">
+	<!-- 菜单 -->
+    <div class="col-xs-12 col-sm-4 col-md-2">
+        #parse("/user/inc/inc-function-list.vm")
+    </div>
+	<!-- //菜单 -->
+	
+	<!-- 内容 -->
 $screen_placeholder
+	<!-- //内容 -->
+</div>
+
 </div>
 #parse("/public/uniform-footer.vm")
 <script type="text/javascript">
 $(document).ready(function() {
 	$(".list-group a").prepend("<i class=\"fa fa-caret-right\"></i> ");
 #if($StringUtils.isNotBlank($userOperation))
-	if($("#user-$!userOperation").length > 0) {
-		$("#user-$!userOperation").addClass("list-group-item-success");
-		$("#user-$!userOperation i").attr("class", "glyphicon glyphicon-chevron-right");
+	if($("#user-menu-$!userOperation").length > 0) {
+		$("#user-menu-$!userOperation").addClass("list-group-item-active");
+		$("#user-menu-$!userOperation i").attr("class", "glyphicon glyphicon-chevron-right");
 	}
 #end
 });

@@ -175,7 +175,9 @@ AZD.confirm = function(callback, msg, btnYes, btnNo) {
 $(document).ready(function() {
 	// 回到顶部
 	$("body").append("<p id=\"back-to-top\" title=\"返回顶部\"><a href=\"#body\"><span></span></a></p>");
+	$("#back-to-top").addClass("hidden-xs");
 	$("#back-to-top").hide();
+	
 	$(window).scroll(function() {
 		if($(window).scrollTop() > 100) {
 			$("#back-to-top").fadeIn(300);
