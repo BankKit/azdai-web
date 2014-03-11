@@ -7,6 +7,11 @@
     <a id="user-menu-trade" href="$ctx/user/trade.htm" class="list-group-item">交易记录</a>
     <a id="user-menu-deposit" href="$ctx/user/deposit-online.htm" class="list-group-item">充值</a>
 	<a id="user-menu-withdraw" href="$ctx/user/withdraw.htm" class="list-group-item">提现</a>
+	
+	<li class="list-group-item list-group-item-info"><strong><i class="fa fa-bar-chart-o"></i> 投资管理</strong></li>
+    <a id="user-menu-invest" href="$ctx/user/invest.htm" class="list-group-item">投资记录</a>
+    <a id="user-menu-tools" href="$ctx/user/invest-tool.htm" class="list-group-item">自动投标</a>
+	<a id="user-menu-black" href="$ctx/user/black.htm" class="list-group-item">我的黑名单</a>
 
     <li class="list-group-item list-group-item-info"><strong><i class="fa fa-users"></i> 基本设置</strong></li>
     <a id="user-menu-detail" href="$ctx/user/detail-basic.htm" class="list-group-item">编辑资料</a>

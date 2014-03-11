@@ -19,8 +19,8 @@
     			<span class="title-caption">第一步：支付宝转账</span>
     		</div>
 			<div class="body-content">
-                <p>用PC支付，请前往收款主页：<span class="text-lg"><strong><a href="https://me.alipay.com/aptech">https://me.alipay.com/aptech</a></strong></span></p>
-                <p>用支付宝手机钱包转账账号：<span class="text-lg"><strong>obullxl@gmail.com</strong></span></p>
+                <p>用PC支付，收款主页：<span class="text-lg"><strong><a href="https://me.alipay.com/aptech">https://me.alipay.com/aptech</a></strong></span></p>
+                <p>用支付宝手机钱包转账：<span class="text-lg"><strong>obullxl@gmail.com</strong></span></p>
                 <p>用支付宝手机钱包扫描二维码：<span class="text-lg"><strong><span class="pointer" data-toggle="modal" data-target="#qrcodeDialog"><i class="fa fa-qrcode"></i></span></strong></span></p>
             </div>
 			<div class="clearfix"></div>
@@ -70,6 +70,7 @@
 							<th>交易号或订单号</th>
 							<th>登记金额</th>
 							<th>处理状态</th>
+							<th>安众贷交易号</th>
                         </tr>
 					</thead>
 					<tbody>
@@ -78,18 +79,21 @@
 							<td>2013122711001004190000226501</td>
 							<td>50.00元</td>
                             <td><div class="text-danger">处理中</div></td>
+							<td>&nbsp;</td>
                         </tr>
 						<tr>
                             <td>2014-03-08 17:26:13</td>
 							<td>2013122711001004190000226519</td>
 							<td>50.00元</td>
 							<td><div class="text-success">处理成功</div></td>
+							<td>2013122711001004190000226501</td>
                         </tr>
 						<tr>
                             <td>2014-03-07 23:04:06</td>
 							<td>2013122811001004190000228016</td>
 							<td>50.00元</td>
 							<td><div class="text-success">处理成功</div></td>
+							<td>2013122711001004190000226501</td>
                         </tr>
                     </tbody>
                 </table>
@@ -101,6 +105,7 @@
                     <p><strong><i class="glyphicon glyphicon-headphones"></i> 温馨提示：</strong></p>
         			<p>1、充值资金可用于进行多项认证、投标、还款等用途；</p>
                     <p>2、所有资金将由第三方支付平台（如支付宝、财付通、银行等）托管，安众贷本身不存放用户的任何资金；</p>
+					<p>3、对于处理成功的转账登记记录，安众贷会定期清理，请注意查看交易记录。</p>
                 </div>
         	</div>
         </div>

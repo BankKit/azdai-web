@@ -96,55 +96,57 @@
 			<hr/>
 			
 			<!-- 查询结果 -->
-            <table class="table table-striped" #MarginBottomNO()>
-				<thead>
-                    <tr>
-                        <th>时间</th>
-						<th>类型</th>
-						<th>支出</th>
-						<th>收入</th>
-						<th>余额</th>
-						<th>备注</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-                        <td>2014-03-08 13:45:32</td>
-						<td>回收本息<br/>(<a href="#">00123</a>)</td>
-						<td>&nbsp;</td>
-						<td>8.60元</td>
-						<td>23.45元</td>
-						<td>本息8.60元</td>
-					</tr>
-					<tr>
-                        <td>2014-02-01 13:45:32</td>
-						<td>投标成功<br/>(<a href="#">03453</a>)</td>
-                        <td><span class="text-danger">40.00元</span></td>
-						<td>&nbsp;</td>
-						<td>14.85元</td>
-						<td>&nbsp;</td>
-					</tr>
-					<tr>
-                        <td>2014-01-01 13:45:32</td>
-						<td>充值</td>
-						<td>&nbsp;</td>
-						<td>50.00元</td>
-						<td>54.85元</td>
-						<td>充值</td>
-					</tr>
-				</tbody>
-			</table>
-            <div class="text-center">
-                <ul class="pagination" #MarginBottomNO()>
-                    <li><a href="#">&laquo;</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li class="active"><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&raquo;</a></li>
-                </ul>
-            </div>
+			<div class="table-responsive">
+                <table class="table table-striped" #MarginBottomNO()>
+    				<thead>
+                        <tr>
+                            <th>时间</th>
+    						<th>类型</th>
+    						<th>支出</th>
+    						<th>收入</th>
+    						<th>余额</th>
+    						<th>备注</th>
+    					</tr>
+    				</thead>
+    				<tbody>
+    					<tr>
+                            <td>2014-03-08 13:45:32</td>
+    						<td>回收本息<br/>(<a href="#">00123</a>)</td>
+    						<td>&nbsp;</td>
+    						<td>8.60元</td>
+    						<td>23.45元</td>
+    						<td>本息8.60元</td>
+    					</tr>
+    					<tr>
+                            <td>2014-02-01 13:45:32</td>
+    						<td>投标成功<br/>(<a href="#">03453</a>)</td>
+                            <td><span class="text-danger">40.00元</span></td>
+    						<td>&nbsp;</td>
+    						<td>14.85元</td>
+    						<td>&nbsp;</td>
+    					</tr>
+    					<tr>
+                            <td>2014-01-01 13:45:32</td>
+    						<td>充值</td>
+    						<td>&nbsp;</td>
+    						<td>50.00元</td>
+    						<td>54.85元</td>
+    						<td>充值</td>
+    					</tr>
+    				</tbody>
+    			</table>
+                <div class="text-center">
+                    <ul class="pagination" #MarginBottomNO()>
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li class="active"><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+			</div>
         </div>
     </div>
 </div>

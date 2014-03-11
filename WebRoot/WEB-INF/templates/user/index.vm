@@ -13,7 +13,7 @@
             	<div class="user avatar">
             		<a href="#"><img src="$ctx/avatar/avatar04.gif" /></a>
                 </div>
-				<a href="$ctx/user/deposit.htm" class="btn btn-info">充值</a>
+				<a href="$ctx/user/deposit-online.htm" class="btn btn-info">充值</a>
             	<a href="$ctx/user/withdraw.htm" class="btn btn-danger">提现</a>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3">
