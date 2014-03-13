@@ -8,57 +8,48 @@
 <div class="col-xs-12 col-sm-8 col-md-10">
     <div class="panel panel-default">
         <div class="panel-body">
-			<!--
-			<ul class="nav nav-pills">
-                <li><a href="$ctx/user/deposit-online.htm">即时到账充值（自动）</a></li>
-                <li class="active"><a href="$ctx/user/deposit-offline.htm">非即时到账充值（人工）</a></li>
-            </ul>
-			<div>&nbsp;</div>
-			-->
-			
-			<!-- 选择银行卡 -->
-            <div class="body-caption">
-    			<span class="title-caption">第一步：选择提现银行卡</span>
-    		</div>
-			<div class="body-content">
-                <p>用PC支付，收款主页：<span class="text-lg"><strong><a href="https://me.alipay.com/aptech">https://me.alipay.com/aptech</a></strong></span></p>
-                <p>用支付宝手机钱包转账：<span class="text-lg"><strong>obullxl@gmail.com</strong></span></p>
-                <p>用支付宝手机钱包扫描二维码：<span class="text-lg"><strong><span class="pointer" data-toggle="modal" data-target="#qrcodeDialog"><i class="fa fa-qrcode"></i></span></strong></span></p>
-            </div>
-			<div class="clearfix"></div>
-			
 			<!-- 填写提现金额 -->
             <div class="body-caption">
-    			<span class="title-caption">第二步：填写提现金额</span>
+    			<span class="title-caption">第一步：填写提现信息</span>
     		</div>
 			<div class="body-content">
                 <form class="form-horizontal" role="form" #MarginBottomNO()>
 					<div class="form-group">
-                        <label class="col-xs-6 col-sm-4 col-md-2 control-label">可提现资金：</label>
-                        <div class="col-xs-6 col-sm-4 col-md-2">
+                        <label class="col-xs-5 col-sm-4 col-md-2 control-label">选择银行卡：</label>
+						<div class="col-xs-7 col-sm-8 col-md-6">
+        					<select class="form-control">
+                                <option value="">支付宝 - obull*******3.com</option>
+            					<option value="">招商银行 - 6226 **** **** 2027</option>
+            					<option value="">财付通 - obull*******3.com</option>
+            				</select>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label class="col-xs-5 col-sm-4 col-md-2 control-label">可提现资金：</label>
+                        <div class="col-xs-7 col-sm-8 col-md-6">
                             <p class="form-control-static"><span class="text-lg">0.00</span>元</p>
 						</div>
                     </div>
 					<div class="form-group">
-                        <label class="col-xs-6 col-sm-4 col-md-2 control-label" for="amount">提现金额：</label>
-                        <div class="col-xs-6 col-sm-4 col-md-2">
+                        <label class="col-xs-5 col-sm-4 col-md-2 control-label" for="amount">提现金额：</label>
+                        <div class="col-xs-7 col-sm-4 col-md-4">
 							<input type="text" id="amount" name="amount" class="form-control" placeholder="单元：元" />
 						</div>
                     </div>
 					<div class="form-group">
-                        <label class="col-xs-6 col-sm-4 col-md-2 control-label">提现费用：</label>
-                        <div class="col-xs-6 col-sm-4 col-md-4">
+                        <label class="col-xs-5 col-sm-4 col-md-2 control-label">提现费用：</label>
+                        <div class="col-xs-7 col-sm-8 col-md-6">
                             <p class="form-control-static"><span class="text-lg">0.00</span>元  <a class="otip" href="#" title="提现费用说明"><i class="glyphicon glyphicon-info-sign"></i></a></p>
 						</div>
                     </div>
 					<div class="form-group">
-                        <label class="col-xs-6 col-sm-4 col-md-2 control-label" for="payPasswd">支付密码：</label>
-                        <div class="col-xs-6 col-sm-4 col-md-3">
+                        <label class="col-xs-5 col-sm-4 col-md-2 control-label" for="payPasswd">支付密码：</label>
+                        <div class="col-xs-7 col-sm-4 col-md-4">
 							<input type="password" id="payPasswd" name="payPasswd" class="form-control" />
 						</div>
                     </div>
                     <div class="form-group">
-                        <div class="col-xs-offset-6 col-sm-offset-4 col-md-offset-2 col-xs-6 col-sm-4 col-md-3">
+                        <div class="col-sm-offset-4 col-md-offset-2 col-xs-12 col-sm-6 col-md-4">
 							<button type="submit" class="btn btn-primary btn-block">申请提现</button>
                         </div>
                     </div>
@@ -68,7 +59,7 @@
 			
 			<!-- 银行处理列表 -->
             <div class="body-caption">
-    			<span class="title-caption">第三步：第三方银行处理</span>
+    			<span class="title-caption">第二步：第三方银行处理</span>
     		</div>
 			<div class="body-content table-responsive">
 				<table class="table table-striped" #MarginBottomNo()>

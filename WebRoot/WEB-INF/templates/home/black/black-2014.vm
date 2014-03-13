@@ -1,15 +1,15 @@
 <table class="table table-hover" #MarginBottomNO()>
 	<thead>
 		<tr>
-        	<th class="col-md-3 text-center">头像/用户名</th>
-        	<th class="col-md-3">公布用户联系方式</th>
-        	<th class="col-md-3">公布用户债务信息</th>
-        	<th class="col-md-3">&nbsp;</th>
+        	<th>头像/用户名</th>
+        	<th>公布用户联系方式</th>
+        	<th>公布用户债务信息</th>
+        	<th>&nbsp;</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-        	<td class="text-center">
+        	<td>
         		<img src="http://i2.ppdai.com/www.ppdai.com/2009/12/18/tee/99931e98-aaa3-4f9a-a38b-a0c3d7ea96d2_120.jpg" width="50" height="50"/>
 				<br/>
         		<a href="/user/tee" target="_blank">tee</a>
@@ -26,12 +26,12 @@
         	</td>
         	<td class="text-right">
                 <p>&nbsp;</p>
-				<p><a class="btn btn-primary" href="/blacklist/detail.htm?user=tee">查看详情 <i class="glyphicon glyphicon-step-forward"></i></a></p>
+				<p><a href="/blacklist/detail.htm?user=tee">查看详情</a></p>
 				<p>&nbsp;</p>
         	</td>
         </tr>
 		<tr>
-        	<td class="text-center">
+        	<td>
         		<img src="http://i2.ppdai.com/www.ppdai.com/2009/12/16/gusong/ed8b7697-2459-4396-865d-28f13805d94f_120.jpg" width="50" height="50"/>
 				<br/>
         		<a href="/user/gusong" target="_blank">gusong</a>
@@ -48,7 +48,7 @@
         	</td>
         	<td class="text-right">
                 <p>&nbsp;</p>
-				<p><a class="btn btn-primary" href="/blacklist/detail.htm?user=gusong">查看详情 <i class="glyphicon glyphicon-step-forward"></i></a></p>
+				<p><a href="/blacklist/detail.htm?user=gusong">查看详情</a></p>
 				<p>&nbsp;</p>
         	</td>
         </tr>

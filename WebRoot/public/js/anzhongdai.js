@@ -169,6 +169,30 @@ AZD.confirm = function(callback, msg, btnYes, btnNo) {
 	});
 };
 
+// 根据URL获取操作值
+AZD.findHrefOpt = function(href) {
+	if(!href) {
+		var href = self.location.href;
+		if(href.indexOf("http://") == 0) {
+			href = href.substr(7);
+		} else if(href.indexOf("https://") == 0) {
+			href = href.substr(8);
+		}
+	}
+
+	// www.127.com/user/deposit-online.htm -> deposit
+	var idxBegin = href.lastIndexOf("/");
+	var idxDot = href.indexOf(".htm", idxBegin);
+	var token = href.substring(idxBegin + 1, idxDot);
+	if(token.indexOf("-") >= 0) {
+		token = token.substring(0, token.indexOf("-"));
+	}
+
+	console.log("菜单导航-用户后台-B:" + idxBegin + ", DOT:" + idxDot + ", T:" + token);
+
+	return token;
+};
+
 /**
  * 初始化
  */
@@ -177,7 +201,7 @@ $(document).ready(function() {
 	$("body").append("<p id=\"back-to-top\" title=\"返回顶部\"><a href=\"#body\"><span></span></a></p>");
 	$("#back-to-top").addClass("hidden-xs");
 	$("#back-to-top").hide();
-	
+
 	$(window).scroll(function() {
 		if($(window).scrollTop() > 100) {
 			$("#back-to-top").fadeIn(300);
@@ -245,6 +269,69 @@ $(document).ready(function() {
 	/*
 	 * $(document).bind("contextmenu", function(e) { return false; });
 	 */
+
+	// 菜单导航
+	var href = self.location.href;
+	if(href.indexOf("http://") == 0) {
+		href = href.substr(7);
+	} else if(href.indexOf("https://") == 0) {
+		href = href.substr(8);
+	}
+	var hrefOpt = AZD.findHrefOpt(href);
+	console.info("菜单导航, HREF: " + href + ", TOKEN: " + hrefOpt);
+
+	if(href.indexOf("/user/") >= 0) {
+		/* 用户后台 */
+		console.log("菜单导航-用户后台-" + href);
+		$(".user-menus a").attr("class", "list-group-item");
+		$(".user-menus a").prepend("<i class=\"fa fa-caret-right\"></i> ");
+
+		for(var i = 1; i <= 3; i++) {
+			var userMenu = $(".user-menus #user-menu0" + i);
+			userMenu.attr("class", "list-group-item list-group-item-info pointer");
+
+			userMenu.click(function(e) {
+				$("." + $(this).data("clz")).toggleClass("hide");
+				$(this).find(".fa").toggleClass("fa-plus").toggleClass("fa-minus");
+			});
+		}
+
+		var menuItem = $("#menu-" + hrefOpt);
+		if(menuItem) {
+			menuItem.addClass("list-group-item-active");
+			menuItem.find("i").attr("class", "glyphicon glyphicon-chevron-right");
+
+			menuItem.parent("div").toggleClass("hide");
+			var userMenu = menuItem.parent("div").prev();
+			userMenu.find(".fa").toggleClass("fa-plus").toggleClass("fa-minus");
+		}
+	} else if(href.indexOf("/help/") >= 0) {
+		/* 帮助中心 */
+		console.info("菜单导航-帮助中心");
+		var dxtNavBar = $("#dxt-nb-help");
+		if(dxtNavBar) {
+			dxtNavBar.addClass("active");
+		}
+	} else if(href.indexOf("/forum/") >= 0) {
+		/* 用户论坛 */
+		console.info("菜单导航-用户论坛");
+		var dxtNavBar = $("#dxt-nb-forum");
+		if(dxtNavBar) {
+			dxtNavBar.addClass("active");
+		}
+	} else if(href.indexOf("/mngt/") >= 0) {
+		// 3.管理后台
+		console.info("菜单导航-管理后台");
+	} else {
+		// 4. "/home/" or OTHER
+		console.info("菜单导航-OTHER");
+		var dxtNavBar = $("#dxt-nb-" + hrefOpt);
+		if(dxtNavBar) {
+			dxtNavBar.addClass("active");
+		}
+	}
+
+	//
 	;
 });
 

@@ -7,29 +7,27 @@
 
 <!-- 账户总览 -->
 <div class="col-xs-12 col-sm-8 col-md-10">
-    <div class="panel panel-default">
-        <div class="panel-body table-responsive bg-warning">
-            <table cellpadding="5" width="100%" class="user-funds">
-				<tr>
-					<td valign="top" style="border-right:1px solid #ccc">
-						<span class="text-muted text-sm">投资已获收益</span>
-						<br/>
-						<span class="text-lg color-orange"><strong>0.00</strong></span>元
-					</td>
-					<td><span class="text-muted">总资金</span><br/>0.00元</td>
-					<td><span class="text-muted">回收中的投资数量</span><br/>0个</td>
-				</tr>
-				<tr>
-					<td valign="top" style="border-right:1px solid #ccc">
-						<span class="text-muted">投资积分</span><br/>0分
-					</td>
-					<td colspan="2">
-                        <div class="well well-sm">没时间亲自投标？试试安众贷自动投标功能吧！
-							<span class="pull-right"><a href="$ctx/user/invest-tool.htm">自动投标</a></span></div>
-					</td>
-				</tr>
-			</table>
-        </div>
+    <div class="alert alert-info">
+        <table cellpadding="5" width="100%" class="tdpadding">
+			<tr>
+				<td valign="top" style="border-right:1px solid #ccc">
+					<span class="text-muted">投资已获收益</span>
+					<br/>
+					<span class="text-lg color-orange"><strong>0.00</strong></span>元
+				</td>
+				<td><span class="text-muted">总资金</span><br/>0.00元</td>
+				<td><span class="text-muted">回收中的投资数量</span><br/>0个</td>
+			</tr>
+			<tr>
+				<td valign="top" style="border-right:1px solid #ccc">
+					<span class="text-muted">投资积分</span><br/>0分
+				</td>
+				<td colspan="2">
+                    <div class="well well-sm">没时间亲自投标？试试安众贷自动投标功能吧！
+						<span class="pull-right"><a href="$ctx/user/tool.htm" class="text-lg">自动投标</a></span></div>
+				</td>
+			</tr>
+		</table>
     </div>
 </div>
 	

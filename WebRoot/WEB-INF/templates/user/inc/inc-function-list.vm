@@ -1,36 +1,33 @@
 <div class="list-group">
-    <a id="user-menu-index" href="$ctx/user/index.htm" class="list-group-item">我的账户</a>
+    <a href="$ctx/user/index.htm" class="list-group-item">我的账户</a>
 </div>
 
-<div class="list-group">
-    <li class="list-group-item list-group-item-info"><strong><i class="fa fa-jpy"></i> 资金管理</strong></li>
-    <a id="user-menu-trade" href="$ctx/user/trade.htm" class="list-group-item">交易记录</a>
-    <a id="user-menu-deposit" href="$ctx/user/deposit-online.htm" class="list-group-item">充值</a>
-	<a id="user-menu-withdraw" href="$ctx/user/withdraw.htm" class="list-group-item">提现</a>
+<div class="list-group user-menus">
+    <li id="user-menu01" data-clz="m01"><strong><i class="fa fa-jpy"></i> 资金管理</strong><span class="pull-right"><i class="fa fa-plus"></i></span></li>
+    <div class="m01 hide">
+    	<a id="menu-trade" href="$ctx/user/trade.htm" data-menu="01">交易记录</a>
+        <a id="menu-deposit" href="$ctx/user/deposit-online.htm" data-menu="01">充值</a>
+    	<a id="menu-withdraw" href="$ctx/user/withdraw.htm" data-menu="01">提现</a>
+    	<a id="menu-card" href="$ctx/user/card.htm" data-menu="01">银行帐户</a>
+    </div>
 	
-	<li class="list-group-item list-group-item-info"><strong><i class="fa fa-bar-chart-o"></i> 投资管理</strong></li>
-    <a id="user-menu-invest" href="$ctx/user/invest.htm" class="list-group-item">投资记录</a>
-    <a id="user-menu-tools" href="$ctx/user/invest-tool.htm" class="list-group-item">自动投标</a>
-	<a id="user-menu-black" href="$ctx/user/black.htm" class="list-group-item">我的黑名单</a>
-
-    <li class="list-group-item list-group-item-info"><strong><i class="fa fa-users"></i> 基本设置</strong></li>
-    <a id="user-menu-detail" href="$ctx/user/detail-basic.htm" class="list-group-item">编辑资料</a>
-    <a id="user-menu-safety" href="$ctx/user/safety.htm" class="list-group-item">安全中心</a>
-	<a id="user-menu-identify" href="$ctx/user/identify.htm" class="list-group-item">身份认证</a>
-    <a id="user-menu-binding" href="$ctx/user/binding.htm" class="list-group-item">关联账户</a>
-	<a id="user-menu-mobile" href="$ctx/user/mobile.htm" class="list-group-item">手机绑定</a>
-	<a id="user-menu-email" href="$ctx/user/email.htm" class="list-group-item">邮箱绑定</a>
-    <a id="user-menu-userface" href="$ctx/user/userface.htm" class="list-group-item">更新头像</a>
-	<a id="user-menu-question" href="$ctx/user/question.htm" class="list-group-item">密保问题</a>
-    <a id="user-menu-password" href="$ctx/user/password.htm" class="list-group-item">修改密码</a>
+	<li id="user-menu02" data-clz="m02"><strong><i class="fa fa-bar-chart-o"></i> 投资管理</strong><span class="pull-right"><i class="fa fa-plus"></i></span></li>
+    <div class="m02 hide">
+    	<a id="menu-invest" href="$ctx/user/invest.htm" data-menu="02">投资记录</a>
+        <a id="menu-tool" href="$ctx/user/tool.htm" data-menu="02">自动投标工具</a>
+    	<a id="menu-black" href="$ctx/user/black.htm" data-menu="02">我的黑名单</a>
+    </div>
 	
-	<li class="list-group-item list-group-item-info"><strong><i class="glyphicon glyphicon-minus-sign"></i> 我的帖子</strong></li>
-    <a href="$ctx/forum/forum.htm" class="list-group-item">我的帖子</a>
-    <a href="$ctx/forum/forum.htm" class="list-group-item">我的帖子</a>
-    <a href="$ctx/forum/forum.htm" class="list-group-item">我的帖子</a>
-	
-	<li class="list-group-item list-group-item-info"><strong><i class="glyphicon glyphicon-minus-sign"></i> 我的帖子</strong></li>
-    <a href="$ctx/forum/forum.htm" class="list-group-item">我的帖子</a>
-    <a href="$ctx/forum/forum.htm" class="list-group-item">我的帖子</a>
-    <a href="$ctx/forum/forum.htm" class="list-group-item">我的帖子</a>
+    <li id="user-menu03" data-clz="m03"><strong><i class="fa fa-users"></i> 基本设置</strong><span class="pull-right"><i class="fa fa-plus"></i></span></li>
+    <div class="m03 hide">
+    	<a id="menu-detail" href="$ctx/user/detail-basic.htm" data-menu="03">编辑资料</a>
+        <a id="menu-safety" href="$ctx/user/safety.htm" data-menu="03">安全中心</a>
+    	<a id="menu-identify" href="$ctx/user/identify.htm" data-menu="03">身份认证</a>
+        <a id="menu-binding" href="$ctx/user/binding.htm" data-menu="03">关联账户</a>
+    	<a id="menu-mobile" href="$ctx/user/mobile.htm" data-menu="03">手机绑定</a>
+    	<a id="menu-email" href="$ctx/user/email.htm" data-menu="03">邮箱绑定</a>
+        <a id="menu-userface" href="$ctx/user/userface.htm" data-menu="03">更新头像</a>
+    	<a id="menu-question" href="$ctx/user/question.htm" data-menu="03">密保问题</a>
+        <a id="menu-password" href="$ctx/user/password.htm" data-menu="03">修改密码</a>
+    </div>
 </div>

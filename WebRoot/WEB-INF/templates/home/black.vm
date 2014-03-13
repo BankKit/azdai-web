@@ -1,5 +1,4 @@
 #set($title="黑名单 - 逾期用户网络曝光")
-#set($navbar="blacklist")
 <div class="container">
 	<div class="col-md-12">
         <ol class="breadcrumb">
@@ -26,16 +25,21 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
                 <ul class="nav nav-pills">
-					#set($year="2014")
-					#set($years=['2014','2013','2012'])
-					#foreach($itm in $years)
-                    <li id="blacklist-${itm}"><a href="$ctx/user/blacklist.htm"><strong><i class="glyphicon glyphicon-remove-sign"></i> ${itm}</strong></a></li>
-					#end
+                    <li id="black2014"><a href="$ctx/home/black.htm?year=2014"><strong><i class="glyphicon glyphicon-remove-sign"></i> 2014</strong></a></li>
+					<li id="black2013"><a href="$ctx/home/black.htm?year=2013"><strong><i class="glyphicon glyphicon-remove-sign"></i> 2013</strong></a></li>
                 </ul>
                 <div>&nbsp;</div>
-				#parse("/user/inc/inc-blacklist-${year}.vm")
+				<div class="table-responsive">
+					#parse("/home/black/black-${year}.vm")
+                </div>
             </div>
 		</div>
 	</div>
 </div>
-#parse("/user/snip/blacklist.vm")
+<script type="text/javascript">
+$(document).ready(function() {
+    if(AZD.existDOM("black${year}")) {
+    	$("#black${year}").addClass("active");
+    }
+});
+</script>

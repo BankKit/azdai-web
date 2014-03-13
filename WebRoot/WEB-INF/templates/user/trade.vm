@@ -7,32 +7,30 @@
 
 <!-- 账户总览 -->
 <div class="col-xs-12 col-sm-8 col-md-10">
-    <div class="panel panel-default">
-        <div class="panel-body table-responsive bg-warning">
-            <table cellpadding="5" width="100%" class="user-funds">
-				<tr>
-					<td rowspan="2" valign="top" style="border-right:1px solid #ccc">
-						<span class="text-muted text-sm">账户余额</span>
-						<br/>
-						<span class="text-lg color-orange"><strong>0.00</strong></span>元
-					</td>
-					<td><span class="text-muted">可用资金</span><br/>0.00元</td>
-					<td><span class="text-muted">已充值总额</span><br/>0.00元</td>
-					<td><a href="$ctx/user/deposit.htm" class="btn btn-primary">充&nbsp;值</a></td>
-				</tr>
-				<tr>
-					<td><span class="text-muted">冻结资金</span><br/>0.00元</td>
-					<td><span class="text-muted">已提现总额</span><br/>0.00元</td>
-					<td><a href="$ctx/user/withdraw.htm" class="btn btn-danger">提&nbsp;现</a></td>
-				</tr>
-			</table>
-        </div>
+    <div class="alert alert-info">
+        <table cellpadding="5" width="100%" class="tdpadding">
+			<tr>
+				<td rowspan="2" valign="top" style="border-right:1px solid #ccc">
+					<span class="text-muted text-sm">账户余额</span>
+					<br/>
+					<span class="text-lg color-orange"><strong>0.00</strong></span>元
+				</td>
+				<td><span class="text-muted">可用资金</span><br/>0.00元</td>
+				<td><span class="text-muted">已充值总额</span><br/>0.00元</td>
+				<td><a href="$ctx/user/deposit.htm" class="btn btn-primary">充&nbsp;值</a></td>
+			</tr>
+			<tr>
+				<td><span class="text-muted">冻结资金</span><br/>0.00元</td>
+				<td><span class="text-muted">已提现总额</span><br/>0.00元</td>
+				<td><a href="$ctx/user/withdraw.htm" class="btn btn-danger">提&nbsp;现</a></td>
+			</tr>
+		</table>
     </div>
 </div>
 	
 <!-- 交易记录 -->
 <div class="col-xs-12 col-sm-8 col-md-10">
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
         <div class="panel-body">
 			<!-- 查询表单 -->
 			<div class="text-center">

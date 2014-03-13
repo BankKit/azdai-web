@@ -38,16 +38,5 @@ $screen_placeholder
 
 </div>
 #parse("/public/uniform-footer.vm")
-<script type="text/javascript">
-$(document).ready(function() {
-	$(".list-group a").prepend("<i class=\"fa fa-caret-right\"></i> ");
-#if($StringUtils.isNotBlank($userOperation))
-	if($("#user-menu-$!userOperation").length > 0) {
-		$("#user-menu-$!userOperation").addClass("list-group-item-active");
-		$("#user-menu-$!userOperation i").attr("class", "glyphicon glyphicon-chevron-right");
-	}
-#end
-});
-</script>
 </body>
 </html>

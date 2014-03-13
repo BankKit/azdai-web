@@ -43,6 +43,10 @@ a:hover {
 	margin-bottom: 10px;
 }
 
+.text-bold {
+	font-weight: bold;
+}
+
 .text-xs {
 	font-size: 16px;
 }
@@ -61,6 +65,14 @@ a:hover {
 
 .pointer {
 	cursor: pointer;
+}
+
+.tdpadding5 td {
+	padding: 5px;
+}
+
+.tdpadding td {
+	padding: 10px;
 }
 
 /* Tootip占位CSS */
@@ -118,8 +130,10 @@ a:hover {
 	padding-left: 0px !important;
 }
 
+/*
 .list-group-item {
 	border-style: none;
+	border-top: 1px solid #ddd;
 	border-left: 1px solid #ddd;
 	border-right: 1px solid #ddd;
 }
@@ -131,7 +145,7 @@ a:hover {
 .list-group-item:last-child {
 	border-bottom: 1px solid #ddd;
 }
-
+*/
 .list-group-item-active {
 	background-color: #f5f5f5;
 }
@@ -527,11 +541,7 @@ a:hover {
 	min-height: 24px !important;
 	border-radius: 12px !important;
 	line-height: 24px;
-}
-
-.credit-red {
-	color: #FFF;
-	background-color: #F00;
+	text-align: center;
 }
 
 /* 标的进度 */
@@ -624,7 +634,7 @@ a:hover {
 	width: 120px;
 	height: 120px;
 	line-height: 120px;
-	margin-top: -40px;
+	margin-top: -33px;
 	margin-bottom: 10px;
 	text-align: center;
 	background-color: #fff;
@@ -637,39 +647,9 @@ a:hover {
 	margin-bottom: 10px;
 }
 
-.user-name {
-	height: 25px;
-	line-height: 25px;
-	font-size: 16px;
-	font-weight: bold;
-}
-
-.user-item {
-	height: 25px;
-	line-height: 25px;
-	display: block;
-}
-
-.user-funds td {
-	padding: 10px;
-}
-
 .title-caption {
 	font-size: 16px;
 	font-weight: bold;
-}
-
-.user-account-caption {
-	margin: 10px;
-	padding: 10px;
-	display: block;
-	background-color: #d0e9c6;
-}
-
-.user-account-body {
-	margin: 10px;
-	padding: 10px;
-	display: block;
 }
 
 .body-caption {

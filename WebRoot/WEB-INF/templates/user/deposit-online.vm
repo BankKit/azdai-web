@@ -19,7 +19,7 @@
     			<span class="title-caption">第一步：请选择账户充值方式</span>
     		</div>
 			<div class="body-content instants">
-                <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="col-xs-12 col-sm-6 col-md-4">
 					<div class="radio">
                         <label>
 							<input type="radio" name="instant" value="visa" />
@@ -28,7 +28,7 @@
                         </label>
                     </div>
 				</div>
-				<div class="col-xs-12 col-sm-6 col-md-3">
+				<div class="col-xs-12 col-sm-6 col-md-4">
 					<div class="radio">
                         <label>
 							<input type="radio" name="instant" value="alipay" />
@@ -37,7 +37,7 @@
                         </label>
                     </div>
 				</div>
-				<div class="col-xs-12 col-sm-6 col-md-3">
+				<div class="col-xs-12 col-sm-6 col-md-4">
 					<div class="radio">
                         <label>
 							<input type="radio" name="instant" value="tenpay" />
@@ -46,7 +46,7 @@
                         </label>
                     </div>
 				</div>
-				<div class="col-xs-12 col-sm-6 col-md-3">
+				<div class="col-xs-12 col-sm-6 col-md-4">
 					<div class="radio">
                         <label>
 							<input type="radio" name="instant" value="shengpay" />
