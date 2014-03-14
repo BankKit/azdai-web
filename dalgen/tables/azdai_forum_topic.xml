@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<table sqlname="azdai_forum_topic" ticket="true" valve="false">
+	<!-- 参考文档: http://mybatis.github.io/mybatis-3/sqlmap-xml.html -->
+	
+	<!-- ========================================== -->
+	<!-- 代码复制 -->
+	<!-- ========================================== -->
+	<copy type="dto-import">
+		import java.util.Date;
+	</copy>
+	
+	<sql id="forum-topic-fields">
+		id, catg, forum, state, top_flag, elite_flag, reply_flag, topic, post_user_no, post_nick_name, gmt_post, visit_count, reply_count, reply_user_no, reply_nick_name, gmt_reply, style, title, '' AS content, gmt_create, gmt_modify
+	</sql>
+	
+	<sql id="find-fuzzy-WHERE">
+	<![CDATA[
+	<where>
+		<if test="id != null">
+			AND id=#{id}
+		</if>
+		<if test="catg != null">
+			AND catg=#{catg}
+		</if>
+		<if test="forum != null">
+			AND forum=#{forum}
+		</if>
+		<if test="state != null">
+			AND state=#{state}
+		</if>
+		<if test="topFlag != null">
+			AND top_flag=#{topFlag}
+		</if>
+		<if test="eliteFlag != null">
+			AND elite_flag=#{eliteFlag}
+		</if>
+		<if test="replyFlag != null">
+			AND reply_flag=#{replyFlag}
+		</if>
+		<if test="topic != null">
+			AND topic=#{topic}
+		</if>
+		
+		<if test="postUserNo != null">
+			AND post_user_no=#{postUserNo}
+		</if>
+		<if test="gmtPostBegin != null">
+			AND gmt_post&gt;=#{gmtPostBegin}
+		</if>
+		<if test="gmtPostFinish != null">
+			AND gmt_post&lt;=#{gmtPostFinish}
+		</if>
+		
+		<if test="replyUserNo != null">
+			AND reply_user_no=#{replyUserNo}
+		</if>
+		<if test="gmtReplyBegin != null">
+			AND gmt_reply&gt;=#{gmtReplyBegin}
+		</if>
+		<if test="gmtReplyFinish != null">
+			AND gmt_reply&lt;=#{gmtReplyFinish}
+		</if>
+
+		<if test="title != null">
+			AND title LIKE #{title}
+		</if>
+		<if test="content != null">
+			AND content LIKE #{content}
+		</if>
+	</where>
+	]]>
+	</sql>
+	
+    <!-- ========================================== -->
+	<!-- INSERT操作 -->
+	<!-- ========================================== -->
+	<operation name="insert">
+		<description>新增记录</description>
+		<sql>
+			INSERT INTO azdai_forum_topic(
+				id, catg, forum, state, top_flag, elite_flag, reply_flag, topic, post_user_no, post_nick_name, gmt_post, visit_count, reply_count, reply_user_no, reply_nick_name, gmt_reply, style, title, content, gmt_create, gmt_modify
+			) VALUES(
+				?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+			)
+		</sql>
+		<sqlmap>
+			INSERT INTO azdai_forum_topic(
+				id, catg, forum, state, top_flag, elite_flag, reply_flag, topic, post_user_no, post_nick_name, gmt_post, visit_count, reply_count, reply_user_no, reply_nick_name, gmt_reply, style, title, content, gmt_create, gmt_modify
+			) VALUES(
+				#{id}, #{catg}, #{forum}, #{state}, #{topFlag}, #{eliteFlag}, #{replyFlag}, #{topic}, #{postUserNo}, #{postNickName}, #{gmtPost}, #{visitCount}, #{replyCount}, #{replyUserNo}, #{replyNickName}, #{gmtReply}, #{style}, #{title}, #{content,jdbcType=VARCHAR}, {{DB_NOW}}, {{DB_NOW}}
+			)
+		</sqlmap>
+	</operation>
+	
+	<operation name="insertTopic">
+		<description>新增主题记录</description>
+		<sql>
+			INSERT INTO azdai_forum_topic(
+				id, catg, forum, state, top_flag, elite_flag, reply_flag, post_user_no, post_nick_name, gmt_post, visit_count, reply_count, style, title, content, gmt_create, gmt_modify
+			) VALUES(
+				?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+			)
+		</sql>
+		<sqlmap>
+			INSERT INTO azdai_forum_topic(
+				id, catg, forum, state, top_flag, elite_flag, reply_flag, post_user_no, post_nick_name, gmt_post, visit_count, reply_count, style, title, content, gmt_create, gmt_modify
+			) VALUES(
+				#{id}, #{catg}, #{forum}, #{state}, #{topFlag}, #{eliteFlag}, #{replyFlag}, #{postUserNo}, #{postNickName}, {{DB_NOW}}, #{visitCount}, #{replyCount}, #{replyUserNo}, #{style}, #{title}, #{content,jdbcType=VARCHAR}, {{DB_NOW}}, {{DB_NOW}}
+			)
+		</sqlmap>
+	</operation>
+	
+	<operation name="insertReply">
+		<description>新增回帖记录</description>
+		<sql>
+			INSERT INTO azdai_forum_topic(
+				id, catg, forum, topic, reply_user_no, reply_nick_name, gmt_reply, content, gmt_create, gmt_modify
+			) VALUES(
+				?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+			)
+		</sql>
+		<sqlmap>
+			INSERT INTO azdai_forum_topic(
+				id, catg, forum, topic, reply_user_no, reply_nick_name, gmt_reply, content, gmt_create, gmt_modify
+			) VALUES(
+				#{id}, #{catg}, #{forum}, #{topic}, #{replyUserNo}, #{replyNickName}, {{DB_NOW}}, #{content,jdbcType=VARCHAR}, {{DB_NOW}}, {{DB_NOW}}
+			)
+		</sqlmap>
+	</operation>
+	
+	<!-- ========================================== -->
+	<!-- UPDATE操作 -->
+	<!-- ========================================== -->
+	<operation name="update" paramtype="object">
+		<description>更新记录</description>
+		<sql>
+			UPDATE azdai_forum_topic SET
+				forum=?, state=?, top_flag=?, elite_flag=?, reply_flag=?, topic=?, post_user_no=?, post_nick_name=?, visit_count=?, reply_count=?, reply_user_no=?, reply_nick_name=?, style=?, title=?, content=?, gmt_modify='NOW'
+			WHERE
+				id=?
+		</sql>
+		<sqlmap>
+			UPDATE azdai_forum_topic SET
+				forum=#{forum}, state=#{state}, top_flag=#{topFlag}, elite_flag=#{eliteFlag}, reply_flag=#{replyFlag}, topic=#{topic}, post_user_no=#{postUserNo}, post_nick_name=#{postNickName}, visit_count=#{visitCount}, reply_count=#{replyCount}, reply_user_no=#{replyUserNo}, reply_nick_name=#{replyNickName}, style=#{style}, title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify={{DB_NOW}}
+			WHERE
+				id=#{id}
+		</sqlmap>
+	</operation>
+	
+	<operation name="updateTopic" paramtype="object">
+		<description>更新主题记录</description>
+		<sql>
+			UPDATE azdai_forum_topic SET
+				forum=?, state=?, top_flag=?, elite_flag=?, reply_flag=?, visit_count=?, reply_count=?, style=?, title=?, content=?, gmt_modify='NOW'
+			WHERE
+				id=?
+		</sql>
+		<sqlmap>
+			UPDATE azdai_forum_topic SET
+				forum=#{forum}, state=#{state}, top_flag=#{topFlag}, elite_flag=#{eliteFlag}, reply_flag=#{replyFlag}, visit_count=#{visitCount}, reply_count=#{replyCount}, style=#{style}, title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify={{DB_NOW}}
+			WHERE
+				id=#{id}
+		</sqlmap>
+	</operation>
+	
+	<operation name="updateMeta" paramtype="object">
+		<description>更新主题元记录</description>
+		<sql>
+			UPDATE azdai_forum_topic SET
+				forum=?, state=?, top_flag=?, elite_flag=?, reply_flag=?, gmt_modify='NOW'
+			WHERE
+				id=?
+		</sql>
+		<sqlmap>
+			UPDATE azdai_forum_topic SET
+				forum=#{forum}, state=#{state}, top_flag=#{topFlag}, elite_flag=#{eliteFlag}, reply_flag=#{replyFlag}, gmt_modify={{DB_NOW}}
+			WHERE
+				id=#{id}
+		</sqlmap>
+	</operation>
+	
+	<operation name="updateContent" paramtype="object">
+		<description>更新主题记录</description>
+		<sql>
+			UPDATE azdai_forum_topic SET
+				style=?, title=?, content=?, gmt_modify='NOW'
+			WHERE
+				id=?
+		</sql>
+		<sqlmap>
+			UPDATE azdai_forum_topic SET
+				style=#{style}, title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify={{DB_NOW}}
+			WHERE
+				id=#{id}
+		</sqlmap>
+	</operation>
+	
+	<operation name="updateVisitDelta">
+		<description>更新主题记录</description>
+		<extraparams>
+			<param name="id" javatype="long" />
+			<param name="delta" javatype="int" />
+		</extraparams>
+		<sql>
+			UPDATE azdai_forum_topic SET visit_count='VC', gmt_modify='NOW' WHERE id='ID'
+		</sql>
+		<sqlmap>
+			UPDATE azdai_forum_topic SET
+				visit_count=visit_count+#{delta}, gmt_modify={{DB_NOW}}
+			WHERE
+				id=#{id}
+		</sqlmap>
+	</operation>
+	
+	<operation name="updateReplyDelta">
+		<description>更新主题记录</description>
+		<extraparams>
+			<param name="id" javatype="long" />
+			<param name="delta" javatype="int" />
+		</extraparams>
+		<sql>
+			UPDATE azdai_forum_topic SET reply_count='RC', gmt_modify='NOW' WHERE id='ID'
+		</sql>
+		<sqlmap>
+			UPDATE azdai_forum_topic SET
+				reply_count=reply_count+#{delta}, gmt_modify={{DB_NOW}}
+			WHERE
+				id=#{id}
+		</sqlmap>
+	</operation>
+	
+	<!-- ========================================== -->
+	<!-- SELECT操作 -->
+	<!-- ========================================== -->
+	<operation name="find" multiplicity="one">
+		<description>查询单条记录</description>
+		<sql>
+			SELECT * FROM azdai_forum_topic WHERE id=?
+		</sql>
+	</operation>
+	
+	<operation name="findByTopic" multiplicity="many">
+		<description>查询主题回复列表</description>
+		<extraparams>
+			<param name="catg" javatype="java.lang.String" />
+			<param name="topic" javatype="long" />
+		</extraparams>
+		<sql>
+			SELECT * FROM azdai_forum_topic WHERE catg='CATG' AND topic='TOPIC'
+		</sql>
+		<sqlmap>
+		<![CDATA[
+			SELECT
+				<include refid="forum-topic-fields"/>
+			FROM
+				azdai_forum_topic
+			WHERE
+				catg=#{catg} AND topic=#{topic}
+			ORDER BY
+				gmt_reply ASC
+		]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="findByGlobalTops" multiplicity="many">
+		<description>查询全局置顶标志列表</description>
+		<extraparams>
+			<param name="catg" javatype="java.lang.String" />
+			<param name="state" javatype="java.lang.String" />
+			<param name="topFlag" javatype="java.lang.String" />
+		</extraparams>
+		<sql>
+			SELECT * FROM azdai_forum_topic WHERE catg='CATG' AND state='STATE' AND top_flag='TF'
+		</sql>
+		<sqlmap>
+		<![CDATA[
+			SELECT
+				<include refid="forum-topic-fields"/>
+			FROM
+				azdai_forum_topic
+			WHERE
+				catg=#{catg} AND state=#{state} AND topFlag=#{topFlag}
+			ORDER BY
+				reply_count DESC, gmt_post ASC
+		]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="findByForumTops" multiplicity="many">
+		<description>查询论坛置顶标志列表</description>
+		<extraparams>
+			<param name="forum" javatype="java.lang.String" />
+			<param name="catg" javatype="java.lang.String" />
+			<param name="state" javatype="java.lang.String" />
+			<param name="topFlag" javatype="java.lang.String" />
+		</extraparams>
+		<sql>
+			SELECT * FROM azdai_forum_topic WHERE forum='FORUM' AND catg='CATG' AND state='STATE' AND top_flag='TF'
+		</sql>
+		<sqlmap>
+		<![CDATA[
+			SELECT
+				<include refid="forum-topic-fields"/>
+			FROM
+				azdai_forum_topic
+			WHERE
+				forum=#{forum} AND catg=#{catg} AND state=#{state} AND topFlag=#{topFlag}
+			ORDER BY
+				reply_count DESC, gmt_post ASC
+		]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="findFuzzy" multiplicity="many">
+		<description>模糊查询主题列表</description>
+		<extraparams>
+			<param name="args" javatype="com.azdai.core.das.dal.query.ForumTopicQuery" />
+		</extraparams>
+		<sql>
+			SELECT * FROM azdai_forum_topic WHERE forum='FUZZY'
+		</sql>
+		<sqlmap>
+		<![CDATA[
+			SELECT
+				<include refid="forum-topic-fields"/>
+			FROM
+				azdai_forum_topic
+			WHERE
+				<include refid="find-fuzzy-WHERE" />
+			ORDER BY
+				reply_count DESC, id DESC
+			LIMIT #{offset},#{pageSize}
+		]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="findFuzzyCount" multiplicity="many">
+		<description>模糊分页查询记录统计</description>
+		<extraparams>
+			<param name="args" javatype="com.azdai.core.das.dal.query.ForumTopicQuery" />
+		</extraparams>
+		<sql>
+			SELECT COUNT(*) FROM azdai_forum_topic WHERE forum='FUZZY'
+		</sql>
+		<sqlmap>
+		<![CDATA[
+			SELECT
+				COUNT(*)
+			FROM
+				azdai_forum_topic
+			WHERE
+				<include refid="find-fuzzy-WHERE" />
+		]]>
+		</sqlmap>
+	</operation>
+    
+    <!-- ========================================== -->
+	<!-- DELETE操作 -->
+	<!-- ========================================== -->
+	
+    <operation name="delete">
+		<description>删除单条记录</description>
+		<extraparams>
+			<param name="id" javatype="long" />
+		</extraparams>
+		<sql>
+			DELETE FROM azdai_forum_topic WHERE id='ID' OR topic='ID'
+		</sql>
+		<sqlmap>
+			DELETE FROM azdai_forum_topic WHERE id=#{id} OR topic=#{id}
+		</sqlmap>
+	</operation>
+	
+	<operation name="deleteByUserNo">
+		<description>删除用户记录</description>
+		<extraparams>
+			<param name="userNo" javatype="java.lang.String" />
+		</extraparams>
+		<sql>
+			DELETE FROM azdai_forum_topic WHERE post_user_no='UN' OR reply_user_no='UN'
+		</sql>
+		<sqlmap>
+			DELETE FROM azdai_forum_topic WHERE post_user_no=#{userNo} OR reply_user_no=#{userNo}
+		</sqlmap>
+	</operation>
+
+</table>

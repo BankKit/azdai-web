@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-autowire="byName">
+
+    <!-- ====================================== -->
+    <!--  DAO配置 -->
+    <!-- ====================================== -->
+    <bean id="crawlDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisCrawlDAO">
+		<property name="ticketService">
+			<bean class="com.github.obullxl.ticket.support.DefaultTicketService" parent="abstractTicket">
+				<property name="name" value="TB-Crawl-ID" />
+			</bean>
+    	</property>
+    </bean>
+	
+    <bean id="forumInfoDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisForumInfoDAO">
+    </bean>
+	
+    <bean id="forumTopicDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisForumTopicDAO">
+		<property name="ticketService">
+			<bean class="com.github.obullxl.ticket.support.DefaultTicketService" parent="abstractTicket">
+				<property name="name" value="TB-ForumTopic-ID" />
+			</bean>
+    	</property>
+    </bean>
+	
+    <bean id="forumUserDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisForumUserDAO">
+    </bean>
+	
+    <bean id="imageDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisImageDAO">
+		<property name="ticketService">
+			<bean class="com.github.obullxl.ticket.support.DefaultTicketService" parent="abstractTicket">
+				<property name="name" value="TB-Image-ID" />
+			</bean>
+    	</property>
+		<property name="ticketEncode">
+			<bean class="com.github.obullxl.jeesite.dal.ticket.ImageTicketEncode" />
+    	</property>
+    </bean>
+	
+</beans>

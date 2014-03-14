@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AZDAI-FORUM-USER">
+    <!-- ============================================= -->
+    <!-- RESULT MAPS                                   -->
+    <!-- ============================================= -->
+    
+    <!-- result maps for database table azdai_forum_user -->
+    <resultMap id="RM-FORUM-USER" type="ForumUserDTO">
+        <result property="forumCode" column="forum_code" javaType="java.lang.String" />
+        <result property="forumTitle" column="forum_title" javaType="java.lang.String" />
+        <result property="userNo" column="user_no" javaType="java.lang.String" />
+        <result property="nickName" column="nick_name" javaType="java.lang.String" />
+        <result property="rightExt" column="right_ext" javaType="java.lang.String" />
+        <result property="gmtExpire" column="gmt_expire" javaType="java.lang.String" />
+        <result property="gmtCreate" column="gmt_create" javaType="java.lang.String" />
+        <result property="gmtModify" column="gmt_modify" javaType="java.lang.String" />
+    </resultMap>
+
+
+	<!-- ============================================= -->
+    <!-- Public SQLS                                   -->
+    <!-- ============================================= -->
+
+	<!-- ============================================= -->
+    <!-- Public CopyS                                  -->
+    <!-- ============================================= -->
+
+
+    <!-- ============================================= -->
+    <!-- mapped statements for MyBatisForumUserDAO -->
+    <!-- ============================================= -->
+    
+    <!-- mapped statement for MyBatisForumUserDAO.insert -->
+    <insert id="insert">
+        INSERT INTO azdai_forum_user(
+				forum_code, forum_title, user_no, nick_name, right_ext, gmt_expire, gmt_create, gmt_modify
+			) VALUES(
+				#{forumCode}, #{forumTitle}, #{userNo}, #{nickName}, #{rightExt}, #{gmtExpire}, DATETIME('NOW', 'LOCALTIME'), DATETIME('NOW', 'LOCALTIME')
+			)
+    </insert>
+
+    <!-- mapped statement for MyBatisForumUserDAO.update -->
+    <update id="update" >
+        UPDATE azdai_forum_user SET
+				forum_title=#{forumTitle}, nick_name=#{nickName}, right_ext=#{rightExt}, gmt_expire=#{gmtExpire}, gmt_modify=DATETIME('NOW', 'LOCALTIME')
+			WHERE
+				forum_code=#{forumCode} AND user_no=#{userNo}
+    </update>
+
+    <!-- mapped statement for MyBatisForumUserDAO.find -->
+    <select id="find" resultMap="RM-FORUM-USER" >
+    <![CDATA[
+        select * from azdai_forum_user where ((forum_code = #{forumCode}) AND (user_no = #{userNo}))
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisForumUserDAO.findForum -->
+    <select id="findForum" resultMap="RM-FORUM-USER" >
+    <![CDATA[
+        select * from azdai_forum_user where (forum_code = #{value}) order by user_no ASC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisForumUserDAO.findUserNo -->
+    <select id="findUserNo" resultMap="RM-FORUM-USER" >
+    <![CDATA[
+        select * from azdai_forum_user where (user_no = #{value}) order by forum_code ASC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisForumUserDAO.findExpire -->
+    <select id="findExpire" resultMap="RM-FORUM-USER" >
+    <![CDATA[
+        select * from azdai_forum_user where (gmt_expire <= #{value})
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisForumUserDAO.findAll -->
+    <select id="findAll" resultMap="RM-FORUM-USER" >
+    <![CDATA[
+        select * from azdai_forum_user order by forum_code ASC, user_no ASC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisForumUserDAO.delete -->
+    <delete id="delete" >
+    <![CDATA[
+        delete from azdai_forum_user where ((forum_code = #{forumCode}) AND (user_no = #{userNo}))
+    ]]>
+    </delete>
+
+    <!-- mapped statement for MyBatisForumUserDAO.deleteForum -->
+    <delete id="deleteForum" >
+    <![CDATA[
+        delete from azdai_forum_user where (forum_code = #{value})
+    ]]>
+    </delete>
+
+    <!-- mapped statement for MyBatisForumUserDAO.deleteUserNo -->
+    <delete id="deleteUserNo" >
+    <![CDATA[
+        delete from azdai_forum_user where (user_no = #{value})
+    ]]>
+    </delete>
+
+    <!-- mapped statement for MyBatisForumUserDAO.deleteExpire -->
+    <delete id="deleteExpire" >
+    <![CDATA[
+        delete from azdai_forum_user where (gmt_expire <= #{value})
+    ]]>
+    </delete>
+
+</mapper>

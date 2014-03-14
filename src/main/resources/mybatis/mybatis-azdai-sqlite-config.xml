@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="CrawlDTO" type="com.azdai.core.das.dal.dto.CrawlDTO"/>
+		<typeAlias alias="ForumInfoDTO" type="com.azdai.core.das.dal.dto.ForumInfoDTO"/>
+		<typeAlias alias="ForumTopicDTO" type="com.azdai.core.das.dal.dto.ForumTopicDTO"/>
+		<typeAlias alias="ForumUserDTO" type="com.azdai.core.das.dal.dto.ForumUserDTO"/>
+		<typeAlias alias="ImageDTO" type="com.azdai.core.das.dal.dto.ImageDTO"/>
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="mybatis/jeesite/sqlite/Crawl-mapper.xml" />
+		<mapper resource="mybatis/jeesite/sqlite/ForumInfo-mapper.xml" />
+		<mapper resource="mybatis/jeesite/sqlite/ForumTopic-mapper.xml" />
+		<mapper resource="mybatis/jeesite/sqlite/ForumUser-mapper.xml" />
+		<mapper resource="mybatis/jeesite/sqlite/Image-mapper.xml" />
+	</mappers>
+</configuration>

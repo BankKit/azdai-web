@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<table sqlname="azdai_forum_user" dummypk="user_no" ticket="false" valve="false">
+	<!-- 参考文档: http://mybatis.github.io/mybatis-3/sqlmap-xml.html -->
+	
+	<!-- ========================================== -->
+	<!-- 代码复制 -->
+	<!-- ========================================== -->
+	<copy type="dto-import">
+		import java.util.Date;
+	</copy>
+	
+    <!-- ========================================== -->
+	<!-- INSERT操作 -->
+	<!-- ========================================== -->
+	<operation name="insert">
+		<description>新增记录</description>
+		<sql>
+			INSERT INTO azdai_forum_user(
+				forum_code, forum_title, user_no, nick_name, right_ext, gmt_expire, gmt_create, gmt_modify
+			) VALUES(
+				?, ?, ?, ?, ?, ?, ?, ?
+			)
+		</sql>
+		<sqlmap>
+			INSERT INTO azdai_forum_user(
+				forum_code, forum_title, user_no, nick_name, right_ext, gmt_expire, gmt_create, gmt_modify
+			) VALUES(
+				#{forumCode}, #{forumTitle}, #{userNo}, #{nickName}, #{rightExt}, #{gmtExpire}, {{DB_NOW}}, {{DB_NOW}}
+			)
+		</sqlmap>
+	</operation>
+	
+	<!-- ========================================== -->
+	<!-- UPDATE操作 -->
+	<!-- ========================================== -->
+	<operation name="update" paramtype="object">
+		<description>更新记录</description>
+		<sql>
+			UPDATE azdai_forum_user SET
+				forum_title=?, nick_name=?, right_ext=?, gmt_expire=?, gmt_modify='NOW'
+			WHERE
+				forum_code=? AND user_no=?
+		</sql>
+		<sqlmap>
+			UPDATE azdai_forum_user SET
+				forum_title=#{forumTitle}, nick_name=#{nickName}, right_ext=#{rightExt}, gmt_expire=#{gmtExpire}, gmt_modify={{DB_NOW}}
+			WHERE
+				forum_code=#{forumCode} AND user_no=#{userNo}
+		</sqlmap>
+	</operation>
+	
+	<!-- ========================================== -->
+	<!-- SELECT操作 -->
+	<!-- ========================================== -->
+	<operation name="find" multiplicity="one">
+		<description>查询单条记录</description>
+		<sql>
+			SELECT * FROM azdai_forum_user WHERE forum_code=? AND user_no=?
+		</sql>
+	</operation>
+	
+	<operation name="findForum" multiplicity="many">
+		<description>查询论坛记录</description>
+		<sql>
+			SELECT * FROM azdai_forum_user WHERE forum_code=? ORDER BY user_no ASC
+		</sql>
+	</operation>
+	
+	<operation name="findUserNo" multiplicity="many">
+		<description>查询用户记录</description>
+		<sql>
+			SELECT * FROM azdai_forum_user WHERE user_no=? ORDER BY forum_code ASC
+		</sql>
+	</operation>
+	
+	<operation name="findExpire" multiplicity="many">
+		<description>查询过期记录</description>
+		<sql>
+		<![CDATA[
+			SELECT * FROM azdai_forum_user WHERE gmt_expire <= ?
+		]]>
+		</sql>
+	</operation>
+    
+    <operation name="findAll" multiplicity="many">
+		<description>查询所有记录</description>
+		<sql>
+			SELECT * FROM azdai_forum_user ORDER BY forum_code ASC, user_no ASC
+		</sql>
+	</operation>
+    
+    <!-- ========================================== -->
+	<!-- DELETE操作 -->
+	<!-- ========================================== -->
+	
+    <operation name="delete">
+		<description>删除单条记录</description>
+		<sql>
+			DELETE FROM azdai_forum_user WHERE forum_code=? AND user_no=?
+		</sql>
+	</operation>
+	
+	<operation name="deleteForum">
+		<description>删除论坛记录</description>
+		<sql>
+			DELETE FROM azdai_forum_user WHERE forum_code=?
+		</sql>
+	</operation>
+	
+	<operation name="deleteUserNo">
+		<description>删除用户记录</description>
+		<sql>
+			DELETE FROM azdai_forum_user WHERE user_no=?
+		</sql>
+	</operation>
+	
+	<operation name="deleteExpire">
+		<description>删除过期记录</description>
+		<sql>
+		<![CDATA[
+			DELETE FROM azdai_forum_user WHERE gmt_expire <= ?
+		]]>
+		</sql>
+	</operation>
+
+</table>

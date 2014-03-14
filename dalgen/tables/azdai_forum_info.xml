@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<table sqlname="azdai_forum_info" ticket="false" valve="false">
+	<!-- 参考文档: http://mybatis.github.io/mybatis-3/sqlmap-xml.html -->
+	
+    <!-- ========================================== -->
+	<!-- INSERT操作 -->
+	<!-- ========================================== -->
+	<operation name="insert">
+		<description>新增记录</description>
+		<sql>
+			INSERT INTO azdai_forum_info(
+				code, sort, state, open_ext, title, summary, gmt_create, gmt_modify
+			) VALUES(
+				?, ?, ?, ?, ?, ?, ?, ?
+			)
+		</sql>
+		<sqlmap>
+			INSERT INTO azdai_forum_info(
+				code, sort, state, open_ext, title, summary, gmt_create, gmt_modify
+			) VALUES(
+				#{code}, #{sort}, #{state}, #{openExt}, #{title}, #{summary}, {{DB_NOW}}, {{DB_NOW}}
+			)
+		</sqlmap>
+	</operation>
+	
+	<!-- ========================================== -->
+	<!-- UPDATE操作 -->
+	<!-- ========================================== -->
+	<operation name="update" paramtype="object">
+		<description>更新记录</description>
+		<sql>
+			UPDATE azdai_forum_info SET
+				sort=?, state=?, open_ext=?, title=?, summary=?, gmt_modify='NOW'
+			WHERE
+				code=?
+		</sql>
+		<sqlmap>
+			UPDATE azdai_forum_info SET
+				sort=#{sort}, state=#{state}, open_ext=#{openExt}, title=#{title}, summary=#{summary}, gmt_modify={{DB_NOW}}
+			WHERE
+				code=#{code}
+		</sqlmap>
+	</operation>
+	
+	<!-- ========================================== -->
+	<!-- SELECT操作 -->
+	<!-- ========================================== -->
+	<operation name="find" multiplicity="one">
+		<description>查询单条记录</description>
+		<sql>
+			SELECT * FROM azdai_forum_info WHERE code=?
+		</sql>
+	</operation>
+	
+	<operation name="findState" multiplicity="many">
+		<description>查询状态记录</description>
+		<sql>
+			SELECT * FROM azdai_forum_info WHERE state=? ORDER BY sort ASC
+		</sql>
+	</operation>
+    
+    <operation name="findAll" multiplicity="many">
+		<description>查询所有记录</description>
+		<sql>
+			SELECT * FROM azdai_forum_info ORDER BY sort ASC
+		</sql>
+	</operation>
+    
+    <!-- ========================================== -->
+	<!-- DELETE操作 -->
+	<!-- ========================================== -->
+	
+    <operation name="delete">
+		<description>删除单条记录</description>
+		<sql>
+			DELETE FROM azdai_forum_info WHERE code=?
+		</sql>
+	</operation>
+	
+	<operation name="deleteState">
+		<description>删除状态记录</description>
+		<sql>
+			DELETE FROM azdai_forum_info WHERE state=?
+		</sql>
+	</operation>
+
+</table>

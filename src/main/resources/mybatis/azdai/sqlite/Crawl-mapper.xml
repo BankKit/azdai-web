@@ -7,11 +7,11 @@
     
     <!-- result maps for database table atom_crawl -->
     <resultMap id="RM-CRAWL" type="CrawlDTO">
-        <result property="id" column="id" javaType="long" />
+        <result property="id" column="id" javaType="int" />
         <result property="name" column="name" javaType="java.lang.String" />
         <result property="content" column="content" javaType="java.lang.String" />
-        <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
-        <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
+        <result property="gmtCreate" column="gmt_create" javaType="java.lang.String" />
+        <result property="gmtModify" column="gmt_modify" javaType="java.lang.String" />
     </resultMap>
 
 

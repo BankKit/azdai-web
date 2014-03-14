@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AZDAI-FORUM-INFO">
+    <!-- ============================================= -->
+    <!-- RESULT MAPS                                   -->
+    <!-- ============================================= -->
+    
+    <!-- result maps for database table azdai_forum_info -->
+    <resultMap id="RM-FORUM-INFO" type="ForumInfoDTO">
+        <result property="code" column="code" javaType="java.lang.String" />
+        <result property="sort" column="sort" javaType="java.lang.String" />
+        <result property="state" column="state" javaType="java.lang.String" />
+        <result property="openExt" column="open_ext" javaType="java.lang.String" />
+        <result property="title" column="title" javaType="java.lang.String" />
+        <result property="summary" column="summary" javaType="java.lang.String" />
+        <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
+        <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
+    </resultMap>
+
+
+	<!-- ============================================= -->
+    <!-- Public SQLS                                   -->
+    <!-- ============================================= -->
+
+	<!-- ============================================= -->
+    <!-- Public CopyS                                  -->
+    <!-- ============================================= -->
+
+    <!-- ============================================= -->
+    <!-- mapped statements for MyBatisForumInfoDAO -->
+    <!-- ============================================= -->
+    
+    <!-- mapped statement for MyBatisForumInfoDAO.insert -->
+    <insert id="insert">
+        INSERT INTO azdai_forum_info(
+				code, sort, state, open_ext, title, summary, gmt_create, gmt_modify
+			) VALUES(
+				#{code}, #{sort}, #{state}, #{openExt}, #{title}, #{summary}, NOW(), NOW()
+			)
+    </insert>
+
+    <!-- mapped statement for MyBatisForumInfoDAO.update -->
+    <update id="update" >
+        UPDATE azdai_forum_info SET
+				sort=#{sort}, state=#{state}, open_ext=#{openExt}, title=#{title}, summary=#{summary}, gmt_modify=NOW()
+			WHERE
+				code=#{code}
+    </update>
+
+    <!-- mapped statement for MyBatisForumInfoDAO.find -->
+    <select id="find" resultMap="RM-FORUM-INFO" >
+    <![CDATA[
+        select * from azdai_forum_info where (code = #{value})
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisForumInfoDAO.findState -->
+    <select id="findState" resultMap="RM-FORUM-INFO" >
+    <![CDATA[
+        select * from azdai_forum_info where (state = #{value}) order by sort ASC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisForumInfoDAO.findAll -->
+    <select id="findAll" resultMap="RM-FORUM-INFO" >
+    <![CDATA[
+        select * from azdai_forum_info order by sort ASC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisForumInfoDAO.delete -->
+    <delete id="delete" >
+    <![CDATA[
+        delete from azdai_forum_info where (code = #{value})
+    ]]>
+    </delete>
+
+    <!-- mapped statement for MyBatisForumInfoDAO.deleteState -->
+    <delete id="deleteState" >
+    <![CDATA[
+        delete from azdai_forum_info where (state = #{value})
+    ]]>
+    </delete>
+
+</mapper>

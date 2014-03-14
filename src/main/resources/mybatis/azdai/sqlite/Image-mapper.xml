@@ -11,13 +11,13 @@
         <result property="flag" column="flag" javaType="java.lang.String" />
         <result property="topic" column="topic" javaType="java.lang.String" />
         <result property="title" column="title" javaType="java.lang.String" />
-        <result property="size" column="size" javaType="long" />
-        <result property="width" column="width" javaType="long" />
-        <result property="height" column="height" javaType="long" />
+        <result property="size" column="size" javaType="int" />
+        <result property="width" column="width" javaType="int" />
+        <result property="height" column="height" javaType="int" />
         <result property="url" column="url" javaType="java.lang.String" />
         <result property="summary" column="summary" javaType="java.lang.String" />
-        <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
-        <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
+        <result property="gmtCreate" column="gmt_create" javaType="java.lang.String" />
+        <result property="gmtModify" column="gmt_modify" javaType="java.lang.String" />
     </resultMap>
 
 
