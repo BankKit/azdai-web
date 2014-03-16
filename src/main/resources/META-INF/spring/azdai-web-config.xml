@@ -15,20 +15,29 @@
 	<!-- ================================================= -->
 	<!-- 参数配置 -->
 	<!-- ================================================= -->
-	<context:property-placeholder file-encoding="UTF-8" location="/WEB-INF/config/config.xml" />
+	<context:property-placeholder file-encoding="UTF-8" location="/WEB-INF/config/property-placeholder.xml" />
 
 	<!-- ================================================= -->
 	<!-- 组件自动扫描 -->
 	<!-- ================================================= -->
-	<context:component-scan base-package="com.github.obullxl.jeesite" />
-	
+	<context:component-scan base-package="com.azdai" />
+
 	<!-- ================================================= -->
 	<!-- 注解配置扫描 -->
 	<!-- ================================================= -->
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
 		<property name="interceptors">
 			<list>
+				<!--
 				<bean class="com.github.obullxl.lang.user.UserContextInterceptor">
+					<property name="exts">
+						<set>
+							<value>.htm</value>
+						</set>
+					</property>
+				</bean>
+				-->
+				<bean class="com.github.obullxl.lang.user.PermissionInterceptor">
 					<property name="uriPrefixs">
 						<set>
 							<value>/admin</value>
@@ -39,13 +48,6 @@
 						<list>
 							<value>/WEB-INF/rights.acl</value>
 						</list>
-					</property>
-				</bean>
-				<bean class="com.github.obullxl.lang.spring.web.WebViewThemeInterceptor">
-					<property name="uriPrefixs">
-						<set>
-							<value>/admin</value>
-						</set>
 					</property>
 				</bean>
 			</list>
@@ -140,7 +142,7 @@
 			</map>
 		</property>
 	</bean>
-	
+
 	<!-- ===================================== -->
 	<!-- WebX配置 -->
 	<!-- ===================================== -->

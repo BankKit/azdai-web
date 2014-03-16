@@ -1,0 +1,92 @@
+<div class="container-fluid">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+            <div class="panel-title">论坛帖子列表</div>
+		</div>
+    	<div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+    					<th>分类</th>
+    					<th>论坛代码</th>
+    					<th>状态</th>
+    					<th>顶?</th>
+						<th>精?</th>
+						<th>回复</th>
+						<th>主贴ID</th>
+						<th>主贴者</th>
+						<th>发布时间</th>
+						<th>最后回帖者</th>
+						<th>最后回帖时间</th>
+						<th>主贴标题</th>
+                        <th>&nbsp;</th>
+    				</tr>
+    			</thead>
+                <tbody>
+    				#foreach($topic in $topicPageList)
+                    <tr>
+    					<td>$topic.id</td>
+    					<td>$topic.catgEnum.desp()</td>
+    					<td>$topic.forum</td>
+    					<td>$topic.stateEnum.desp()</td>
+						<td>$topic.topEnum.desp()</td>
+						<td>$topic.eliteEnum.desp()</td>
+						<td>$topic.replyEnum.desp()</td>
+						<td><a href="#">$topic.postNickName</a></td>
+						<td>$DateUtils.toStringDL($topic.gmtPost)</td>
+						<td><a href="#">$topic.replyNickName</a></td>
+						<td>DateUtils.toStringDL($topic.gmtReply)</td>
+    					<td><a href="#" style="$!topic.style">$topic.title</a> ($topic.replyCount评/$topic.visitCount阅)</td>
+                        <td>
+							<div class="pull-right">
+								<a href="$ctx/mngt/topic-update-meta.htm?id=$topic.id">修改元数据</a> |
+								<a href="$ctx/mngt/topic-update-content.htm?id=$topic.id">修改内容</a> |
+								<a class="topic-delete" href="javascript:;" data-id="$topic.id">删除</a>
+							</div>
+						</td>
+    				</tr>
+    				#end
+    			</tbody>
+    		</table>
+        </div>
+		<div class="panel-footer text-center">
+            <ul class="pagination" #MarginBottomNO()>
+                <li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li class="active"><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ul>
+		</div>
+		<div class="clearfix"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+/** 删除论坛 */
+$(".forum-delete").click(function(e) {
+	e.preventDefault();
+	var code = $(this).data("code");
+	AZD.confirm(function(rtn) {
+		if(rtn !== "yes") {
+			return;
+		}
+		jQuery.post("$ctx/mngt/forum-info/delete.htm", {
+			"code": code
+		}, function(result) {
+			if(result.success) {
+				AZD.modal("删除成功", "成功提示");
+			} else {
+				AZD.alert("错误码：<b>" + result.respCode + "</b><br/>错误描述：<b>" + result.respDesp + "</b>", "失败提示");
+			}
+		});
+	}, "确定要删除论坛（代码：" + code + "）吗？删除数据不可恢复！");
+});
+
+//
+});
+</script>

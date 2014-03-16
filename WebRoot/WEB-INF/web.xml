@@ -61,21 +61,18 @@
 		<servlet-class>com.github.obullxl.lang.web.servlet.DispatcherServletExt</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath*:/META-INF/spring/azdai-*.xml</param-value>
+			<param-value>/WEB-INF/config/spring-*.xml;classpath*:/spring/tick-timer-config.xml;classpath*:/META-INF/spring/azdai-*.xml</param-value>
 		</init-param>
-		<!-- <init-param> <param-name>contextClass</param-name> <param-value>com.github.obullxl.lang.spring.web.XmlWebApplicationContextExt</param-value> </init-param> -->
+		<init-param>
+			<param-name>user.context</param-name>
+			<param-value>true</param-value>
+		</init-param>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DispatcherServletExt</servlet-name>
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
-	<!--
-	<servlet-mapping>
-		<servlet-name>DispatcherServletExt</servlet-name>
-		<url-pattern>*.html</url-pattern>
-	</servlet-mapping>
-	-->
 
 	<!-- ====================================== -->
 	<!-- 应用入口 -->

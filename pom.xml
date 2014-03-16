@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>com.github.obullxl</groupId>
 			<artifactId>atom-lang</artifactId>
-			<version>2.0.4</version>
+			<version>2.0.5</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.obullxl</groupId>
@@ -317,6 +317,12 @@
 			<artifactId>jetty-embedded</artifactId>
 			<version>6.1.26</version>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet.jsp</groupId>
+					<artifactId>jsp-api</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 

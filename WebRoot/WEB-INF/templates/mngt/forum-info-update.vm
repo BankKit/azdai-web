@@ -1,0 +1,74 @@
+#set($forum=$ForumWebX.fetchForum($code))
+<div class="container-fluid">
+	<div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">更新论坛（$forum.title）</div>
+		</div>
+		<form id="form-update-forum" role="form" method="post" #MarginBottomNO()>
+		<div class="panel-body">
+            <div class="form-group">
+                <label for="code">论坛代码</label>
+                <input id="code" name="code" type="text" class="form-control" value="$forum.code" readonly="readonly" />
+				<p class="help-block">唯一论坛代码，小写字符和中划线组成。</p>
+            </div>
+            <div class="form-group">
+                <label for="sort">论坛排序值</label>
+                <input id="sort" name="sort" type="text" class="form-control"  value="$forum.sort" />
+				<p class="help-block">4位数字组成，如0001，值越小排序越前。</p>
+            </div>
+			<div class="form-group">
+                <label for="sort">论坛状态</label>
+                <select name="state" class="form-control">
+					#foreach($enm in $EnumWebX.findValveBoolEnums())
+                    <option value="$enm.code()" #if($forum.stateEnum.equals($enm)) selected="selected" #end>$enm.desp()</option>
+					#end
+				</select>
+            </div>
+			<div class="form-group">
+                <label>论坛开放类型&nbsp;&nbsp;</label>
+				#foreach($enm in $EnumWebX.findForumOpenEnums())
+                <label class="checkbox-inline">
+					<input name="open" type="radio" value="$enm.code()" #if($forum.openEnum.equals($enm)) checked="checked" #end /> $enm.desp()
+                </label>
+				#end
+			</div>
+			<div class="form-group">
+                <label for="sort">论坛标题</label>
+                <input id="title" name="title" type="text" class="form-control"  value="$forum.title" />
+            </div>
+			<div class="form-group">
+                <label for="sort">论坛描述</label>
+                <textarea id="summary" name="summary" class="form-control" rows="3">$forum.summary</textarea>
+            </div>
+        </div>
+        <div class="panel-footer text-center">
+			<button type="submit" class="btn btn-lg btn-success"><i class="fa fa-plus"></i> 更新论坛</button>
+		</div>
+		</form>
+        <div class="clearfix"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#form-update-forum").submit(function(e) {
+		e.preventDefault();
+		jQuery.ajax({
+    		type: "POST",
+    		dataType: "json",
+			url: "$ctx/mngt/forum-info/update.htm",
+    		data: $("#form-update-forum").serialize(),
+    
+    		success: function(result) {
+				if(result.success) {
+					$("#newForumDialog").modal("hide");
+    				AZD.modal("论坛更新成功", "成功提示");
+				} else {
+					AZD.alert("错误码：<b>" + result.respCode + "</b><br/>错误描述：<b>" + result.respDesp + "</b>", "失败提示");
+				}
+    		}
+    	});
+	});
+	
+});
+</script>

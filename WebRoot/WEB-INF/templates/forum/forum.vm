@@ -1,4 +1,3 @@
-#set($code="test-forum-5")
 #set($forum=$ForumWebX.findForum($code))
 #set($title=$forum.title)
 <div class="container">
@@ -6,158 +5,173 @@
         <ol class="breadcrumb">
             <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
             <li><a href="$ctx/forum/index.htm">论坛首页</a></li>
-        	<li>安众贷测试论坛</li>
+        	<li>$forum.title</li>
         </ol>
     </div>
 </div>
 
 <div class="container">
-	<div class="col-md-3">
-        <div class="panel panel-info">
-            <div class="panel-heading"><strong><i class="glyphicon glyphicon-minus-sign"></i> 安众贷论坛</strong></div>
+	<div class="col-xs-12 col-sm-4 col-md-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+				<div class="panel-title"><i class="glyphicon glyphicon-minus-sign"></i> 安众贷论坛</div>
+			</div>
             <div class="list-group">
-                <a href="$ctx/forum/forum.htm" class="list-group-item"><i class="glyphicon glyphicon-chevron-right"></i> 安众贷测试论坛-1</a>
-				<a href="$ctx/forum/forum.htm" class="list-group-item"><i class="glyphicon glyphicon-chevron-right"></i> 安众贷测试论坛-2</a>
-				<a href="$ctx/forum/forum.htm" class="list-group-item list-group-item-info"><i class="glyphicon glyphicon-chevron-right"></i> 安众贷测试论坛-3</a>
-				<a href="$ctx/forum/forum.htm" class="list-group-item"><i class="glyphicon glyphicon-chevron-right"></i> 安众贷测试论坛-4</a>
-				<a href="$ctx/forum/forum.htm" class="list-group-item"><i class="glyphicon glyphicon-chevron-right"></i> 安众贷测试论坛-6</a>
+				#foreach($item in $ForumWebX.findValidForums())
+                <a href="$ctx/forum/forum.htm?code=$item.code" class="list-group-item #if($StringUtils.equals($code, $item.code)) list-group-item-info #end"><i class="glyphicon glyphicon-chevron-right"></i> $item.title</a>
+				#end
             </div>
         </div>
     </div>
-	<div class="col-md-9">
-        <div class="panel panel-default" #MarginBottomNO()>
-            <div class="panel-body text-success bg-info"><kbd>安众贷测试论坛-3</kbd>论坛的发展也如同网络雨后春笋般的出现，并迅速的发展壮大。论坛几乎涵盖了人们生活的各个方面，几乎每一个人都可以找到自己感兴趣或者需要了解的专题性论坛，而各类网站，综合性门户网站或者功能性专题网站也都青睐于开设自己的论坛，以促进网友之间的交流，增加互动性和丰富网站的内容。</div>
+	<div class="col-xs-12 col-sm-8 col-md-9">
+        <div class="panel panel-primary" #MarginBottomNO()>
+            <div class="panel-body text-success"><kbd>$forum.title</kbd> $forum.summary</div>
             <table class="table table-hover">
                 <tbody>
         			<!-- 论坛公告 -->
         			<tr class="success">
                         <td colspan="3"><strong><i class="glyphicon glyphicon-volume-up"></i> 论坛公告</strong></td>
                     </tr>
+					#set($topics=$ForumWebX.findGlobalTopTopics())
+					#if($topics.isEmpty())
+					<tr>
+                        <td colspan="3">暂无论坛公告！</td>
+                    </tr>
+					#else
+					#foreach($topic in $topics)
                     <tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/ann_icon.gif" alt="论坛公告"/> 论坛测试主题标题01</a> (34评/102阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 老牛啊</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门吹雪</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
+                        <td><div><a href="$ctx/forum/topic.htm?id=$topic.id"><img src="$ctx/public/img/ann_icon.gif" alt="论坛公告"/> $topic.title</a> ($topic.replyCount评/$topic.visitCount阅)</div></td>
+                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?no=$topic.postUserNo"><i class="glyphicon glyphicon-user"></i> $topic.postNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtPost)</span></div></td>
+                        <td>#if($StringUtils.isBlank($topic.replyUserNo)) -- #else<div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?$topic.replyUserNo"><i class="glyphicon glyphicon-user"></i> $topic.replyNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtReply)</span></div>#end</td>
                     </tr>
-					<tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/ann_icon.gif" alt="论坛公告"/> 论坛测试主题标题02</a> (34评/102阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 老牛啊</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门吹雪</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                    </tr>
-					<tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/ann_icon.gif" alt="论坛公告"/> 论坛测试主题标题03</a> (34评/102阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 老牛啊</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门吹雪</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                    </tr>
+					#end
+					#end
         			<!-- 置顶主题 -->
         			<tr class="success">
-                        <td colspan="3"><strong><i class="glyphicon glyphicon-upload"></i> 置顶主题</strong></td>
+                        <td colspan="3"><strong><i class="glyphicon glyphicon-upload"></i> 置顶主贴</strong></td>
                     </tr>
+					#set($topics=$ForumWebX.findForumTopTopics($code))
+					#if($topics.isEmpty())
+					<tr>
+                        <td colspan="3">暂无论坛主贴！</td>
+                    </tr>
+					#else
+					#foreach($topic in $topics)
                     <tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/pin.gif" alt="置顶主题"/> 置顶主题测试主题标题01</a> (33评/159阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门吹雪</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 老牛啊</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
+                        <td><div><a href="$ctx/forum/topic.htm?id=$topic.id"><img src="$ctx/public/img/pin.gif" alt="置顶主贴"/> $topic.title</a> ($topic.replyCount评/$topic.visitCount阅)</div></td>
+                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?no=$topic.postUserNo"><i class="glyphicon glyphicon-user"></i> $topic.postNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtPost)</span></div></td>
+                        <td>#if($StringUtils.isBlank($topic.replyUserNo)) -- #else<div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?no=$topic.replyUserNo"><i class="glyphicon glyphicon-user"></i> $topic.replyNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtReply)</span></div>#end</td>
                     </tr>
-					<tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/pin.gif" alt="置顶主题"/> 置顶主题测试主题标题02</a> (33评/159阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门吹雪</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 老牛啊</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
-                    </tr>
-					<tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/pin.gif" alt="置顶主题"/> 置顶主题测试主题标题03</a> (33评/159阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门吹雪</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 老牛啊</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
-                    </tr>
-					<tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/pin.gif" alt="置顶主题"/> 置顶主题测试主题标题04</a> (33评/159阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门吹雪</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 老牛啊</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
-                    </tr>
-					<tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/pin.gif" alt="置顶主题"/> 置顶主题测试主题标题05</a> (33评/159阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门吹雪</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 老牛啊</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
-                    </tr>
+					#end
+					#end
         			<!-- 论坛主题 -->
         			<tr class="success">
-                        <td colspan="3"><strong><i class="glyphicon glyphicon-record"></i> 论坛主题</strong></td>
+                        <td colspan="3"><strong><i class="glyphicon glyphicon-record"></i> 论坛主贴</strong></td>
                     </tr>
+					#set($pageList=$ForumWebX.findNormalTopics($NumberUtils.toInt($page, 1), $code))
+					#set($topics=$pageList.items)
+					#if($topics.isEmpty())
+					<tr>
+                        <td colspan="3">暂无主贴信息！</td>
+                    </tr>
+					#else
+					#foreach($topic in $topics)
                     <tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/tpc_new.gif" alt="论坛主题"/> 论坛主题测试主题标题01</a> (34评/567阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 陆小凤</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门庆</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
+                        <td><div><a href="$ctx/forum/topic.htm?id=$topic.id"><img src="$ctx/public/img/pin.gif" alt="论坛主贴"/> $topic.title</a> ($topic.replyCount评/$topic.visitCount阅)</div></td>
+                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?no=$topic.postUserNo"><i class="glyphicon glyphicon-user"></i> $topic.postNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtPost)</span></div></td>
+                        <td>#if($StringUtils.isBlank($topic.replyUserNo)) -- #else<div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?no=$topic.replyUserNo"><i class="glyphicon glyphicon-user"></i> $topic.replyNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtReply)</span></div>#end</td>
                     </tr>
-					<tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/tpc_new.gif" alt="论坛主题"/> 论坛主题测试主题标题02</a> (34评/567阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 陆小凤</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门庆</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
-                    </tr>
-					<tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/tpc_new.gif" alt="论坛主题"/> 论坛主题测试主题标题03</a> (34评/567阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 陆小凤</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门庆</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
-                    </tr>
-					<tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/tpc_normal.gif" alt="论坛主题"/> 论坛主题测试主题标题04</a> (34评/567阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 陆小凤</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门庆</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
-                    </tr>
-					<tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/tpc_normal.gif" alt="论坛主题"/> 论坛主题测试主题标题05</a> (34评/567阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 陆小凤</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门庆</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
-                    </tr>
-					<tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/tpc_normal.gif" alt="论坛主题"/> 论坛主题测试主题标题06</a> (34评/567阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 陆小凤</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门庆</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
-                    </tr>
-					<tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/tpc_normal.gif" alt="论坛主题"/> 论坛主题测试主题标题07</a> (34评/567阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 陆小凤</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门庆</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
-                    </tr>
-					<tr>
-                        <td><div><a href="$ctx/forum/topic.htm"><img src="$ctx/public/img/tpc_normal.gif" alt="论坛主题"/> 论坛主题测试主题标题08</a> (34评/567阅)</div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 陆小凤</a> <br/> <span class="text-muted">2014-02-03 13:13:03</span></div></td>
-                        <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm"><i class="glyphicon glyphicon-user"></i> 西门庆</a> <br/> <span class="text-muted">2014-02-03 12:13:53</span></div></td>
-                    </tr>
+					#end
+					#end
                 </tbody>
             </table>
         </div>
-		<div class="pull-right">
+		#set($pager=$pageList.pager)
+		#if($pager.totalCount>0)
+		<div class="pull-left">
     		<ul class="pagination">
-				<li><a href="$ctx/forum/topic.htm">1</a></li>
-				<li><a href="$ctx/forum/topic.htm">2</a></li>
-				<li><a href="$ctx/forum/topic.htm">3</a></li>
-    			<li class="active"><a href="#">4 <span class="sr-only">(current)</span></a></li>
-    			<li><a href="$ctx/forum/topic.htm">5</a></li>
-				<li><a href="$ctx/forum/topic.htm">6</a></li>
-				<li><a href="$ctx/forum/topic.htm">7</a></li>
-				<li><a href="$ctx/forum/topic.htm">8</a></li>
-				<li><a href="$ctx/forum/topic.htm">9</a></li>
-				<li><a href="$ctx/forum/topic.htm">10</a></li>
+				#set($pages=$pager.getSlider(11))
+				#foreach($idx in $pages)
+				#if($pager.isDisabledPage($idx))
+				<li class="active"><a href="javascript:;">$idx <span class="sr-only">(current)</span></a></li>
+				#else
+				<li><a href="$ctx/forum/forum.htm?code=$code&page=$idx">$idx</a></li>
+				#end
+				#end
     		</ul>
         </div>
+		#else
+		<div>&nbsp;</div>
+		#end
 		<div class="clearfix"></div>
-		<div class="panel panel-info">
-            <div class="panel-heading"><strong><i class="glyphicon glyphicon-edit"></i> 快速发帖</strong></div>
+		#if(!$UserWebX.isLogin())
+        <div class="alert alert-danger">只有登录会员才能发表主贴，请先 <a href="$ctx/login.htm">登录</a> 或免费 <a href="$ctx/regist.htm">注册</a> 会员！</div>
+		#else
+		#set($editor="ON")
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+				<div class="panel-title"><i class="glyphicon glyphicon-edit"></i> 快速发帖</div>
+            </div>
 			<div class="panel-body">
-    			<form role="form" method="post">
+    			<form id="form-create-topic" role="form" method="post">
 					<div class="form-group">
-						<input id="tpcTitle" name="tpcTitle" type="text" class="form-control" required="required" placeholder="贴子标题" />
+						<input id="title" name="title" type="text" class="form-control" required="required" placeholder="贴子标题" />
                     </div>
 					<div class="form-group">
-						<textarea id="tpcContent" name="tpcContent" required="required"></textarea>
+						<textarea id="content" name="content" required="required"></textarea>
                     </div>
-					<button type="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus-sign"></i> 提交贴子</button>
+					<input type="hidden" name="forum" value="$forum.code" />
+					<button type="submit" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> 提交贴子</button>
                 </form>
 			</div>
         </div>
+		#end
     </div>
 </div>
+#if($UserWebX.isLogin())
 <script type="text/javascript">
-#set($editor="ON")
 $(document).ready(function() {
-	UE.getEditor("tpcContent");
+/** 富文本框 */
+UE.getEditor("content");
+
+/** 发表主贴 */
+$("#form-create-topic").submit(function(e) {
+	e.preventDefault();
+
+	var title = $("#title").val();
+	if(title.length < 3 || title.length > 128) {
+		window.alert("主贴标题长度输入非法，长度必须在3和128之间，请重新输入！！");
+		$("#title").focus();
+		return false;
+	}
+	
+	var content = $("#content").val();
+	if(content.length < 20 || content.length > 65535) {
+		window.alert("主贴长度输入非法，长度必须在20和65535之间，请重新输入！！");
+		$("#content").focus();
+		return false;
+	}
+	
+	jQuery.ajax({
+		type: "POST",
+		dataType: "json",
+		url: "$ctx/forum/forum-topic/create.htm",
+		data: $("#form-create-topic").serialize(),
+
+		success: function(result) {
+			if(result.success) {
+				var id = result.bizData["biz_id"];
+				AZD.modal("恭喜你，主贴发布成功，点击 <a href='$ctx/forum/topic.htm?id='" + id + ">这里</a> 查看主贴！", "成功提示");
+				
+				$("#title").val("");
+				UE.getEditor("content").setContent("", false);
+			} else {
+				AZD.alert(result.respDesp, "失败提示");
+			}
+		}
+	});
+});
+//
 });
 </script>
+#end

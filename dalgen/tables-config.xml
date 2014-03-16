@@ -17,4 +17,5 @@
     <include table="tables/azdai_forum_info.xml" />
     <include table="tables/azdai_forum_topic.xml" />
     <include table="tables/azdai_forum_user.xml" />
+    <include table="tables/azdai_user_info.xml" />
 </tables>

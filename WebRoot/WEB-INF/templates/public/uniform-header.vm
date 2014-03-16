@@ -18,17 +18,23 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="dxt-nb-black"><a class="otip" href="$ctx/black.htm?year=2014" title="黑名单"><i class="glyphicon glyphicon-remove-circle"></i> 黑名单</a></li>
-                    <li class="dropdown">
-						<a class="dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> 老牛啊 <b class="caret"></b></a>
+					<li id="dxt-nb-forum"><a class="otip" href="$ctx/forum/index.htm" title="会员论坛"><i class="glyphicon glyphicon-fire"></i> 会员论坛</a></li>
+					<li id="dxt-nb-help"><a class="otip" href="$ctx/help/center.htm" title="帮助中心"><i class="glyphicon glyphicon-question-sign"></i> 帮助中心</a></li>
+					
+					#if($!UserWebX.isLogin())
+					#set($user=$UserWebX.findSessionUser())
+					<li class="dropdown">
+						<a class="dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> $user.nickName <b class="caret"></b></a>
 						<ul class="dropdown-menu">
                             <li><a href="$ctx/user/index.htm"><i class="glyphicon glyphicon-cog"></i> 用户中心</a></li>
                             <li class="divider"></li>
-                            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-log-out"></i> 退出登录</a></li>
+                            <li><a href="$ctx/user-logout.htm"><i class="glyphicon glyphicon-log-out"></i> 退出登录</a></li>
                         </ul>
                     </li>
-					<li id="dxt-nb-forum"><a class="otip" href="$ctx/forum/index.htm" title="会员论坛"><i class="glyphicon glyphicon-fire"></i> 论坛</a></li>
-					<li id="dxt-nb-help"><a class="otip" href="$ctx/help/center.htm" title="帮助中心"><i class="glyphicon glyphicon-question-sign"></i> 帮助中心</a></li>
-					<li><button type="button" class="btn btn-info navbar-btn navbar-btn-regist">注册</button></li>
+					#else
+					<li id="dxt-nb-regist"><a class="otip" href="$ctx/home/regist.htm" title="新用户注册"><i class="fa fa-user"></i> 免费注册</a></li>
+					<li id="dxt-nb-login"><a class="otip" href="$ctx/home/login.htm" title="已有账号登陆"><i class="fa fa-lock"></i> 用户登录</a></li>
+					#end
 				</ul>
             </div>
         </div>

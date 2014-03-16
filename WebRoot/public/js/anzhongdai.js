@@ -392,7 +392,7 @@ function showSuccessTip(result) {
 /**
  * 发起Ajax请求 <p/> 必须参数: form, url; <br/>可选参数: smsg, sclose, scallback
  */
-function ajaxRquest(args) {
+AZD.ajaxRquest = function(args) {
 	var smsg = "恭喜您，操作成功！";
 	if(args["smsg"]) {
 		smsg = args["smsg"];

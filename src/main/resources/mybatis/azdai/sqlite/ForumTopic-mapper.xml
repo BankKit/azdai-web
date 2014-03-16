@@ -118,7 +118,7 @@
         INSERT INTO azdai_forum_topic(
 				id, catg, forum, state, top_flag, elite_flag, reply_flag, post_user_no, post_nick_name, gmt_post, visit_count, reply_count, style, title, content, gmt_create, gmt_modify
 			) VALUES(
-				#{id}, #{catg}, #{forum}, #{state}, #{topFlag}, #{eliteFlag}, #{replyFlag}, #{postUserNo}, #{postNickName}, DATETIME('NOW', 'LOCALTIME'), #{visitCount}, #{replyCount}, #{replyUserNo}, #{style}, #{title}, #{content,jdbcType=VARCHAR}, DATETIME('NOW', 'LOCALTIME'), DATETIME('NOW', 'LOCALTIME')
+				#{id}, #{catg}, #{forum}, #{state}, #{topFlag}, #{eliteFlag}, #{replyFlag}, #{postUserNo}, #{postNickName}, DATETIME('NOW', 'LOCALTIME'), #{visitCount}, #{replyCount}, #{style}, #{title}, #{content,jdbcType=VARCHAR}, DATETIME('NOW', 'LOCALTIME'), DATETIME('NOW', 'LOCALTIME')
 			)
     </insert>
 
@@ -179,6 +179,14 @@
 				id=#{id}
     </update>
 
+    <!-- mapped statement for MyBatisForumTopicDAO.updateReplyInfo -->
+    <update id="updateReplyInfo" >
+        UPDATE azdai_forum_topic SET
+				reply_count=reply_count+#{replyDelta}, reply_user_no=#{replyUserNo}, reply_nick_name=#{replyNickName}, gmt_reply=DATETIME('NOW', 'LOCALTIME'), gmt_modify=DATETIME('NOW', 'LOCALTIME')
+			WHERE
+				id=#{id}
+    </update>
+
     <!-- mapped statement for MyBatisForumTopicDAO.find -->
     <select id="find" resultMap="RM-FORUM-TOPIC" >
     <![CDATA[
@@ -197,26 +205,60 @@
 				gmt_reply ASC
     </select>
 
-    <!-- mapped statement for MyBatisForumTopicDAO.findByGlobalTops -->
-    <select id="findByGlobalTops" resultMap="RM-FORUM-TOPIC" >
+    <!-- mapped statement for MyBatisForumTopicDAO.findTopTopics -->
+    <select id="findTopTopics" resultMap="RM-FORUM-TOPIC" >
         SELECT 				<include refid="forum-topic-fields"/>
 			FROM
 				azdai_forum_topic
 			WHERE
-				catg=#{catg} AND state=#{state} AND topFlag=#{topFlag}
+				catg=#{catg} AND state=#{state} AND top_flag=#{topFlag}
+				<if test="forum != null">
+					AND forum=#{forum}
+				</if>
 			ORDER BY
 				reply_count DESC, gmt_post ASC
     </select>
 
-    <!-- mapped statement for MyBatisForumTopicDAO.findByForumTops -->
-    <select id="findByForumTops" resultMap="RM-FORUM-TOPIC" >
+    <!-- mapped statement for MyBatisForumTopicDAO.findNormalTopics -->
+    <select id="findNormalTopics" resultMap="RM-FORUM-TOPIC" >
         SELECT 				<include refid="forum-topic-fields"/>
 			FROM
 				azdai_forum_topic
 			WHERE
-				forum=#{forum} AND catg=#{catg} AND state=#{state} AND topFlag=#{topFlag}
+				forum=#{forum} AND catg=#{catg} AND state=#{state} AND top_flag=#{topFlag}
 			ORDER BY
 				reply_count DESC, gmt_post ASC
+			LIMIT #{offset},#{pageSize}
+    </select>
+
+    <!-- mapped statement for MyBatisForumTopicDAO.findNormalTopicCount -->
+    <select id="findNormalTopicCount" resultType="long" >
+        SELECT 				COUNT(*)
+			FROM
+				azdai_forum_topic
+			WHERE
+				forum=#{forum} AND catg=#{catg} AND state=#{state} AND top_flag=#{topFlag}
+    </select>
+
+    <!-- mapped statement for MyBatisForumTopicDAO.findTopicView -->
+    <select id="findTopicView" resultMap="RM-FORUM-TOPIC" >
+        SELECT 				*
+			FROM
+				azdai_forum_topic
+			WHERE
+				catg=#{catg} AND topic=#{topic}
+			ORDER BY
+				gmt_reply ASC
+			LIMIT #{offset},#{pageSize}
+    </select>
+
+    <!-- mapped statement for MyBatisForumTopicDAO.findTopicViewCount -->
+    <select id="findTopicViewCount" resultType="long" >
+        SELECT 				COUNT(*)
+			FROM
+				azdai_forum_topic
+			WHERE
+				catg=#{catg} AND topic=#{topic}
     </select>
 
     <!-- mapped statement for MyBatisForumTopicDAO.findFuzzy -->

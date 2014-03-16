@@ -198,4 +198,94 @@ public interface DBSize {
 		public static final String GMT_MODIFY = "gmt_modify";
 	}
 	
+	//
+	public static interface USER_INFO {
+		//
+		public static final String NO = "no";
+		//
+		public static final int NO_MAX = 32;
+		//
+		public static final String NICK_NAME = "nick_name";
+		//
+		public static final int NICK_NAME_MAX = 32;
+		//
+		public static final String STATE = "state";
+		//
+		public static final int STATE_MAX = 20;
+		//
+		public static final String SEX = "sex";
+		//
+		public static final int SEX_MAX = 2;
+		//
+		public static final String LOGIN_STATE = "login_state";
+		//
+		public static final int LOGIN_STATE_MAX = 10;
+		//
+		public static final String EMAIL_STATE = "email_state";
+		//
+		public static final int EMAIL_STATE_MAX = 10;
+		//
+		public static final String MOBILE_STATE = "mobile_state";
+		//
+		public static final int MOBILE_STATE_MAX = 10;
+		//
+		public static final String PASSWD = "passwd";
+		//
+		public static final int PASSWD_MAX = 64;
+		//
+		public static final String PASSWD_ERR_COUNT = "passwd_err_count";
+		//
+		public static final String REGIST_DATE = "regist_date";
+		//
+		public static final int REGIST_DATE_MAX = 10;
+		//
+		public static final String ACTIVE_DATE = "active_date";
+		//
+		public static final int ACTIVE_DATE_MAX = 10;
+		//
+		public static final String AUTH_DATE = "auth_date";
+		//
+		public static final int AUTH_DATE_MAX = 10;
+		//
+		public static final String MOBILE = "mobile";
+		//
+		public static final int MOBILE_MAX = 16;
+		//
+		public static final String EMAIL = "email";
+		//
+		public static final int EMAIL_MAX = 64;
+		//
+		public static final String REAL_NAME = "real_name";
+		//
+		public static final int REAL_NAME_MAX = 64;
+		//
+		public static final String BIRTH_DATE = "birth_date";
+		//
+		public static final int BIRTH_DATE_MAX = 10;
+		//
+		public static final String POST_CODE = "post_code";
+		//
+		public static final int POST_CODE_MAX = 10;
+		//
+		public static final String PROVINCE_CODE = "province_code";
+		//
+		public static final int PROVINCE_CODE_MAX = 10;
+		//
+		public static final String CITY_CODE = "city_code";
+		//
+		public static final int CITY_CODE_MAX = 10;
+		//
+		public static final String COUNTY_CODE = "county_code";
+		//
+		public static final int COUNTY_CODE_MAX = 10;
+		//
+		public static final String STREET_INFO = "street_info";
+		//
+		public static final int STREET_INFO_MAX = 128;
+		//
+		public static final String GMT_CREATE = "gmt_create";
+		//
+		public static final String GMT_MODIFY = "gmt_modify";
+	}
+	
 }

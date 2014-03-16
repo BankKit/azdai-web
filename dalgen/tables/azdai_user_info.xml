@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<table sqlname="azdai_user_info" ticket="false" valve="false">
+	<!-- 参考文档: http://mybatis.github.io/mybatis-3/sqlmap-xml.html -->
+	
+    <!-- ========================================== -->
+	<!-- INSERT操作 -->
+	<!-- ========================================== -->
+	<operation name="insert">
+		<description>新增记录</description>
+		<sql>
+			INSERT INTO azdai_user_info(
+				no, nick_name, state, sex, login_state, email_state, mobile_state, passwd, passwd_err_count, regist_date, active_date, auth_date, mobile, email, real_name, birth_date, post_code, province_code, city_code, county_code, street_info, gmt_create, gmt_modify
+			) VALUES(
+				?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+			)
+		</sql>
+		<sqlmap>
+			INSERT INTO azdai_user_info(
+				no, nick_name, state, sex, login_state, email_state, mobile_state, passwd, passwd_err_count, regist_date, active_date, auth_date, mobile, email, real_name, birth_date, post_code, province_code, city_code, county_code, street_info, gmt_create, gmt_modify
+			) VALUES(
+				#{no}, #{nickName}, #{state}, #{sex}, #{loginState}, #{emailState}, #{mobileState}, #{passwd}, #{passwdErrCount}, #{registDate}, #{activeDate}, #{authDate}, #{mobile}, #{email}, #{realName}, #{birthDate}, #{postCode}, #{provinceCode}, #{cityCode}, #{countyCode}, #{streetInfo}, {{DB_NOW}}, {{DB_NOW}}
+			)
+		</sqlmap>
+	</operation>
+	
+	<!-- ========================================== -->
+	<!-- UPDATE操作 -->
+	<!-- ========================================== -->
+	<operation name="update" paramtype="object">
+		<description>更新记录</description>
+		<sql>
+			UPDATE azdai_user_info SET
+				state=?, sex=?, login_state=?, email_state=?, mobile_state=?, passwd=?, passwd_err_count=?, regist_date=?, active_date=?, auth_date=?, mobile=?, email=?, real_name=?, birth_date=?, post_code=?, province_code=?, city_code=?, county_code=?, street_info=?, gmt_modify='NOW'
+			WHERE
+				no=?
+		</sql>
+		<sqlmap>
+			UPDATE azdai_user_info SET
+				state=#{state}, sex=#{sex}, login_state=#{loginState}, email_state=#{emailState}, mobile_state=#{mobileState}, passwd=#{passwd}, passwd_err_count=#{passwdErrCount}, regist_date=#{registDate}, active_date=#{activeDate}, auth_date=#{authDate}, mobile=#{mobile}, email=#{email}, real_name=#{realName}, birth_date=#{birthDate}, post_code=#{postCode}, province_code=#{provinceCode}, city_code=#{cityCode}, county_code=#{countryCode}, street_info=#{streetInfo}, gmt_modify={{DB_NOW}}
+			WHERE
+				no=#{no}
+		</sqlmap>
+	</operation>
+	
+	<operation name="updatePassword">
+		<description>更新用户密码</description>
+		<extraparams>
+			<param name="no" javatype="java.lang.String" />
+			<param name="passwd" javatype="java.lang.String" />
+		</extraparams>
+		<sql>
+			UPDATE azdai_user_info SET
+				passwd='PWD', gmt_modify='NOW'
+			WHERE
+				no='NO'
+		</sql>
+		<sqlmap>
+			UPDATE azdai_user_info SET
+				passwd=#{passwd}, gmt_modify={{DB_NOW}}
+			WHERE
+				no=#{no}
+		</sqlmap>
+	</operation>
+	
+	<operation name="increasePasswdErrCount">
+		<description>增加密码错误次数</description>
+		<extraparams>
+			<param name="no" javatype="java.lang.String" />
+		</extraparams>
+		<sql>
+			UPDATE azdai_user_info SET
+				passwd_err_count='PEC', gmt_modify='NOW'
+			WHERE
+				no='NO'
+		</sql>
+		<sqlmap>
+			UPDATE azdai_user_info SET
+				passwd_err_count=passwd_err_count+1, gmt_modify={{DB_NOW}}
+			WHERE
+				no=#{no}
+		</sqlmap>
+	</operation>
+	
+	<operation name="clearPasswdErrCount">
+		<description>清理密码错误次数</description>
+		<extraparams>
+			<param name="no" javatype="java.lang.String" />
+		</extraparams>
+		<sql>
+			UPDATE azdai_user_info SET
+				passwd_err_count='PEC', gmt_modify='NOW'
+			WHERE
+				no='NO'
+		</sql>
+		<sqlmap>
+			UPDATE azdai_user_info SET
+				passwd_err_count='0', gmt_modify={{DB_NOW}}
+			WHERE
+				no=#{no}
+		</sqlmap>
+	</operation>
+	
+	<!-- ========================================== -->
+	<!-- SELECT操作 -->
+	<!-- ========================================== -->
+	<operation name="findByNo" multiplicity="one">
+		<description>查询单条记录</description>
+		<sql>
+			SELECT * FROM azdai_user_info WHERE no=?
+		</sql>
+	</operation>
+	
+	<operation name="findByLoginName" multiplicity="one">
+		<description>查询单条记录</description>
+		<extraparams>
+			<param name="name" javatype="java.lang.String" />
+		</extraparams>
+		<sql>
+			SELECT * FROM azdai_user_info WHERE (nick_name='LN' OR email='EM' OR mobile='MB')
+		</sql>
+		<sqlmap>
+			SELECT * FROM azdai_user_info WHERE (nick_name=#{name} OR email=#{name} OR mobile=#{name})
+		</sqlmap>
+	</operation>
+	
+	<operation name="findByEmail" multiplicity="one">
+		<description>查询单条记录</description>
+		<sql>
+			SELECT * FROM azdai_user_info WHERE email=?
+		</sql>
+	</operation>
+	
+	<operation name="findByNickName" multiplicity="one">
+		<description>查询单条记录</description>
+		<sql>
+			SELECT * FROM azdai_user_info WHERE nick_name=?
+		</sql>
+	</operation>
+	    
+    <operation name="findAll" multiplicity="many">
+		<description>查询所有记录</description>
+		<sql>
+			SELECT * FROM azdai_user_info ORDER BY no ASC
+		</sql>
+	</operation>
+    
+    <!-- ========================================== -->
+	<!-- DELETE操作 -->
+	<!-- ========================================== -->
+	
+    <operation name="delete">
+		<description>删除单条记录</description>
+		<sql>
+			DELETE FROM azdai_user_info WHERE no=?
+		</sql>
+	</operation>
+
+</table>

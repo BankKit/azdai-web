@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" default-autowire="byName">
+
+	<bean id="abstractDAO" abstract="true">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- ===================================== -->
+	<!-- 统一ID配置 -->
+	<!-- ===================================== -->
+	<bean id="abstractTicket" abstract="true">
+		<property name="ticketDAO">
+			<bean class="com.github.obullxl.ticket.support.DefaultTicketDAO" init-method="init">
+				<property name="dataSource" ref="azdaiDataSource" />
+				<property name="retryTimes" value="5" />
+				<property name="tableName" value="atom_ticket" />
+				<property name="nameColumnName" value="name" />
+				<property name="versionColumnName" value="version" />
+				<property name="stepColumnName" value="step" />
+				<property name="valueColumnName" value="ticket" />
+				<property name="minvColumnName" value="minv" />
+				<property name="maxvColumnName" value="maxv" />
+				<property name="cycleColumnName" value="cycle" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="userTicketService" class="com.github.obullxl.ticket.support.DefaultTicketService" parent="abstractTicket">
+		<property name="name" value="TB-UserInfo-ID" />
+	</bean>
+
+	<!-- ===================================== -->
+	<!-- 日志拦截器 -->
+	<!-- ===================================== -->
+	<bean id="log4jdbcTool" class="com.github.obullxl.lang.spring.PropertiesBean">
+		<property name="props">
+			<map>
+				<entry key="log4jdbc.dump.sql.maxlinelength" value="0" />
+				<entry key="log4jdbc.dump.sql.addsemicolon" value="true" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="log4jdbcInterceptor" class="net.sf.log4jdbc.DataSourceSpyInterceptor" depends-on="log4jdbcTool" />
+	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="interceptorNames">
+			<list>
+				<value>log4jdbcInterceptor</value>
+			</list>
+		</property>
+		<property name="beanNames">
+			<list>
+				<value>azdaiDataSource</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>

@@ -139,6 +139,22 @@ public interface ForumTopicDAO extends BaseDAO {
     public int updateReplyDelta(long id, int delta) throws DataAccessException;
 
 	/**
+	 *  Update DB table <tt>azdai_forum_topic</tt>.
+	 *
+	 *  <p>
+	 *  The sql statement for this operation is <br>
+	 *  <tt>update azdai_forum_topic set reply_count='RC', reply_user_no='RUN', reply_nick_name='RNN', gmt_modify='NOW' where (id = 'ID')</tt>
+	 *
+	 *	@param id
+	 *	@param replyDelta
+	 *	@param replyUserNo
+	 *	@param replyNickName
+	 *	@return int
+	 *	@throws DataAccessException
+	 */	 
+    public int updateReplyInfo(long id, int replyDelta, String replyUserNo, String replyNickName) throws DataAccessException;
+
+	/**
 	 *  Query DB table <tt>azdai_forum_topic</tt> for records.
 	 *
 	 *  <p>
@@ -170,21 +186,6 @@ public interface ForumTopicDAO extends BaseDAO {
 	 *
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>select * from azdai_forum_topic where ((catg = 'CATG') AND (state = 'STATE') AND (top_flag = 'TF'))</tt>
-	 *
-	 *	@param catg
-	 *	@param state
-	 *	@param topFlag
-	 *	@return List<ForumTopicDTO>
-	 *	@throws DataAccessException
-	 */	 
-    public List<ForumTopicDTO> findByGlobalTops(String catg, String state, String topFlag) throws DataAccessException;
-
-	/**
-	 *  Query DB table <tt>azdai_forum_topic</tt> for records.
-	 *
-	 *  <p>
-	 *  The sql statement for this operation is <br>
 	 *  <tt>select * from azdai_forum_topic where ((forum = 'FORUM') AND (catg = 'CATG') AND (state = 'STATE') AND (top_flag = 'TF'))</tt>
 	 *
 	 *	@param forum
@@ -194,7 +195,71 @@ public interface ForumTopicDAO extends BaseDAO {
 	 *	@return List<ForumTopicDTO>
 	 *	@throws DataAccessException
 	 */	 
-    public List<ForumTopicDTO> findByForumTops(String forum, String catg, String state, String topFlag) throws DataAccessException;
+    public List<ForumTopicDTO> findTopTopics(String forum, String catg, String state, String topFlag) throws DataAccessException;
+
+	/**
+	 *  Query DB table <tt>azdai_forum_topic</tt> for records.
+	 *
+	 *  <p>
+	 *  The sql statement for this operation is <br>
+	 *  <tt>select * from azdai_forum_topic where ((forum = 'FORUM') AND (catg = 'CATG') AND (state = 'STATE') AND (top_flag = 'TF'))</tt>
+	 *
+	 *	@param offset
+	 *	@param pageSize
+	 *	@param forum
+	 *	@param catg
+	 *	@param state
+	 *	@param topFlag
+	 *	@return List<ForumTopicDTO>
+	 *	@throws DataAccessException
+	 */	 
+    public List<ForumTopicDTO> findNormalTopics(int offset, int pageSize, String forum, String catg, String state, String topFlag) throws DataAccessException;
+
+	/**
+	 *  Query DB table <tt>azdai_forum_topic</tt> for records.
+	 *
+	 *  <p>
+	 *  The sql statement for this operation is <br>
+	 *  <tt>select COUNT(*) from azdai_forum_topic where ((forum = 'FORUM') AND (catg = 'CATG') AND (state = 'STATE') AND (top_flag = 'TF'))</tt>
+	 *
+	 *	@param forum
+	 *	@param catg
+	 *	@param state
+	 *	@param topFlag
+	 *	@return long
+	 *	@throws DataAccessException
+	 */	 
+    public long findNormalTopicCount(String forum, String catg, String state, String topFlag) throws DataAccessException;
+
+	/**
+	 *  Query DB table <tt>azdai_forum_topic</tt> for records.
+	 *
+	 *  <p>
+	 *  The sql statement for this operation is <br>
+	 *  <tt>select * from azdai_forum_topic where ((catg = 'CATG') AND (topic = 'TOPIC'))</tt>
+	 *
+	 *	@param offset
+	 *	@param pageSize
+	 *	@param catg
+	 *	@param topic
+	 *	@return List<ForumTopicDTO>
+	 *	@throws DataAccessException
+	 */	 
+    public List<ForumTopicDTO> findTopicView(int offset, int pageSize, String catg, long topic) throws DataAccessException;
+
+	/**
+	 *  Query DB table <tt>azdai_forum_topic</tt> for records.
+	 *
+	 *  <p>
+	 *  The sql statement for this operation is <br>
+	 *  <tt>select COUNT(*) from azdai_forum_topic where ((catg = 'CATG') AND (topic = 'TOPIC'))</tt>
+	 *
+	 *	@param catg
+	 *	@param topic
+	 *	@return long
+	 *	@throws DataAccessException
+	 */	 
+    public long findTopicViewCount(String catg, long topic) throws DataAccessException;
 
 	/**
 	 *  Query DB table <tt>azdai_forum_topic</tt> for records.
@@ -217,10 +282,10 @@ public interface ForumTopicDAO extends BaseDAO {
 	 *  <tt>select COUNT(*) from azdai_forum_topic where (forum = 'FUZZY')</tt>
 	 *
 	 *	@param args
-	 *	@return List<Long>
+	 *	@return long
 	 *	@throws DataAccessException
 	 */	 
-    public List<Long> findFuzzyCount(ForumTopicQuery args) throws DataAccessException;
+    public long findFuzzyCount(ForumTopicQuery args) throws DataAccessException;
 
 	/**
 	 *  Delete records from DB table <tt>azdai_forum_topic</tt>.

@@ -1,0 +1,109 @@
+#set($title="新用户免费注册")
+#set($navbar="regist")
+<div class="container">
+	<div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+			<li>安众贷会员登录</li>
+        </ol>
+    </div>
+</div>
+<div class="container">
+		<div class="col-md-6">
+		<div class="panel panel-primary">
+            <div class="panel-heading"><strong><i class="glyphicon glyphicon-upload"></i> 已有账号登陆</strong></div>
+			<div class="panel-body">
+				<form id="form-user-login" role="form" method="post" #MarginBottomNO()>
+                    <div class="form-group">
+                        <label for="loginName" class="col-md-3">用户名：</label>
+                        <div class="col-md-8">
+    						<input id="loginName" name="loginName" type="text" min="3" maxlength="64" class="form-control" required="required" placeholder="用户名" />
+							<span class="help-block">可以为注册用户名、手机号、电子邮箱！</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwd" class="col-md-3">登录密码：</label>
+                        <div class="col-md-8">
+    						<input id="passwd" name="passwd" type="password" min="6" maxlength="32" class="form-control" required="required" placeholder="登录密码" />
+                            <span class="help-block">请输入6-32位登录密码！</span>
+                        </div>
+                    </div>
+					<!--
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-8">
+                            <div class="checkbox">
+                                <label>
+            						<input type="checkbox" /> 记住登录用户名
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+					-->
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-4">
+							<button type="submit" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-upload"></i> 登录系统</button>
+                        </div>
+                    </div>
+				</form>
+			</div>
+        </div>
+    </div>
+	
+	<div class="col-xs-12 col-sm-12 col-md-6">
+		<div class="panel panel-success">
+            <div class="panel-heading">
+				<div class="panel-title">
+					<strong><i class="glyphicon glyphicon-upload"></i> 新用户免费注册</strong>
+				</div>
+            </div>
+			<div class="panel-body">还不是<kbd>安众贷</kbd>会员？快速免费 <a href="$ctx/home/regist.htm" class="text-xxlg">注册</a> ！！</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+/** 焦点 */
+$("#loginName").focus();
+
+/** 用户登录 */
+$("#form-user-login").submit(function(e) {
+	e.preventDefault();
+
+	var loginName = $("#loginName").val();
+	if(loginName.length < 3 || loginName.length > 64) {
+		window.alert("登录名长度输入非法，长度必须在3和64之间，请重新输入！！");
+		$("#loginName").focus();
+		return false;
+	}
+	
+	var passwd = $("#passwd").val();
+	if(passwd.length < 6 || passwd.length > 32) {
+		window.alert("用户密码长度输入非法，长度必须在6和32之间，请重新输入！！");
+		$("#passwd").focus();
+		return false;
+	}
+	
+	jQuery.ajax({
+		type: "POST",
+		dataType: "json",
+		url: "$ctx/user-login.htm",
+		data: $("#form-user-login").serialize(),
+
+		success: function(result) {
+			if(result.success) {
+				window.alert("会员登录成功，欢迎光临安众社区！！");
+				var url = "$ctx/forum/index.htm";
+				if(result.bizData && result.bizData["url.login.goto"]) {
+					url = result.bizData["url.login.goto"];
+				}
+				
+				top.location.href = url;
+			} else {
+				AZD.alert(result.respDesp, "失败提示");
+			}
+		}
+	});
+});
+//
+});
+</script>

@@ -1,0 +1,128 @@
+#set($title="新用户免费注册")
+#set($navbar="regist")
+<div class="container">
+	<div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+			<li>新用户免费注册</li>
+        </ol>
+    </div>
+</div>
+<div class="container">
+	<div class="col-xs-12 col-sm-12 col-md-6">
+		<div class="panel panel-primary">
+            <div class="panel-heading">
+				<div class="panel-title">
+					<strong><i class="glyphicon glyphicon-plus-sign"></i> 新用户注册</strong>
+				</div>
+            </div>
+			<div class="panel-body">
+				<form id="form-user-regist" role="form" method="post">
+                    <div class="form-group">
+                        <label for="nickName" class="col-md-3">用户名：</label>
+                        <div class="col-md-8">
+    						<input id="nickName" name="nickName" type="text" min="3" maxlength="16" class="form-control" required="required" placeholder="用户名（1个汉字占2位字符）" />
+							<span class="help-block">请输入3-16位字符，注册后不可更改！</span>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label for="email" class="col-md-3">电子邮箱：</label>
+                        <div class="col-md-8">
+    						<input id="email" name="email" type="email" min="6" maxlength="64" class="form-control" required="required" placeholder="test@anzhongdai.com" />
+							<span class="help-block">请输入有效邮箱，以便密码找回！</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwd" class="col-md-3">登录密码：</label>
+                        <div class="col-md-8">
+    						<input id="passwd" name="passwd" type="password" min="8" maxlength="32" class="form-control" required="required" placeholder="登录密码" />
+                            <span class="help-block">请输入6-32位字符组成的密码！</span>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <label for="repeatPasswd" class="col-md-3">确认登录密码：</label>
+                        <div class="col-md-8">
+    						<input id="repeatPasswd" name="repeatPasswd" type="password" min="8" maxlength="32" class="form-control" required="required" placeholder="重复登录密码" />
+                            <span class="help-block">请再次输入6-32位登录密码！</span>
+                        </div>
+                    </div>
+					<!--
+					<div class="form-group">
+                        <div class="col-md-offset-3 col-md-8">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" /> 我已阅读并完全同意《<a href="#" target="_blank"><strong>服务条款</strong></a>》！
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+					-->
+                    <div class="form-group" #MarginBottomNO()>
+                        <div class="col-md-offset-3 col-md-8">
+							<button type="submit" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> 提交注册信息</button>
+                        </div>
+                    </div>
+				</form>
+			</div>
+        </div>
+    </div>
+	<div class="col-xs-12 col-sm-12 col-md-6">
+		<div class="panel panel-success">
+            <div class="panel-heading">
+				<div class="panel-title">
+					<strong><i class="glyphicon glyphicon-upload"></i> 已有账号登陆</strong>
+				</div>
+            </div>
+			<div class="panel-body">已经是<kbd>安众贷</kbd>的会员？快速 <a href="$ctx/home/login.htm" class="text-xxlg">登录</a> ！！</div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+/** 焦点 */
+$("#nickName").focus();
+
+/** 用户注册 */
+$("#form-user-regist").submit(function(e) {
+	e.preventDefault();
+
+	var nickName = $("#nickName").val();
+	if(nickName.length < 3 || nickName.length > 16) {
+		window.alert("用户名长度输入非法，长度必须在3和16之间，请重新输入！！");
+		$("#nickName").focus();
+		return false;
+	}
+	
+	var passwd = $("#passwd").val();
+	if(passwd.length < 6 || passwd.length > 32) {
+		window.alert("用户密码长度输入非法，长度必须在6和32之间，请重新输入！！");
+		$("#passwd").focus();
+		return false;
+	}
+	
+	if(passwd != $("#repeatPasswd").val()) {
+		window.alert("登录密码2次输入不相等，请重新输入！！");
+		$("#repeatPasswd").focus();
+		return false;
+	}
+	
+	jQuery.ajax({
+		type: "POST",
+		dataType: "json",
+		url: "$ctx/user-regist.htm",
+		data: $("#form-user-regist").serialize(),
+
+		success: function(result) {
+			if(result.success) {
+                // AZD.modal("恭喜，会员注册成功，请 <a href='$ctx/login.htm'>登录</a> 系统！！", "成功提示");
+				window.alert("恭喜，会员注册成功，请登录系统！！");
+				top.location.href = "$ctx/login.htm";
+			} else {
+				AZD.alert(result.respDesp, "失败提示");
+			}
+		}
+	});
+});
+//
+});
+</script>
