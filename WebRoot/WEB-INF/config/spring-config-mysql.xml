@@ -11,7 +11,7 @@
 			<value>com.mysql.jdbc.Driver</value>
 		</property>
 		<property name="url">
-			<value>jdbc:mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/azdai?useUnicode=true&amp;characterEncoding=UTF8&amp;autoReconnect=true</value>
+			<value>jdbc:mysql://127.5.191.130:3306/azdai?useUnicode=true&amp;characterEncoding=UTF8&amp;autoReconnect=true</value>
 		</property>
 		<property name="username">
 			<value>adminP6PIgWS</value>
