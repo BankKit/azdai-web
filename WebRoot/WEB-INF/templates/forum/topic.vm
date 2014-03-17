@@ -35,11 +35,13 @@
 						</td>
                         <td><strong>$topic.title</strong></td>
                     </tr>
-					<tr>
+					<tr>#set($postUser=$UserWebX.findUserByNo($topic.postUserNo))
                         <td class="info">
                             <div class="text-center"><strong><i class="glyphicon glyphicon-user"></i> $topic.postNickName</strong></div>
 							<p/>
-							<div class="text-center"><img src="$ctx$UserWebX.findUserAvatar($topic.postUserNo)" width="120px" height="120px" /></div>
+							<div class="text-center"><img src="$ctx$UserWebX.findUserAvatar($postUser)" width="120px" height="120px" /></div>
+							<p/>
+                            <div class="text-center"><strong>注册日期：</strong>$postUser.registDate</div>
 						</td>
                         <td>
                             <div><i class="glyphicon glyphicon-calendar"></i> 发表于：$DateUtils.toStringDL($topic.gmtPost)</div>
@@ -52,14 +54,16 @@
         </div>
 		#set($pageList=$topicView.pageList)
 		#foreach($topic in $pageList.items)
-		<div class="panel panel-info">
+		<div class="panel panel-primary">
             <table class="table table-bordered" #MarginBottomNO()>
                 <tbody>
-					<tr>
+					<tr>#set($replyUser=$UserWebX.findUserByNo($topic.replyUserNo))
                         <td class="col-md-3 active">
                             <div class="text-center"><strong><i class="glyphicon glyphicon-user"></i> $topic.replyNickName</strong></div>
 							<p/>
-							<div class="text-center"><img src="$ctx$UserWebX.findUserAvatar($topic.replyUserNo)" width="120px" height="120px" /></div>
+							<div class="text-center"><img src="$ctx$UserWebX.findUserAvatar($replyUser)" width="120px" height="120px" /></div>
+							<p/>
+                            <div class="text-center"><strong>注册日期：</strong>$replyUser.registDate</div>
 						</td>
                         <td>
                             <div><i class="glyphicon glyphicon-calendar"></i> 发表于：$DateUtils.toStringDL($topic.gmtReply)<span class="pull-right">#$UtilWebX.findReplyNo($page, $velocityCount)</span></div>

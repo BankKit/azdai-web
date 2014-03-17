@@ -2,7 +2,7 @@
  * Author: obullxl@gmail.com
  * Copyright (c) 2004-2013 All Rights Reserved.
  */
-package com.github.obullxl.jeesite.web.servlet;
+package com.azdai.core.web.servlet;
 
 import java.io.File;
 

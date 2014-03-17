@@ -2,20 +2,17 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="CrawlDTO" type="com.azdai.core.das.dal.dto.CrawlDTO"/>
 		<typeAlias alias="ForumInfoDTO" type="com.azdai.core.das.dal.dto.ForumInfoDTO"/>
 		<typeAlias alias="ForumTopicDTO" type="com.azdai.core.das.dal.dto.ForumTopicDTO"/>
 		<typeAlias alias="ForumUserDTO" type="com.azdai.core.das.dal.dto.ForumUserDTO"/>
-		<typeAlias alias="ImageDTO" type="com.azdai.core.das.dal.dto.ImageDTO"/>
 		<typeAlias alias="UserInfoDTO" type="com.azdai.core.das.dal.dto.UserInfoDTO"/>
 	</typeAliases>
 
 	<mappers>
-		<mapper resource="mybatis/azdai/sqlite/Crawl-mapper.xml" />
+		<mapper resource="mybatis/mybatis-azdai-result-maps.xml" />
 		<mapper resource="mybatis/azdai/sqlite/ForumInfo-mapper.xml" />
 		<mapper resource="mybatis/azdai/sqlite/ForumTopic-mapper.xml" />
 		<mapper resource="mybatis/azdai/sqlite/ForumUser-mapper.xml" />
-		<mapper resource="mybatis/azdai/sqlite/Image-mapper.xml" />
 		<mapper resource="mybatis/azdai/sqlite/UserInfo-mapper.xml" />
 	</mappers>
 </configuration>

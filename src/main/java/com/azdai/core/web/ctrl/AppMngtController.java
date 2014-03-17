@@ -2,7 +2,7 @@
  * Author: obullxl@gmail.com
  * Copyright (c) 2004-2014 All Rights Reserved.
  */
-package com.github.obullxl.jeesite.web.controller;
+package com.azdai.core.web.ctrl;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -46,7 +46,7 @@ public class AppMngtController extends AbstractController {
             super.setWebData("apps", apps.listFiles());
         }
 
-        return this.toFrontView("app");
+        return this.toHomeView("app");
     }
 
     /**

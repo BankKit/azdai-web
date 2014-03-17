@@ -40,6 +40,9 @@ public class UserInfoModel extends AbstractModel {
     /** 电子邮箱 */
     private String            email;
 
+    /** 头像地址 */
+    private String            avatar;
+
     public String getNo() {
         return no;
     }
@@ -102,6 +105,14 @@ public class UserInfoModel extends AbstractModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
 }

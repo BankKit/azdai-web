@@ -1,36 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="AZDAI-FORUM-TOPIC">
-    <!-- ============================================= -->
-    <!-- RESULT MAPS                                   -->
-    <!-- ============================================= -->
-    
-    <!-- result maps for database table azdai_forum_topic -->
-    <resultMap id="RM-FORUM-TOPIC" type="ForumTopicDTO">
-        <result property="id" column="id" javaType="long" />
-        <result property="catg" column="catg" javaType="java.lang.String" />
-        <result property="forum" column="forum" javaType="java.lang.String" />
-        <result property="state" column="state" javaType="java.lang.String" />
-        <result property="topFlag" column="top_flag" javaType="java.lang.String" />
-        <result property="eliteFlag" column="elite_flag" javaType="java.lang.String" />
-        <result property="replyFlag" column="reply_flag" javaType="java.lang.String" />
-        <result property="topic" column="topic" javaType="long" />
-        <result property="postUserNo" column="post_user_no" javaType="java.lang.String" />
-        <result property="postNickName" column="post_nick_name" javaType="java.lang.String" />
-        <result property="gmtPost" column="gmt_post" javaType="java.util.Date" />
-        <result property="visitCount" column="visit_count" javaType="int" />
-        <result property="replyCount" column="reply_count" javaType="int" />
-        <result property="replyUserNo" column="reply_user_no" javaType="java.lang.String" />
-        <result property="replyNickName" column="reply_nick_name" javaType="java.lang.String" />
-        <result property="gmtReply" column="gmt_reply" javaType="java.util.Date" />
-        <result property="style" column="style" javaType="java.lang.String" />
-        <result property="title" column="title" javaType="java.lang.String" />
-        <result property="content" column="content" javaType="java.lang.String" />
-        <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
-        <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
-    </resultMap>
-
-
 	<!-- ============================================= -->
     <!-- Public SQLS                                   -->
     <!-- ============================================= -->
@@ -188,14 +158,14 @@
     </update>
 
     <!-- mapped statement for MyBatisForumTopicDAO.find -->
-    <select id="find" resultMap="RM-FORUM-TOPIC" >
+    <select id="find" resultMap="RMS.RM-FORUM-TOPIC" >
     <![CDATA[
         select * from azdai_forum_topic where (id = #{value})
     ]]>
     </select>
 
     <!-- mapped statement for MyBatisForumTopicDAO.findByTopic -->
-    <select id="findByTopic" resultMap="RM-FORUM-TOPIC" >
+    <select id="findByTopic" resultMap="RMS.RM-FORUM-TOPIC" >
         SELECT 				<include refid="forum-topic-fields"/>
 			FROM
 				azdai_forum_topic
@@ -206,7 +176,7 @@
     </select>
 
     <!-- mapped statement for MyBatisForumTopicDAO.findTopTopics -->
-    <select id="findTopTopics" resultMap="RM-FORUM-TOPIC" >
+    <select id="findTopTopics" resultMap="RMS.RM-FORUM-TOPIC" >
         SELECT 				<include refid="forum-topic-fields"/>
 			FROM
 				azdai_forum_topic
@@ -220,7 +190,7 @@
     </select>
 
     <!-- mapped statement for MyBatisForumTopicDAO.findNormalTopics -->
-    <select id="findNormalTopics" resultMap="RM-FORUM-TOPIC" >
+    <select id="findNormalTopics" resultMap="RMS.RM-FORUM-TOPIC" >
         SELECT 				<include refid="forum-topic-fields"/>
 			FROM
 				azdai_forum_topic
@@ -241,7 +211,7 @@
     </select>
 
     <!-- mapped statement for MyBatisForumTopicDAO.findTopicView -->
-    <select id="findTopicView" resultMap="RM-FORUM-TOPIC" >
+    <select id="findTopicView" resultMap="RMS.RM-FORUM-TOPIC" >
         SELECT 				*
 			FROM
 				azdai_forum_topic
@@ -262,7 +232,7 @@
     </select>
 
     <!-- mapped statement for MyBatisForumTopicDAO.findFuzzy -->
-    <select id="findFuzzy" resultMap="RM-FORUM-TOPIC" >
+    <select id="findFuzzy" resultMap="RMS.RM-FORUM-TOPIC" >
         SELECT 				<include refid="forum-topic-fields"/>
 			FROM
 				azdai_forum_topic

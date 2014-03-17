@@ -66,19 +66,19 @@ public class ForumWebX implements WebX {
     public ForumTopicView findTopicView(int page, long id) {
         return this.forumMngt.findTopicView(page, id);
     }
-    
+
     /**
      * 获取论坛公告主贴
      */
     public List<ForumTopicModel> findGlobalTopTopics() {
-        return this.forumMngt.findGlobalTopTopics(ForumTopicCatgEnum.TOPIC, ForumTopicStateEnum.ACTIVE, ForumTopicTopEnum.GLOBAL);
+        return this.forumMngt.findGlobalTopTopics();
     }
 
     /**
      * 获取论坛置顶主贴
      */
     public List<ForumTopicModel> findForumTopTopics(String forum) {
-        return this.forumMngt.findForumTopTopics(forum, ForumTopicCatgEnum.TOPIC, ForumTopicStateEnum.ACTIVE, ForumTopicTopEnum.FORUM);
+        return this.forumMngt.findForumTopTopics(forum);
     }
 
     /**

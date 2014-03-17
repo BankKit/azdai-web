@@ -10,16 +10,16 @@
 		<description>新增记录</description>
 		<sql>
 			INSERT INTO azdai_user_info(
-				no, nick_name, state, sex, login_state, email_state, mobile_state, passwd, passwd_err_count, regist_date, active_date, auth_date, mobile, email, real_name, birth_date, post_code, province_code, city_code, county_code, street_info, gmt_create, gmt_modify
+				no, nick_name, state, sex, login_state, email_state, mobile_state, passwd, passwd_err_count, regist_date, active_date, auth_date, mobile, email, real_name, avatar, birth_date, post_code, province_code, city_code, county_code, street_info, gmt_create, gmt_modify
 			) VALUES(
-				?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+				?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
 			)
 		</sql>
 		<sqlmap>
 			INSERT INTO azdai_user_info(
-				no, nick_name, state, sex, login_state, email_state, mobile_state, passwd, passwd_err_count, regist_date, active_date, auth_date, mobile, email, real_name, birth_date, post_code, province_code, city_code, county_code, street_info, gmt_create, gmt_modify
+				no, nick_name, state, sex, login_state, email_state, mobile_state, passwd, passwd_err_count, regist_date, active_date, auth_date, mobile, email, real_name, avatar, birth_date, post_code, province_code, city_code, county_code, street_info, gmt_create, gmt_modify
 			) VALUES(
-				#{no}, #{nickName}, #{state}, #{sex}, #{loginState}, #{emailState}, #{mobileState}, #{passwd}, #{passwdErrCount}, #{registDate}, #{activeDate}, #{authDate}, #{mobile}, #{email}, #{realName}, #{birthDate}, #{postCode}, #{provinceCode}, #{cityCode}, #{countyCode}, #{streetInfo}, {{DB_NOW}}, {{DB_NOW}}
+				#{no}, #{nickName}, #{state}, #{sex}, #{loginState}, #{emailState}, #{mobileState}, #{passwd}, #{passwdErrCount}, #{registDate}, #{activeDate}, #{authDate}, #{mobile}, #{email}, #{realName}, #{avatar}, #{birthDate}, #{postCode}, #{provinceCode}, #{cityCode}, #{countyCode}, #{streetInfo}, {{DB_NOW}}, {{DB_NOW}}
 			)
 		</sqlmap>
 	</operation>
@@ -31,13 +31,13 @@
 		<description>更新记录</description>
 		<sql>
 			UPDATE azdai_user_info SET
-				state=?, sex=?, login_state=?, email_state=?, mobile_state=?, passwd=?, passwd_err_count=?, regist_date=?, active_date=?, auth_date=?, mobile=?, email=?, real_name=?, birth_date=?, post_code=?, province_code=?, city_code=?, county_code=?, street_info=?, gmt_modify='NOW'
+				state=?, sex=?, login_state=?, email_state=?, mobile_state=?, passwd=?, passwd_err_count=?, regist_date=?, active_date=?, auth_date=?, mobile=?, email=?, real_name=?, avatar=?, birth_date=?, post_code=?, province_code=?, city_code=?, county_code=?, street_info=?, gmt_modify='NOW'
 			WHERE
 				no=?
 		</sql>
 		<sqlmap>
 			UPDATE azdai_user_info SET
-				state=#{state}, sex=#{sex}, login_state=#{loginState}, email_state=#{emailState}, mobile_state=#{mobileState}, passwd=#{passwd}, passwd_err_count=#{passwdErrCount}, regist_date=#{registDate}, active_date=#{activeDate}, auth_date=#{authDate}, mobile=#{mobile}, email=#{email}, real_name=#{realName}, birth_date=#{birthDate}, post_code=#{postCode}, province_code=#{provinceCode}, city_code=#{cityCode}, county_code=#{countryCode}, street_info=#{streetInfo}, gmt_modify={{DB_NOW}}
+				state=#{state}, sex=#{sex}, login_state=#{loginState}, email_state=#{emailState}, mobile_state=#{mobileState}, passwd=#{passwd}, passwd_err_count=#{passwdErrCount}, regist_date=#{registDate}, active_date=#{activeDate}, auth_date=#{authDate}, mobile=#{mobile}, email=#{email}, real_name=#{realName}, avatar=#{avatar}, birth_date=#{birthDate}, post_code=#{postCode}, province_code=#{provinceCode}, city_code=#{cityCode}, county_code=#{countryCode}, street_info=#{streetInfo}, gmt_modify={{DB_NOW}}
 			WHERE
 				no=#{no}
 		</sqlmap>

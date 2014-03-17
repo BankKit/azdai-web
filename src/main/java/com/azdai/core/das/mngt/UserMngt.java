@@ -18,12 +18,17 @@ public interface UserMngt {
      * 获取用户NO
      */
     public String findUserNo();
-    
+
     /**
      * 加密用户密码
      */
     public String findLoginPasswd(String plain);
-    
+
+    /**
+     * 获取用户模型
+     */
+    public UserInfoModel findByNo(String userNo);
+
     /**
      * 用户登录
      */
@@ -38,7 +43,7 @@ public interface UserMngt {
      * 获取用户信息
      */
     public UserInfoModel findByNickName(String nickName);
-    
+
     /**
      * 新增用户信息
      */

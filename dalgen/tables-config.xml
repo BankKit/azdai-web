@@ -11,9 +11,6 @@
     <tableprefix prefix="mplat" />
     <tableprefix prefix="azdai" />
 
-    <include table="tables/atom_crawl.xml" />
-    <include table="tables/atom_image.xml" />
-
     <include table="tables/azdai_forum_info.xml" />
     <include table="tables/azdai_forum_topic.xml" />
     <include table="tables/azdai_forum_user.xml" />

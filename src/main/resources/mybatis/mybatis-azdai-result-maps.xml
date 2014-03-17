@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RMS">
+    <!-- ============================================= -->
+    <!-- RESULT MAPS                                   -->
+    <!-- ============================================= -->
+    
+    <!-- result maps for database table azdai_forum_info -->
+    <resultMap id="RM-FORUM-INFO" type="ForumInfoDTO">
+        <result property="code" column="code" javaType="java.lang.String" />
+        <result property="sort" column="sort" javaType="java.lang.String" />
+        <result property="state" column="state" javaType="java.lang.String" />
+        <result property="openExt" column="open_ext" javaType="java.lang.String" />
+        <result property="title" column="title" javaType="java.lang.String" />
+        <result property="summary" column="summary" javaType="java.lang.String" />
+        <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
+        <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
+    </resultMap>
+
+    <!-- result maps for database table azdai_forum_topic -->
+    <resultMap id="RM-FORUM-TOPIC" type="ForumTopicDTO">
+        <result property="id" column="id" javaType="long" />
+        <result property="catg" column="catg" javaType="java.lang.String" />
+        <result property="forum" column="forum" javaType="java.lang.String" />
+        <result property="state" column="state" javaType="java.lang.String" />
+        <result property="topFlag" column="top_flag" javaType="java.lang.String" />
+        <result property="eliteFlag" column="elite_flag" javaType="java.lang.String" />
+        <result property="replyFlag" column="reply_flag" javaType="java.lang.String" />
+        <result property="topic" column="topic" javaType="long" />
+        <result property="postUserNo" column="post_user_no" javaType="java.lang.String" />
+        <result property="postNickName" column="post_nick_name" javaType="java.lang.String" />
+        <result property="gmtPost" column="gmt_post" javaType="java.util.Date" />
+        <result property="visitCount" column="visit_count" javaType="int" />
+        <result property="replyCount" column="reply_count" javaType="int" />
+        <result property="replyUserNo" column="reply_user_no" javaType="java.lang.String" />
+        <result property="replyNickName" column="reply_nick_name" javaType="java.lang.String" />
+        <result property="gmtReply" column="gmt_reply" javaType="java.util.Date" />
+        <result property="style" column="style" javaType="java.lang.String" />
+        <result property="title" column="title" javaType="java.lang.String" />
+        <result property="content" column="content" javaType="java.lang.String" />
+        <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
+        <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
+    </resultMap>
+
+    <!-- result maps for database table azdai_forum_user -->
+    <resultMap id="RM-FORUM-USER" type="ForumUserDTO">
+        <result property="forumCode" column="forum_code" javaType="java.lang.String" />
+        <result property="forumTitle" column="forum_title" javaType="java.lang.String" />
+        <result property="userNo" column="user_no" javaType="java.lang.String" />
+        <result property="nickName" column="nick_name" javaType="java.lang.String" />
+        <result property="rightExt" column="right_ext" javaType="java.lang.String" />
+        <result property="gmtExpire" column="gmt_expire" javaType="java.util.Date" />
+        <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
+        <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
+    </resultMap>
+
+    <!-- result maps for database table azdai_user_info -->
+    <resultMap id="RM-USER-INFO" type="UserInfoDTO">
+        <result property="no" column="no" javaType="java.lang.String" />
+        <result property="nickName" column="nick_name" javaType="java.lang.String" />
+        <result property="state" column="state" javaType="java.lang.String" />
+        <result property="sex" column="sex" javaType="java.lang.String" />
+        <result property="loginState" column="login_state" javaType="java.lang.String" />
+        <result property="emailState" column="email_state" javaType="java.lang.String" />
+        <result property="mobileState" column="mobile_state" javaType="java.lang.String" />
+        <result property="passwd" column="passwd" javaType="java.lang.String" />
+        <result property="passwdErrCount" column="passwd_err_count" javaType="int" />
+        <result property="registDate" column="regist_date" javaType="java.lang.String" />
+        <result property="activeDate" column="active_date" javaType="java.lang.String" />
+        <result property="authDate" column="auth_date" javaType="java.lang.String" />
+        <result property="mobile" column="mobile" javaType="java.lang.String" />
+        <result property="email" column="email" javaType="java.lang.String" />
+        <result property="realName" column="real_name" javaType="java.lang.String" />
+        <result property="avatar" column="avatar" javaType="java.lang.String" />
+        <result property="birthDate" column="birth_date" javaType="java.lang.String" />
+        <result property="postCode" column="post_code" javaType="java.lang.String" />
+        <result property="provinceCode" column="province_code" javaType="java.lang.String" />
+        <result property="cityCode" column="city_code" javaType="java.lang.String" />
+        <result property="countyCode" column="county_code" javaType="java.lang.String" />
+        <result property="streetInfo" column="street_info" javaType="java.lang.String" />
+        <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
+        <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
+    </resultMap>
+
+</mapper>

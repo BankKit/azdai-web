@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.azdai.core.das.mngt.ForumMngt;
 import com.azdai.core.model.ForumInfoModel;
 import com.azdai.core.model.ForumUserModel;
+import com.azdai.core.model.enums.BizResponseEnum;
 import com.azdai.core.model.enums.ForumInfoOpenEnum;
 import com.azdai.core.model.enums.ForumUserRightEnum;
 import com.azdai.core.web.form.ForumInfoStoreForm;
 import com.azdai.core.web.form.ForumTopicQueryForm;
 import com.azdai.core.web.form.ForumUserStoreForm;
-import com.github.obullxl.jeesite.web.enums.BizResponseEnum;
 import com.github.obullxl.lang.biz.BizResponse;
 import com.github.obullxl.lang.enums.ValveBoolEnum;
 

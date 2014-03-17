@@ -109,6 +109,7 @@ CREATE TABLE azdai_user_info (
   mobile VARCHAR(16),
   email VARCHAR(64),
   real_name VARCHAR(64),
+  avatar VARCHAR(128),
   birth_date VARCHAR(10),
   post_code VARCHAR(10),
   province_code VARCHAR(10),

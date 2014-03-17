@@ -22,7 +22,7 @@ public interface UserInfoDAO extends BaseDAO {
 	 *
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>insert into azdai_user_info(no,nick_name,state,sex,login_state,email_state,mobile_state,passwd,passwd_err_count,regist_date,active_date,auth_date,mobile,email,real_name,birth_date,post_code,province_code,city_code,county_code,street_info,gmt_create,gmt_modify) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</tt>
+	 *  <tt>insert into azdai_user_info(no,nick_name,state,sex,login_state,email_state,mobile_state,passwd,passwd_err_count,regist_date,active_date,auth_date,mobile,email,real_name,avatar,birth_date,post_code,province_code,city_code,county_code,street_info,gmt_create,gmt_modify) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</tt>
 	 *
 	 *	@param userInfo
 	 *	@return String
@@ -35,7 +35,7 @@ public interface UserInfoDAO extends BaseDAO {
 	 *
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>update azdai_user_info set state=?, sex=?, login_state=?, email_state=?, mobile_state=?, passwd=?, passwd_err_count=?, regist_date=?, active_date=?, auth_date=?, mobile=?, email=?, real_name=?, birth_date=?, post_code=?, province_code=?, city_code=?, county_code=?, street_info=?, gmt_modify='NOW' where (no = ?)</tt>
+	 *  <tt>update azdai_user_info set state=?, sex=?, login_state=?, email_state=?, mobile_state=?, passwd=?, passwd_err_count=?, regist_date=?, active_date=?, auth_date=?, mobile=?, email=?, real_name=?, avatar=?, birth_date=?, post_code=?, province_code=?, city_code=?, county_code=?, street_info=?, gmt_modify='NOW' where (no = ?)</tt>
 	 *
 	 *	@param userInfo
 	 *	@return int

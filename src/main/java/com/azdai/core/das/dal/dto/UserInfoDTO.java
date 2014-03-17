@@ -61,6 +61,9 @@ public class UserInfoDTO extends BaseDTO {
 	/** column:real_name */
 	private String realName;
 
+	/** column:avatar */
+	private String avatar;
+
 	/** column:birth_date */
 	private String birthDate;
 
@@ -187,6 +190,13 @@ public class UserInfoDTO extends BaseDTO {
 
 	public void setRealName(String realName) {
 		this.realName = realName;
+	}
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 	public String getBirthDate() {
 		return birthDate;

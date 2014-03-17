@@ -15,8 +15,8 @@ import com.azdai.core.das.mngt.BlackMngt;
 import com.azdai.core.das.mngt.UserMngt;
 import com.azdai.core.model.UserInfoModel;
 import com.azdai.core.model.convert.UserInfoConvert;
+import com.azdai.core.model.enums.BizResponseEnum;
 import com.azdai.core.web.form.UserRegistForm;
-import com.github.obullxl.jeesite.web.enums.BizResponseEnum;
 import com.github.obullxl.lang.biz.BizResponse;
 
 /**

@@ -114,12 +114,12 @@ public interface ForumMngt {
     /**
      * 查找全局置顶主贴
      */
-    public List<ForumTopicModel> findGlobalTopTopics(ForumTopicCatgEnum catgEnum, ForumTopicStateEnum stateEnum, ForumTopicTopEnum topEnum);
+    public List<ForumTopicModel> findGlobalTopTopics();
 
     /**
      * 查找论坛置顶主贴
      */
-    public List<ForumTopicModel> findForumTopTopics(String forum, ForumTopicCatgEnum catgEnum, ForumTopicStateEnum stateEnum, ForumTopicTopEnum topEnum);
+    public List<ForumTopicModel> findForumTopTopics(String forum);
 
     /**
      * 分页查询普通主题主贴

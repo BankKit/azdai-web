@@ -5,9 +5,12 @@
 package com.azdai.core.das.mngt.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -30,10 +33,16 @@ import com.azdai.core.model.convert.ForumUserConvert;
 import com.azdai.core.model.enums.ForumTopicCatgEnum;
 import com.azdai.core.model.enums.ForumTopicStateEnum;
 import com.azdai.core.model.enums.ForumTopicTopEnum;
-import com.azdai.core.module.ForumModuleCache;
 import com.azdai.core.web.form.ForumTopicQueryForm;
 import com.github.obullxl.lang.Paginator;
 import com.github.obullxl.lang.enums.ValveBoolEnum;
+import com.github.obullxl.lang.timer.TickTimer;
+import com.github.obullxl.lang.utils.DateUtils;
+import com.github.obullxl.lang.utils.LogUtils;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Lists;
 
 /**
  * 论坛管理器实现
@@ -42,25 +51,128 @@ import com.github.obullxl.lang.enums.ValveBoolEnum;
  * @version $Id: ForumMngtImpl.java, V1.0.1 2014年3月13日 下午10:09:59 $
  */
 @Component("forumMngt")
-public class ForumMngtImpl implements ForumMngt {
+public class ForumMngtImpl implements TickTimer, ForumMngt {
+    private static final Logger                         logger        = LogUtils.get();
+
+    /** 论坛模型-最近执行时间 */
+    private static Date                                 EXEC_TIME;
+
+    /** 论坛模型-执行时间间隔(11分钟) */
+    private static final long                           INTERVAL      = 11 * 60 * 1000;
+
+    /** 论坛模型-论坛管理员 */
+    private static final List<ForumUserModel>           USER_CACHE    = new ArrayList<ForumUserModel>();
+
+    /** 论坛模型-论坛模型 */
+    private static final List<ForumInfoModel>           FORUM_CACHE   = new ArrayList<ForumInfoModel>();
 
     /** 论坛信息DAO */
     @Autowired
-    private ForumInfoDAO  forumInfoDAO;
+    private ForumInfoDAO                                forumInfoDAO;
 
     /** 论坛主贴DAO */
     @Autowired
-    private ForumTopicDAO forumTopicDAO;
+    private ForumTopicDAO                               forumTopicDAO;
 
     /** 论坛用户DAO */
     @Autowired
-    private ForumUserDAO  forumUserDAO;
+    private ForumUserDAO                                forumUserDAO;
+
+    /** 置顶主贴列表缓存 */
+    private LoadingCache<String, List<ForumTopicModel>> topTopicCache = CacheBuilder.newBuilder() //
+                                                                          .maximumSize(20).expireAfterWrite(30, TimeUnit.MINUTES)//
+                                                                          .build(new CacheLoader<String, List<ForumTopicModel>>() { //
+                                                                                  public List<ForumTopicModel> load(String forum) {
+                                                                                      String top = ForumTopicTopEnum.FORUM.code();
+                                                                                      if (StringUtils.isBlank(forum)) {
+                                                                                          forum = null;
+                                                                                          top = ForumTopicTopEnum.GLOBAL.code();
+                                                                                      }
+
+                                                                                      String catg = ForumTopicCatgEnum.TOPIC.code();
+                                                                                      String state = ForumTopicStateEnum.ACTIVE.code();
+
+                                                                                      List<ForumTopicDTO> srcObjs = forumTopicDAO.findTopTopics(forum, catg, state, top);
+                                                                                      return ForumTopicConvert.convert(srcObjs);
+                                                                                  }
+                                                                              });
+
+    /** 
+     * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
+     */
+    public void afterPropertiesSet() {
+        this.onRefresh();
+    }
+
+    /**
+     * 是否进行缓存刷新
+     */
+    private boolean isMustExecute() {
+        if (EXEC_TIME == null) {
+            EXEC_TIME = DateUtils.toDateDW("1988-08-08");
+        }
+
+        Date now = new Date();
+        if (now.getTime() - EXEC_TIME.getTime() >= INTERVAL) {
+            EXEC_TIME = now;
+            return true;
+        }
+
+        return false;
+    }
+
+    /** 
+     * @see com.github.obullxl.lang.timer.TickTimer#tick()
+     */
+    public void tick() {
+        if (!this.isMustExecute()) {
+            if (logger.isInfoEnabled()) {
+                logger.info("[论坛模型]-本次无需操作, [" + DateUtils.toStringDL(EXEC_TIME) + "].");
+            }
+
+            return;
+        }
+
+        // 定时刷新
+        this.onRefresh();
+    }
+
+    /**
+     * 刷新缓存
+     */
+    public void onRefresh() {
+        logger.warn("[论坛模型]-开始刷新论坛模型缓存......");
+
+        long start = System.currentTimeMillis();
+        try {
+            List<ForumUserDTO> srcUsers = this.forumUserDAO.findAll();
+            List<ForumUserModel> dstUsers = ForumUserConvert.convert(srcUsers);
+            USER_CACHE.clear();
+            USER_CACHE.addAll(dstUsers);
+
+            List<ForumInfoDTO> srcForums = this.forumInfoDAO.findState(ValveBoolEnum.TRUE.code());
+            List<ForumInfoModel> dstForums = ForumInfoConvert.convert(srcForums);
+            FORUM_CACHE.clear();
+            FORUM_CACHE.addAll(dstForums);
+
+            // 论坛用户
+            for (ForumInfoModel forum : dstForums) {
+                for (ForumUserModel user : dstUsers) {
+                    if (StringUtils.equals(forum.getCode(), user.getForumCode())) {
+                        forum.getForumUsers().add(user);
+                    }
+                }
+            }
+        } finally {
+            logger.warn("[论坛模型]-论坛模型缓存刷新完成, 耗时[{}]ms, 论坛列表: \n{}", (System.currentTimeMillis() - start), FORUM_CACHE);
+        }
+    }
 
     /**
      * 获取有效论坛模型
      */
     public List<ForumInfoModel> findValidForums() {
-        return ForumModuleCache.findValidForums();
+        return new ArrayList<ForumInfoModel>(FORUM_CACHE);
     }
 
     /**
@@ -101,9 +213,10 @@ public class ForumMngtImpl implements ForumMngt {
      * 获取论坛信息
      */
     public ForumInfoModel findForumInfo(String code) {
-        ForumInfoModel model = ForumModuleCache.findForum(code);
-        if (model != null) {
-            return model;
+        for (ForumInfoModel model : FORUM_CACHE) {
+            if (StringUtils.equals(code, model.getCode())) {
+                return model;
+            }
         }
 
         return this.fetchForumInfo(code);
@@ -227,7 +340,7 @@ public class ForumMngtImpl implements ForumMngt {
         view.setId(id);
         view.setTopic(topic);
         view.setPageList(pageList);
-        
+
         // 增加主贴访问次数
         this.forumTopicDAO.updateVisitDelta(id, 1);
 
@@ -261,19 +374,25 @@ public class ForumMngtImpl implements ForumMngt {
     }
 
     /** 
-     * @see com.azdai.core.das.mngt.ForumMngt#findGlobalTopTopics(com.azdai.core.model.enums.ForumTopicCatgEnum, com.azdai.core.model.enums.ForumTopicStateEnum, com.azdai.core.model.enums.ForumTopicTopEnum)
+     * @see com.azdai.core.das.mngt.ForumMngt#findGlobalTopTopics()
      */
-    public List<ForumTopicModel> findGlobalTopTopics(ForumTopicCatgEnum catgEnum, ForumTopicStateEnum stateEnum, ForumTopicTopEnum topEnum) {
-        List<ForumTopicDTO> srcObjs = this.forumTopicDAO.findTopTopics(null, catgEnum.code(), stateEnum.code(), topEnum.code());
-        return ForumTopicConvert.convert(srcObjs);
+    public List<ForumTopicModel> findGlobalTopTopics() {
+        try {
+            return this.topTopicCache.get(null);
+        } catch (Exception e) {
+            return Lists.newArrayList();
+        }
     }
 
     /** 
-     * @see com.azdai.core.das.mngt.ForumMngt#findForumTopTopics(java.lang.String, com.azdai.core.model.enums.ForumTopicCatgEnum, com.azdai.core.model.enums.ForumTopicStateEnum, com.azdai.core.model.enums.ForumTopicTopEnum)
+     * @see com.azdai.core.das.mngt.ForumMngt#findForumTopTopics(java.lang.String)
      */
-    public List<ForumTopicModel> findForumTopTopics(String forum, ForumTopicCatgEnum catgEnum, ForumTopicStateEnum stateEnum, ForumTopicTopEnum topEnum) {
-        List<ForumTopicDTO> srcObjs = this.forumTopicDAO.findTopTopics(forum, catgEnum.code(), stateEnum.code(), topEnum.code());
-        return ForumTopicConvert.convert(srcObjs);
+    public List<ForumTopicModel> findForumTopTopics(String forum) {
+        try {
+            return this.topTopicCache.get(forum);
+        } catch (Exception e) {
+            return Lists.newArrayList();
+        }
     }
 
     /** 

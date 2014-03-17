@@ -5,6 +5,7 @@
 package com.azdai.core.das.mngt.impl;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -20,6 +21,9 @@ import com.github.obullxl.lang.utils.DateUtils;
 import com.github.obullxl.lang.utils.LogUtils;
 import com.github.obullxl.lang.utils.MD5Utils;
 import com.github.obullxl.ticket.TicketService;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 
 /**
  * 用户模型管理器
@@ -29,15 +33,25 @@ import com.github.obullxl.ticket.TicketService;
  */
 @Component("userMngt")
 public class UserMngtImpl implements UserMngt {
-    private static final Logger logger = LogUtils.get();
+    private static final Logger                 logger    = LogUtils.get();
 
     /** 用户信息DAO */
     @Autowired
-    private UserInfoDAO         userInfoDAO;
+    private UserInfoDAO                         userInfoDAO;
 
     /** 用户票据服务 */
     @Autowired
-    private TicketService       userTicketService;
+    private TicketService                       userTicketService;
+
+    /** 用户缓存 */
+    private LoadingCache<String, UserInfoModel> userCache = CacheBuilder.newBuilder() //
+                                                              .maximumSize(10000).expireAfterWrite(24, TimeUnit.HOURS)//
+                                                              .build(new CacheLoader<String, UserInfoModel>() { //
+                                                                      public UserInfoModel load(String no) {
+                                                                          UserInfoDTO src = userInfoDAO.findByNo(no);
+                                                                          return UserInfoConvert.convert(src);
+                                                                      }
+                                                                  });
 
     /** 
      * @see com.azdai.core.das.mngt.UserMngt#findUserNo()
@@ -58,6 +72,18 @@ public class UserMngtImpl implements UserMngt {
      */
     public String findLoginPasswd(String plain) {
         return MD5Utils.digest(plain);
+    }
+
+    /** 
+     * @see com.azdai.core.das.mngt.UserMngt#findByNo(java.lang.String)
+     */
+    public UserInfoModel findByNo(String userNo) {
+        try {
+            return this.userCache.get(userNo);
+        } catch (Exception e) {
+            logger.error("[用户]-从缓存中获取用户[{}]异常!", userNo, e);
+            return null;
+        }
     }
 
     /** 

@@ -16,7 +16,7 @@
 	<!-- 容器监听器 -->
 	<!-- ====================================== -->
 	<listener>
-		<listener-class>com.github.obullxl.jeesite.web.servlet.ServletContextStartup</listener-class>
+		<listener-class>com.azdai.core.web.servlet.ServletContextStartup</listener-class>
 	</listener>
 
 	<!-- ====================================== -->

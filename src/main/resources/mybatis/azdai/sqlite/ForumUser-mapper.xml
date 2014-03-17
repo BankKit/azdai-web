@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="AZDAI-FORUM-USER">
-    <!-- ============================================= -->
-    <!-- RESULT MAPS                                   -->
-    <!-- ============================================= -->
-    
-    <!-- result maps for database table azdai_forum_user -->
-    <resultMap id="RM-FORUM-USER" type="ForumUserDTO">
-        <result property="forumCode" column="forum_code" javaType="java.lang.String" />
-        <result property="forumTitle" column="forum_title" javaType="java.lang.String" />
-        <result property="userNo" column="user_no" javaType="java.lang.String" />
-        <result property="nickName" column="nick_name" javaType="java.lang.String" />
-        <result property="rightExt" column="right_ext" javaType="java.lang.String" />
-        <result property="gmtExpire" column="gmt_expire" javaType="java.lang.String" />
-        <result property="gmtCreate" column="gmt_create" javaType="java.lang.String" />
-        <result property="gmtModify" column="gmt_modify" javaType="java.lang.String" />
-    </resultMap>
-
-
 	<!-- ============================================= -->
     <!-- Public SQLS                                   -->
     <!-- ============================================= -->
@@ -49,35 +32,35 @@
     </update>
 
     <!-- mapped statement for MyBatisForumUserDAO.find -->
-    <select id="find" resultMap="RM-FORUM-USER" >
+    <select id="find" resultMap="RMS.RM-FORUM-USER" >
     <![CDATA[
         select * from azdai_forum_user where ((forum_code = #{forumCode}) AND (user_no = #{userNo}))
     ]]>
     </select>
 
     <!-- mapped statement for MyBatisForumUserDAO.findForum -->
-    <select id="findForum" resultMap="RM-FORUM-USER" >
+    <select id="findForum" resultMap="RMS.RM-FORUM-USER" >
     <![CDATA[
         select * from azdai_forum_user where (forum_code = #{value}) order by user_no ASC
     ]]>
     </select>
 
     <!-- mapped statement for MyBatisForumUserDAO.findUserNo -->
-    <select id="findUserNo" resultMap="RM-FORUM-USER" >
+    <select id="findUserNo" resultMap="RMS.RM-FORUM-USER" >
     <![CDATA[
         select * from azdai_forum_user where (user_no = #{value}) order by forum_code ASC
     ]]>
     </select>
 
     <!-- mapped statement for MyBatisForumUserDAO.findExpire -->
-    <select id="findExpire" resultMap="RM-FORUM-USER" >
+    <select id="findExpire" resultMap="RMS.RM-FORUM-USER" >
     <![CDATA[
         select * from azdai_forum_user where (gmt_expire <= #{value})
     ]]>
     </select>
 
     <!-- mapped statement for MyBatisForumUserDAO.findAll -->
-    <select id="findAll" resultMap="RM-FORUM-USER" >
+    <select id="findAll" resultMap="RMS.RM-FORUM-USER" >
     <![CDATA[
         select * from azdai_forum_user order by forum_code ASC, user_no ASC
     ]]>

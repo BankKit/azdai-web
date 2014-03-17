@@ -6,14 +6,6 @@
     <!-- ====================================== -->
     <!--  DAO配置 -->
     <!-- ====================================== -->
-    <bean id="crawlDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisCrawlDAO">
-		<property name="ticketService">
-			<bean class="com.github.obullxl.ticket.support.DefaultTicketService" parent="abstractTicket">
-				<property name="name" value="TB-Crawl-ID" />
-			</bean>
-    	</property>
-    </bean>
-	
     <bean id="forumInfoDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisForumInfoDAO">
     </bean>
 	
@@ -26,17 +18,6 @@
     </bean>
 	
     <bean id="forumUserDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisForumUserDAO">
-    </bean>
-	
-    <bean id="imageDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisImageDAO">
-		<property name="ticketService">
-			<bean class="com.github.obullxl.ticket.support.DefaultTicketService" parent="abstractTicket">
-				<property name="name" value="TB-Image-ID" />
-			</bean>
-    	</property>
-		<property name="ticketEncode">
-			<bean class="com.github.obullxl.jeesite.dal.ticket.ImageTicketEncode" />
-    	</property>
     </bean>
 	
     <bean id="userInfoDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisUserInfoDAO">

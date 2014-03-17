@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ATOM-IMAGE">
-    <!-- ============================================= -->
-    <!-- RESULT MAPS                                   -->
-    <!-- ============================================= -->
-    
-    <!-- result maps for database table atom_image -->
-    <resultMap id="RM-IMAGE" type="ImageDTO">
-        <result property="id" column="id" javaType="java.lang.String" />
-        <result property="flag" column="flag" javaType="java.lang.String" />
-        <result property="topic" column="topic" javaType="java.lang.String" />
-        <result property="title" column="title" javaType="java.lang.String" />
-        <result property="size" column="size" javaType="long" />
-        <result property="width" column="width" javaType="long" />
-        <result property="height" column="height" javaType="long" />
-        <result property="url" column="url" javaType="java.lang.String" />
-        <result property="summary" column="summary" javaType="java.lang.String" />
-        <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
-        <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
-    </resultMap>
-
-
 	<!-- ============================================= -->
     <!-- Public SQLS                                   -->
     <!-- ============================================= -->
@@ -53,21 +33,21 @@
     </update>
 
     <!-- mapped statement for MyBatisImageDAO.find -->
-    <select id="find" resultMap="RM-IMAGE" >
+    <select id="find" resultMap="RMS.RM-IMAGE" >
     <![CDATA[
         select * from atom_image where (id = #{value})
     ]]>
     </select>
 
     <!-- mapped statement for MyBatisImageDAO.findAll -->
-    <select id="findAll" resultMap="RM-IMAGE" >
+    <select id="findAll" resultMap="RMS.RM-IMAGE" >
     <![CDATA[
         select * from atom_image
     ]]>
     </select>
 
     <!-- mapped statement for MyBatisImageDAO.findTopic -->
-    <select id="findTopic" resultMap="RM-IMAGE" >
+    <select id="findTopic" resultMap="RMS.RM-IMAGE" >
     <![CDATA[
         select * from atom_image where (topic = #{value})
     ]]>

@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="AZDAI-USER-INFO">
-    <!-- ============================================= -->
-    <!-- RESULT MAPS                                   -->
-    <!-- ============================================= -->
-    
-    <!-- result maps for database table azdai_user_info -->
-    <resultMap id="RM-USER-INFO" type="UserInfoDTO">
-        <result property="no" column="no" javaType="java.lang.String" />
-        <result property="nickName" column="nick_name" javaType="java.lang.String" />
-        <result property="state" column="state" javaType="java.lang.String" />
-        <result property="sex" column="sex" javaType="java.lang.String" />
-        <result property="loginState" column="login_state" javaType="java.lang.String" />
-        <result property="emailState" column="email_state" javaType="java.lang.String" />
-        <result property="mobileState" column="mobile_state" javaType="java.lang.String" />
-        <result property="passwd" column="passwd" javaType="java.lang.String" />
-        <result property="passwdErrCount" column="passwd_err_count" javaType="int" />
-        <result property="registDate" column="regist_date" javaType="java.lang.String" />
-        <result property="activeDate" column="active_date" javaType="java.lang.String" />
-        <result property="authDate" column="auth_date" javaType="java.lang.String" />
-        <result property="mobile" column="mobile" javaType="java.lang.String" />
-        <result property="email" column="email" javaType="java.lang.String" />
-        <result property="realName" column="real_name" javaType="java.lang.String" />
-        <result property="birthDate" column="birth_date" javaType="java.lang.String" />
-        <result property="postCode" column="post_code" javaType="java.lang.String" />
-        <result property="provinceCode" column="province_code" javaType="java.lang.String" />
-        <result property="cityCode" column="city_code" javaType="java.lang.String" />
-        <result property="countyCode" column="county_code" javaType="java.lang.String" />
-        <result property="streetInfo" column="street_info" javaType="java.lang.String" />
-        <result property="gmtCreate" column="gmt_create" javaType="java.lang.String" />
-        <result property="gmtModify" column="gmt_modify" javaType="java.lang.String" />
-    </resultMap>
-
-
 	<!-- ============================================= -->
     <!-- Public SQLS                                   -->
     <!-- ============================================= -->
@@ -48,16 +16,16 @@
     <!-- mapped statement for MyBatisUserInfoDAO.insert -->
     <insert id="insert">
         INSERT INTO azdai_user_info(
-				no, nick_name, state, sex, login_state, email_state, mobile_state, passwd, passwd_err_count, regist_date, active_date, auth_date, mobile, email, real_name, birth_date, post_code, province_code, city_code, county_code, street_info, gmt_create, gmt_modify
+				no, nick_name, state, sex, login_state, email_state, mobile_state, passwd, passwd_err_count, regist_date, active_date, auth_date, mobile, email, real_name, avatar, birth_date, post_code, province_code, city_code, county_code, street_info, gmt_create, gmt_modify
 			) VALUES(
-				#{no}, #{nickName}, #{state}, #{sex}, #{loginState}, #{emailState}, #{mobileState}, #{passwd}, #{passwdErrCount}, #{registDate}, #{activeDate}, #{authDate}, #{mobile}, #{email}, #{realName}, #{birthDate}, #{postCode}, #{provinceCode}, #{cityCode}, #{countyCode}, #{streetInfo}, DATETIME('NOW', 'LOCALTIME'), DATETIME('NOW', 'LOCALTIME')
+				#{no}, #{nickName}, #{state}, #{sex}, #{loginState}, #{emailState}, #{mobileState}, #{passwd}, #{passwdErrCount}, #{registDate}, #{activeDate}, #{authDate}, #{mobile}, #{email}, #{realName}, #{avatar}, #{birthDate}, #{postCode}, #{provinceCode}, #{cityCode}, #{countyCode}, #{streetInfo}, DATETIME('NOW', 'LOCALTIME'), DATETIME('NOW', 'LOCALTIME')
 			)
     </insert>
 
     <!-- mapped statement for MyBatisUserInfoDAO.update -->
     <update id="update" >
         UPDATE azdai_user_info SET
-				state=#{state}, sex=#{sex}, login_state=#{loginState}, email_state=#{emailState}, mobile_state=#{mobileState}, passwd=#{passwd}, passwd_err_count=#{passwdErrCount}, regist_date=#{registDate}, active_date=#{activeDate}, auth_date=#{authDate}, mobile=#{mobile}, email=#{email}, real_name=#{realName}, birth_date=#{birthDate}, post_code=#{postCode}, province_code=#{provinceCode}, city_code=#{cityCode}, county_code=#{countryCode}, street_info=#{streetInfo}, gmt_modify=DATETIME('NOW', 'LOCALTIME')
+				state=#{state}, sex=#{sex}, login_state=#{loginState}, email_state=#{emailState}, mobile_state=#{mobileState}, passwd=#{passwd}, passwd_err_count=#{passwdErrCount}, regist_date=#{registDate}, active_date=#{activeDate}, auth_date=#{authDate}, mobile=#{mobile}, email=#{email}, real_name=#{realName}, avatar=#{avatar}, birth_date=#{birthDate}, post_code=#{postCode}, province_code=#{provinceCode}, city_code=#{cityCode}, county_code=#{countryCode}, street_info=#{streetInfo}, gmt_modify=DATETIME('NOW', 'LOCALTIME')
 			WHERE
 				no=#{no}
     </update>
@@ -87,33 +55,33 @@
     </update>
 
     <!-- mapped statement for MyBatisUserInfoDAO.findByNo -->
-    <select id="findByNo" resultMap="RM-USER-INFO" >
+    <select id="findByNo" resultMap="RMS.RM-USER-INFO" >
     <![CDATA[
         select * from azdai_user_info where (no = #{value})
     ]]>
     </select>
 
     <!-- mapped statement for MyBatisUserInfoDAO.findByLoginName -->
-    <select id="findByLoginName" resultMap="RM-USER-INFO" >
+    <select id="findByLoginName" resultMap="RMS.RM-USER-INFO" >
         SELECT * FROM azdai_user_info WHERE (nick_name=#{name} OR email=#{name} OR mobile=#{name})
     </select>
 
     <!-- mapped statement for MyBatisUserInfoDAO.findByEmail -->
-    <select id="findByEmail" resultMap="RM-USER-INFO" >
+    <select id="findByEmail" resultMap="RMS.RM-USER-INFO" >
     <![CDATA[
         select * from azdai_user_info where (email = #{value})
     ]]>
     </select>
 
     <!-- mapped statement for MyBatisUserInfoDAO.findByNickName -->
-    <select id="findByNickName" resultMap="RM-USER-INFO" >
+    <select id="findByNickName" resultMap="RMS.RM-USER-INFO" >
     <![CDATA[
         select * from azdai_user_info where (nick_name = #{value})
     ]]>
     </select>
 
     <!-- mapped statement for MyBatisUserInfoDAO.findAll -->
-    <select id="findAll" resultMap="RM-USER-INFO" >
+    <select id="findAll" resultMap="RMS.RM-USER-INFO" >
     <![CDATA[
         select * from azdai_user_info order by no ASC
     ]]>
