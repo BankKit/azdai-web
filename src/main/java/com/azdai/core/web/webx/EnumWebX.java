@@ -11,6 +11,10 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
 import com.azdai.core.model.enums.ForumInfoOpenEnum;
+import com.azdai.core.model.enums.ForumTopicCatgEnum;
+import com.azdai.core.model.enums.ForumTopicReplyEnum;
+import com.azdai.core.model.enums.ForumTopicStateEnum;
+import com.azdai.core.model.enums.ForumTopicTopEnum;
 import com.azdai.core.model.enums.ForumUserRightEnum;
 import com.github.obullxl.lang.enums.EnumBase;
 import com.github.obullxl.lang.enums.ValveBoolEnum;
@@ -29,20 +33,20 @@ public class EnumWebX implements WebX {
      * 获取枚举代码
      */
     public static String findEnumCode(EnumBase enm) {
-        if(enm == null) {
+        if (enm == null) {
             return StringUtils.EMPTY;
         }
-        
+
         return enm.code();
     }
-    
+
     /**
      * Bool开关值枚举列表
      */
     public List<ValveBoolEnum> findValveBoolEnums() {
         return Arrays.asList(ValveBoolEnum.values());
     }
-    
+
     /**
      * 论坛开放类型枚举列表
      */
@@ -55,6 +59,41 @@ public class EnumWebX implements WebX {
      */
     public List<ForumUserRightEnum> findForumUserRgtEnums() {
         return Arrays.asList(ForumUserRightEnum.values());
+    }
+
+    /**
+     * 论坛主贴类型枚举列表
+     */
+    public List<ForumTopicCatgEnum> findForumTopicCatgEnums() {
+        return Arrays.asList(ForumTopicCatgEnum.values());
+    }
+    
+    /**
+     * 论坛主贴状态枚举列表
+     */
+    public List<ForumTopicStateEnum> findForumTopicStateEnums() {
+        return Arrays.asList(ForumTopicStateEnum.values());
+    }
+    
+    /**
+     * 论坛主贴置顶枚举列表
+     */
+    public List<ForumTopicTopEnum> findForumTopicTopEnums() {
+        return Arrays.asList(ForumTopicTopEnum.values());
+    }
+    
+    /**
+     * 论坛主贴加精枚举列表
+     */
+    public List<ValveBoolEnum> findForumTopicEliteEnums() {
+        return Arrays.asList(ValveBoolEnum.values());
+    }
+    
+    /**
+     * 论坛主贴回复枚举列表
+     */
+    public List<ForumTopicReplyEnum> findForumTopicReplyEnums() {
+        return Arrays.asList(ForumTopicReplyEnum.values());
     }
 
 }

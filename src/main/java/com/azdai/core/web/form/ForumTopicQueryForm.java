@@ -4,7 +4,6 @@
  */
 package com.azdai.core.web.form;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.Size;
@@ -49,16 +48,16 @@ public class ForumTopicQueryForm extends AbstractForm {
     @Size(max = DBSize.FORUM_TOPIC.POST_USER_NO_MAX)
     private String            postUserNo;
 
-    private Date              gmtPostBegin;
+    private String            gmtPostBegin;
 
-    private Date              gmtPostFinish;
+    private String            gmtPostFinish;
 
     @Size(max = DBSize.FORUM_TOPIC.REPLY_USER_NO_MAX)
     private String            replyUserNo;
 
-    private Date              gmtReplyBegin;
+    private String            gmtReplyBegin;
 
-    private Date              gmtReplyFinish;
+    private String            gmtReplyFinish;
 
     @Size(max = DBSize.FORUM_TOPIC.TITLE_MAX)
     private String            title;
@@ -152,19 +151,19 @@ public class ForumTopicQueryForm extends AbstractForm {
         this.postUserNo = postUserNo;
     }
 
-    public Date getGmtPostBegin() {
+    public String getGmtPostBegin() {
         return gmtPostBegin;
     }
 
-    public void setGmtPostBegin(Date gmtPostBegin) {
+    public void setGmtPostBegin(String gmtPostBegin) {
         this.gmtPostBegin = gmtPostBegin;
     }
 
-    public Date getGmtPostFinish() {
+    public String getGmtPostFinish() {
         return gmtPostFinish;
     }
 
-    public void setGmtPostFinish(Date gmtPostFinish) {
+    public void setGmtPostFinish(String gmtPostFinish) {
         this.gmtPostFinish = gmtPostFinish;
     }
 
@@ -176,19 +175,19 @@ public class ForumTopicQueryForm extends AbstractForm {
         this.replyUserNo = replyUserNo;
     }
 
-    public Date getGmtReplyBegin() {
+    public String getGmtReplyBegin() {
         return gmtReplyBegin;
     }
 
-    public void setGmtReplyBegin(Date gmtReplyBegin) {
+    public void setGmtReplyBegin(String gmtReplyBegin) {
         this.gmtReplyBegin = gmtReplyBegin;
     }
 
-    public Date getGmtReplyFinish() {
+    public String getGmtReplyFinish() {
         return gmtReplyFinish;
     }
 
-    public void setGmtReplyFinish(Date gmtReplyFinish) {
+    public void setGmtReplyFinish(String gmtReplyFinish) {
         this.gmtReplyFinish = gmtReplyFinish;
     }
 

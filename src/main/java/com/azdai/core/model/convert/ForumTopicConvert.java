@@ -7,6 +7,7 @@ package com.azdai.core.model.convert;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 
 import com.azdai.core.das.dal.dto.ForumTopicDTO;
@@ -83,7 +84,7 @@ public class ForumTopicConvert {
         BeanUtils.copyProperties(srcObj, dstObj);
 
         dstObj.setCatg(srcObj.getCatgEnum().code());
-        
+
         dstObj.setState(EnumWebX.findEnumCode(srcObj.getStateEnum()));
         dstObj.setTopFlag(EnumWebX.findEnumCode(srcObj.getTopEnum()));
         dstObj.setEliteFlag(EnumWebX.findEnumCode(srcObj.getEliteEnum()));
@@ -102,12 +103,26 @@ public class ForumTopicConvert {
             return dstObj;
         }
 
-        BeanUtils.copyProperties(srcObj, dstObj);
-
+        dstObj.setId(srcObj.getId());
+        
+        dstObj.setCatg(StringUtils.trimToNull(srcObj.getCatg()));
+        dstObj.setForum(StringUtils.trimToNull(srcObj.getForum()));
+        dstObj.setState(StringUtils.trimToNull(srcObj.getState()));
+        dstObj.setTopFlag(StringUtils.trimToNull(srcObj.getTopFlag()));
+        dstObj.setEliteFlag(StringUtils.trimToNull(srcObj.getEliteFlag()));
+        dstObj.setReplyFlag(StringUtils.trimToNull(srcObj.getReplyFlag()));
+        
+        dstObj.setPostUserNo(StringUtils.trimToNull(srcObj.getPostUserNo()));
+        dstObj.setReplyUserNo(StringUtils.trimToNull(srcObj.getReplyUserNo()));
+        
+        dstObj.setGmtPostBegin(StringUtils.trimToNull(srcObj.getGmtPostBegin()));
+        dstObj.setGmtPostFinish(StringUtils.trimToNull(srcObj.getGmtPostFinish()));
+        dstObj.setGmtReplyBegin(StringUtils.trimToNull(srcObj.getGmtReplyBegin()));
+        dstObj.setGmtReplyFinish(StringUtils.trimToNull(srcObj.getGmtReplyFinish()));
+        
         dstObj.setTitle(QueryLikeUtils.format(srcObj.getTitle()));
         dstObj.setContent(QueryLikeUtils.format(srcObj.getContent()));
 
         return dstObj;
     }
-
 }

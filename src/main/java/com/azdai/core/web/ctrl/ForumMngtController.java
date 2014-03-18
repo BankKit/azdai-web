@@ -188,23 +188,41 @@ public class ForumMngtController extends AbstractController {
         return response;
     }
 
-    @RequestMapping(value = "/forum-topic/manage.htm", method = { RequestMethod.GET })
-    public String forumTopicManage() {
-        return this.forumTopicManage(new ForumTopicQueryForm());
-    }
-
     /**
      * 论坛主贴管理
      */
-    @RequestMapping(value = "/forum-topic/manage.htm", method = { RequestMethod.POST })
+    @RequestMapping(value = "/forum-topic/manage.htm")
     public String forumTopicManage(ForumTopicQueryForm form) {
         try {
-            this.setWebData("topicPageList", this.forumMngt.findForumTopicFuzzy(form));
+            this.setWebData("form", form).setWebData("topicPageList", this.forumMngt.findForumTopicFuzzy(form));
         } catch (Exception e) {
             logger.error("分页查询论坛主贴异常!", e);
         }
 
         return this.toMngtView("", "forum-topic-manage");
+    }
+    
+    /**
+     * 删除论坛主贴
+     */
+    @ResponseBody
+    @RequestMapping(value = "/forum-topic/delete.htm", method = { RequestMethod.POST })
+    public BizResponse deleteForumTopic(@RequestParam("id") long id) {
+        // 操作结果
+        BizResponse response = this.newBizResponse(true);
+        try {
+            logger.warn("[主贴]-删除主贴[{}].", id);
+
+            this.forumMngt.removeForumTopic(id);
+
+            response.getBizData().put(BizResponse.BIZ_ID_KEY, Long.toString(id));
+        } catch (Exception e) {
+            logger.error("删除论坛主贴异常!", e);
+            this.buildResponse(response, BizResponseEnum.SYSTEM_ERROR);
+        }
+
+        // JSON返回
+        return response;
     }
 
 }

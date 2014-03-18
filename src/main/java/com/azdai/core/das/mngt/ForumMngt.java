@@ -126,4 +126,9 @@ public interface ForumMngt {
      */
     public ForumTopicPageList findNormalTopics(int pageNo, String forum, ForumTopicCatgEnum catgEnum, ForumTopicStateEnum stateEnum, ForumTopicTopEnum topEnum);
 
+    /**
+     * 删除论坛主贴
+     */
+    public int removeForumTopic(long id);
+    
 }

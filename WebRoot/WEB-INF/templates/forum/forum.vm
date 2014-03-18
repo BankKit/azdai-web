@@ -86,8 +86,8 @@
                 </tbody>
             </table>
         </div>
+		#if(!$pageList.items.isEmpty())
 		#set($pager=$pageList.pager)
-		#if($pager.totalCount>0)
 		<div class="pull-left">
     		<ul class="pagination">
 				#set($pages=$pager.getSlider(11))

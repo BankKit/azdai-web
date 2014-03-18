@@ -1,47 +1,162 @@
 <div class="container-fluid">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-            <div class="panel-title">论坛帖子列表</div>
+            <div class="panel-title">论坛帖子列表<span class="pull-right"><a id="search-form-toggle" href="javascript:;"><i class="fa fa-plus-square-o"></i> 查询条件</a></span></div>
 		</div>
+		<form id="form-topic-search" method="get" action="$ctx/mngt/forum-topic/manage.htm">
+		<input type="hidden" id="pageNo" name="pageNo" value="$!form.pageNo" />
+        <div class="panel-footer">
+            <table width="100%" cellpadding="5" class="tdpadding5">
+				<tbody>
+					<tr>
+						<td class="form-text">ID：</td>
+                        <td><input name="id" type="text" value="$!form.id" placeholder="帖子ID" /></td>
+						<td class="form-text">分类：</td>
+                        <td>
+							<label class="radio-inline">
+								<input type="radio" name="catg" checked="checked" value=""/>所有
+                            </label>
+							#foreach($enm in $EnumWebX.findForumTopicCatgEnums())
+                            <label class="radio-inline">
+								<input type="radio" name="catg" #if($!StringUtils.equals($enm.code(), $form.catg))checked="checked"#end value="$enm.code()"/>$enm.desp()
+                            </label>
+							#end
+						</td>
+                    </tr>
+					<tr>
+						<td class="form-text">论坛：</td>
+                        <td>
+							<select name="forum">
+								<option value="">--所有--</option>
+								#foreach($forum in $ForumWebX.findValidForums())
+								<option value="$forum.code" #if($!StringUtils.equals($form.forum, $forum.code))selected="selected"#end>$forum.title</option>
+								#end
+							</select>
+						</td>
+						<td class="form-text">状态：</td>
+                        <td>
+							<label class="radio-inline">
+								<input type="radio" name="state" checked="checked" value=""/>所有
+                            </label>
+                            #foreach($enm in $EnumWebX.findForumTopicStateEnums())
+                            <label class="radio-inline">
+								<input type="radio" name="state" #if($!StringUtils.equals($enm.code(), $form.state))checked="checked"#end value="$enm.code()"/>$enm.desp()
+                            </label>
+							#end
+						</td>
+					</tr>
+                    <tr>
+						<td class="form-text">置顶：</td>
+                        <td>
+							<label class="radio-inline">
+								<input type="radio" name="topFlag" checked="checked" value=""/>所有
+                            </label>
+                            #foreach($enm in $EnumWebX.findForumTopicTopEnums())
+                            <label class="radio-inline">
+								<input type="radio" name="topFlag" #if($!StringUtils.equals($enm.code(), $form.topFlag))checked="checked"#end value="$enm.code()"/>$enm.desp()
+                            </label>
+							#end
+						</td>
+						<td class="form-text">加精：</td>
+                        <td>
+							<label class="radio-inline">
+								<input type="radio" name="eliteFlag" checked="checked" value=""/>所有
+                            </label>
+                            #foreach($enm in $EnumWebX.findForumTopicEliteEnums())
+                            <label class="radio-inline">
+								<input type="radio" name="eliteFlag" #if($!StringUtils.equals($enm.code(), $form.eliteFlag))checked="checked"#end value="$enm.code()"/>$enm.desp()
+                            </label>
+							#end
+						</td>
+					</tr>
+					<tr>
+						<td class="form-text">回复：</td>
+                        <td>
+							<label class="radio-inline">
+								<input type="radio" name="replyFlag" checked="checked" value=""/>所有
+                            </label>
+                            #foreach($enm in $EnumWebX.findForumTopicReplyEnums())
+                            <label class="radio-inline">
+								<input type="radio" name="replyFlag" #if($!StringUtils.equals($enm.code(), $form.replyFlag))checked="checked"#end value="$enm.code()"/>$enm.desp()
+                            </label>
+							#end
+						</td>
+						<td class="form-text">原ID：</td>
+                        <td><input name="topic" type="text" placeholder="原帖子ID" /></td>
+					</tr>
+					<tr>
+						<td class="form-text">发布者编号：</td>
+                        <td><input name="postUserNo" type="text" placeholder="主贴用户编号" /></td>
+						<td class="form-text">回复者编号：</td>
+                        <td><input name="replyUserNo" type="text" placeholder="回帖用户编号" /></td>
+					</tr>
+					<tr>
+                        <td class="form-text"><div class="nowrap">发布开始时间：</div></td>
+                        <td><input name="gmtPostBegin" type="text" value="$!form.gmtPostBegin" class="Wdate" readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" /></td>
+                        <td class="form-text"><div class="nowrap">发布结束时间：</div></td>
+                        <td><input name="gmtPostFinish" type="text" value="$!form.gmtPostFinish" class="Wdate" readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" /></td>
+					</tr>
+					<tr>
+                        <td class="form-text"><div class="nowrap">回复开始时间：</div></td>
+                        <td><input name="gmtReplyBegin" type="text" value="$!form.gmtReplyBegin" class="Wdate" readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" /></td>
+                        <td class="form-text"><div class="nowrap">回复结束时间：</div></td>
+                        <td><input name="gmtReplyFinish" type="text" value="$!form.gmtReplyFinish" class="Wdate" readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" /></td>
+					</tr>
+					<tr>
+						<td class="form-text">主贴标题：</td>
+                        <td><input name="title" type="text" placeholder="主贴用户编号" /></td>
+						<td class="form-text">帖子内容：</td>
+                        <td><input name="content" type="text" placeholder="回帖用户编号" /></td>
+					</tr>
+					<tr>
+                        <td colspan="4" align="center"><button type="submit" class="btn btn-primary">查询论坛帖子</button></td>
+					</tr>
+                </tbody>
+			</table>
+		</div>
+        </form>
     	<div class="table-responsive">
-            <table class="table table-hover">
+            <table class="table table-hover" #MarginBottomNO()>
                 <thead>
                     <tr>
-                        <th>ID</th>
-    					<th>分类</th>
-    					<th>论坛代码</th>
-    					<th>状态</th>
-    					<th>顶?</th>
-						<th>精?</th>
-						<th>回复</th>
-						<th>主贴ID</th>
-						<th>主贴者</th>
-						<th>发布时间</th>
-						<th>最后回帖者</th>
-						<th>最后回帖时间</th>
-						<th>主贴标题</th>
-                        <th>&nbsp;</th>
+                        <th><div class="nowrap">ID</div></th>
+    					<th><div class="nowrap">分类</div></th>
+    					<th><div class="nowrap">论坛代码</div></th>
+    					<th><div class="nowrap">状态</div></th>
+    					<th><div class="nowrap">顶?</div></th>
+						<th><div class="nowrap">精?</div></th>
+						<th><div class="nowrap">回复</div></th>
+						<th><div class="nowrap">主贴ID</div></th>
+						<th><div class="nowrap">主贴者</div></th>
+						<th><div class="nowrap">发布时间</div></th>
+						<th><div class="nowrap">回帖者</div></th>
+						<th><div class="nowrap">回帖时间</div></th>
+						<th><div class="nowrap">主贴标题</div></th>
+						<th><div class="nowrap">评/阅</div></th>
+                        <th><div class="nowrap">操作</div></th>
     				</tr>
     			</thead>
                 <tbody>
-    				#foreach($topic in $topicPageList)
+    				#foreach($topic in $topicPageList.items)
                     <tr>
-    					<td>$topic.id</td>
-    					<td>$topic.catgEnum.desp()</td>
-    					<td>$topic.forum</td>
-    					<td>$topic.stateEnum.desp()</td>
-						<td>$topic.topEnum.desp()</td>
-						<td>$topic.eliteEnum.desp()</td>
-						<td>$topic.replyEnum.desp()</td>
-						<td><a href="#">$topic.postNickName</a></td>
-						<td>$DateUtils.toStringDL($topic.gmtPost)</td>
-						<td><a href="#">$topic.replyNickName</a></td>
-						<td>DateUtils.toStringDL($topic.gmtReply)</td>
-    					<td><a href="#" style="$!topic.style">$topic.title</a> ($topic.replyCount评/$topic.visitCount阅)</td>
+    					<td><div class="nowrap">$topic.id</div></td>
+    					<td><div class="nowrap">$topic.catgEnum.desp()</div></td>
+    					<td><div class="nowrap">$topic.forum</div></td>
+    					<td><div class="nowrap">$!topic.stateEnum.desp()</div></td>
+						<td><div class="nowrap">$!topic.topEnum.desp()</div></td>
+						<td><div class="nowrap">$!topic.eliteEnum.desp()</div></td>
+						<td><div class="nowrap">$!topic.replyEnum.desp()</div></td>
+						<td><div class="nowrap">$topic.topic</div></td>
+						<td><div class="nowrap"><a href="#">$!topic.postNickName</a></div></td>
+						<td><div class="nowrap">$!DateUtils.toStringDL($topic.gmtPost)</div></td>
+						<td><div class="nowrap"><a href="#">$!topic.replyNickName</a></div></td>
+						<td><div class="nowrap">$!DateUtils.toStringDL($topic.gmtReply)</div></td>
+    					<td><div class="nowrap"><a href="$ctx/forum/topic.htm?id=$topic.id" style="$!topic.style" target="_black">$!topic.title</a></div></td>
+                        <td><div class="nowrap">$topic.replyCount/$topic.visitCount</div></td>
                         <td>
-							<div class="pull-right">
-								<a href="$ctx/mngt/topic-update-meta.htm?id=$topic.id">修改元数据</a> |
-								<a href="$ctx/mngt/topic-update-content.htm?id=$topic.id">修改内容</a> |
+							<div class="nowrap pull-right">
+								<a href="$ctx/mngt/forum-topic/update-meta.htm?id=$topic.id">修改元数据</a> |
+								<a href="$ctx/mngt/forum-topic/update-content.htm?id=$topic.id">修改内容</a> |
 								<a class="topic-delete" href="javascript:;" data-id="$topic.id">删除</a>
 							</div>
 						</td>
@@ -50,43 +165,57 @@
     			</tbody>
     		</table>
         </div>
-		<div class="panel-footer text-center">
+		#if(!$topicPageList.items.isEmpty())
+		#set($pager=$topicPageList.pager)
+		<div class="text-center">
             <ul class="pagination" #MarginBottomNO()>
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li class="active"><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
+                #set($pages=$pager.getSlider(11))
+				#foreach($idx in $pages)
+				#if($pager.isDisabledPage($idx))
+				<li class="active"><a href="javascript:;">$idx <span class="sr-only">(current)</span></a></li>
+				#else
+				<li><a class="page-idx" data-page="$idx" href="javascript:;">$idx</a></li>
+				#end
+				#end
             </ul>
 		</div>
+		#end
 		<div class="clearfix"></div>
     </div>
 </div>
-
+<script type="text/javascript" src="$ctx/public/datepicker/WdatePicker.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-/** 删除论坛 */
-$(".forum-delete").click(function(e) {
+/** 线上/隐藏查询表单 */
+$("#search-form-toggle").click(function(e) {
+	$("#form-topic-search").toggle();
+});
+
+/** 分页查询 */
+$(".page-idx").click(function(e) {
+	$("#pageNo").val($(this).data("page"));
+	$("#form-topic-search").submit();
+});
+
+/** 删除论坛主贴 */
+$(".topic-delete").click(function(e) {
 	e.preventDefault();
-	var code = $(this).data("code");
+	var id = $(this).data("id");
 	AZD.confirm(function(rtn) {
 		if(rtn !== "yes") {
 			return;
 		}
-		jQuery.post("$ctx/mngt/forum-info/delete.htm", {
-			"code": code
+		jQuery.post("$ctx/mngt/forum-topic/delete.htm", {
+			"id": id
 		}, function(result) {
 			if(result.success) {
-				AZD.modal("删除成功", "成功提示");
+				location.href = location.href;
 			} else {
 				AZD.alert("错误码：<b>" + result.respCode + "</b><br/>错误描述：<b>" + result.respDesp + "</b>", "失败提示");
 			}
 		});
-	}, "确定要删除论坛（代码：" + code + "）吗？删除数据不可恢复！");
+	}, "确定要删除论坛主贴（主贴ID：" + id + "）吗？删除数据不可恢复！");
 });
-
 //
 });
 </script>

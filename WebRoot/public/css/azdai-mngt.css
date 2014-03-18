@@ -2,10 +2,9 @@
  * anzhongdai v2.0.1
  * Copyright 2014 anzhongdai.com, Inc.
  */
-
 html,body {
-	margin:0;
-	padding:0;
+	margin: 0;
+	padding: 0;
 	width: 100%;
 	height: 100%;
 }
@@ -32,4 +31,34 @@ a:hover {
  */
 .otip,.ktip {
 	
+}
+
+/**
+ * 个性化样式
+ */
+.table-responsive {
+	overflow: auto;
+}
+
+/**
+ * 禁止换行
+ */
+.nowrap {
+	display: block;
+	word-break: keep-all;
+	white-space: nowrap;
+}
+
+.tdpadding5 td {
+	padding: 5px;
+}
+
+.tdpadding td {
+	padding: 10px;
+}
+
+.form-text {
+	width: 160px;
+	font-weight:bold;
+	text-align: right;
 }

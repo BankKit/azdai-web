@@ -11,7 +11,7 @@
 			<value>org.sqlite.JDBC</value>
 		</property>
 		<property name="url">
-			<value>jdbc:sqlite:D:/CodeGIT/azdai-web/WebRoot/public/azdai.db</value>
+			<value>jdbc:sqlite:/var/lib/openshift/5305714f5004469cc2000250/app-root/runtime/dependencies/jbossews/public/azdai.db</value>
 		</property>
 		<property name="validationQuery">
 			<value>SELECT 1</value>

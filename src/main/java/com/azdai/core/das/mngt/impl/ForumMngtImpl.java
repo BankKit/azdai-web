@@ -416,4 +416,11 @@ public class ForumMngtImpl implements TickTimer, ForumMngt {
         return pageList;
     }
 
+    /** 
+     * @see com.azdai.core.das.mngt.ForumMngt#removeForumTopic(long)
+     */
+    public int removeForumTopic(long id) {
+        return this.forumTopicDAO.delete(id);
+    }
+
 }

@@ -5,7 +5,8 @@
 package com.azdai.core.das.dal.query;
 
 import java.io.Serializable;
-import java.util.Date;
+
+import com.github.obullxl.lang.ToString;
 
 /**
  * 主题查询对象
@@ -13,7 +14,7 @@ import java.util.Date;
  * @author obullxl@gmail.com
  * @version $Id: ForumTopicQuery.java, V1.0.1 2014年3月14日 上午11:51:57 $
  */
-public class ForumTopicQuery implements Serializable {
+public class ForumTopicQuery extends ToString implements Serializable {
     private static final long serialVersionUID = -3141064291259916002L;
 
     private int               offset;
@@ -37,15 +38,15 @@ public class ForumTopicQuery implements Serializable {
 
     private String            postUserNo;
 
-    private Date              gmtPostBegin;
+    private String            gmtPostBegin;
 
-    private Date              gmtPostFinish;
+    private String            gmtPostFinish;
 
     private String            replyUserNo;
 
-    private Date              gmtReplyBegin;
+    private String            gmtReplyBegin;
 
-    private Date              gmtReplyFinish;
+    private String            gmtReplyFinish;
 
     private String            title;
 
@@ -139,19 +140,19 @@ public class ForumTopicQuery implements Serializable {
         this.postUserNo = postUserNo;
     }
 
-    public Date getGmtPostBegin() {
+    public String getGmtPostBegin() {
         return gmtPostBegin;
     }
 
-    public void setGmtPostBegin(Date gmtPostBegin) {
+    public void setGmtPostBegin(String gmtPostBegin) {
         this.gmtPostBegin = gmtPostBegin;
     }
 
-    public Date getGmtPostFinish() {
+    public String getGmtPostFinish() {
         return gmtPostFinish;
     }
 
-    public void setGmtPostFinish(Date gmtPostFinish) {
+    public void setGmtPostFinish(String gmtPostFinish) {
         this.gmtPostFinish = gmtPostFinish;
     }
 
@@ -163,19 +164,19 @@ public class ForumTopicQuery implements Serializable {
         this.replyUserNo = replyUserNo;
     }
 
-    public Date getGmtReplyBegin() {
+    public String getGmtReplyBegin() {
         return gmtReplyBegin;
     }
 
-    public void setGmtReplyBegin(Date gmtReplyBegin) {
+    public void setGmtReplyBegin(String gmtReplyBegin) {
         this.gmtReplyBegin = gmtReplyBegin;
     }
 
-    public Date getGmtReplyFinish() {
+    public String getGmtReplyFinish() {
         return gmtReplyFinish;
     }
 
-    public void setGmtReplyFinish(Date gmtReplyFinish) {
+    public void setGmtReplyFinish(String gmtReplyFinish) {
         this.gmtReplyFinish = gmtReplyFinish;
     }
 
