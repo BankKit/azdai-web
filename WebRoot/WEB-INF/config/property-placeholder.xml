@@ -8,5 +8,11 @@
 	<entry key="exptRightUrl">/error/right.htm</entry>
 	<entry key="exptBizOptUrl">/error/operation.htm</entry>
 	<entry key="exptUnknowUrl">/error/system.htm</entry>
+	
+	<!--
+	<entry key="sqlite_path">D:/CodeGIT/azdai-web/WebRoot</entry>
+	-->
+	<!---->
+	<entry key="sqlite_path">/var/lib/openshift/5305714f5004469cc2000250/app-root/runtime/dependencies/jbossews</entry>
 
 </properties>
