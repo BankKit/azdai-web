@@ -54,6 +54,46 @@
         <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
     </resultMap>
 
+    <!-- result maps for database table azdai_help_center -->
+    <resultMap id="RM-HELP-CENTER" type="HelpCenterDTO">
+        <result property="id" column="id" javaType="long" />
+        <result property="catg" column="catg" javaType="long" />
+        <result property="showFlag" column="show_flag" javaType="java.lang.String" />
+        <result property="sort" column="sort" javaType="java.lang.String" />
+        <result property="acceptCount" column="accept_count" javaType="int" />
+        <result property="rejectCount" column="reject_count" javaType="int" />
+        <result property="title" column="title" javaType="java.lang.String" />
+        <result property="content" column="content" javaType="java.lang.String" />
+        <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
+        <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
+    </resultMap>
+
+    <!-- result maps for database table azdai_right_info -->
+    <resultMap id="RM-RIGHT-INFO" type="RightInfoDTO">
+        <result property="code" column="code" javaType="java.lang.String" />
+        <result property="title" column="title" javaType="java.lang.String" />
+        <result property="memo" column="memo" javaType="java.lang.String" />
+        <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
+        <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
+    </resultMap>
+
+    <!-- result maps for database table azdai_role_info -->
+    <resultMap id="RM-ROLE-INFO" type="RoleInfoDTO">
+        <result property="id" column="id" javaType="long" />
+        <result property="title" column="title" javaType="java.lang.String" />
+        <result property="memo" column="memo" javaType="java.lang.String" />
+        <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
+        <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
+    </resultMap>
+
+    <!-- result maps for database table azdai_role_right -->
+    <resultMap id="RM-ROLE-RIGHT" type="RoleRightDTO">
+        <result property="roleId" column="role_id" javaType="long" />
+        <result property="rgtCode" column="rgt_code" javaType="java.lang.String" />
+        <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
+        <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
+    </resultMap>
+
     <!-- result maps for database table azdai_user_info -->
     <resultMap id="RM-USER-INFO" type="UserInfoDTO">
         <result property="no" column="no" javaType="java.lang.String" />
@@ -78,6 +118,15 @@
         <result property="cityCode" column="city_code" javaType="java.lang.String" />
         <result property="countyCode" column="county_code" javaType="java.lang.String" />
         <result property="streetInfo" column="street_info" javaType="java.lang.String" />
+        <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
+        <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
+    </resultMap>
+
+    <!-- result maps for database table azdai_user_role -->
+    <resultMap id="RM-USER-ROLE" type="UserRoleDTO">
+        <result property="userNo" column="user_no" javaType="java.lang.String" />
+        <result property="nickName" column="nick_name" javaType="java.lang.String" />
+        <result property="roleId" column="role_id" javaType="long" />
         <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />
         <result property="gmtModify" column="gmt_modify" javaType="java.util.Date" />
     </resultMap>

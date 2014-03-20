@@ -16,12 +16,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.azdai.core.das.mngt.ForumMngt;
 import com.azdai.core.model.ForumInfoModel;
+import com.azdai.core.model.ForumTopicModel;
 import com.azdai.core.model.ForumUserModel;
+import com.azdai.core.model.convert.ForumTopicConvert;
 import com.azdai.core.model.enums.BizResponseEnum;
 import com.azdai.core.model.enums.ForumInfoOpenEnum;
 import com.azdai.core.model.enums.ForumUserRightEnum;
 import com.azdai.core.web.form.ForumInfoStoreForm;
 import com.azdai.core.web.form.ForumTopicQueryForm;
+import com.azdai.core.web.form.ForumTopicStoreForm;
 import com.azdai.core.web.form.ForumUserStoreForm;
 import com.github.obullxl.lang.biz.BizResponse;
 import com.github.obullxl.lang.enums.ValveBoolEnum;
@@ -201,7 +204,7 @@ public class ForumMngtController extends AbstractController {
 
         return this.toMngtView("", "forum-topic-manage");
     }
-    
+
     /**
      * 删除论坛主贴
      */
@@ -218,6 +221,43 @@ public class ForumMngtController extends AbstractController {
             response.getBizData().put(BizResponse.BIZ_ID_KEY, Long.toString(id));
         } catch (Exception e) {
             logger.error("删除论坛主贴异常!", e);
+            this.buildResponse(response, BizResponseEnum.SYSTEM_ERROR);
+        }
+
+        // JSON返回
+        return response;
+    }
+
+    /**
+     * 更新论坛主贴
+     */
+    @ResponseBody
+    @RequestMapping(value = "/forum-topic/update.htm", method = RequestMethod.POST)
+    public BizResponse updateForumTopic(@Valid ForumTopicStoreForm form, BindingResult errors) {
+        // 操作结果
+        BizResponse response = this.newBizResponse(true);
+        try {
+            // 校验
+            form.validateEnumBase(errors);
+
+            if (errors.hasErrors()) {
+                this.buildResponse(response, BizResponseEnum.INVALID_PARAM);
+                return response;
+            }
+            
+            long id = form.getId();
+            ForumTopicModel model = this.forumMngt.findForumTopic(id);
+            if(model == null) {
+                this.buildResponse(response, "", "论坛主贴对象不存在！");
+                return response;
+            }
+            
+            ForumTopicConvert.merge(model, form);
+            this.forumMngt.updateForumTopic(model);
+            
+            response.getBizData().put(BizResponse.BIZ_ID_KEY, Long.toString(id));
+        } catch (Exception e) {
+            logger.error("更新论坛主贴异常!", e);
             this.buildResponse(response, BizResponseEnum.SYSTEM_ERROR);
         }
 

@@ -236,8 +236,7 @@
         SELECT 				<include refid="forum-topic-fields"/>
 			FROM
 				azdai_forum_topic
-			WHERE
-				<include refid="find-fuzzy-WHERE" />
+			<include refid="find-fuzzy-WHERE" />
 			ORDER BY
 				reply_count DESC, id DESC
 			LIMIT #{offset},#{pageSize}
@@ -248,8 +247,7 @@
         SELECT 				COUNT(*)
 			FROM
 				azdai_forum_topic
-			WHERE
-				<include refid="find-fuzzy-WHERE" />
+			<include refid="find-fuzzy-WHERE" />
     </select>
 
     <!-- mapped statement for MyBatisForumTopicDAO.delete -->

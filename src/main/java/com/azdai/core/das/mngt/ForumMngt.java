@@ -130,5 +130,10 @@ public interface ForumMngt {
      * 删除论坛主贴
      */
     public int removeForumTopic(long id);
-    
+
+    /**
+     * 更新论坛主贴
+     */
+    public int updateForumTopic(ForumTopicModel model);
+
 }

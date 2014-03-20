@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AZDAI-USER-ROLE">
+	<!-- ============================================= -->
+    <!-- Public SQLS                                   -->
+    <!-- ============================================= -->
+
+	<!-- ============================================= -->
+    <!-- Public CopyS                                  -->
+    <!-- ============================================= -->
+
+    <!-- ============================================= -->
+    <!-- mapped statements for MyBatisUserRoleDAO -->
+    <!-- ============================================= -->
+    
+    <!-- mapped statement for MyBatisUserRoleDAO.insert -->
+    <insert id="insert">
+        INSERT INTO azdai_user_role(
+				user_no, nick_name, role_id, gmt_create, gmt_modify
+			) VALUES(
+				#{userNo}, #{nickName}, #{roleId}, DATETIME('NOW', 'LOCALTIME'), DATETIME('NOW', 'LOCALTIME')
+			)
+    </insert>
+
+    <!-- mapped statement for MyBatisUserRoleDAO.find -->
+    <select id="find" resultMap="RMS.RM-USER-ROLE" >
+    <![CDATA[
+        select * from azdai_user_role where ((user_no = #{userNo}) AND (role_id = #{roleId}))
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisUserRoleDAO.findByUser -->
+    <select id="findByUser" resultMap="RMS.RM-USER-ROLE" >
+    <![CDATA[
+        select * from azdai_user_role where (user_no = #{value}) order by role_id ASC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisUserRoleDAO.findByRole -->
+    <select id="findByRole" resultMap="RMS.RM-USER-ROLE" >
+    <![CDATA[
+        select * from azdai_user_role where (role_id = #{value}) order by user_no ASC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisUserRoleDAO.delete -->
+    <delete id="delete" >
+    <![CDATA[
+        delete from azdai_user_role where ((user_no = #{userNo}) AND (role_id = #{roleId}))
+    ]]>
+    </delete>
+
+    <!-- mapped statement for MyBatisUserRoleDAO.deleteByUser -->
+    <delete id="deleteByUser" >
+    <![CDATA[
+        delete from azdai_user_role where (user_no = #{value})
+    ]]>
+    </delete>
+
+    <!-- mapped statement for MyBatisUserRoleDAO.deleteByRole -->
+    <delete id="deleteByRole" >
+    <![CDATA[
+        delete from azdai_user_role where (role_id = #{value})
+    ]]>
+    </delete>
+
+</mapper>

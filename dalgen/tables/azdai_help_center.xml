@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<table sqlname="azdai_help_center" ticket="true" valve="false">
+	<!-- 参考文档: http://mybatis.github.io/mybatis-3/sqlmap-xml.html -->
+	
+	<!-- ========================================== -->
+	<!-- 代码复制 -->
+	<!-- ========================================== -->
+	
+	<sql id="help-center-fields">
+		id, catg, show_flag, sort, accept_count, reject_count, title, '' AS content, gmt_create, gmt_modify
+	</sql>
+	
+    <!-- ========================================== -->
+	<!-- INSERT操作 -->
+	<!-- ========================================== -->
+	
+	<operation name="insert">
+		<description>新增记录</description>
+		<sql>
+			INSERT INTO azdai_help_center(
+				id, catg, show_flag, sort, accept_count, reject_count, title, content, gmt_create, gmt_modify
+			) VALUES(
+				?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+			)
+		</sql>
+		<sqlmap>
+			INSERT INTO azdai_help_center(
+				id, catg, show_flag, sort, accept_count, reject_count, title, content, gmt_create, gmt_modify
+			) VALUES(
+				#{id}, #{catg}, #{showFlag}, #{sort}, #{acceptCount}, #{rejectCount}, #{title}, #{content,jdbcType=VARCHAR}, {{DB_NOW}}, {{DB_NOW}}
+			)
+		</sqlmap>
+	</operation>
+	
+	<!-- ========================================== -->
+	<!-- UPDATE操作 -->
+	<!-- ========================================== -->
+	
+	<operation name="update" paramtype="object">
+		<description>更新记录</description>
+		<sql>
+			UPDATE azdai_help_center SET
+				catg=?, show_flag=?, sort=?, title=?, content=?, gmt_modify='NOW'
+			WHERE
+				id=?
+		</sql>
+		<sqlmap>
+			UPDATE azdai_help_center SET
+				catg=#{catg}, show_flag=#{showFlag}, sort=#{sort}, title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify={{DB_NOW}}
+			WHERE
+				id=#{id}
+		</sqlmap>
+	</operation>
+	
+	<operation name="updateMeta" paramtype="object">
+		<description>更新元数据</description>
+		<sql>
+			UPDATE azdai_help_center SET
+				catg=?, show_flag=?, sort=?, gmt_modify='NOW'
+			WHERE
+				id=?
+		</sql>
+		<sqlmap>
+			UPDATE azdai_help_center SET
+				catg=#{catg}, show_flag=#{showFlag}, sort=#{sort}, gmt_modify={{DB_NOW}}
+			WHERE
+				id=#{id}
+		</sqlmap>
+	</operation>
+	
+	<operation name="updateContent" paramtype="object">
+		<description>更新数据内容</description>
+		<sql>
+			UPDATE azdai_help_center SET
+				title=?, content=?, gmt_modify='NOW'
+			WHERE
+				id=?
+		</sql>
+		<sqlmap>
+			UPDATE azdai_help_center SET
+				title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify={{DB_NOW}}
+			WHERE
+				id=#{id}
+		</sqlmap>
+	</operation>
+	
+	<operation name="updateAcceptCount">
+		<description>增加点赞次数</description>
+		<extraparams>
+			<param name="id" javatype="long" />
+			<param name="delta" javatype="int" />
+		</extraparams>
+		<sql>
+			UPDATE azdai_help_center SET
+				accept_count='AC', gmt_modify='NOW'
+			WHERE
+				id='ID'
+		</sql>
+		<sqlmap>
+			UPDATE azdai_help_center SET
+				accept_count=accept_count+#{delta}, gmt_modify={{DB_NOW}}
+			WHERE
+				id=#{id}
+		</sqlmap>
+	</operation>
+	
+	<operation name="updateRejectCount">
+		<description>增加我踩次数</description>
+		<extraparams>
+			<param name="id" javatype="long" />
+			<param name="delta" javatype="int" />
+		</extraparams>
+		<sql>
+			UPDATE azdai_help_center SET
+				reject_count='AC', gmt_modify='NOW'
+			WHERE
+				id='ID'
+		</sql>
+		<sqlmap>
+			UPDATE azdai_help_center SET
+				reject_count=reject_count+#{delta}, gmt_modify={{DB_NOW}}
+			WHERE
+				id=#{id}
+		</sqlmap>
+	</operation>
+	
+	<!-- ========================================== -->
+	<!-- SELECT操作 -->
+	<!-- ========================================== -->
+	
+    <operation name="find" multiplicity="one">
+		<description>查询单条记录</description>
+		<sql>
+			SELECT * FROM azdai_help_center WHERE id=?
+		</sql>
+	</operation>
+	
+	<operation name="findByShow" multiplicity="many">
+		<description>查询多条记录</description>
+		<extraparams>
+			<param name="showFlag" javatype="java.lang.String" />
+		</extraparams>
+		<sql>
+			SELECT * FROM azdai_help_center WHERE show_flag='SHOW'
+		</sql>
+		<sqlmap>
+		<![CDATA[
+			SELECT
+				<include refid="help-center-fields"/>
+			FROM
+				azdai_help_center
+			WHERE
+				show_flag=#{valve}
+			ORDER BY
+				sort ASC
+		]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="findByCatg" multiplicity="many">
+		<description>查询多条记录</description>
+		<extraparams>
+			<param name="catg" javatype="long" />
+		</extraparams>
+		<sql>
+			SELECT * FROM azdai_help_center WHERE catg='CATG'
+		</sql>
+		<sqlmap>
+		<![CDATA[
+			SELECT
+				<include refid="help-center-fields"/>
+			FROM
+				azdai_help_center
+			WHERE
+				catg=#{valve}
+			ORDER BY
+				sort ASC
+		]]>
+		</sqlmap>
+	</operation>
+	
+	<operation name="findAll" multiplicity="many">
+		<description>查询所有记录</description>
+		<sql>
+			SELECT * FROM azdai_help_center ORDER BY sort ASC
+		</sql>
+		<sqlmap>
+		<![CDATA[
+			SELECT
+				<include refid="help-center-fields"/>
+			FROM
+				azdai_help_center
+			ORDER BY
+				sort ASC
+		]]>
+		</sqlmap>
+	</operation>
+    
+    <!-- ========================================== -->
+	<!-- DELETE操作 -->
+	<!-- ========================================== -->
+	
+    <operation name="delete">
+		<description>删除单条记录</description>
+		<sql>
+			DELETE FROM azdai_help_center WHERE id=?
+		</sql>
+	</operation>
+
+</table>

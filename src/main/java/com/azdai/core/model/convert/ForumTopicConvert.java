@@ -18,6 +18,7 @@ import com.azdai.core.model.enums.ForumTopicReplyEnum;
 import com.azdai.core.model.enums.ForumTopicStateEnum;
 import com.azdai.core.model.enums.ForumTopicTopEnum;
 import com.azdai.core.web.form.ForumTopicQueryForm;
+import com.azdai.core.web.form.ForumTopicStoreForm;
 import com.azdai.core.web.webx.EnumWebX;
 import com.github.obullxl.lang.enums.ValveBoolEnum;
 import com.github.obullxl.lang.utils.QueryLikeUtils;
@@ -104,25 +105,46 @@ public class ForumTopicConvert {
         }
 
         dstObj.setId(srcObj.getId());
-        
+
         dstObj.setCatg(StringUtils.trimToNull(srcObj.getCatg()));
         dstObj.setForum(StringUtils.trimToNull(srcObj.getForum()));
         dstObj.setState(StringUtils.trimToNull(srcObj.getState()));
         dstObj.setTopFlag(StringUtils.trimToNull(srcObj.getTopFlag()));
         dstObj.setEliteFlag(StringUtils.trimToNull(srcObj.getEliteFlag()));
         dstObj.setReplyFlag(StringUtils.trimToNull(srcObj.getReplyFlag()));
-        
+
         dstObj.setPostUserNo(StringUtils.trimToNull(srcObj.getPostUserNo()));
         dstObj.setReplyUserNo(StringUtils.trimToNull(srcObj.getReplyUserNo()));
-        
+
         dstObj.setGmtPostBegin(StringUtils.trimToNull(srcObj.getGmtPostBegin()));
         dstObj.setGmtPostFinish(StringUtils.trimToNull(srcObj.getGmtPostFinish()));
         dstObj.setGmtReplyBegin(StringUtils.trimToNull(srcObj.getGmtReplyBegin()));
         dstObj.setGmtReplyFinish(StringUtils.trimToNull(srcObj.getGmtReplyFinish()));
-        
+
         dstObj.setTitle(QueryLikeUtils.format(srcObj.getTitle()));
         dstObj.setContent(QueryLikeUtils.format(srcObj.getContent()));
 
         return dstObj;
     }
+
+    /**
+     * 论坛主贴信息更新(合并表单数据到论坛主贴模型)
+     */
+    public static void merge(ForumTopicModel model, ForumTopicStoreForm form) {
+        if (model == null || form == null) {
+            return;
+        }
+
+        model.setForum(form.getForum());
+
+        model.setStateEnum(ForumTopicStateEnum.find(form.getState()));
+        model.setTopEnum(ForumTopicTopEnum.find(form.getTopFlag()));
+        model.setEliteEnum(ValveBoolEnum.findDefault(form.getEliteFlag()));
+        model.setReplyEnum(ForumTopicReplyEnum.find(form.getReplyFlag()));
+
+        model.setStyle(form.getStyle());
+        model.setTitle(form.getTitle());
+        model.setContent(form.getContent());
+    }
+
 }

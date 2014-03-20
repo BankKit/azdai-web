@@ -143,6 +143,90 @@ public interface DBSize {
 	}
 	
 	//
+	public static interface HELP_CENTER {
+		//
+		public static final String ID = "id";
+		//
+		public static final String CATG = "catg";
+		//
+		public static final String SHOW_FLAG = "show_flag";
+		//
+		public static final int SHOW_FLAG_MAX = 10;
+		//
+		public static final String SORT = "sort";
+		//
+		public static final int SORT_MAX = 10;
+		//
+		public static final String ACCEPT_COUNT = "accept_count";
+		//
+		public static final String REJECT_COUNT = "reject_count";
+		//
+		public static final String TITLE = "title";
+		//
+		public static final int TITLE_MAX = 255;
+		//
+		public static final String CONTENT = "content";
+		//
+		public static final int CONTENT_MAX = 65535;
+		//
+		public static final String GMT_CREATE = "gmt_create";
+		//
+		public static final String GMT_MODIFY = "gmt_modify";
+	}
+	
+	//
+	public static interface RIGHT_INFO {
+		//
+		public static final String CODE = "code";
+		//
+		public static final int CODE_MAX = 64;
+		//
+		public static final String TITLE = "title";
+		//
+		public static final int TITLE_MAX = 128;
+		//
+		public static final String MEMO = "memo";
+		//
+		public static final int MEMO_MAX = 256;
+		//
+		public static final String GMT_CREATE = "gmt_create";
+		//
+		public static final String GMT_MODIFY = "gmt_modify";
+	}
+	
+	//
+	public static interface ROLE_INFO {
+		//
+		public static final String ID = "id";
+		//
+		public static final String TITLE = "title";
+		//
+		public static final int TITLE_MAX = 128;
+		//
+		public static final String MEMO = "memo";
+		//
+		public static final int MEMO_MAX = 256;
+		//
+		public static final String GMT_CREATE = "gmt_create";
+		//
+		public static final String GMT_MODIFY = "gmt_modify";
+	}
+	
+	//
+	public static interface ROLE_RIGHT {
+		//
+		public static final String ROLE_ID = "role_id";
+		//
+		public static final String RGT_CODE = "rgt_code";
+		//
+		public static final int RGT_CODE_MAX = 64;
+		//
+		public static final String GMT_CREATE = "gmt_create";
+		//
+		public static final String GMT_MODIFY = "gmt_modify";
+	}
+	
+	//
 	public static interface USER_INFO {
 		//
 		public static final String NO = "no";
@@ -230,6 +314,24 @@ public interface DBSize {
 		public static final String STREET_INFO = "street_info";
 		//
 		public static final int STREET_INFO_MAX = 128;
+		//
+		public static final String GMT_CREATE = "gmt_create";
+		//
+		public static final String GMT_MODIFY = "gmt_modify";
+	}
+	
+	//
+	public static interface USER_ROLE {
+		//
+		public static final String USER_NO = "user_no";
+		//
+		public static final int USER_NO_MAX = 32;
+		//
+		public static final String NICK_NAME = "nick_name";
+		//
+		public static final int NICK_NAME_MAX = 32;
+		//
+		public static final String ROLE_ID = "role_id";
 		//
 		public static final String GMT_CREATE = "gmt_create";
 		//

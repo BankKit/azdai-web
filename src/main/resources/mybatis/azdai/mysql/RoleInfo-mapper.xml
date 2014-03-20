@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AZDAI-ROLE-INFO">
+	<!-- ============================================= -->
+    <!-- Public SQLS                                   -->
+    <!-- ============================================= -->
+
+	<!-- ============================================= -->
+    <!-- Public CopyS                                  -->
+    <!-- ============================================= -->
+
+    <!-- ============================================= -->
+    <!-- mapped statements for MyBatisRoleInfoDAO -->
+    <!-- ============================================= -->
+    
+    <!-- mapped statement for MyBatisRoleInfoDAO.insert -->
+    <insert id="insert">
+        INSERT INTO azdai_role_info(
+				id, title, memo, gmt_create, gmt_modify
+			) VALUES(
+				#{id}, #{title}, #{memo}, NOW(), NOW()
+			)
+    </insert>
+
+    <!-- mapped statement for MyBatisRoleInfoDAO.update -->
+    <update id="update" >
+        UPDATE azdai_role_info SET
+				title=#{title}, memo=#{memo}, gmt_modify=NOW()
+			WHERE
+				id=#{id}
+    </update>
+
+    <!-- mapped statement for MyBatisRoleInfoDAO.find -->
+    <select id="find" resultMap="RMS.RM-ROLE-INFO" >
+    <![CDATA[
+        select * from azdai_role_info where (id = #{value})
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisRoleInfoDAO.findAll -->
+    <select id="findAll" resultMap="RMS.RM-ROLE-INFO" >
+    <![CDATA[
+        select * from azdai_role_info order by id ASC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisRoleInfoDAO.delete -->
+    <delete id="delete" >
+    <![CDATA[
+        delete from azdai_role_info where (id = #{value})
+    ]]>
+    </delete>
+
+</mapper>

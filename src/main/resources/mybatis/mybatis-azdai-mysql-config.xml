@@ -5,7 +5,12 @@
 		<typeAlias alias="ForumInfoDTO" type="com.azdai.core.das.dal.dto.ForumInfoDTO"/>
 		<typeAlias alias="ForumTopicDTO" type="com.azdai.core.das.dal.dto.ForumTopicDTO"/>
 		<typeAlias alias="ForumUserDTO" type="com.azdai.core.das.dal.dto.ForumUserDTO"/>
+		<typeAlias alias="HelpCenterDTO" type="com.azdai.core.das.dal.dto.HelpCenterDTO"/>
+		<typeAlias alias="RightInfoDTO" type="com.azdai.core.das.dal.dto.RightInfoDTO"/>
+		<typeAlias alias="RoleInfoDTO" type="com.azdai.core.das.dal.dto.RoleInfoDTO"/>
+		<typeAlias alias="RoleRightDTO" type="com.azdai.core.das.dal.dto.RoleRightDTO"/>
 		<typeAlias alias="UserInfoDTO" type="com.azdai.core.das.dal.dto.UserInfoDTO"/>
+		<typeAlias alias="UserRoleDTO" type="com.azdai.core.das.dal.dto.UserRoleDTO"/>
 	</typeAliases>
 
 	<mappers>
@@ -13,6 +18,11 @@
 		<mapper resource="mybatis/azdai/mysql/ForumInfo-mapper.xml" />
 		<mapper resource="mybatis/azdai/mysql/ForumTopic-mapper.xml" />
 		<mapper resource="mybatis/azdai/mysql/ForumUser-mapper.xml" />
+		<mapper resource="mybatis/azdai/mysql/HelpCenter-mapper.xml" />
+		<mapper resource="mybatis/azdai/mysql/RightInfo-mapper.xml" />
+		<mapper resource="mybatis/azdai/mysql/RoleInfo-mapper.xml" />
+		<mapper resource="mybatis/azdai/mysql/RoleRight-mapper.xml" />
 		<mapper resource="mybatis/azdai/mysql/UserInfo-mapper.xml" />
+		<mapper resource="mybatis/azdai/mysql/UserRole-mapper.xml" />
 	</mappers>
 </configuration>

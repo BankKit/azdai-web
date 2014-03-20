@@ -14,5 +14,10 @@
     <include table="tables/azdai_forum_info.xml" />
     <include table="tables/azdai_forum_topic.xml" />
     <include table="tables/azdai_forum_user.xml" />
+    <include table="tables/azdai_help_center.xml" />
+    <include table="tables/azdai_right_info.xml" />
+    <include table="tables/azdai_role_info.xml" />
+    <include table="tables/azdai_role_right.xml" />
     <include table="tables/azdai_user_info.xml" />
+    <include table="tables/azdai_user_role.xml" />
 </tables>

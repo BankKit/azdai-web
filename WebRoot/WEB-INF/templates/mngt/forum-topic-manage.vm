@@ -155,7 +155,7 @@
                         <td><div class="nowrap">$topic.replyCount/$topic.visitCount</div></td>
                         <td>
 							<div class="nowrap pull-right">
-								<a href="$ctx/mngt/forum-topic/update.htm?id=$topic.id">修改</a> |
+								<a href="$ctx/mngt/forum-topic-update.htm?id=$topic.id">修改</a> |
 								<a class="topic-delete" href="javascript:;" data-id="$topic.id">删除</a>
 							</div>
 						</td>

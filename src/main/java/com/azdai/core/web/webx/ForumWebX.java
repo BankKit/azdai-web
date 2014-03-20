@@ -59,6 +59,13 @@ public class ForumWebX implements WebX {
     public ForumInfoModel fetchForum(String code) {
         return this.forumMngt.fetchForumInfo(code);
     }
+    
+    /**
+     * 获取主题信息
+     */
+    public ForumTopicModel findForumTopic(long id) {
+        return this.forumMngt.findForumTopic(id);
+    }
 
     /**
      * 获取主贴视图

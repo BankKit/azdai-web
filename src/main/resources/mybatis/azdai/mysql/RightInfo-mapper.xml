@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AZDAI-RIGHT-INFO">
+	<!-- ============================================= -->
+    <!-- Public SQLS                                   -->
+    <!-- ============================================= -->
+
+	<!-- ============================================= -->
+    <!-- Public CopyS                                  -->
+    <!-- ============================================= -->
+
+    <!-- ============================================= -->
+    <!-- mapped statements for MyBatisRightInfoDAO -->
+    <!-- ============================================= -->
+    
+    <!-- mapped statement for MyBatisRightInfoDAO.insert -->
+    <insert id="insert">
+        INSERT INTO azdai_right_info(
+				code, title, memo, gmt_create, gmt_modify
+			) VALUES(
+				#{code}, #{title}, #{memo}, NOW(), NOW()
+			)
+    </insert>
+
+    <!-- mapped statement for MyBatisRightInfoDAO.update -->
+    <update id="update" >
+        UPDATE azdai_right_info SET
+				title=#{title}, memo=#{memo}, gmt_modify=NOW()
+			WHERE
+				code=#{code}
+    </update>
+
+    <!-- mapped statement for MyBatisRightInfoDAO.find -->
+    <select id="find" resultMap="RMS.RM-RIGHT-INFO" >
+    <![CDATA[
+        select * from azdai_right_info where (code = #{value})
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisRightInfoDAO.findAll -->
+    <select id="findAll" resultMap="RMS.RM-RIGHT-INFO" >
+    <![CDATA[
+        select * from azdai_right_info order by code ASC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisRightInfoDAO.findUserRights -->
+    <select id="findUserRights" resultMap="RMS.RM-RIGHT-INFO" >
+        SELECT 				c.*
+			FROM
+				azdai_user_role a
+			LEFT JOIN
+				azdai_role_right b
+			LEFT JOIN
+				azdai_right_info c
+			  ON
+				a.role_id = b.role_id
+				AND b.rgt_code = c.code
+			WHERE a.user_no=#{userNo}
+    </select>
+
+    <!-- mapped statement for MyBatisRightInfoDAO.delete -->
+    <delete id="delete" >
+    <![CDATA[
+        delete from azdai_right_info where (code = #{value})
+    ]]>
+    </delete>
+
+</mapper>

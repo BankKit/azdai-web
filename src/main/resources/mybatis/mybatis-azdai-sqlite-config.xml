@@ -5,7 +5,12 @@
 		<typeAlias alias="ForumInfoDTO" type="com.azdai.core.das.dal.dto.ForumInfoDTO"/>
 		<typeAlias alias="ForumTopicDTO" type="com.azdai.core.das.dal.dto.ForumTopicDTO"/>
 		<typeAlias alias="ForumUserDTO" type="com.azdai.core.das.dal.dto.ForumUserDTO"/>
+		<typeAlias alias="HelpCenterDTO" type="com.azdai.core.das.dal.dto.HelpCenterDTO"/>
+		<typeAlias alias="RightInfoDTO" type="com.azdai.core.das.dal.dto.RightInfoDTO"/>
+		<typeAlias alias="RoleInfoDTO" type="com.azdai.core.das.dal.dto.RoleInfoDTO"/>
+		<typeAlias alias="RoleRightDTO" type="com.azdai.core.das.dal.dto.RoleRightDTO"/>
 		<typeAlias alias="UserInfoDTO" type="com.azdai.core.das.dal.dto.UserInfoDTO"/>
+		<typeAlias alias="UserRoleDTO" type="com.azdai.core.das.dal.dto.UserRoleDTO"/>
 	</typeAliases>
 
 	<mappers>
@@ -13,6 +18,11 @@
 		<mapper resource="mybatis/azdai/sqlite/ForumInfo-mapper.xml" />
 		<mapper resource="mybatis/azdai/sqlite/ForumTopic-mapper.xml" />
 		<mapper resource="mybatis/azdai/sqlite/ForumUser-mapper.xml" />
+		<mapper resource="mybatis/azdai/sqlite/HelpCenter-mapper.xml" />
+		<mapper resource="mybatis/azdai/sqlite/RightInfo-mapper.xml" />
+		<mapper resource="mybatis/azdai/sqlite/RoleInfo-mapper.xml" />
+		<mapper resource="mybatis/azdai/sqlite/RoleRight-mapper.xml" />
 		<mapper resource="mybatis/azdai/sqlite/UserInfo-mapper.xml" />
+		<mapper resource="mybatis/azdai/sqlite/UserRole-mapper.xml" />
 	</mappers>
 </configuration>

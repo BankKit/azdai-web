@@ -4,12 +4,15 @@
  */
 package com.azdai.core.web.form;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.Size;
 
 import com.azdai.core.das.dal.DBSize;
+import com.azdai.core.model.enums.ForumTopicReplyEnum;
+import com.azdai.core.model.enums.ForumTopicStateEnum;
+import com.azdai.core.model.enums.ForumTopicTopEnum;
+import com.github.obullxl.lang.enums.ValveBoolEnum;
 import com.github.obullxl.lang.web.form.AbstractForm;
 import com.github.obullxl.lang.web.form.EnumBaseValidate;
 
@@ -22,58 +25,48 @@ import com.github.obullxl.lang.web.form.EnumBaseValidate;
 public class ForumTopicStoreForm extends AbstractForm {
     private static final long serialVersionUID = 4246838516504646955L;
 
-    @Size(max = DBSize.FORUM_TOPIC.CATG_MAX)
-    private String            catg;
+    private long              id;
 
-    @Size(max = DBSize.FORUM_TOPIC.FORUM_MAX)
+    @Size(min = 1, max = DBSize.FORUM_TOPIC.FORUM_MAX)
     private String            forum;
 
-    @Size(max = DBSize.FORUM_TOPIC.STATE_MAX)
+    @Size(min = 1, max = DBSize.FORUM_TOPIC.STATE_MAX)
     private String            state;
 
-    @Size(max = DBSize.FORUM_TOPIC.TOP_FLAG_MAX)
+    @Size(min = 1, max = DBSize.FORUM_TOPIC.TOP_FLAG_MAX)
     private String            topFlag;
 
-    @Size(max = DBSize.FORUM_TOPIC.ELITE_FLAG_MAX)
+    @Size(min = 1, max = DBSize.FORUM_TOPIC.ELITE_FLAG_MAX)
     private String            eliteFlag;
 
-    @Size(max = DBSize.FORUM_TOPIC.REPLY_FLAG_MAX)
+    @Size(min = 1, max = DBSize.FORUM_TOPIC.REPLY_FLAG_MAX)
     private String            replyFlag;
 
-    private Long              topic;
+    @Size(max = DBSize.FORUM_TOPIC.STYLE_MAX)
+    private String            style;
 
-    @Size(max = DBSize.FORUM_TOPIC.POST_USER_NO_MAX)
-    private String            postUserNo;
-
-    private Date              gmtPostBegin;
-
-    private Date              gmtPostFinish;
-
-    @Size(max = DBSize.FORUM_TOPIC.REPLY_USER_NO_MAX)
-    private String            replyUserNo;
-
-    private Date              gmtReplyBegin;
-
-    private Date              gmtReplyFinish;
-
-    @Size(max = DBSize.FORUM_TOPIC.TITLE_MAX)
+    @Size(min = 3, max = DBSize.FORUM_TOPIC.TITLE_MAX)
     private String            title;
 
-    @Size(max = DBSize.FORUM_TOPIC.TITLE_MAX)
+    @Size(min = 10, max = DBSize.FORUM_TOPIC.CONTENT_MAX)
     private String            content;
 
     /** 
      * @see com.github.obullxl.jeesite.web.form.AbstractForm#enumBases(java.util.List)
      */
     public void enumBases(List<EnumBaseValidate> validates) {
+        validates.add(new EnumBaseValidate("state", this.state, ForumTopicStateEnum.values()));
+        validates.add(new EnumBaseValidate("topFlag", this.topFlag, ForumTopicTopEnum.values()));
+        validates.add(new EnumBaseValidate("eliteFlag", this.eliteFlag, ValveBoolEnum.values()));
+        validates.add(new EnumBaseValidate("replyFlag", this.replyFlag, ForumTopicReplyEnum.values()));
     }
 
-    public String getCatg() {
-        return catg;
+    public long getId() {
+        return id;
     }
 
-    public void setCatg(String catg) {
-        this.catg = catg;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getForum() {
@@ -116,60 +109,12 @@ public class ForumTopicStoreForm extends AbstractForm {
         this.replyFlag = replyFlag;
     }
 
-    public Long getTopic() {
-        return topic;
+    public String getStyle() {
+        return style;
     }
 
-    public void setTopic(Long topic) {
-        this.topic = topic;
-    }
-
-    public String getPostUserNo() {
-        return postUserNo;
-    }
-
-    public void setPostUserNo(String postUserNo) {
-        this.postUserNo = postUserNo;
-    }
-
-    public Date getGmtPostBegin() {
-        return gmtPostBegin;
-    }
-
-    public void setGmtPostBegin(Date gmtPostBegin) {
-        this.gmtPostBegin = gmtPostBegin;
-    }
-
-    public Date getGmtPostFinish() {
-        return gmtPostFinish;
-    }
-
-    public void setGmtPostFinish(Date gmtPostFinish) {
-        this.gmtPostFinish = gmtPostFinish;
-    }
-
-    public String getReplyUserNo() {
-        return replyUserNo;
-    }
-
-    public void setReplyUserNo(String replyUserNo) {
-        this.replyUserNo = replyUserNo;
-    }
-
-    public Date getGmtReplyBegin() {
-        return gmtReplyBegin;
-    }
-
-    public void setGmtReplyBegin(Date gmtReplyBegin) {
-        this.gmtReplyBegin = gmtReplyBegin;
-    }
-
-    public Date getGmtReplyFinish() {
-        return gmtReplyFinish;
-    }
-
-    public void setGmtReplyFinish(Date gmtReplyFinish) {
-        this.gmtReplyFinish = gmtReplyFinish;
+    public void setStyle(String style) {
+        this.style = style;
     }
 
     public String getTitle() {

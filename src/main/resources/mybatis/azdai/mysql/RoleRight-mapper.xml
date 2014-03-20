@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AZDAI-ROLE-RIGHT">
+	<!-- ============================================= -->
+    <!-- Public SQLS                                   -->
+    <!-- ============================================= -->
+
+	<!-- ============================================= -->
+    <!-- Public CopyS                                  -->
+    <!-- ============================================= -->
+
+    <!-- ============================================= -->
+    <!-- mapped statements for MyBatisRoleRightDAO -->
+    <!-- ============================================= -->
+    
+    <!-- mapped statement for MyBatisRoleRightDAO.insert -->
+    <insert id="insert">
+        INSERT INTO azdai_role_right(
+				role_id, rgt_code, gmt_create, gmt_modify
+			) VALUES(
+				#{roleId}, #{rgtCode}, NOW(), NOW()
+			)
+    </insert>
+
+    <!-- mapped statement for MyBatisRoleRightDAO.find -->
+    <select id="find" resultMap="RMS.RM-ROLE-RIGHT" >
+    <![CDATA[
+        select * from azdai_role_right where ((role_id = #{roleId}) AND (rgt_code = #{rgtCode}))
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisRoleRightDAO.findByRole -->
+    <select id="findByRole" resultMap="RMS.RM-ROLE-RIGHT" >
+    <![CDATA[
+        select * from azdai_role_right where (role_id = #{value}) order by rgt_code ASC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisRoleRightDAO.findByRight -->
+    <select id="findByRight" resultMap="RMS.RM-ROLE-RIGHT" >
+    <![CDATA[
+        select * from azdai_role_right where (rgt_code = #{value}) order by role_id ASC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisRoleRightDAO.findAll -->
+    <select id="findAll" resultMap="RMS.RM-ROLE-RIGHT" >
+    <![CDATA[
+        select * from azdai_role_right order by role_id ASC, rgt_code ASC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisRoleRightDAO.delete -->
+    <delete id="delete" >
+    <![CDATA[
+        delete from azdai_role_right where ((role_id = #{roleId}) AND (rgt_code = #{rgtCode}))
+    ]]>
+    </delete>
+
+    <!-- mapped statement for MyBatisRoleRightDAO.deleteByRole -->
+    <delete id="deleteByRole" >
+    <![CDATA[
+        delete from azdai_role_right where (role_id = #{value})
+    ]]>
+    </delete>
+
+    <!-- mapped statement for MyBatisRoleRightDAO.deleteByRight -->
+    <delete id="deleteByRight" >
+    <![CDATA[
+        delete from azdai_role_right where (rgt_code = #{value})
+    ]]>
+    </delete>
+
+</mapper>

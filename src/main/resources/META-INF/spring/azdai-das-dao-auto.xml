@@ -20,7 +20,37 @@
     <bean id="forumUserDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisForumUserDAO">
     </bean>
 	
+    <bean id="helpCenterDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisHelpCenterDAO">
+		<property name="ticketService">
+			<bean class="com.github.obullxl.ticket.support.DefaultTicketService" parent="abstractTicket">
+				<property name="name" value="TB-HelpCenter-ID" />
+			</bean>
+    	</property>
+    </bean>
+	
+    <bean id="rightInfoDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisRightInfoDAO">
+    </bean>
+	
+    <bean id="roleInfoDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisRoleInfoDAO">
+		<property name="ticketService">
+			<bean class="com.github.obullxl.ticket.support.DefaultTicketService" parent="abstractTicket">
+				<property name="name" value="TB-RoleInfo-ID" />
+			</bean>
+    	</property>
+    </bean>
+	
+    <bean id="roleRightDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisRoleRightDAO">
+		<property name="ticketService">
+			<bean class="com.github.obullxl.ticket.support.DefaultTicketService" parent="abstractTicket">
+				<property name="name" value="TB-RoleRight-ID" />
+			</bean>
+    	</property>
+    </bean>
+	
     <bean id="userInfoDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisUserInfoDAO">
+    </bean>
+	
+    <bean id="userRoleDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisUserRoleDAO">
     </bean>
 	
 </beans>

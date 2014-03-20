@@ -1,0 +1,117 @@
+#set($topic=$ForumWebX.findForumTopic($NumberUtils.toLong($id)))
+<div class="container-fluid">
+	<div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">修改主题标志（$topic.title）</div>
+		</div>
+		<form id="form-topic-update" class="form-horizontal" role="form" method="post" #MarginBottomNO()>
+		<div class="panel-body">
+            <div class="form-group">
+				<label class="col-sm-2 control-label">ID</label>
+				<div class="col-sm-10">
+					<p class="form-control-static">$!topic.id</p>
+                </div>
+				<input type="hidden" name="id" value="$!topic.id" />
+            </div>
+			<div class="form-group">
+                <label for="forum" class="col-sm-2 control-label">论坛</label>
+				<div class="col-sm-10">
+    				<select id="forum" name="forum" class="form-control">
+    					#foreach($enm in $ForumWebX.findValidForums())
+    					<option value="$enm.code" #if($!StringUtils.equals($topic.forum, $enm.code))selected="selected"#end>$enm.title</option>
+    					#end
+    				</select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">主贴状态</label>
+				<div class="col-sm-10">
+    				#foreach($enm in $EnumWebX.findForumTopicStateEnums())
+                    <label class="radio-inline">
+    					<input type="radio" name="state" #if($!StringUtils.equals($enm.code(), $!topic.stateEnum.code()))checked="checked"#end value="$enm.code()"/>$enm.desp()
+                    </label>
+    				#end
+                </div>
+            </div>
+			<div class="form-group">
+                <label class="col-sm-2 control-label">置顶标志</label>
+				<div class="col-sm-10">
+					#foreach($enm in $EnumWebX.findForumTopicTopEnums())
+                    <label class="radio-inline">
+						<input type="radio" name="topFlag" #if($!StringUtils.equals($enm.code(), $!topic.topEnum.code()))checked="checked"#end value="$enm.code()"/>$enm.desp()
+                    </label>
+					#end
+                </div>
+            </div>
+			<div class="form-group">
+                <label class="col-sm-2 control-label">加精标志</label>
+				<div class="col-sm-10">
+					#foreach($enm in $EnumWebX.findForumTopicEliteEnums())
+                    <label class="radio-inline">
+						<input type="radio" name="eliteFlag" #if($!StringUtils.equals($enm.code(), $!topic.eliteEnum.code()))checked="checked"#end value="$enm.code()"/>$enm.desp()
+                    </label>
+					#end
+                </div>
+			</div>
+			<div class="form-group">
+                <label class="col-sm-2 control-label">评论标志</label>
+				<div class="col-sm-10">
+					#foreach($enm in $EnumWebX.findForumTopicReplyEnums())
+                    <label class="radio-inline">
+						<input type="radio" name="replyFlag" #if($!StringUtils.equals($enm.code(), $!topic.replyEnum.code()))checked="checked"#end value="$enm.code()"/>$enm.desp()
+                    </label>
+					#end
+                </div>
+			</div>
+			<div class="form-group">
+                <label class="col-sm-2 control-label">标题样式</label>
+				<div class="col-sm-10">
+					<input id="style" name="style" type="text" class="form-control"  value="$!topic.style" />
+                </div>
+            </div>
+			<div class="form-group">
+                <label class="col-sm-2 control-label">标题</label>
+				<div class="col-sm-10">
+					<input id="title" name="title" type="text" class="form-control"  value="$!topic.title" />
+                </div>
+            </div>
+			<div class="form-group" #MarginBottomNO()>
+				<div class="col-sm-12">
+					<textarea id="content" name="content">$!topic.content</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer text-center">
+			<button type="submit" class="btn btn-lg btn-success"><i class="fa fa-plus"></i> 更新主贴标志</button>
+		</div>
+		</form>
+        <div class="clearfix"></div>
+	</div>
+</div>
+<script type="text/javascript">
+#set($editor="ON")
+$(document).ready(function() {
+/** 富文本框 */
+UE.getEditor("content");
+
+/** 主贴更新 */
+$("#form-topic-update").submit(function(e) {
+	e.preventDefault();
+	jQuery.ajax({
+		type: "POST",
+		dataType: "json",
+		url: "$ctx/mngt/forum-topic/update.htm",
+		data: $("#form-topic-update").serialize(),
+
+		success: function(result) {
+			if(result.success) {
+				AZD.modal("论坛主贴更新成功", "成功提示");
+			} else {
+				AZD.alert("错误码：<b>" + result.respCode + "</b><br/>错误描述：<b>" + result.respDesp + "</b>", "失败提示");
+			}
+		}
+	});
+});
+//
+});
+</script>

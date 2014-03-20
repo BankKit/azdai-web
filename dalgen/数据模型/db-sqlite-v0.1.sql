@@ -123,3 +123,72 @@ CREATE TABLE azdai_user_info (
   CONSTRAINT azdai_user_info_mobile_u UNIQUE (mobile),
   CONSTRAINT azdai_user_info_email_u UNIQUE (email)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+/**
+ * 帮助中心数据表
+ */
+CREATE TABLE azdai_help_center (
+  id				BIGINT,
+  catg				BIGINT,
+  show_flag			VARCHAR(10),
+  sort				VARCHAR(10),
+  accept_count		INT,
+  reject_count		INT,
+  title				VARCHAR(255),
+  content 			TEXT,
+  gmt_create 		DATETIME,
+  gmt_modify 		DATETIME,
+  PRIMARY KEY (id)
+/**);*/
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+/**
+ * 权限信息数据表
+ */
+CREATE TABLE azdai_right_info (
+  code				VARCHAR(64),
+  title				VARCHAR(128),
+  memo				VARCHAR(256),
+  gmt_create 		DATETIME,
+  gmt_modify 		DATETIME,
+  PRIMARY KEY (code)
+/**);*/
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+/**
+ * 角色信息数据表
+ */
+CREATE TABLE azdai_role_info (
+  id				BIGINT,
+  title				VARCHAR(128),
+  memo				VARCHAR(256),
+  gmt_create 		DATETIME,
+  gmt_modify 		DATETIME,
+  PRIMARY KEY (id)
+/**);*/
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+/**
+ * 角色权限数据表
+ */
+CREATE TABLE azdai_role_right (
+  role_id			BIGINT,
+  rgt_code			VARCHAR(64),
+  gmt_create 		DATETIME,
+  gmt_modify 		DATETIME,
+  PRIMARY KEY (role_id, rgt_code)
+/**);*/
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+/**
+ * 角色权限数据表
+ */
+CREATE TABLE azdai_user_role (
+  user_no			VARCHAR(32),
+  nick_name			VARCHAR(32),
+  role_id			BIGINT,
+  gmt_create 		DATETIME,
+  gmt_modify 		DATETIME,
+  PRIMARY KEY (user_no, role_id)
+/**);*/
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;

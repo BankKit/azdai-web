@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AZDAI-HELP-CMS">
+	<!-- ============================================= -->
+    <!-- Public SQLS                                   -->
+    <!-- ============================================= -->
+	<sql id="help-cms-fields">
+		id, catg, show_flag, sort, accept_count, reject_count, title, '' AS content, gmt_create, gmt_modify
+	</sql>
+
+
+	<!-- ============================================= -->
+    <!-- Public CopyS                                  -->
+    <!-- ============================================= -->
+
+    <!-- ============================================= -->
+    <!-- mapped statements for MyBatisHelpCmDAO -->
+    <!-- ============================================= -->
+    
+    <!-- mapped statement for MyBatisHelpCmDAO.insert -->
+    <insert id="insert">
+        INSERT INTO azdai_help_cms(
+				id, catg, show_flag, sort, accept_count, reject_count, title, content, gmt_create, gmt_modify
+			) VALUES(
+				#{id}, #{catg}, #{showFlag}, #{sort}, #{acceptCount}, #{rejectCount}, #{title}, #{content,jdbcType=VARCHAR}, DATETIME('NOW', 'LOCALTIME'), DATETIME('NOW', 'LOCALTIME')
+			)
+    </insert>
+
+    <!-- mapped statement for MyBatisHelpCmDAO.update -->
+    <update id="update" >
+        UPDATE azdai_help_cms SET
+				catg=#{catg}, show_flag=#{showFlag}, sort=#{sort}, title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify=DATETIME('NOW', 'LOCALTIME')
+			WHERE
+				id=#{id}
+    </update>
+
+    <!-- mapped statement for MyBatisHelpCmDAO.updateMeta -->
+    <update id="updateMeta" >
+        UPDATE azdai_help_cms SET
+				catg=#{catg}, show_flag=#{showFlag}, sort=#{sort}, gmt_modify=DATETIME('NOW', 'LOCALTIME')
+			WHERE
+				id=#{id}
+    </update>
+
+    <!-- mapped statement for MyBatisHelpCmDAO.update -->
+    <update id="update" >
+        UPDATE azdai_help_cms SET
+				title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify=DATETIME('NOW', 'LOCALTIME')
+			WHERE
+				id=#{id}
+    </update>
+
+    <!-- mapped statement for MyBatisHelpCmDAO.updateAcceptCount -->
+    <update id="updateAcceptCount" >
+        UPDATE azdai_help_cms SET
+				accept_count=accept_count+#{delta}, gmt_modify=DATETIME('NOW', 'LOCALTIME')
+			WHERE
+				id=#{id}
+    </update>
+
+    <!-- mapped statement for MyBatisHelpCmDAO.updateRejectCount -->
+    <update id="updateRejectCount" >
+        UPDATE azdai_help_cms SET
+				reject_count=reject_count+#{delta}, gmt_modify=DATETIME('NOW', 'LOCALTIME')
+			WHERE
+				id=#{id}
+    </update>
+
+    <!-- mapped statement for MyBatisHelpCmDAO.find -->
+    <select id="find" resultMap="RMS.RM-HELP-CM" >
+    <![CDATA[
+        select * from azdai_help_cms where (id = #{value})
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisHelpCmDAO.findAll -->
+    <select id="findAll" resultMap="RMS.RM-HELP-CM" >
+        SELECT 				<include refid="help-cms-fields"/>
+			FROM
+				azdai_help_cms
+			ORDER BY
+				sort ASC
+    </select>
+
+    <!-- mapped statement for MyBatisHelpCmDAO.delete -->
+    <delete id="delete" >
+    <![CDATA[
+        delete from azdai_help_cms where (id = #{value})
+    ]]>
+    </delete>
+
+</mapper>
