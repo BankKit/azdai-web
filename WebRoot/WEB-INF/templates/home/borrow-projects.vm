@@ -1,13 +1,12 @@
 #set($title="我要借款")
 <div class="container">
-	<div class="col-md-12">
-        <ol class="breadcrumb">
-            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
-            <li>我要借款</li>
-        </ol>
-    </div>
+    <ol class="breadcrumb">
+        <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+        <li>我要借款</li>
+    </ol>
 	
-	<div class="col-xs-12 col-sm-6 col-md-4">
+	<div class="row">
+	<div class="#LayoutT()">
 		<div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title"><strong>普通借款标</strong></h3>
@@ -30,7 +29,7 @@
         </div>
 	</div>
 	
-	<div class="col-xs-12 col-sm-6 col-md-4">
+	<div class="#LayoutT()">
 		<div class="panel panel-primary">
             <div class="panel-heading">
 				<h3 class="panel-title"><strong>网购达人标</strong></h3>
@@ -53,7 +52,7 @@
         </div>
 	</div>
 	
-	<div class="col-xs-12 col-sm-6 col-md-4">
+	<div class="#LayoutT()">
 		<div class="panel panel-primary">
             <div class="panel-heading">
 				<h3 class="panel-title"><strong>应收款安全标</strong></h3>
@@ -75,8 +74,10 @@
 			</div>
         </div>
 	</div>
+    </div>
 	
-	<div class="col-xs-12 col-sm-6 col-md-4">
+	<div class="row">
+	<div class="#LayoutT()">
 		<div class="panel panel-primary">
             <div class="panel-heading">
 				<h3 class="panel-title"><strong>网商用户标</strong></h3>
@@ -101,7 +102,7 @@
         </div>
 	</div>
 	
-	<div class="col-xs-12 col-sm-6 col-md-4">
+	<div class="#LayoutT()">
 		<div class="panel panel-primary">
             <div class="panel-heading">
 				<h3 class="panel-title"><strong>私营企业主标</strong></h3>
@@ -124,7 +125,7 @@
         </div>
 	</div>
 	
-	<div class="col-xs-12 col-sm-6 col-md-4">
+	<div class="#LayoutT()">
 		<div class="panel panel-primary">
             <div class="panel-heading">
 				<h3 class="panel-title"><strong>莘莘学子标</strong></h3>
@@ -146,4 +147,5 @@
 			</div>
         </div>
 	</div>
+    </div>
 </div>

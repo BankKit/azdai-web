@@ -1,15 +1,13 @@
 #set($title="新用户免费注册")
 #set($navbar="regist")
 <div class="container">
-	<div class="col-md-12">
-        <ol class="breadcrumb">
-            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
-			<li>新用户免费注册</li>
-        </ol>
-    </div>
-</div>
-<div class="container">
-	<div class="col-xs-12 col-sm-12 col-md-6">
+    <ol class="breadcrumb">
+        <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+		<li>新用户免费注册</li>
+    </ol>
+
+	<div class="row">
+	<div class="#LayoutH()">
 		<div class="panel panel-primary">
             <div class="panel-heading">
 				<div class="panel-title">
@@ -66,7 +64,7 @@
 			</div>
         </div>
     </div>
-	<div class="col-xs-12 col-sm-12 col-md-6">
+	<div class="#LayoutH()">
 		<div class="panel panel-success">
             <div class="panel-heading">
 				<div class="panel-title">
@@ -75,6 +73,7 @@
             </div>
 			<div class="panel-body">已经是<kbd>安众贷</kbd>的会员？快速 <a href="$ctx/home/login.htm" class="text-xxlg">登录</a> ！！</div>
         </div>
+    </div>
     </div>
 </div>
 <script type="text/javascript">

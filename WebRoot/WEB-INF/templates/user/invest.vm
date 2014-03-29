@@ -6,7 +6,6 @@
 #set($breadcrumbTitle="我的投资记录")
 
 <!-- 账户总览 -->
-<div class="col-xs-12 col-sm-8 col-md-10">
     <div class="alert alert-info">
         <table cellpadding="5" width="100%" class="tdpadding">
 			<tr>
@@ -29,10 +28,8 @@
 			</tr>
 		</table>
     </div>
-</div>
 	
 <!-- 交易记录 -->
-<div class="col-xs-12 col-sm-8 col-md-10">
     <div class="panel panel-default">
         <div class="panel-body">
 			<ul class="nav nav-pills">
@@ -97,7 +94,7 @@
 			</div>
         </div>
     </div>
-</div>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	if(AZD.existDOM("catg-$!{catg}")) {

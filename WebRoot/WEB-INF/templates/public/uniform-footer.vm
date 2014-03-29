@@ -18,14 +18,17 @@
 </div>
 <link rel="stylesheet" type="text/css" href="$ctx/public/twbs/css/bootstrap.min.css?v=3.1.1" media="screen" />
 <link rel="stylesheet" type="text/css" href="$ctx/public/twbs/css/bootstrap-theme.min.css?v=3.1.1" media="screen" />
+<link rel="stylesheet" type="text/css" href="$ctx/public/twbs/css/non-responsive.css?v=3.1.1" media="screen"/>
 <link rel="stylesheet" type="text/css" href="$ctx/public/fa/css/font-awesome.min.css?v=4.0.3" media="screen" />
 <link rel="stylesheet" type="text/css" href="$ctx/public/css/toastr.min.css" />
 <link rel="stylesheet" type="text/css" href="$ctx/public/css/anzhongdai.css?v=2.0.1" />
+<script type="text/javascript" charset="utf-8" src="$ctx/public/js/jquery-2.1.0.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="$ctx/public/twbs/js/bootstrap.min.js?v=3.1.1"></script>
 <script type="text/javascript" charset="utf-8" src="$ctx/public/js/toastr.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="$ctx/public/js/anzhongdai.js?v=2.0.1"></script>
 <!--[if lt IE 9]>
-	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/html5shiv.js"></script>
+	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/html5shiv.js?v=3.7.0"></script>
+	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/respond.min.js?v=1.4.2"></script>
 <![endif]-->
 #if($!StringUtils.equals($editor, "ON"))
 <link rel="stylesheet" type="text/css" href="$ctx/public/ueditor/themes/iframe.css" />

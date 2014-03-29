@@ -1,17 +1,14 @@
 #set($forum=$ForumWebX.findForum($code))
 #set($title=$forum.title)
 <div class="container">
-	<div class="col-md-12">
-        <ol class="breadcrumb">
-            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
-            <li><a href="$ctx/forum/index.htm">论坛首页</a></li>
-        	<li>$forum.title</li>
-        </ol>
-    </div>
-</div>
+    <ol class="breadcrumb">
+        <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+        <li><a href="$ctx/forum/index.htm">论坛首页</a></li>
+    	<li>$forum.title</li>
+    </ol>
 
-<div class="container">
-	<div class="col-xs-12 col-sm-4 col-md-3">
+	<div class="row">
+	<div class="#LayoutSS()">
         <div class="panel panel-primary">
             <div class="panel-heading">
 				<div class="panel-title"><i class="glyphicon glyphicon-minus-sign"></i> 安众贷论坛</div>
@@ -23,7 +20,7 @@
             </div>
         </div>
     </div>
-	<div class="col-xs-12 col-sm-8 col-md-9">
+	<div class="#LayoutSX()">
         <div class="panel panel-primary" #MarginBottomNO()>
             <div class="panel-body text-success"><kbd>$forum.title</kbd> $forum.summary</div>
             <table class="table table-hover">
@@ -107,7 +104,6 @@
 		#if(!$UserWebX.isLogin())
         <div class="alert alert-danger">只有会员登录之后才能发表帖子或回复帖子，请先 <a href="$ctx/login.htm">登录</a> 或免费 <a href="$ctx/regist.htm">注册</a> 会员！</div>
 		#else
-		#set($editor="ON")
 		<div class="panel panel-primary">
             <div class="panel-heading">
 				<div class="panel-title"><i class="glyphicon glyphicon-edit"></i> 快速发帖</div>
@@ -128,11 +124,13 @@
 		#end
 		<a name="forum-topic-post"></a>
     </div>
+    </div>
 </div>
 #if($UserWebX.isLogin())
 <script type="text/javascript">
 $(document).ready(function() {
 /** 富文本框 */
+#set($editor="ON")
 UE.getEditor("content");
 
 /** 发表主贴 */

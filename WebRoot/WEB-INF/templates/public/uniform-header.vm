@@ -1,42 +1,40 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" #MarginBottomNO()>
     <div class="container">
-        <div class="col-md-12">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-                    <span class="sr-only">菜单导航</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="$ctx/home/index.htm"><img src="$ctx/public/logo.png" /></a>
-            </div>
-			
-            <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li id="dxt-nb-lend"><a href="$ctx/home/lend-projects.htm"><i class="glyphicon glyphicon-share"></i> 我要投资</a></li>
-                    <li id="dxt-nb-borrow"><a href="$ctx/home/borrow-projects.htm"><i class="glyphicon glyphicon-check"></i> 我要借款</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li id="dxt-nb-black"><a class="otip" href="$ctx/black.htm?year=2014" title="黑名单"><i class="glyphicon glyphicon-remove-circle"></i> 黑名单</a></li>
-					<li id="dxt-nb-forum"><a class="otip" href="$ctx/forum/index.htm" title="会员论坛"><i class="glyphicon glyphicon-fire"></i> 会员论坛</a></li>
-					<li id="dxt-nb-help"><a class="otip" href="$ctx/help/center.htm" title="帮助中心"><i class="glyphicon glyphicon-question-sign"></i> 帮助中心</a></li>
-					
-					#if($!UserWebX.isLogin())
-					#set($user=$UserWebX.findSessionUser())
-					<li class="dropdown">
-						<a class="dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> $user.nickName <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-                            <li><a href="$ctx/user/index.htm"><i class="glyphicon glyphicon-cog"></i> 用户中心</a></li>
-                            <li class="divider"></li>
-                            <li><a href="$ctx/user-logout.htm"><i class="glyphicon glyphicon-log-out"></i> 退出登录</a></li>
-                        </ul>
-                    </li>
-					#else
-					<li id="dxt-nb-regist"><a class="otip" href="$ctx/home/regist.htm" title="新用户注册"><i class="fa fa-user"></i> 免费注册</a></li>
-					<li id="dxt-nb-login"><a class="otip" href="$ctx/home/login.htm" title="已有账号登陆"><i class="fa fa-lock"></i> 用户登录</a></li>
-					#end
-				</ul>
-            </div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                <span class="sr-only">菜单导航</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="$ctx/home/index.htm"><img src="$ctx/public/logo.png" /></a>
+        </div>
+		
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li id="dxt-nb-lend"><a href="$ctx/home/lend-projects.htm"><i class="glyphicon glyphicon-share"></i> 我要投资</a></li>
+                <li id="dxt-nb-borrow"><a href="$ctx/home/borrow-projects.htm"><i class="glyphicon glyphicon-check"></i> 我要借款</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="dxt-nb-black"><a class="otip" href="$ctx/black.htm?year=2014" title="黑名单"><i class="glyphicon glyphicon-remove-circle"></i> 黑名单</a></li>
+				<li id="dxt-nb-forum"><a class="otip" href="$ctx/forum/index.htm" title="会员论坛"><i class="glyphicon glyphicon-fire"></i> 会员论坛</a></li>
+				<li id="dxt-nb-help"><a class="otip" href="$ctx/help/center.htm" title="帮助中心"><i class="glyphicon glyphicon-question-sign"></i> 帮助中心</a></li>
+				
+				#if($!UserWebX.isLogin())
+				#set($user=$UserWebX.findSessionUser())
+				<li class="dropdown">
+					<a class="dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> $user.nickName <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+                        <li><a href="$ctx/user/index.htm"><i class="glyphicon glyphicon-cog"></i> 用户中心</a></li>
+                        <li class="divider"></li>
+                        <li><a href="$ctx/user-logout.htm"><i class="glyphicon glyphicon-log-out"></i> 退出登录</a></li>
+                    </ul>
+                </li>
+				#else
+				<li id="dxt-nb-regist"><a class="otip" href="$ctx/home/regist.htm" title="新用户注册"><i class="fa fa-user"></i> 免费注册</a></li>
+				<li id="dxt-nb-login"><a class="otip" href="$ctx/home/login.htm" title="已有账号登陆"><i class="fa fa-lock"></i> 用户登录</a></li>
+				#end
+			</ul>
         </div>
     </div>
 </nav>

@@ -1,0 +1,60 @@
+<div class="container-fluid">
+	<div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">新增/修改参数配置</div>
+		</div>
+		#set($param=$ParamWebX.find($!name))
+		<form id="form-create-param" role="form" method="post" #MarginBottomNO()>
+		<div class="panel-body">
+            <div class="form-group">
+                <label for="name">参数名</label>
+                <input id="name" name="name" type="text" class="form-control" value="$!param.name" />
+            </div>
+            <div class="form-group">
+                <label for="title">参数描述</label>
+                <input id="title" name="title" type="text" class="form-control" value="$!param.title" />
+            </div>
+			<div class="form-group">
+                <label for="value">参数值</label>
+                <textarea id="value" name="value" class="form-control" rows="3">$!param.value</textarea>
+            </div>
+			<div class="form-group" #MarginBottomNO()>
+				<label for="valueExt">参数扩展内容</label>
+                <textarea id="valueExt" name="valueExt" rows="3">$!param.valueExt</textarea>
+            </div>
+        </div>
+        <div class="panel-footer text-center">
+			<button type="submit" class="btn btn-lg btn-success"><i class="fa fa-plus"></i> 保存参数配置</button>
+		</div>
+		</form>
+        <div class="clearfix"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+#set($editor="ON")
+$(document).ready(function() {
+/** 富文本框 */
+UE.getEditor("valueExt");
+
+/** 保存参数配置 */
+$("#form-create-param").submit(function(e) {
+	e.preventDefault();
+	jQuery.ajax({
+		type: "POST",
+		dataType: "json",
+		url: "$ctx/mngt/param-config/store.htm",
+		data: $("#form-create-param").serialize(),
+
+		success: function(result) {
+			if(result.success) {
+				AZD.modal("参数配置保存成功", "成功提示");
+			} else {
+				AZD.alert("错误码：<b>" + result.respCode + "</b><br/>错误描述：<b>" + result.respDesp + "</b>", "失败提示");
+			}
+		}
+	});
+});
+//
+});
+</script>

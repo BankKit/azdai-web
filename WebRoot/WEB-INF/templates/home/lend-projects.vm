@@ -1,13 +1,10 @@
 #set($title="我要投资 - 投资项目列表")
 <div class="container">
-	<div class="col-md-12">
-        <ol class="breadcrumb">
-            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
-            <li>我要投资</li>
-        </ol>
-    </div>
+    <ol class="breadcrumb">
+        <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+        <li>我要投资</li>
+    </ol>
 	
-	<div class="col-md-12">
 		<!--
 		<div class="well">
 			<div class="pull-right">
@@ -266,7 +263,7 @@
             </div>
         </div>
     </div>
-</div>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	if(AZD.existDOM("projects-catg$!{catg}")) {

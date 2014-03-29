@@ -6,7 +6,6 @@
 #set($breadcrumbTitle="交易记录")
 
 <!-- 账户总览 -->
-<div class="col-xs-12 col-sm-8 col-md-10">
     <div class="alert alert-info">
         <table cellpadding="5" width="100%" class="tdpadding">
 			<tr>
@@ -26,10 +25,8 @@
 			</tr>
 		</table>
     </div>
-</div>
 	
 <!-- 交易记录 -->
-<div class="col-xs-12 col-sm-8 col-md-10">
     <div class="panel panel-primary">
         <div class="panel-body">
 			<!-- 查询表单 -->
@@ -37,7 +34,7 @@
                 <form class="form-inline" role="form">
                     <div class="form-group">
                         <label for="type">交易类型</label>
-                        <select id="type" name="type" class="form-control">
+                        <select id="type" name="type">
                         	<option value="ALL">---所有---</option>
                         	<option value="RECHARGE">充值</option>
                         	<option value="CHECKOUT">投标成功</option>
@@ -65,7 +62,7 @@
                     </div>
                     <div class="form-group">
                         <label for="year">查询时间</label>
-                        <select id="year" name="year" class="form-control">
+                        <select id="year" name="year">
                             <option value="2014">2014</option>
                             <option value="2013">2013</option>
                             <option value="2012">2012</option>
@@ -73,13 +70,13 @@
                             <option value="2010">2010</option>
                         </select>
 						<span>年</span>
-						<select id="monthBegin" name="monthBegin" class="form-control">
+						<select id="monthBegin" name="monthBegin">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                         </select>
 						<span>月 到</span>
-						<select id="monthFinish" name="monthFinish" class="form-control">
+						<select id="monthFinish" name="monthFinish">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -147,4 +144,3 @@
 			</div>
         </div>
     </div>
-</div>

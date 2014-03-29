@@ -1,35 +1,35 @@
 #set($title="论坛首页")
 <div class="container">
-	<div class="col-md-12">
-        <ol class="breadcrumb">
-            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
-            <li>论坛首页</li>
-        </ol>
-		
-		<div class="row forum_list">
-			#foreach($forum in $ForumWebX.findValidForums())
-    		<div class="col-xs-12 col-sm-6 col-md-6">
-                <div class="panel panel-primary">
-                    <div class="panel-body">
-        				<h3><a href="$ctx/forum/forum.htm?code=$!forum.code" target="_blank"><img src="$ctx/public/img/forum_new.gif" /> $!forum.title</a>(<span class="color-red">$forum.topicCount</span>)</h3>
-						<!--p><strong>权限：</strong>$!forum.openEnum.desp()</p-->
-        				<p><strong>说明：</strong>$!forum.summary</p>
-						#set($users=$forum.forumUsers)
-						#if(!$users.isEmpty())
-                        <p><strong>版主：</strong>#foreach($user in $users) <a href="#">$user.nickName</a>&nbsp; #end</p>
-						#end
-                    </div>
-					#set($lastTopics=$ForumWebX.findForumLastTopics($forum.code))
-					<div class="list-group">
-						#foreach($topic in $lastTopics)
-                        <a href="$ctx/forum/topic.htm?id=$!topic.id" class="list-group-item" target="_blank"><span class="pull-right">$DateUtils.toStringDL($topic.gmtModify)</span><i class="fa fa-angle-right"></i> $!topic.title</a>
-						#end
-						<li class="list-group-item list-group-item-info text-right"><a href="$ctx/forum/forum.htm?code=$!forum.code" target="_blank"><i class="glyphicon glyphicon-fire"></i>进入论坛</a> &nbsp;|&nbsp; <a href="$ctx/forum/forum.htm?code=$!forum.code#forum-topic-post" target="_blank"><i class="fa fa-edit"></i>发表帖子</a></li>
-                    </div>
+    <ol class="breadcrumb">
+        <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+        <li>论坛首页</li>
+    </ol>
+	
+	<div class="forum_list">#set($rowStart=1) #set($rowFinish=2)
+		#foreach($forum in $ForumWebX.findValidForums())
+		#if($velocityCount==$rowStart) <div class="row"> #set($rowStart=$rowStart+2) #end
+		<div class="#LayoutH()">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+    				<h3><a href="$ctx/forum/forum.htm?code=$!forum.code" target="_blank"><img src="$ctx/public/img/forum_new.gif" /> $!forum.title</a>(<span class="color-red">$forum.topicCount</span>)</h3>
+					<!--p><strong>权限：</strong>$!forum.openEnum.desp()</p-->
+    				<p><strong>说明：</strong>$!forum.summary</p>
+					#set($users=$forum.forumUsers)
+					#if(!$users.isEmpty())
+                    <p><strong>版主：</strong>#foreach($user in $users) <a href="#">$user.nickName</a>&nbsp; #end</p>
+					#end
+                </div>
+				#set($lastTopics=$ForumWebX.findForumLastTopics($forum.code))
+				<div class="list-group">
+					#foreach($topic in $lastTopics)
+                    <a href="$ctx/forum/topic.htm?id=$!topic.id" class="list-group-item" target="_blank"><span class="pull-right">$DateUtils.toStringDL($topic.gmtModify)</span><i class="fa fa-angle-right"></i> $!topic.title</a>
+					#end
+					<li class="list-group-item list-group-item-info text-right"><a href="$ctx/forum/forum.htm?code=$!forum.code" target="_blank"><i class="glyphicon glyphicon-fire"></i>进入论坛</a> &nbsp;|&nbsp; <a href="$ctx/forum/forum.htm?code=$!forum.code#forum-topic-post" target="_blank"><i class="fa fa-edit"></i>发表帖子</a></li>
                 </div>
             </div>
-			#end
         </div>
+		#if($velocityCount==$rowFinish) </div> #set($rowFinish=$rowFinish+2) #end
+		#end
     </div>
 </div>
 <style type="text/css">

@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>#if($title) $title -#end 安众贷</title>
 #parse("/public/uniform-resources.vm")
 </head>
@@ -11,29 +10,31 @@
 <div id="wrap">
 #parse("/public/uniform-header.vm")
 <div class="container">
-	<div class="col-xs-12 col-sm-12 col-md-12">
-        <ol class="breadcrumb">
-            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
-        	<li><a href="$ctx/user/index.htm">用户中心</a></li>
-			#if($StringUtils.isBlank($!breadcrumbURL))
-			<li>$!breadcrumbTitle</li>
-			#else
-			<li><a href="$!breadcrumbURL">$!breadcrumbTitle</a></li>
-			#end
-        </ol>
-    </div>
+    <ol class="breadcrumb">
+        <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+    	<li><a href="$ctx/user/index.htm">用户中心</a></li>
+		#if($StringUtils.isBlank($!breadcrumbURL))
+		<li>$!breadcrumbTitle</li>
+		#else
+		<li><a href="$!breadcrumbURL">$!breadcrumbTitle</a></li>
+		#end
+    </ol>
 </div>
 
 <div class="container">
-	<!-- 菜单 -->
-    <div class="col-xs-12 col-sm-4 col-md-2">
-        #parse("/user/inc/inc-function-list.vm")
-    </div>
-	<!-- //菜单 -->
+<div class="row">
+<!-- 菜单 -->
+<div class="#LayoutSS()">
+#parse("/user/inc/inc-menu-list.vm")
+</div>
+<!-- //菜单 -->
 	
-	<!-- 内容 -->
+<!-- 内容 -->
+<div class="#LayoutSX()">
 $screen_placeholder
-	<!-- //内容 -->
+</div>
+<!-- //内容 -->
+</div>
 </div>
 
 </div>

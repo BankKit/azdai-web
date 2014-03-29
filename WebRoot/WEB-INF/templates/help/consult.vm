@@ -1,20 +1,17 @@
 #set($title="问题咨询 - 帮助中心")
 #set($user=$UserWebX.findSessionUser())
 <div class="container">
-	<div class="col-md-12">
-        <ol class="breadcrumb">
-            <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
-        	<li><a href="$ctx/help/center.htm">帮助中心</a></li>
-			<li>问题咨询</li>
-        </ol>
-    </div>
-</div>
+    <ol class="breadcrumb">
+        <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
+    	<li><a href="$ctx/help/center.htm">帮助中心</a></li>
+		<li>问题咨询</li>
+    </ol>
 
-<div class="container">
-	<div class="col-md-3">
+	<div class="row">
+	<div class="#LayoutSS()">
         #parse("/help/inc/inc-help-list.vm")
     </div>
-	<div class="col-md-9">
+	<div class="#LayoutSX()">
         <div class="alert alert-info"><strong><i class="glyphicon glyphicon-headphones"></i> 温馨提示：</strong>建议您首先使用帮助中心来搜索您的问题，大多问题可以直接找到答案，且无需等待！</div>
         <div class="panel panel-default">
             <div class="panel-heading"><strong><i class="glyphicon glyphicon-edit"></i> 问题咨询</strong></div>
@@ -48,5 +45,6 @@
         	</div>
         </div>
     </div>
+	</div>
 </div>
 #parse("/help/snip/consult.vm")
