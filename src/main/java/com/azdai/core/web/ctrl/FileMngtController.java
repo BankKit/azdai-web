@@ -82,6 +82,9 @@ public class FileMngtController extends AbstractController {
 
             msgs.add("文件上传提示：原文件已经存在，重命名为[" + newPath + "].");
         }
+        
+        // 创建目录
+        FileUtils.forceMkdir(diskFile.getParentFile());
 
         // 文件上传
         InputStream input = null;
