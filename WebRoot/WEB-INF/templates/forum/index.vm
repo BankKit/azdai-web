@@ -11,23 +11,21 @@
     		<div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="panel panel-primary">
                     <div class="panel-body">
-        				<h3 class="text-success"><img src="$ctx/public/img/forum_new.gif" /> $!forum.title</h3>
-						<p><strong>权限：</strong>$!forum.openEnum.desp()</p>
+        				<h3><a href="$ctx/forum/forum.htm?code=$!forum.code" target="_blank"><img src="$ctx/public/img/forum_new.gif" /> $!forum.title</a>(<span class="color-red">$forum.topicCount</span>)</h3>
+						<!--p><strong>权限：</strong>$!forum.openEnum.desp()</p-->
         				<p><strong>说明：</strong>$!forum.summary</p>
 						#set($users=$forum.forumUsers)
 						#if(!$users.isEmpty())
                         <p><strong>版主：</strong>#foreach($user in $users) <a href="#">$user.nickName</a>&nbsp; #end</p>
 						#end
-                        <p><a href="$ctx/forum/forum.htm?code=$!forum.code" class="btn btn-primary" role="button"><i class="glyphicon glyphicon-fire"></i> 进入论坛 <i class="glyphicon glyphicon-forward"></i></a></p>
                     </div>
 					#set($lastTopics=$ForumWebX.findForumLastTopics($forum.code))
-					#if(!$lastTopics.isEmpty())
 					<div class="list-group">
 						#foreach($topic in $lastTopics)
-                        <a href="$ctx/forum/topic.htm?id=$!topic.id" class="list-group-item"><span class="badge">$DateUtils.toStringDW($topic.gmtModify)</span><i class="fa fa-angle-right"></i> $!topic.title</a>
+                        <a href="$ctx/forum/topic.htm?id=$!topic.id" class="list-group-item" target="_blank"><span class="pull-right">$DateUtils.toStringDL($topic.gmtModify)</span><i class="fa fa-angle-right"></i> $!topic.title</a>
 						#end
+						<li class="list-group-item list-group-item-info text-right"><a href="$ctx/forum/forum.htm?code=$!forum.code" target="_blank"><i class="glyphicon glyphicon-fire"></i>进入论坛</a> &nbsp;|&nbsp; <a href="$ctx/forum/forum.htm?code=$!forum.code#forum-topic-post" target="_blank"><i class="fa fa-edit"></i>发表帖子</a></li>
                     </div>
-					#end
                 </div>
             </div>
 			#end

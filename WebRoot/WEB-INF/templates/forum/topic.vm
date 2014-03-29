@@ -66,7 +66,7 @@
                             <div class="text-center"><strong>注册日期：</strong>$replyUser.registDate</div>
 						</td>
                         <td>
-                            <div><i class="glyphicon glyphicon-calendar"></i> 发表于：$DateUtils.toStringDL($topic.gmtReply)<span class="pull-right">#$UtilWebX.findReplyNo($page, $velocityCount)</span></div>
+                            <div><i class="glyphicon glyphicon-calendar"></i> 发表于：$DateUtils.toStringDL($topic.gmtReply)<span class="pull-right">#$UtilWebX.findReplyNo($pageList.pager.pageNo, $velocityCount)</span></div>
 							<hr/>
 							<div>$topic.content</div>
 						</td>
@@ -96,7 +96,7 @@
         <div class="alert alert-warning">该主贴禁止回贴！！</div>
 		#else
 		#if(!$UserWebX.isLogin())
-        <div class="alert alert-danger">只有登录会员才能发表主贴，请先 <a href="$ctx/login.htm">登录</a> 或免费 <a href="$ctx/regist.htm">注册</a> 会员！</div>
+        <div class="alert alert-danger">只有会员登录之后才能发表帖子或回复帖子，请先 <a href="$ctx/login.htm">登录</a> 或免费 <a href="$ctx/regist.htm">注册</a> 会员！</div>
 		#else
 		<div class="panel panel-primary">
             <div class="panel-heading">
@@ -147,7 +147,17 @@ $("#form-create-reply").submit(function(e) {
 		success: function(result) {
 			if(result.success) {
 				var id = result.bizData["biz_id"];
-				AZD.modal("恭喜你，回贴发布成功！", "成功提示");
+				if(id > 0) {
+					AZD.confirm(function(rtn) {
+                    	if(rtn === "yes") {
+                    		top.location.href = "$ctx/forum/topic.htm?id=" + id + "&page=999999999";
+                    	}
+                    }, "恭喜你，回贴发布成功！", "查看回帖", "继续回复");
+				} else {
+					AZD.modal("恭喜你，回贴发布成功！", "成功提示");
+				}
+				
+				// 清空输入框
 				UE.getEditor("content").setContent("", false);
 			} else {
 				AZD.alert(result.respDesp, "失败提示");

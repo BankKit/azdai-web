@@ -6,9 +6,12 @@ package com.azdai.core.das.mngt.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.lang.ObjectUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.NumberUtils;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,6 +106,22 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
                             }
                         }
 
+                        // 论坛主贴统计
+                        String catg = ForumTopicCatgEnum.TOPIC.code();
+                        String state = ForumTopicStateEnum.ACTIVE.code();
+                        List<Map<String, Object>> stats = forumTopicDAO.findTopicStats(catg, state);
+
+                        for (ForumInfoModel forum : dstForums) {
+                            for (Map<String, Object> stat : stats) {
+                                Object value = stat.get(STAT_FORUM_KEY);
+                                if (StringUtils.equals(forum.getCode(), ObjectUtils.toString(value))) {
+                                    String count = ObjectUtils.toString(stat.get(STAT_COUNT_KEY));
+                                    forum.setTopicCount(NumberUtils.toInt(count));
+                                    break;
+                                }
+                            }
+                        }
+
                         return dstForums;
                     }
                 });
@@ -140,8 +159,8 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
                 });
     }
 
-    /**
-     * 获取有效论坛模型
+    /** 
+     * @see com.azdai.core.das.mngt.ForumMngt#findValidForums()
      */
     public List<ForumInfoModel> findValidForums() {
         try {
@@ -271,7 +290,8 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
      */
     public void createForumTopic(ForumTopicModel model) {
         ForumTopicDTO dstObj = ForumTopicConvert.convert(model);
-        this.forumTopicDAO.insertTopic(dstObj);
+        long id = this.forumTopicDAO.insertTopic(dstObj);
+        model.setId(id);
     }
 
     /** 
@@ -279,7 +299,8 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
      */
     public void createTopicReply(ForumTopicModel model) {
         ForumTopicDTO dstObj = ForumTopicConvert.convert(model);
-        this.forumTopicDAO.insertReply(dstObj);
+        long id = this.forumTopicDAO.insertReply(dstObj);
+        model.setId(id);
     }
 
     /** 

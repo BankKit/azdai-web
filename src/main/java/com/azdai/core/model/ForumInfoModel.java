@@ -40,6 +40,9 @@ public class ForumInfoModel extends AbstractModel {
     /** 论坛管理员 */
     private List<ForumUserModel> forumUsers;
 
+    /** 主贴总数 */
+    private int                  topicCount;
+
     // ~~~~~~~~~~~~~~~ getters and setters ~~~~~~~~~~~~~~ //
 
     public String getCode() {
@@ -101,6 +104,14 @@ public class ForumInfoModel extends AbstractModel {
         }
 
         return forumUsers;
+    }
+
+    public int getTopicCount() {
+        return topicCount;
+    }
+
+    public void setTopicCount(int topicCount) {
+        this.topicCount = topicCount;
     }
 
 }

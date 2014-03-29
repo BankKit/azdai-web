@@ -5,7 +5,6 @@
 package com.azdai.core.web.webx;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -49,8 +48,9 @@ public class UserWebX implements WebX {
     public String findUserAvatar(UserInfoModel user) {
         String avatar = user.getAvatar();
         if (StringUtils.isBlank(avatar)) {
-            String idx = Integer.toString(RandomUtils.nextInt(15));
-            return "/avatar/avatar" + StringUtils.leftPad(idx, 2, "0") + ".gif";
+            // String idx = Integer.toString(RandomUtils.nextInt(15));
+            // return "/avatar/avatar" + StringUtils.leftPad(idx, 2, "0") + ".gif";
+            return "/avatar/avatar.jpg";
         } else {
             if (!StringUtils.startsWith(avatar, "/")) {
                 avatar = "/" + avatar;

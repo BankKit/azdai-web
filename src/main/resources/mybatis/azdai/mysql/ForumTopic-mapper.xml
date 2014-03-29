@@ -69,6 +69,12 @@
     <!-- Public CopyS                                  -->
     <!-- ============================================= -->
 
+	<!--
+	    <resultMap id="RM-MANUAL-TOPIC-STATS" type="map">
+	        <result property="code" column="code" javaType="java.lang.String" />
+	    </resultMap>
+	-->
+
 
     <!-- ============================================= -->
     <!-- mapped statements for MyBatisForumTopicDAO -->
@@ -260,6 +266,16 @@
 			FROM
 				azdai_forum_topic
 			<include refid="find-fuzzy-WHERE" />
+    </select>
+
+    <!-- mapped statement for MyBatisForumTopicDAO.findTopicStats -->
+    <select id="findTopicStats" resultType="map" >
+        SELECT 				forum, COUNT(*) as count
+			FROM
+				azdai_forum_topic
+			WHERE
+				catg=#{catg} AND state=#{state}
+			GROUP BY forum
     </select>
 
     <!-- mapped statement for MyBatisForumTopicDAO.delete -->

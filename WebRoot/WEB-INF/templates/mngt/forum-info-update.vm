@@ -43,6 +43,8 @@
         </div>
         <div class="panel-footer text-center">
 			<button type="submit" class="btn btn-lg btn-success"><i class="fa fa-plus"></i> 更新论坛</button>
+			<a class="btn btn-lg btn-primary" href="$ctx/forum/forum.htm?code=$!forum.code" target="_blank"><i class="fa fa-eye"></i> 浏览论坛</a>
+			<a class="btn btn-lg btn-info" href="$ctx/forum/index.htm" target="_blank"><i class="fa fa-eye"></i> 论坛首页</a>
 		</div>
 		</form>
         <div class="clearfix"></div>

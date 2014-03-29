@@ -304,6 +304,20 @@ public interface ForumTopicDAO extends BaseDAO {
     public long findFuzzyCount(ForumTopicQuery args) throws DataAccessException;
 
 	/**
+	 *  Query DB table <tt>azdai_forum_topic</tt> for records.
+	 *
+	 *  <p>
+	 *  The sql statement for this operation is <br>
+	 *  <tt>select * from azdai_forum_topic where ((catg = 'CATG') AND (state = 'STATE'))</tt>
+	 *
+	 *	@param catg
+	 *	@param state
+	 *	@return List<java.util.Map<String, Object>>
+	 *	@throws DataAccessException
+	 */	 
+    public List<java.util.Map<String, Object>> findTopicStats(String catg, String state) throws DataAccessException;
+
+	/**
 	 *  Delete records from DB table <tt>azdai_forum_topic</tt>.
 	 *
 	 *  <p>

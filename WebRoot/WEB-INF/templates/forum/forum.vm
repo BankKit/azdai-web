@@ -18,7 +18,7 @@
 			</div>
             <div class="list-group">
 				#foreach($item in $ForumWebX.findValidForums())
-                <a href="$ctx/forum/forum.htm?code=$item.code" class="list-group-item #if($StringUtils.equals($code, $item.code)) list-group-item-info #end"><i class="glyphicon glyphicon-chevron-right"></i> $item.title</a>
+                <a href="$ctx/forum/forum.htm?code=$item.code" class="list-group-item #if($StringUtils.equals($code, $item.code)) list-group-item-info #end"><span class="badge">$!item.topicCount</span><i class="glyphicon glyphicon-chevron-right"></i> $item.title</a>
 				#end
             </div>
         </div>
@@ -105,7 +105,7 @@
 		#end
 		<div class="clearfix"></div>
 		#if(!$UserWebX.isLogin())
-        <div class="alert alert-danger">只有登录会员才能发表主贴，请先 <a href="$ctx/login.htm">登录</a> 或免费 <a href="$ctx/regist.htm">注册</a> 会员！</div>
+        <div class="alert alert-danger">只有会员登录之后才能发表帖子或回复帖子，请先 <a href="$ctx/login.htm">登录</a> 或免费 <a href="$ctx/regist.htm">注册</a> 会员！</div>
 		#else
 		#set($editor="ON")
 		<div class="panel panel-primary">
@@ -126,6 +126,7 @@
 			</div>
         </div>
 		#end
+		<a name="forum-topic-post"></a>
     </div>
 </div>
 #if($UserWebX.isLogin())
@@ -161,8 +162,17 @@ $("#form-create-topic").submit(function(e) {
 		success: function(result) {
 			if(result.success) {
 				var id = result.bizData["biz_id"];
-				AZD.modal("恭喜你，主贴发布成功，点击 <a href='$ctx/forum/topic.htm?id='" + id + ">这里</a> 查看主贴！", "成功提示");
+				if(id > 0) {
+					AZD.confirm(function(rtn) {
+                    	if(rtn === "yes") {
+                    		top.location.href = "$ctx/forum/topic.htm?id=" + id;
+                    	}
+                    }, "恭喜你，主贴发布成功！", "立即查看帖子", "继续发表");
+				} else {
+					AZD.modal("恭喜你，主贴发布成功！", "成功提示");
+				}
 				
+				// 清空输入框
 				$("#title").val("");
 				UE.getEditor("content").setContent("", false);
 			} else {

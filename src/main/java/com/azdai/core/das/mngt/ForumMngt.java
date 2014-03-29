@@ -26,13 +26,17 @@ import com.github.obullxl.lang.enums.ValveBoolEnum;
 public interface ForumMngt {
 
     /** 前台：分页大小 */
-    public static final int PAGE_SIZE       = 10;
+    public static final int    PAGE_SIZE       = 10;
 
     /** 后台：分页大小 */
-    public static final int PAGE_SIZE_MNGT  = 30;
+    public static final int    PAGE_SIZE_MNGT  = 30;
 
     /** 前台：最新主贴条数 */
-    public static final int LAST_TOPIC_SIZE = 5;
+    public static final int    LAST_TOPIC_SIZE = 5;
+
+    /** 统计 */
+    public static final String STAT_FORUM_KEY  = "forum";
+    public static final String STAT_COUNT_KEY  = "count";
 
     /**
      * 获取有效论坛模型

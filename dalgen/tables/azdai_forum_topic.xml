@@ -10,6 +10,16 @@
 		import java.util.Date;
 	</copy>
 	
+	<copy type="xml-mapper">
+	<![CDATA[
+	<!--
+	    <resultMap id="RM-MANUAL-TOPIC-STATS" type="map">
+	        <result property="code" column="code" javaType="java.lang.String" />
+	    </resultMap>
+	-->
+	]]>
+	</copy>
+	
 	<sql id="forum-topic-fields">
 		id, catg, forum, state, top_flag, elite_flag, reply_flag, topic, post_user_no, post_nick_name, gmt_post, visit_count, reply_count, reply_user_no, reply_nick_name, gmt_reply, style, title, '' AS content, gmt_create, gmt_modify
 	</sql>
@@ -475,6 +485,33 @@
 		</sqlmap>
 	</operation>
     
+    <!-- ========================================== -->
+	<!-- GROUP统计操作 -->
+	<!-- ========================================== -->
+	
+	<operation name="findTopicStats" resultClass="map" multiplicity="many">
+		<description>统计普通主贴列表</description>
+		<extraparams>
+			<param name="catg" javatype="java.lang.String" />
+			<param name="state" javatype="java.lang.String" />
+		</extraparams>
+		<sql>
+			SELECT * FROM azdai_forum_topic WHERE catg='CATG' AND state='STATE'
+		</sql>
+		<sqlmap>
+		<![CDATA[
+			SELECT
+				forum, COUNT(*) as count
+			FROM
+				azdai_forum_topic
+			WHERE
+				catg=#{catg} AND state=#{state}
+			GROUP BY forum
+		]]>
+		</sqlmap>
+	</operation>
+	
+	
     <!-- ========================================== -->
 	<!-- DELETE操作 -->
 	<!-- ========================================== -->

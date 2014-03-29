@@ -134,11 +134,10 @@ public class ForumTopicController extends AbstractController {
             this.forumMngt.createTopicReply(model);
             
             // 更新主贴
-            String replyId = Long.toString(model.getId());
             model.setId(topic);
             this.forumMngt.updateTopicReply(model);
 
-            response.getBizData().put(BizResponse.BIZ_ID_KEY, replyId);
+            response.getBizData().put(BizResponse.BIZ_ID_KEY, Long.toString(topic));
         } catch (Exception e) {
             logger.error("发表论坛主贴回贴信息异常!", e);
             this.buildResponse(response, BizResponseEnum.SYSTEM_ERROR);
