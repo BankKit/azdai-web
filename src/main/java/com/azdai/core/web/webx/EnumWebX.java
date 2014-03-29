@@ -95,5 +95,12 @@ public class EnumWebX implements WebX {
     public List<ForumTopicReplyEnum> findForumTopicReplyEnums() {
         return Arrays.asList(ForumTopicReplyEnum.values());
     }
+    
+    /**
+     * 帮助中心前台显示枚举列表
+     */
+    public List<ValveBoolEnum> findHelpCenterShowEnums() {
+        return Arrays.asList(ValveBoolEnum.values());
+    }
 
 }

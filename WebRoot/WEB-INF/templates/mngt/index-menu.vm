@@ -7,6 +7,8 @@
             <a class="list-group-item" href="$ctx/mngt/index.htm" target="top">管理后台</a>
 			<a class="list-group-item" href="$ctx/mngt/forum-info-manage.htm" #TargetURL()>论坛信息管理</a>
 			<a class="list-group-item" href="$ctx/mngt/forum-topic/manage.htm" #TargetURL()>论坛帖子管理</a>
+			<a class="list-group-item" href="$ctx/mngt/help-center-manage.htm" #TargetURL()>帮助中心管理</a>
+			<a class="list-group-item" href="$ctx/mngt/remote-file-fetch.htm" #TargetURL()>远程文件下载</a>
             <a class="list-group-item" href="$ctx/mngt/config/manage.htm" #TargetURL()>参数管理</a>
             <a class="list-group-item" href="$ctx/mngt/config/create.htm" #TargetURL()>新增参数</a>
             <a class="list-group-item" href="$ctx/mngt/tmpt/create.htm" #TargetURL()>新增模板</a>

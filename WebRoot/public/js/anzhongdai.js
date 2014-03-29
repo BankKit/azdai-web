@@ -193,6 +193,29 @@ AZD.findHrefOpt = function(href) {
 	return token;
 };
 
+// 初始化树结构
+AZD.constructTree = function(id, setting, nodes) {
+	$.fn.zTree.init($("#" + id), setting, nodes);
+};
+
+// 获取URL所有请求参数
+AZD.findURLParams = function() {
+	var vars = [], hash;
+	var hashes = self.location.href.slice(self.location.href.indexOf('?') + 1).split('&');
+	for(var i = 0; i < hashes.length; i++) {
+		hash = hashes[i].split('=');
+		vars.push(hash[0]);
+		vars[hash[0]] = hash[1];
+	}
+	
+	return vars;
+};
+
+// 获取URL单个请求参数
+AZD.findURLParam = function(name) {
+	return AZD.findURLParams()[name];
+};
+
 /**
  * 初始化
  */
@@ -307,10 +330,33 @@ $(document).ready(function() {
 		}
 	} else if(href.indexOf("/help/") >= 0) {
 		/* 帮助中心 */
-		console.info("菜单导航-帮助中心");
+		console.info("菜单导航-帮助中心" + href);
 		var dxtNavBar = $("#dxt-nb-help");
 		if(dxtNavBar) {
 			dxtNavBar.addClass("active");
+		}
+
+		$(".help-menus a").attr("class", "list-group-item");
+		$(".help-menus a").prepend("<i class=\"fa fa-caret-right\"></i> ");
+
+		$(".help-menus .help-menu").attr("class", "list-group-item list-group-item-info pointer").click(function(e) {
+			$("." + $(this).data("clz")).toggleClass("hide");
+			$(this).find(".fa").toggleClass("fa-plus").toggleClass("fa-minus");
+		});
+
+		var id = AZD.findURLParam("id");
+		if(hrefOpt === "detail") {
+			id = AZD.findURLParam("catg");
+		}
+		
+		var menuItem = $("#help-" + id);
+		if(menuItem) {
+			menuItem.addClass("list-group-item-active");
+			menuItem.find("i").attr("class", "glyphicon glyphicon-chevron-right");
+
+			menuItem.parent("div").toggleClass("hide");
+			var userMenu = menuItem.parent("div").prev();
+			userMenu.find(".fa").toggleClass("fa-plus").toggleClass("fa-minus");
 		}
 	} else if(href.indexOf("/forum/") >= 0) {
 		/* 用户论坛 */

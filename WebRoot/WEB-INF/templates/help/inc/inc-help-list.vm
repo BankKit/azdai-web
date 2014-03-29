@@ -2,14 +2,15 @@
 	<a href="$ctx/help/consult.htm" class="list-group-item list-group-item-warning"><i class="glyphicon glyphicon-edit"></i> 客服中心</a>
 </div>
 
-<div class="list-group">
-    <li class="list-group-item list-group-item-info"><strong><i class="glyphicon glyphicon-minus-sign"></i> 基础知识</strong></li>
-	<a href="$ctx/help/center.htm" class="list-group-item"><i class="glyphicon glyphicon-chevron-right"></i> 用户注册(1)</a>
-    <li class="list-group-item list-group-item-success"><i class="glyphicon glyphicon-chevron-right"></i> 常见问题(16)</li>
-	<a href="$ctx/help/center.htm" class="list-group-item"><i class="glyphicon glyphicon-chevron-right"></i> 优先计划(1)</a>
-	<a href="$ctx/help/center.htm" class="list-group-item"><i class="glyphicon glyphicon-chevron-right"></i> 本金保障(1)</a>
-	<a href="$ctx/help/center.htm" class="list-group-item"><i class="glyphicon glyphicon-chevron-right"></i> 如何充值(8)</a>
-	
-	<li class="list-group-item list-group-item-info"><strong><i class="glyphicon glyphicon-minus-sign"></i> 协议条款</strong></li>
-    <a href="$ctx/help/center.htm" class="list-group-item"><i class="glyphicon glyphicon-chevron-right"></i> 服务协议</a>
+#set($id=$NumberUtils.toLong($id))
+#set($helps=$HelpWebX.findTree())
+<div class="list-group help-menus">
+	#foreach($help in $helps)
+    <li class="help-menu" data-clz="m$!{help.id}"><strong><i class="$!help.clazz"></i> $!{help.title}</strong><span class="pull-right"><i class="fa fa-plus"></i></span></li>
+	<div class="m$!{help.id} hide">
+		#foreach($item in $help.children) #if($item.id==$id) #set($helpCurrent=$item) #end
+    	<a id="help-$!{item.id}" href="$ctx/help/center.htm?id=$!{item.id}" target="_blank"><span class="badge">$!item.children.size()</span>$!{item.title}</a>
+		#end
+    </div>
+	#end
 </div>

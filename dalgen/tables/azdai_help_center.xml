@@ -8,7 +8,7 @@
 	<!-- ========================================== -->
 	
 	<sql id="help-center-fields">
-		id, catg, show_flag, sort, accept_count, reject_count, title, '' AS content, gmt_create, gmt_modify
+		id, catg, show_flag, sort, accept_count, reject_count, clazz, title, '' AS content, gmt_create, gmt_modify
 	</sql>
 	
     <!-- ========================================== -->
@@ -19,16 +19,16 @@
 		<description>新增记录</description>
 		<sql>
 			INSERT INTO azdai_help_center(
-				id, catg, show_flag, sort, accept_count, reject_count, title, content, gmt_create, gmt_modify
+				id, catg, show_flag, sort, accept_count, reject_count, clazz, title, content, gmt_create, gmt_modify
 			) VALUES(
-				?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+				?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
 			)
 		</sql>
 		<sqlmap>
 			INSERT INTO azdai_help_center(
-				id, catg, show_flag, sort, accept_count, reject_count, title, content, gmt_create, gmt_modify
+				id, catg, show_flag, sort, accept_count, reject_count, clazz, title, content, gmt_create, gmt_modify
 			) VALUES(
-				#{id}, #{catg}, #{showFlag}, #{sort}, #{acceptCount}, #{rejectCount}, #{title}, #{content,jdbcType=VARCHAR}, {{DB_NOW}}, {{DB_NOW}}
+				#{id}, #{catg}, #{showFlag}, #{sort}, #{acceptCount}, #{rejectCount}, #{clazz}, #{title}, #{content,jdbcType=VARCHAR}, {{DB_NOW}}, {{DB_NOW}}
 			)
 		</sqlmap>
 	</operation>
@@ -41,13 +41,13 @@
 		<description>更新记录</description>
 		<sql>
 			UPDATE azdai_help_center SET
-				catg=?, show_flag=?, sort=?, title=?, content=?, gmt_modify='NOW'
+				catg=?, show_flag=?, sort=?, clazz=?, title=?, content=?, gmt_modify='NOW'
 			WHERE
 				id=?
 		</sql>
 		<sqlmap>
 			UPDATE azdai_help_center SET
-				catg=#{catg}, show_flag=#{showFlag}, sort=#{sort}, title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify={{DB_NOW}}
+				catg=#{catg}, show_flag=#{showFlag}, sort=#{sort}, clazz=#{clazz}, title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify={{DB_NOW}}
 			WHERE
 				id=#{id}
 		</sqlmap>
@@ -73,13 +73,13 @@
 		<description>更新数据内容</description>
 		<sql>
 			UPDATE azdai_help_center SET
-				title=?, content=?, gmt_modify='NOW'
+				clazz=?, title=?, content=?, gmt_modify='NOW'
 			WHERE
 				id=?
 		</sql>
 		<sqlmap>
 			UPDATE azdai_help_center SET
-				title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify={{DB_NOW}}
+				clazz=#{clazz}, title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify={{DB_NOW}}
 			WHERE
 				id=#{id}
 		</sqlmap>

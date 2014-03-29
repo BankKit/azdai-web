@@ -1,0 +1,99 @@
+<div class="container-fluid">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+            <div class="panel-title">帮助中心结构树</div>
+		</div>
+        <div class="panel-body">
+			<div id="ztreeMngt" class="ztree" style="margin-top:0"></div>
+			<input type="hidden" id="helpId" name="helpId" value="0" />
+		</div>
+        <div class="panel-footer text-center">
+            <button id="btn-refresh" class="btn btn-lg btn-success pull-left"><i class="fa fa-refresh"></i> 刷新节点</button>
+			<a class="btn btn-lg btn-primary" href="$ctx/mngt/help-center-create.htm"><i class="fa fa-plus-circle"></i> 增加节点</a>
+			<button id="btn-update" class="btn btn-lg btn-info"><i class="fa fa-edit"></i> 修改节点</button>
+    		<button id="btn-delete" class="btn btn-lg btn-danger pull-right"><i class="fa fa-minus-circle"></i> 删除节点</button>
+		</div>
+		<div class="clearfix"></div>
+    </div>
+</div>
+<link rel="stylesheet" type="text/css" href="$ctx/public/zTreeStyle/zTreeStyle.css" />
+<script type="text/javascript" src="$ctx/public/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript">
+<!--
+#set($catgs = $HelpWebX.fetchAll())
+#set($count = $catgs.size())
+var ztreeNodes = [
+#foreach($catg in $catgs)
+	{id:$catg.id, pId:$catg.catg, name:"($catg.id)($catg.title)", open:true} #if($velocityCount<$count),#end
+#end
+];
+	
+function onTreeCatgsClick(evt, treeId, catg, clickFlag) {
+	if(clickFlag !== 1) {
+		alert("请单选一个帮助中心!");
+		return;
+	}
+	
+	$("#helpId").val(catg.id);
+};
+
+var ztreeSetting = {
+	view: {
+		dblClickExpand: false
+	},
+	data: {
+		simpleData: {
+			enable: true
+		}
+	},
+	callback: {
+		onClick: onTreeCatgsClick
+	}
+};
+
+$(document).ready(function(){
+/** 构建树结构 */
+AZD.constructTree("ztreeMngt", ztreeSetting, ztreeNodes);
+
+/** 树刷新 */
+$("#btn-refresh").click(function(e) {
+	self.location.href = self.location.href;
+});
+
+/** 修改节点 */
+$("#btn-update").click(function(e) {
+	e.preventDefault();
+    var id = $("#helpId").val();
+	if(id <= 0) {
+		AZD.alert("请选择叶子节点！", "提示");
+		return;
+	}
+	
+    self.location.href = "$ctx/mngt/help-center-update.htm?id=" + id;
+});
+
+/** 删除节点 */
+$("#btn-delete").click(function(e) {
+	e.preventDefault();
+    var id = $("#helpId").val();
+	if(id <= 0) {
+		AZD.alert("请选择叶子节点！", "提示");
+		return;
+	}
+	
+    if(AZD.confirm(function() {
+		jQuery.post("$ctx/mngt/help-center/delete.htm", {
+    		id: id
+    	}, function(result) {
+    		if(result.success) {
+    			AZD.modal("帮助中心删除成功，请刷新数结构！", "成功提示");
+    		} else {
+    			AZD.alert("错误码：<b>" + result.respCode + "</b><br/>错误描述：<b>" + result.respDesp + "</b>", "失败提示");
+    		}
+    	});
+    }, "确定删除ID为[" + id + "]节点吗，删除操作不可撤销？"));
+});
+//
+});
+//-->
+</script>

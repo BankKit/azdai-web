@@ -1,0 +1,79 @@
+<div class="container-fluid">
+	<div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">新增帮助中心</div>
+		</div>
+		<form id="form-create-help" role="form" method="post" #MarginBottomNO()>
+		<div class="panel-body">
+            <div class="form-group">
+                <label for="code">上级节点ID</label>
+                <input id="catg" name="catg" type="number" class="form-control" placeholder="父节点ID" />
+				<p class="help-block">最多支持3级，为0代表一级节点！</p>
+            </div>
+			<div class="form-group">
+                <label>前台是否显示&nbsp;&nbsp;</label>
+				#foreach($enm in $EnumWebX.findHelpCenterShowEnums())
+                <label class="checkbox-inline">
+					<input name="showFlag" type="radio" value="$enm.code()" #if($velocityCount==1) checked="checked" #end /> $enm.desp()
+                </label>
+				#end
+			</div>
+            <div class="form-group">
+                <label for="sort">排序值</label>
+                <input id="sort" name="sort" type="text" class="form-control" placeholder="排序值，4位数字字符" />
+				<p class="help-block">4位数字组成，如0001，值越小排序越前。</p>
+            </div>
+			<div class="form-group">
+                <label for="clazz">图标样式类</label>
+                <input id="clazz" name="clazz" type="text" class="form-control" value="fa fa-circle" />
+                <p class="help-block"><i id="iclazz" class="fa fa-circle"></i> 只对1级节点生效，图标类建议使用<a href="http://fontawesome.io/icons" target="_blank">fontawesome.io</a>已有的样式！</p>
+            </div>
+			<div class="form-group">
+                <label for="title">标题</label>
+                <input id="title" name="title" type="text" class="form-control" placeholder="标题" />
+            </div>
+			<div class="form-group" #MarginBottomNO()>
+                <label for="content">内容-只有叶子节点才需要内容！</label>
+                <textarea id="content" name="content" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="panel-footer text-center">
+			<button type="submit" class="btn btn-lg btn-success"><i class="fa fa-plus"></i> 新增帮助中心</button>
+		</div>
+		</form>
+        <div class="clearfix"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+#set($editor="ON")
+$(document).ready(function() {
+/** 富文本框 */
+UE.getEditor("content");
+
+/** 图标样式类 */
+$("#clazz").bind("blur keypress", function() {
+	$("#iclazz").attr("class", $(this).val());
+});
+
+/** 创建帮助中心 */
+$("#form-create-help").submit(function(e) {
+	e.preventDefault();
+	jQuery.ajax({
+		type: "POST",
+		dataType: "json",
+		url: "$ctx/mngt/help-center/create.htm",
+		data: $("#form-create-help").serialize(),
+
+		success: function(result) {
+			if(result.success) {
+				AZD.modal("帮助中心新增成功！", "成功提示");
+			} else {
+				AZD.alert("错误码：<b>" + result.respCode + "</b><br/>错误描述：<b>" + result.respDesp + "</b>", "失败提示");
+			}
+		}
+	});
+});
+//
+});
+</script>

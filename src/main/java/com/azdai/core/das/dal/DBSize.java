@@ -161,6 +161,10 @@ public interface DBSize {
 		//
 		public static final String REJECT_COUNT = "reject_count";
 		//
+		public static final String CLAZZ = "clazz";
+		//
+		public static final int CLAZZ_MAX = 128;
+		//
 		public static final String TITLE = "title";
 		//
 		public static final int TITLE_MAX = 255;

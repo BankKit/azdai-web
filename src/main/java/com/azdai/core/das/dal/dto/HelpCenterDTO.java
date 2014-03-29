@@ -34,6 +34,9 @@ public class HelpCenterDTO extends BaseDTO {
 	/** column:reject_count */
 	private int rejectCount;
 
+	/** column:clazz */
+	private String clazz;
+
 	/** column:title */
 	private String title;
 
@@ -85,6 +88,13 @@ public class HelpCenterDTO extends BaseDTO {
 
 	public void setRejectCount(int rejectCount) {
 		this.rejectCount = rejectCount;
+	}
+	public String getClazz() {
+		return clazz;
+	}
+
+	public void setClazz(String clazz) {
+		this.clazz = clazz;
 	}
 	public String getTitle() {
 		return title;

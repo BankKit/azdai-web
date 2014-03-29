@@ -101,6 +101,14 @@ public class HelpMngtImpl implements HelpMngt, InitializingBean {
     }
 
     /** 
+     * @see com.azdai.core.das.mngt.HelpMngt#fetchAll()
+     */
+    public List<HelpCenterModel> fetchAll() {
+        List<HelpCenterDTO> srcObjs = this.helpCenterDAO.findAll();
+        return HelpCenterConvert.convert(srcObjs);
+    }
+
+    /** 
      * @see com.azdai.core.das.mngt.HelpMngt#fetchTree()
      */
     public List<HelpCenterModel> fetchTree() {
@@ -108,6 +116,37 @@ public class HelpMngtImpl implements HelpMngt, InitializingBean {
         List<HelpCenterModel> dstObjs = HelpCenterConvert.convert(srcObjs);
 
         return HelpWebX.constructTree(dstObjs);
+    }
+
+    /** 
+     * @see com.azdai.core.das.mngt.HelpMngt#fetchChildren(long)
+     */
+    public List<HelpCenterModel> fetchChildren(long id) {
+        List<HelpCenterDTO> srcObjs = this.helpCenterDAO.findByCatg(id);
+        return HelpCenterConvert.convert(srcObjs);
+    }
+
+    /** 
+     * @see com.azdai.core.das.mngt.HelpMngt#create(com.azdai.core.model.HelpCenterModel)
+     */
+    public void create(HelpCenterModel model) {
+        HelpCenterDTO dstObj = HelpCenterConvert.convert(model);
+        model.setId(this.helpCenterDAO.insert(dstObj));
+    }
+
+    /** 
+     * @see com.azdai.core.das.mngt.HelpMngt#update(com.azdai.core.model.HelpCenterModel)
+     */
+    public int update(HelpCenterModel model) {
+        HelpCenterDTO dstObj = HelpCenterConvert.convert(model);
+        return this.helpCenterDAO.update(dstObj);
+    }
+
+    /** 
+     * @see com.azdai.core.das.mngt.HelpMngt#remove(long)
+     */
+    public int remove(long id) {
+        return this.helpCenterDAO.delete(id);
     }
 
 }

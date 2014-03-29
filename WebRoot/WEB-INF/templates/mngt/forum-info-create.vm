@@ -61,7 +61,6 @@ $("#form-create-forum").submit(function(e) {
 
 		success: function(result) {
 			if(result.success) {
-				$("#newForumDialog").modal("hide");
 				AZD.modal("论坛新增成功", "成功提示");
 			} else {
 				AZD.alert("错误码：<b>" + result.respCode + "</b><br/>错误描述：<b>" + result.respDesp + "</b>", "失败提示");

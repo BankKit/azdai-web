@@ -22,7 +22,7 @@ public interface HelpCenterDAO extends BaseDAO {
 	 *
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>insert into azdai_help_center(id,catg,show_flag,sort,accept_count,reject_count,title,content,gmt_create,gmt_modify) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</tt>
+	 *  <tt>insert into azdai_help_center(id,catg,show_flag,sort,accept_count,reject_count,clazz,title,content,gmt_create,gmt_modify) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</tt>
 	 *
 	 *	@param helpCenter
 	 *	@return long
@@ -35,7 +35,7 @@ public interface HelpCenterDAO extends BaseDAO {
 	 *
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>update azdai_help_center set catg=?, show_flag=?, sort=?, title=?, content=?, gmt_modify='NOW' where (id = ?)</tt>
+	 *  <tt>update azdai_help_center set catg=?, show_flag=?, sort=?, clazz=?, title=?, content=?, gmt_modify='NOW' where (id = ?)</tt>
 	 *
 	 *	@param helpCenter
 	 *	@return int
@@ -61,7 +61,7 @@ public interface HelpCenterDAO extends BaseDAO {
 	 *
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>update azdai_help_center set title=?, content=?, gmt_modify='NOW' where (id = ?)</tt>
+	 *  <tt>update azdai_help_center set clazz=?, title=?, content=?, gmt_modify='NOW' where (id = ?)</tt>
 	 *
 	 *	@param helpCenter
 	 *	@return int

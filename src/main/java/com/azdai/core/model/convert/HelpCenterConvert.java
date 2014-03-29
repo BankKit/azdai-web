@@ -10,6 +10,7 @@ import org.springframework.beans.BeanUtils;
 
 import com.azdai.core.das.dal.dto.HelpCenterDTO;
 import com.azdai.core.model.HelpCenterModel;
+import com.azdai.core.web.form.HelpCenterStoreForm;
 import com.github.obullxl.lang.enums.ValveBoolEnum;
 import com.google.common.collect.Lists;
 
@@ -73,6 +74,42 @@ public class HelpCenterConvert {
         dstObj.setShowFlag(srcObj.getShowEnum().code());
 
         return dstObj;
+    }
+
+    /**
+     * 表单对象到模型对象
+     */
+    public static HelpCenterModel convert(HelpCenterStoreForm srcObj) {
+        if (srcObj == null) {
+            return null;
+        }
+
+        HelpCenterModel dstObj = new HelpCenterModel();
+
+        dstObj.setCatg(srcObj.getCatg());
+        dstObj.setShowEnum(ValveBoolEnum.findDefault(srcObj.getShowFlag()));
+        dstObj.setSort(srcObj.getSort());
+        dstObj.setClazz(srcObj.getClazz());
+        dstObj.setTitle(srcObj.getTitle());
+        dstObj.setContent(srcObj.getContent());
+
+        return dstObj;
+    }
+
+    /**
+     * 表单对象到模型对象
+     */
+    public static void merge(HelpCenterStoreForm srcObj, HelpCenterModel dstObj) {
+        if (srcObj == null || dstObj == null) {
+            return;
+        }
+
+        dstObj.setCatg(srcObj.getCatg());
+        dstObj.setShowEnum(ValveBoolEnum.findDefault(srcObj.getShowFlag()));
+        dstObj.setSort(srcObj.getSort());
+        dstObj.setClazz(srcObj.getClazz());
+        dstObj.setTitle(srcObj.getTitle());
+        dstObj.setContent(srcObj.getContent());
     }
 
 }

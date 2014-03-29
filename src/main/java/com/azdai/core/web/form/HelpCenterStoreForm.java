@@ -39,6 +39,10 @@ public class HelpCenterStoreForm extends AbstractForm {
     @Size(min = 1, max = DBSize.HELP_CENTER.SORT_MAX)
     private String            sort;
 
+    /** 图标类 */
+    @Size(max = DBSize.HELP_CENTER.CLAZZ_MAX)
+    private String            clazz;
+
     /** 标题 */
     @NotNull
     @Size(min = 3, max = DBSize.HELP_CENTER.TITLE_MAX)
@@ -46,7 +50,7 @@ public class HelpCenterStoreForm extends AbstractForm {
 
     /** 内容 */
     @NotNull
-    @Size(min = 10, max = DBSize.HELP_CENTER.CONTENT_MAX)
+    @Size(max = DBSize.HELP_CENTER.CONTENT_MAX)
     private String            content;
 
     /** 
@@ -88,6 +92,14 @@ public class HelpCenterStoreForm extends AbstractForm {
 
     public void setSort(String sort) {
         this.sort = sort;
+    }
+
+    public String getClazz() {
+        return clazz;
+    }
+
+    public void setClazz(String clazz) {
+        this.clazz = clazz;
     }
 
     public String getTitle() {

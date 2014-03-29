@@ -16,7 +16,7 @@ INSERT INTO atom_ticket VALUES ('TB-Catg-ID', 1, 10, 3600, 1, 9999999999, 'TRUE'
 INSERT INTO atom_ticket VALUES ('TB-Config-ID', 1, 10, 900, 1, 9999999999, 'TRUE');
 INSERT INTO atom_ticket VALUES ('TB-Crawl-ID', 1, 10, 200, 1, 9999999999, 'TRUE');
 INSERT INTO atom_ticket VALUES ('TB-ForumTopic-ID', 6, 10, 50, 1, 9999999999, 'TRUE');
-INSERT INTO atom_ticket VALUES ('TB-Image-ID', 1, 10, 1300, 1, 9999999999, 'TRUE');
+INSERT INTO atom_ticket VALUES ('TB-HelpCenter-ID', 1, 10, 50, 1, 9999999999, 'TRUE');
 INSERT INTO atom_ticket VALUES ('TB-Reply-ID', 1, 10, 300, 1, 9999999999, 'TRUE');
 INSERT INTO atom_ticket VALUES ('TB-Right-ID', 1, 10, 100, 1, 9999999999, 'TRUE');
 INSERT INTO atom_ticket VALUES ('TB-Tag-ID', 1, 10, 0, 1, 9999999999, 'TRUE');
@@ -134,6 +134,7 @@ CREATE TABLE azdai_help_center (
   sort				VARCHAR(10),
   accept_count		INT,
   reject_count		INT,
+  clazz				VARCHAR(128),
   title				VARCHAR(255),
   content 			TEXT,
   gmt_create 		DATETIME,

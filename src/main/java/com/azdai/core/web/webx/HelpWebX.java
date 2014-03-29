@@ -75,8 +75,22 @@ public class HelpWebX implements WebX {
     /**
      * 获取帮助内容
      */
+    public HelpCenterModel find(long id) {
+        return this.helpMngt.find(id);
+    }
+    
+    /**
+     * 拉取帮助内容
+     */
     public HelpCenterModel fetch(long id) {
         return this.helpMngt.fetch(id);
+    }
+
+    /**
+     * 拉取所有记录
+     */
+    public List<HelpCenterModel> fetchAll() {
+        return this.helpMngt.fetchAll();
     }
 
 }

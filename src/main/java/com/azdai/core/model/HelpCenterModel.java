@@ -6,6 +6,8 @@ package com.azdai.core.model;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+
 import com.github.obullxl.lang.enums.ValveBoolEnum;
 import com.google.common.collect.Lists;
 
@@ -17,6 +19,9 @@ import com.google.common.collect.Lists;
  */
 public class HelpCenterModel extends AbstractModel implements Comparable<HelpCenterModel> {
     private static final long     serialVersionUID = -4971648487860798552L;
+
+    /** 默认图标样式类 */
+    public static final String    DEFAULT_CLAZZ    = "fa fa-circle";
 
     /** ID */
     private long                  id;
@@ -35,6 +40,9 @@ public class HelpCenterModel extends AbstractModel implements Comparable<HelpCen
 
     /** 我踩次数 */
     private int                   rejectCount;
+
+    /** 图标类 */
+    private String                clazz;
 
     /** 标题 */
     private String                title;
@@ -111,6 +119,18 @@ public class HelpCenterModel extends AbstractModel implements Comparable<HelpCen
 
     public void setRejectCount(int rejectCount) {
         this.rejectCount = rejectCount;
+    }
+
+    public String getClazz() {
+        if (StringUtils.isBlank(this.clazz)) {
+            this.clazz = DEFAULT_CLAZZ;
+        }
+
+        return this.clazz;
+    }
+
+    public void setClazz(String clazz) {
+        this.clazz = clazz;
     }
 
     public String getTitle() {

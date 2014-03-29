@@ -62,6 +62,7 @@
         <result property="sort" column="sort" javaType="java.lang.String" />
         <result property="acceptCount" column="accept_count" javaType="int" />
         <result property="rejectCount" column="reject_count" javaType="int" />
+        <result property="clazz" column="clazz" javaType="java.lang.String" />
         <result property="title" column="title" javaType="java.lang.String" />
         <result property="content" column="content" javaType="java.lang.String" />
         <result property="gmtCreate" column="gmt_create" javaType="java.util.Date" />

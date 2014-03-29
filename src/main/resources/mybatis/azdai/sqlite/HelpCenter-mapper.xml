@@ -5,7 +5,7 @@
     <!-- Public SQLS                                   -->
     <!-- ============================================= -->
 	<sql id="help-center-fields">
-		id, catg, show_flag, sort, accept_count, reject_count, title, '' AS content, gmt_create, gmt_modify
+		id, catg, show_flag, sort, accept_count, reject_count, clazz, title, '' AS content, gmt_create, gmt_modify
 	</sql>
 
 
@@ -20,16 +20,16 @@
     <!-- mapped statement for MyBatisHelpCenterDAO.insert -->
     <insert id="insert">
         INSERT INTO azdai_help_center(
-				id, catg, show_flag, sort, accept_count, reject_count, title, content, gmt_create, gmt_modify
+				id, catg, show_flag, sort, accept_count, reject_count, clazz, title, content, gmt_create, gmt_modify
 			) VALUES(
-				#{id}, #{catg}, #{showFlag}, #{sort}, #{acceptCount}, #{rejectCount}, #{title}, #{content,jdbcType=VARCHAR}, DATETIME('NOW', 'LOCALTIME'), DATETIME('NOW', 'LOCALTIME')
+				#{id}, #{catg}, #{showFlag}, #{sort}, #{acceptCount}, #{rejectCount}, #{clazz}, #{title}, #{content,jdbcType=VARCHAR}, DATETIME('NOW', 'LOCALTIME'), DATETIME('NOW', 'LOCALTIME')
 			)
     </insert>
 
     <!-- mapped statement for MyBatisHelpCenterDAO.update -->
     <update id="update" >
         UPDATE azdai_help_center SET
-				catg=#{catg}, show_flag=#{showFlag}, sort=#{sort}, title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify=DATETIME('NOW', 'LOCALTIME')
+				catg=#{catg}, show_flag=#{showFlag}, sort=#{sort}, clazz=#{clazz}, title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify=DATETIME('NOW', 'LOCALTIME')
 			WHERE
 				id=#{id}
     </update>
@@ -45,7 +45,7 @@
     <!-- mapped statement for MyBatisHelpCenterDAO.updateContent -->
     <update id="updateContent" >
         UPDATE azdai_help_center SET
-				title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify=DATETIME('NOW', 'LOCALTIME')
+				clazz=#{clazz}, title=#{title}, content=#{content,jdbcType=VARCHAR}, gmt_modify=DATETIME('NOW', 'LOCALTIME')
 			WHERE
 				id=#{id}
     </update>
