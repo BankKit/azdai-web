@@ -16,7 +16,7 @@
 				<p class="help-block">4位数字组成，如0001，值越小排序越前。</p>
             </div>
 			<div class="form-group">
-                <label for="sort">论坛状态</label>
+                <label for="state">论坛状态</label>
                 <select name="state" class="form-control">
 					#foreach($enm in $EnumWebX.findValveBoolEnums())
                     <option value="$enm.code()">$enm.desp()</option>
@@ -32,11 +32,11 @@
 				#end
 			</div>
 			<div class="form-group">
-                <label for="sort">论坛标题</label>
+                <label for="title">论坛标题</label>
                 <input id="title" name="title" type="text" class="form-control" placeholder="论坛标题" />
             </div>
 			<div class="form-group">
-                <label for="sort">论坛描述</label>
+                <label for="summary">论坛描述</label>
                 <textarea id="summary" name="summary" class="form-control" rows="3"></textarea>
             </div>
         </div>

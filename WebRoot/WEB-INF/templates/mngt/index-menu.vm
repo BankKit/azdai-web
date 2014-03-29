@@ -3,8 +3,9 @@
     <div class="panel panel-primary" #MarginBottom(3)>
     	<div class="panel-heading"><strong><i class="glyphicon glyphicon-minus-sign"></i> 系统管理</strong></div>
         <div class="list-group">
-            <a class="list-group-item" href="$ctx/mngt/index.htm" target="top">管理后台首页</a>
-			<a class="list-group-item" href="$ctx/mngt/system-param/manage.htm" #TargetURL()>系统参数管理</a>
+            <a class="list-group-item" href="$ctx/mngt/index.htm" target="_top">管理后台首页</a>
+			<a class="list-group-item" href="$ctx/mngt/param-config-manage.htm" #TargetURL()>系统参数管理</a>
+			<a class="list-group-item" href="$ctx/mngt/user-info-manage.htm" #TargetURL()>会员信息管理</a>
 			<a class="list-group-item" href="$ctx/mngt/forum-info-manage.htm" #TargetURL()>论坛信息管理</a>
 			<a class="list-group-item" href="$ctx/mngt/forum-topic/manage.htm" #TargetURL()>论坛帖子管理</a>
 			<a class="list-group-item" href="$ctx/mngt/help-center-manage.htm" #TargetURL()>帮助中心管理</a>

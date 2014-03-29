@@ -91,6 +91,11 @@
 #################
 #macro(TargetURL)target="main"#end
 
+#macro(LayoutS)col-xs-3#end
+#macro(LayoutM)col-xs-4#end
+#macro(LayoutX)col-xs-8#end
+#macro(LayoutCM $m)col-xs-$m#end
+
 #################
 ## 错误提示
 #################

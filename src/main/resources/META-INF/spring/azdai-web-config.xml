@@ -28,15 +28,7 @@
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
 		<property name="interceptors">
 			<list>
-				<!--
-				<bean class="com.github.obullxl.lang.user.UserContextInterceptor">
-					<property name="exts">
-						<set>
-							<value>.htm</value>
-						</set>
-					</property>
-				</bean>
-				-->
+				<!-- <bean class="com.github.obullxl.lang.user.UserContextInterceptor"> <property name="exts"> <set> <value>.htm</value> </set> </property> </bean> -->
 				<bean class="com.github.obullxl.lang.user.PermissionInterceptor">
 					<property name="uriPrefixs">
 						<set>
@@ -148,4 +140,23 @@
 	<!-- ===================================== -->
 	<bean class="com.github.obullxl.lang.webx.WebXBean" />
 
+	<!-- ===================================== -->
+	<!-- 系统参数服务配置 -->
+	<!-- ===================================== -->
+	<bean id="paramService" class="com.github.obullxl.model.cfg.service.impl.CfgServiceImpl" init-method="init">
+		<property name="cfgDAO">
+			<bean class="com.github.obullxl.model.cfg.dao.impl.DefaultCfgDAO" init-method="init">
+				<property name="dataSource" ref="azdaiDataSource" />
+				<property name="tableName" value="azdai_param_config" />
+				<property name="catgFieldName" value="catg" />
+				<property name="nameFieldName" value="name" />
+				<property name="titleFieldName" value="title" />
+				<property name="valueFieldName" value="value" />
+				<property name="valueExtFieldName" value="value_ext" />
+				<property name="gmtCreateFieldName" value="gmt_create" />
+				<property name="gmtModifyFieldName" value="gmt_modify" />
+			</bean>
+		</property>
+	</bean>
+	
 </beans>

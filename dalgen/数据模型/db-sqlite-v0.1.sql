@@ -18,6 +18,22 @@ INSERT INTO atom_ticket VALUES ('TB-UserInfo-ID', 5, 10, 41, 1, 9999999999, 'TRU
 INSERT INTO atom_ticket VALUES ('TB-RoleInfo-ID', 5, 10, 1, 1, 9999999999, 'TRUE');
 
 /**
+ * 系统参数数据表
+ */
+CREATE TABLE azdai_param_config (
+  catg 	VARCHAR(64),
+  name	VARCHAR(64),
+  title VARCHAR(128),
+  value VARCHAR(1024),
+  value_ext  TEXT,
+  gmt_create DATETIME,
+  gmt_modify DATETIME,
+  PRIMARY KEY(catg, name)
+/**);*/
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '系统参数数据表';
+
+
+/**
  * 论坛信息数据表
  */
 CREATE TABLE azdai_forum_info (

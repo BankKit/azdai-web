@@ -31,11 +31,11 @@
                 <p class="help-block"><i id="iclazz" class="$help.clazz"></i> 图标类建议使用<a href="http://fontawesome.io/icons" target="_blank">fontawesome.io</a>已有的样式！</p>
             </div>
 			<div class="form-group">
-                <label for="sort">标题</label>
+                <label for="title">标题</label>
                 <input id="title" name="title" type="text" class="form-control" value="$help.title" />
             </div>
 			<div class="form-group" #MarginBottomNO()>
-                <label for="sort">内容-只有叶子节点才需要内容！</label>
+                <label for="content">内容-只有叶子节点才需要内容！</label>
                 <textarea id="content" name="content" rows="3">$help.content</textarea>
             </div>
         </div>
