@@ -202,6 +202,22 @@ public interface ForumTopicDAO extends BaseDAO {
 	 *
 	 *  <p>
 	 *  The sql statement for this operation is <br>
+	 *  <tt>select * from azdai_forum_topic where ((forum = 'FORUM') AND (catg = 'CATG') AND (state = 'STATE'))</tt>
+	 *
+	 *	@param limit
+	 *	@param forum
+	 *	@param catg
+	 *	@param state
+	 *	@return List<ForumTopicDTO>
+	 *	@throws DataAccessException
+	 */	 
+    public List<ForumTopicDTO> findLastTopics(int limit, String forum, String catg, String state) throws DataAccessException;
+
+	/**
+	 *  Query DB table <tt>azdai_forum_topic</tt> for records.
+	 *
+	 *  <p>
+	 *  The sql statement for this operation is <br>
 	 *  <tt>select * from azdai_forum_topic where ((forum = 'FORUM') AND (catg = 'CATG') AND (state = 'STATE') AND (top_flag = 'TF'))</tt>
 	 *
 	 *	@param offset

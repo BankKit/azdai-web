@@ -3,13 +3,12 @@
     <div class="panel panel-primary" #MarginBottom(3)>
     	<div class="panel-heading"><strong><i class="glyphicon glyphicon-minus-sign"></i> 系统管理</strong></div>
         <div class="list-group">
-			<a class="list-group-item" href="$ctx/index.htm" target="_blank">系统首页</a>
-            <a class="list-group-item" href="$ctx/mngt/index.htm" target="top">管理后台</a>
+            <a class="list-group-item" href="$ctx/mngt/index.htm" target="top">管理后台首页</a>
+			<a class="list-group-item" href="$ctx/mngt/system-param/manage.htm" #TargetURL()>系统参数管理</a>
 			<a class="list-group-item" href="$ctx/mngt/forum-info-manage.htm" #TargetURL()>论坛信息管理</a>
 			<a class="list-group-item" href="$ctx/mngt/forum-topic/manage.htm" #TargetURL()>论坛帖子管理</a>
 			<a class="list-group-item" href="$ctx/mngt/help-center-manage.htm" #TargetURL()>帮助中心管理</a>
-			<a class="list-group-item" href="$ctx/mngt/remote-file-fetch.htm" #TargetURL()>远程文件下载</a>
-            <a class="list-group-item" href="$ctx/mngt/config/manage.htm" #TargetURL()>参数管理</a>
+			<a class="list-group-item" href="$ctx/mngt/remote-file-manage.htm" #TargetURL()>远程文件管理</a>
             <a class="list-group-item" href="$ctx/mngt/config/create.htm" #TargetURL()>新增参数</a>
             <a class="list-group-item" href="$ctx/mngt/tmpt/create.htm" #TargetURL()>新增模板</a>
             <a class="list-group-item" href="$ctx/mngt/tmpt/manage.htm" #TargetURL()>模板管理</a>

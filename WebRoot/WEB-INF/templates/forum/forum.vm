@@ -42,7 +42,7 @@
                     <tr>
                         <td><div><a href="$ctx/forum/topic.htm?id=$topic.id" style="$!topic.style"><img src="$ctx/public/img/ann_icon.gif" alt="论坛公告"/> $topic.title</a> ($topic.replyCount评/$topic.visitCount阅)</div></td>
                         <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?no=$topic.postUserNo"><i class="glyphicon glyphicon-user"></i> $topic.postNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtPost)</span></div></td>
-                        <td>#if($StringUtils.isBlank($topic.replyUserNo)) -- #else<div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?$topic.replyUserNo"><i class="glyphicon glyphicon-user"></i> $topic.replyNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtReply)</span></div>#end</td>
+                        <td>#if($StringUtils.isBlank($topic.replyUserNo)) &nbsp; #else<div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?$topic.replyUserNo"><i class="glyphicon glyphicon-user"></i> $topic.replyNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtReply)</span></div>#end</td>
                     </tr>
 					#end
 					#end
@@ -60,7 +60,7 @@
                     <tr>
                         <td><div><a href="$ctx/forum/topic.htm?id=$topic.id" style="$!topic.style"><img src="$ctx/public/img/pin.gif" alt="置顶主贴"/> $topic.title</a> ($topic.replyCount评/$topic.visitCount阅)</div></td>
                         <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?no=$topic.postUserNo"><i class="glyphicon glyphicon-user"></i> $topic.postNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtPost)</span></div></td>
-                        <td>#if($StringUtils.isBlank($topic.replyUserNo)) -- #else<div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?no=$topic.replyUserNo"><i class="glyphicon glyphicon-user"></i> $topic.replyNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtReply)</span></div>#end</td>
+                        <td>#if($StringUtils.isBlank($topic.replyUserNo)) &nbsp; #else<div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?no=$topic.replyUserNo"><i class="glyphicon glyphicon-user"></i> $topic.replyNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtReply)</span></div>#end</td>
                     </tr>
 					#end
 					#end
@@ -79,7 +79,7 @@
                     <tr>
                         <td><div><a href="$ctx/forum/topic.htm?id=$topic.id" style="$!topic.style"><img src="$ctx/public/img/pin.gif" alt="论坛主贴"/> $topic.title</a> ($topic.replyCount评/$topic.visitCount阅)</div></td>
                         <td><div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?no=$topic.postUserNo"><i class="glyphicon glyphicon-user"></i> $topic.postNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtPost)</span></div></td>
-                        <td>#if($StringUtils.isBlank($topic.replyUserNo)) -- #else<div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?no=$topic.replyUserNo"><i class="glyphicon glyphicon-user"></i> $topic.replyNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtReply)</span></div>#end</td>
+                        <td>#if($StringUtils.isBlank($topic.replyUserNo)) &nbsp; #else<div class="pull-right topic-extra-info"><a href="$ctx/user/user.htm?no=$topic.replyUserNo"><i class="glyphicon glyphicon-user"></i> $topic.replyNickName</a> <br/> <span class="text-muted">$DateUtils.toStringDL($topic.gmtReply)</span></div>#end</td>
                     </tr>
 					#end
 					#end

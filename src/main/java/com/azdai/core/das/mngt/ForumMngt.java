@@ -26,15 +26,23 @@ import com.github.obullxl.lang.enums.ValveBoolEnum;
 public interface ForumMngt {
 
     /** 前台：分页大小 */
-    public static final int PAGE_SIZE      = 10;
+    public static final int PAGE_SIZE       = 10;
 
     /** 后台：分页大小 */
-    public static final int PAGE_SIZE_MNGT = 30;
+    public static final int PAGE_SIZE_MNGT  = 30;
+
+    /** 前台：最新主贴条数 */
+    public static final int LAST_TOPIC_SIZE = 5;
 
     /**
      * 获取有效论坛模型
      */
     public List<ForumInfoModel> findValidForums();
+
+    /**
+     * 获取论坛最新主贴
+     */
+    public List<ForumTopicModel> findLastTopics(String forum);
 
     /**
      * 拉取有效论坛模型

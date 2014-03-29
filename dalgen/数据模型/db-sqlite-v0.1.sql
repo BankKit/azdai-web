@@ -12,18 +12,10 @@ CREATE TABLE atom_ticket (
   PRIMARY KEY (name)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
-INSERT INTO atom_ticket VALUES ('TB-Catg-ID', 1, 10, 3600, 1, 9999999999, 'TRUE');
-INSERT INTO atom_ticket VALUES ('TB-Config-ID', 1, 10, 900, 1, 9999999999, 'TRUE');
-INSERT INTO atom_ticket VALUES ('TB-Crawl-ID', 1, 10, 200, 1, 9999999999, 'TRUE');
 INSERT INTO atom_ticket VALUES ('TB-ForumTopic-ID', 6, 10, 50, 1, 9999999999, 'TRUE');
-INSERT INTO atom_ticket VALUES ('TB-HelpCenter-ID', 1, 10, 50, 1, 9999999999, 'TRUE');
-INSERT INTO atom_ticket VALUES ('TB-Reply-ID', 1, 10, 300, 1, 9999999999, 'TRUE');
-INSERT INTO atom_ticket VALUES ('TB-Right-ID', 1, 10, 100, 1, 9999999999, 'TRUE');
-INSERT INTO atom_ticket VALUES ('TB-Tag-ID', 1, 10, 0, 1, 9999999999, 'TRUE');
-INSERT INTO atom_ticket VALUES ('TB-TOPIC-ID', 1, 10, 5300, 1, 9999999999, 'TRUE');
-INSERT INTO atom_ticket VALUES ('TB-User-ID', 1, 10, 300, 1, 9999999999, 'TRUE');
+INSERT INTO atom_ticket VALUES ('TB-HelpCenter-ID', 1, 10, 1, 1, 9999999999, 'TRUE');
 INSERT INTO atom_ticket VALUES ('TB-UserInfo-ID', 5, 10, 41, 1, 9999999999, 'TRUE');
-INSERT INTO atom_ticket VALUES ('TB-UserRgt-ID', 1, 10, 200, 1, 9999999999, 'TRUE');
+INSERT INTO atom_ticket VALUES ('TB-RoleInfo-ID', 5, 10, 1, 1, 9999999999, 'TRUE');
 
 /**
  * 论坛信息数据表

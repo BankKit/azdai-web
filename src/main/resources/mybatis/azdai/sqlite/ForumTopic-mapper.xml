@@ -189,6 +189,18 @@
 				reply_count DESC, gmt_post ASC
     </select>
 
+    <!-- mapped statement for MyBatisForumTopicDAO.findLastTopics -->
+    <select id="findLastTopics" resultMap="RMS.RM-FORUM-TOPIC" >
+        SELECT 				<include refid="forum-topic-fields"/>
+			FROM
+				azdai_forum_topic
+			WHERE
+				forum=#{forum} AND catg=#{catg} AND state=#{state}
+			ORDER BY
+				gmt_modify DESC
+			LIMIT 0,#{limit}
+    </select>
+
     <!-- mapped statement for MyBatisForumTopicDAO.findNormalTopics -->
     <select id="findNormalTopics" resultMap="RMS.RM-FORUM-TOPIC" >
         SELECT 				<include refid="forum-topic-fields"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<table sqlname="azdai_role_right" dummypk="role_id" ticket="true" valve="false">
+<table sqlname="azdai_role_right" dummypk="role_id" ticket="false" valve="false">
 	<!-- 参考文档: http://mybatis.github.io/mybatis-3/sqlmap-xml.html -->
 	
     <!-- ========================================== -->

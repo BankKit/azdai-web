@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -35,9 +36,11 @@ import com.azdai.core.model.enums.ForumTopicTopEnum;
 import com.azdai.core.web.form.ForumTopicQueryForm;
 import com.github.obullxl.lang.Paginator;
 import com.github.obullxl.lang.enums.ValveBoolEnum;
+import com.github.obullxl.lang.utils.LogUtils;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Lists;
 
 /**
  * 论坛管理器实现
@@ -47,6 +50,8 @@ import com.google.common.cache.LoadingCache;
  */
 @Component("forumMngt")
 public class ForumMngtImpl implements ForumMngt, InitializingBean {
+    private static final Logger                         logger            = LogUtils.get();
+
     /** 论坛缓存KEY */
     public static final String                          FORUM_CACHE_KEY   = "_forum_cache_key_";
 
@@ -70,6 +75,9 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
 
     /** 置顶主贴列表缓存 */
     private LoadingCache<String, List<ForumTopicModel>> topTopicCache;
+
+    /** 论坛最新主贴列表缓存 */
+    private LoadingCache<String, List<ForumTopicModel>> lastTopicCache;
 
     /** 
      * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
@@ -117,6 +125,19 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
                         return ForumTopicConvert.convert(srcObjs);
                     }
                 });
+
+        // 最新主贴列表
+        this.lastTopicCache = CacheBuilder.newBuilder() //
+            .maximumSize(20).expireAfterWrite(30, TimeUnit.MINUTES)//
+            .build(new CacheLoader<String, List<ForumTopicModel>>() { //
+                    public List<ForumTopicModel> load(String forum) {
+                        String catg = ForumTopicCatgEnum.TOPIC.code();
+                        String state = ForumTopicStateEnum.ACTIVE.code();
+
+                        List<ForumTopicDTO> srcObjs = forumTopicDAO.findLastTopics(LAST_TOPIC_SIZE, forum, catg, state);
+                        return ForumTopicConvert.convert(srcObjs);
+                    }
+                });
     }
 
     /**
@@ -126,7 +147,20 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
         try {
             return this.forumCache.get(FORUM_CACHE_KEY);
         } catch (Exception e) {
-            throw new RuntimeException("获取有效论坛异常！", e);
+            logger.error("[论坛]-缓存获取有效论坛列表异常！", e);
+            return Lists.newArrayList();
+        }
+    }
+
+    /** 
+     * @see com.azdai.core.das.mngt.ForumMngt#findLastTopics(java.lang.String)
+     */
+    public List<ForumTopicModel> findLastTopics(String forum) {
+        try {
+            return this.lastTopicCache.get(forum);
+        } catch (Exception e) {
+            logger.error("[论坛]-缓存获取论坛[{}]最新主题列表异常！", forum, e);
+            return Lists.newArrayList();
         }
     }
 
@@ -335,7 +369,8 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
         try {
             return this.topTopicCache.get(GLOBAL_TOPICS_KEY);
         } catch (Exception e) {
-            throw new RuntimeException("获取论坛全局置顶主贴异常！", e);
+            logger.error("[论坛]-缓存获取全局置顶主贴列表异常！", e);
+            return Lists.newArrayList();
         }
     }
 
@@ -346,7 +381,8 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
         try {
             return this.topTopicCache.get(forum);
         } catch (Exception e) {
-            throw new RuntimeException("获取论坛分类置顶主贴异常！", e);
+            logger.error("[论坛]-缓存获取论坛[{}]置顶主贴列表异常！", forum, e);
+            return Lists.newArrayList();
         }
     }
 

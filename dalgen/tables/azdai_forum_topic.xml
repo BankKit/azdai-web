@@ -310,6 +310,32 @@
 		</sqlmap>
 	</operation>
 	
+	<operation name="findLastTopics" multiplicity="many">
+		<description>查询最新主贴列表</description>
+		<extraparams>
+			<param name="limit" javatype="int" />
+			<param name="forum" javatype="java.lang.String" />
+			<param name="catg" javatype="java.lang.String" />
+			<param name="state" javatype="java.lang.String" />
+		</extraparams>
+		<sql>
+			SELECT * FROM azdai_forum_topic WHERE forum='FORUM' AND catg='CATG' AND state='STATE'
+		</sql>
+		<sqlmap>
+		<![CDATA[
+			SELECT
+				<include refid="forum-topic-fields"/>
+			FROM
+				azdai_forum_topic
+			WHERE
+				forum=#{forum} AND catg=#{catg} AND state=#{state}
+			ORDER BY
+				gmt_modify DESC
+			LIMIT 0,#{limit}
+		]]>
+		</sqlmap>
+	</operation>
+	
 	<operation name="findNormalTopics" multiplicity="many">
 		<description>查询普通主贴列表</description>
 		<extraparams>

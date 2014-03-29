@@ -59,7 +59,7 @@ public class ForumWebX implements WebX {
     public ForumInfoModel fetchForum(String code) {
         return this.forumMngt.fetchForumInfo(code);
     }
-    
+
     /**
      * 获取主题信息
      */
@@ -93,6 +93,13 @@ public class ForumWebX implements WebX {
      */
     public ForumTopicPageList findNormalTopics(int pageNo, String forum) {
         return this.forumMngt.findNormalTopics(pageNo, forum, ForumTopicCatgEnum.TOPIC, ForumTopicStateEnum.ACTIVE, ForumTopicTopEnum.NONE);
+    }
+
+    /**
+     * 获取论坛最新主贴
+     */
+    public List<ForumTopicModel> findForumLastTopics(String forum) {
+        return this.forumMngt.findLastTopics(forum);
     }
 
 }
