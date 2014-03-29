@@ -91,6 +91,8 @@
 #################
 #macro(TargetURL)target="main"#end
 
+#macro(LayoutMAX)col-xs-12#end
+
 #macro(LayoutSS)col-xs-3#end
 #macro(LayoutSX)col-xs-9#end
 
