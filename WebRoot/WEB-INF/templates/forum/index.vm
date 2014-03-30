@@ -24,8 +24,13 @@
 					#foreach($topic in $lastTopics)
                     <a href="$ctx/forum/topic.htm?id=$!topic.id" class="list-group-item" target="_blank"><span class="pull-right">$DateUtils.toStringDL($topic.gmtModify)</span><i class="fa fa-angle-right"></i> $!topic.title</a>
 					#end
+					<!--
 					<li class="list-group-item list-group-item-info text-right"><a href="$ctx/forum/forum.htm?code=$!forum.code" target="_blank"><i class="glyphicon glyphicon-fire"></i>进入论坛</a> &nbsp;|&nbsp; <a href="$ctx/forum/forum.htm?code=$!forum.code#forum-topic-post" target="_blank"><i class="fa fa-edit"></i>发表帖子</a></li>
+					-->
                 </div>
+                <div class="panel-footer">
+					<div class="text-right"><a href="$ctx/forum/forum.htm?code=$!forum.code" target="_blank"><i class="glyphicon glyphicon-fire"></i>进入论坛</a> &nbsp;|&nbsp; <a href="$ctx/forum/forum.htm?code=$!forum.code#forum-topic-post" target="_blank"><i class="fa fa-edit"></i>发表帖子</a></div>
+				</div>
             </div>
         </div>
 		#if($velocityCount==$rowFinish) </div> #set($rowFinish=$rowFinish+2) #end

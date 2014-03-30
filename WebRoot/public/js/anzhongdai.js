@@ -188,8 +188,10 @@ AZD.findHrefOpt = function(href) {
 		token = token.substring(0, token.indexOf("-"));
 	}
 
-	console.log("菜单导航-用户后台-B:" + idxBegin + ", DOT:" + idxDot + ", T:" + token);
-
+	if(window.console) {
+		window.console.log("菜单导航-用户后台-B:" + idxBegin + ", DOT:" + idxDot + ", T:" + token);
+	}
+	
 	return token;
 };
 
@@ -301,11 +303,16 @@ $(document).ready(function() {
 		href = href.substr(8);
 	}
 	var hrefOpt = AZD.findHrefOpt(href);
-	console.info("菜单导航, HREF: " + href + ", TOKEN: " + hrefOpt);
-
+	if(window.console) {
+		window.console.info("菜单导航, HREF: " + href + ", TOKEN: " + hrefOpt);
+	}
+	
 	if(href.indexOf("/user/") >= 0) {
 		/* 用户后台 */
-		console.log("菜单导航-用户后台-" + href);
+		if(window.console) {
+			window.console.log("菜单导航-用户后台-" + href);
+		}
+		
 		$(".user-menus a").attr("class", "list-group-item");
 		$(".user-menus a").prepend("<i class=\"fa fa-caret-right\"></i> ");
 
@@ -330,7 +337,10 @@ $(document).ready(function() {
 		}
 	} else if(href.indexOf("/help/") >= 0) {
 		/* 帮助中心 */
-		console.info("菜单导航-帮助中心" + href);
+		if(window.console) {
+			window.console.info("菜单导航-帮助中心" + href);
+		}
+		
 		var dxtNavBar = $("#dxt-nb-help");
 		if(dxtNavBar) {
 			dxtNavBar.addClass("active");
@@ -360,17 +370,25 @@ $(document).ready(function() {
 		}
 	} else if(href.indexOf("/forum/") >= 0) {
 		/* 用户论坛 */
-		console.info("菜单导航-用户论坛");
+		if(window.console) {
+			window.console.info("菜单导航-用户论坛");
+		}
+		
 		var dxtNavBar = $("#dxt-nb-forum");
 		if(dxtNavBar) {
 			dxtNavBar.addClass("active");
 		}
 	} else if(href.indexOf("/mngt/") >= 0) {
 		// 3.管理后台
-		console.info("菜单导航-管理后台");
+		if(window.console) {
+			window.console.info("菜单导航-管理后台");
+		}
 	} else {
 		// 4. "/home/" or OTHER
-		console.info("菜单导航-OTHER");
+		if(window.console) {
+			window.console.info("菜单导航-OTHER");
+		}
+		
 		var dxtNavBar = $("#dxt-nb-" + hrefOpt);
 		if(dxtNavBar) {
 			dxtNavBar.addClass("active");

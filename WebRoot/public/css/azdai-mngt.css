@@ -40,6 +40,23 @@ a:hover {
 	overflow: auto;
 }
 
+.navbar-brand {
+	display: block;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.navbar-brand img {
+	margin: 0 !important;
+	padding: 0 !important;
+	width: 50px !important;
+	min-width: 50px !important;
+	max-width: 50px !important;
+	height: 50px !important;
+	min-height: 50px !important;
+	max-height: 50px !important;
+}
+
 /**
  * 禁止换行
  */
@@ -59,6 +76,6 @@ a:hover {
 
 .form-text {
 	width: 160px;
-	font-weight:bold;
+	font-weight: bold;
 	text-align: right;
 }

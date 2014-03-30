@@ -22,10 +22,6 @@
 <link rel="stylesheet" type="text/css" href="$ctx/public/fa/css/font-awesome.min.css?v=4.0.3" media="screen" />
 <link rel="stylesheet" type="text/css" href="$ctx/public/css/toastr.min.css" />
 <link rel="stylesheet" type="text/css" href="$ctx/public/css/anzhongdai.css?v=2.0.1" />
-<!--[if lt IE 9]>
-	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/html5shiv.js?v=3.7.0"></script>
-	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/respond.min.js?v=1.4.2"></script>
-<![endif]-->
 <script type="text/javascript" charset="utf-8" src="$ctx/public/twbs/js/bootstrap.min.js?v=3.1.1"></script>
 <script type="text/javascript" charset="utf-8" src="$ctx/public/js/toastr.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="$ctx/public/js/jquery.kinMaxShow.min.js?v=1.1"></script>
@@ -41,6 +37,13 @@
 <link rel="stylesheet" type="text/css" href="$ctx/public/css/password-strength.css" />
 <script type="text/javascript" charset="utf-8" src="$ctx/public/js/jquery.password-strength.js"></script>
 #end
+<!--[if (gte IE 6)&(lte IE 8)]>
+	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/selectivizr.js?v=1.0.3"></script>
+<![endif]-->
+<!--[if lt IE 9]>
+	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/html5shiv.js?v=3.7.0"></script>
+	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/respond.min.js?v=1.4.2"></script>
+<![endif]-->
 <script type="text/javascript">
 $(document).ready(function() {
 $(".navbar-btn-regist").click(function() {

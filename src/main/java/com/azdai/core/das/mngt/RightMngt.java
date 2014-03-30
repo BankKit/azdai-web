@@ -7,16 +7,8 @@ package com.azdai.core.das.mngt;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.commons.lang.StringUtils;
-
-import com.azdai.core.das.dal.dto.RightInfoDTO;
-import com.azdai.core.das.dal.dto.RoleInfoDTO;
-import com.azdai.core.das.dal.dto.RoleRightDTO;
-import com.azdai.core.das.dal.dto.UserRoleDTO;
 import com.azdai.core.model.RightInfoModel;
 import com.azdai.core.model.RoleInfoModel;
-import com.azdai.core.model.convert.RightRoleConvert;
-import com.google.common.collect.Sets;
 
 /**
  * 权限管理器

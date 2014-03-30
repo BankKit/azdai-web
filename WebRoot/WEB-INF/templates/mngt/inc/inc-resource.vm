@@ -6,9 +6,6 @@
 <script type="text/javascript" charset="utf-8" src="$ctx/public/twbs/js/bootstrap.min.js?v=3.1.0"></script>
 <script type="text/javascript" charset="utf-8" src="$ctx/public/js/toastr.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="$ctx/public/js/anzhongdai.js?v=2.0.1"></script>
-<!--[if lt IE 9]>
-	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/html5shiv.js"></script>
-<![endif]-->
 #if($!StringUtils.equals($editor, "ON"))
 <link rel="stylesheet" type="text/css" media="screen" href="$ctx/public/ueditor/themes/iframe.css" />
 <script type="text/javascript" charset="utf-8" src="$ctx/public/ueditor/ueditor.forum.js"></script>
@@ -19,3 +16,10 @@
 <link rel="stylesheet" type="text/css" href="$ctx/public/css/password-strength.css" />
 <script type="text/javascript" charset="utf-8" src="$ctx/public/js/jquery.password-strength.js"></script>
 #end
+<!--[if (gte IE 6)&(lte IE 8)]>
+	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/selectivizr.js?v=1.0.3"></script>
+<![endif]-->
+<!--[if lt IE 9]>
+	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/html5shiv.js?v=3.7.0"></script>
+	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/respond.min.js?v=1.4.2"></script>
+<![endif]-->

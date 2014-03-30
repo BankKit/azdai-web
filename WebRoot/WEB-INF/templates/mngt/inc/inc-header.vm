@@ -4,4 +4,4 @@
 <link rel="apple-touch-icon-precomposed" href="$ctx/public/favicon.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="$ctx/public/favicon.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="$ctx/public/favicon.png" />
-<script type="text/javascript" charset="utf-8" src="$ctx/public/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="$ctx/public/js/jquery-1.11.0.min.js"></script>

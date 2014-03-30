@@ -20,16 +20,16 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="right"><div class="text-lg text-bold">冰点</div></td>
+				<td width="15%"><div class="text-lg text-bold pull-right nowrap">冰点</div></td>
 				<td>&nbsp;</td>
-				<td align="right"><span class="text-muted text-sm">账户余额</span></td>
-				<td><span class="text-lg color-orange"><strong>0.00</strong></span>元</td>
+				<td width="15%"><span class="text-muted text-sm pull-right nowrap">账户余额</span></td>
+				<td width="15%"><span class="text-lg color-orange nowrap"><strong>0.00</strong></span>元</td>
 			</tr>
 			<tr>
-				<td align="right"><span class="text-muted">信用等级</span></td>
-				<td><div class="credit bg-danger">E</div></td>
-				<td align="right"><span class="text-muted">冻结金额</span></td>
-				<td><span class="text-xs">100000.00</span>元</td>
+				<td align="right"><span class="text-muted nowrap">信用等级</span></td>
+				<td><div class="credit bg-danger nowrap">E</div></td>
+				<td align="right"><span class="text-muted nowrap">冻结金额</span></td>
+				<td><span class="text-xs nowrap">100000.00</span>元</td>
 			</tr>
 			<tr>
                 <td align="right"><span class="text-muted">信用额度</span></td>

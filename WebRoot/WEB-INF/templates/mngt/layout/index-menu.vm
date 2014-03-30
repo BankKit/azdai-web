@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html>
+<!--[if lt IE 7 ]> <html class="ie6 lazy " lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7 lazy " lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8 lazy " lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9 lazy " lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
 <head>
 <meta charset="UTF-8">
 <title>#if($title)$title -#end 管理菜单</title>
