@@ -4,6 +4,8 @@
  */
 package com.azdai.core.web.ctrl;
 
+import java.util.Set;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -15,10 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.azdai.AZD;
+import com.azdai.core.das.mngt.RightMngt;
 import com.azdai.core.das.mngt.UserMngt;
 import com.azdai.core.model.UserInfoModel;
 import com.azdai.core.model.convert.UserInfoConvert;
 import com.azdai.core.model.enums.BizResponseEnum;
+import com.azdai.core.model.enums.UserDefaultRightEnum;
 import com.azdai.core.web.form.UserLoginForm;
 import com.github.obullxl.lang.biz.BizResponse;
 import com.github.obullxl.lang.enums.ValveBoolEnum;
@@ -38,7 +43,11 @@ public class UserLogonController extends AbstractController {
 
     /** 用户管理器 */
     @Autowired
-    private UserMngt userMngt;
+    private UserMngt  userMngt;
+
+    /** 权限管理器 */
+    @Autowired
+    private RightMngt rightMngt;
 
     /**
      * 用户登录
@@ -86,6 +95,16 @@ public class UserLogonController extends AbstractController {
 
             // 设置用户信息
             UserContextUtils.setLogin(uctx, true);
+            uctx.getUserRights().add(UserDefaultRightEnum.RGT_LOGIN_USER.code());
+
+            boolean admin = AZD.ROOT_USER_NAMES.contains(user.getNickName());
+            UserContextUtils.setAdmin(uctx, admin);
+            if (admin) {
+                uctx.getUserRights().add(UserDefaultRightEnum.RGT_LOGIN_MNGT.code());
+            } else {
+                Set<String> rgts = this.rightMngt.findUserRgtCodes(user.getNo());
+                uctx.getUserRights().addAll(rgts);
+            }
 
             // 页面跳转
             String gotoUrl = UserContextUtils.findGotoURL(uctx);

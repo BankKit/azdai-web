@@ -10,6 +10,7 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.azdai.core.das.dal.dao.RightInfoDAO;
 import com.azdai.core.das.dal.dao.RoleInfoDAO;
@@ -31,6 +32,7 @@ import com.google.common.collect.Sets;
  * @author obullxl@gmail.com
  * @version $Id: RightMngtImpl.java, V1.0.1 2014年3月20日 下午2:15:33 $
  */
+@Component("rightMngt")
 public class RightMngtImpl implements RightMngt, InitializingBean {
 
     /** 权限信息DAO */

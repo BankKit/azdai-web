@@ -25,27 +25,8 @@
 	<!-- ================================================= -->
 	<!-- 注解配置扫描 -->
 	<!-- ================================================= -->
-	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
-		<property name="interceptors">
-			<list>
-				<!-- <bean class="com.github.obullxl.lang.user.UserContextInterceptor"> <property name="exts"> <set> <value>.htm</value> </set> </property> </bean> -->
-				<bean class="com.github.obullxl.lang.user.PermissionInterceptor">
-					<property name="uriPrefixs">
-						<set>
-							<value>/admin</value>
-						</set>
-					</property>
-					<property name="gotoUrl" value="${adminLoginUrl}" />
-					<property name="rightConfigs">
-						<list>
-							<value>/WEB-INF/rights.acl</value>
-						</list>
-					</property>
-				</bean>
-			</list>
-		</property>
-	</bean>
-
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+	
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="messageConverters">
 			<list>
@@ -61,6 +42,20 @@
 		<property name="rightUrl" value="${exptRightUrl}" />
 		<property name="bizOptUrl" value="${exptBizOptUrl}" />
 		<property name="unknowUrl" value="${exptUnknowUrl}" />
+	</bean>
+
+	<!-- ================================================= -->
+	<!-- 权限检查器 -->
+	<!-- ================================================= -->
+	<bean id="userRightRequestImpl" class="com.azdai.core.web.servlet.UserRightRequestImpl">
+		<property name="uriPrefixs">
+			<set>
+				<value>/user/</value>
+				<value>/mngt/</value>
+			</set>
+		</property>
+		<property name="gotoUrl" value="${adminLoginUrl}" />
+		<property name="rightConfig" value="/WEB-INF/uri-rights.acl" />
 	</bean>
 
 	<!-- ================================================= -->
@@ -158,5 +153,5 @@
 			</bean>
 		</property>
 	</bean>
-	
+
 </beans>

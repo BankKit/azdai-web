@@ -4,6 +4,20 @@
  */
 package com.azdai.core.das.mngt;
 
+import java.util.List;
+import java.util.Set;
+
+import org.apache.commons.lang.StringUtils;
+
+import com.azdai.core.das.dal.dto.RightInfoDTO;
+import com.azdai.core.das.dal.dto.RoleInfoDTO;
+import com.azdai.core.das.dal.dto.RoleRightDTO;
+import com.azdai.core.das.dal.dto.UserRoleDTO;
+import com.azdai.core.model.RightInfoModel;
+import com.azdai.core.model.RoleInfoModel;
+import com.azdai.core.model.convert.RightRoleConvert;
+import com.google.common.collect.Sets;
+
 /**
  * 权限管理器
  * 
@@ -11,5 +25,55 @@ package com.azdai.core.das.mngt;
  * @version $Id: RightMngt.java, V1.0.1 2014年3月20日 下午2:15:07 $
  */
 public interface RightMngt {
+
+    /**
+     * 创建权限信息
+     */
+    public void createRightInfo(RightInfoModel right);
+
+    /**
+     * 删除权限信息
+     */
+    public void removeRightInfo(String rgtCode);
+
+    /**
+     * 创建角色信息
+     */
+    public void createRoleInfo(RoleInfoModel role);
+
+    /**
+     * 删除角色信息
+     */
+    public void removeRoleInfo(long roleId);
+
+    /**
+     * 创建角色权限
+     */
+    public void createRoleRight(RoleInfoModel role, RightInfoModel right);
+
+    /**
+     * 删除角色权限
+     */
+    public void removeRoleRight(long roleId, String rgtCode);
+
+    /**
+     * 创建用户角色
+     */
+    public void createUserRole(String userNo, String nickName, RoleInfoModel role);
+
+    /**
+     * 删除用户角色
+     */
+    public void removeUserRole(String userNo, long roleId);
+
+    /**
+     * 获取用户权限代码
+     */
+    public Set<String> findUserRgtCodes(String userNo);
+
+    /**
+     * 获取用户权限代码
+     */
+    public List<RightInfoModel> findUserRights(String userNo);
 
 }
