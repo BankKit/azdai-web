@@ -1,104 +1,100 @@
 #set($title="即时到账充值 - 资金管理")
-#set($navbar="user")
-#set($userOperation="deposit")
-
 #set($user=$UserWebX.findSessionUser())
 #set($breadcrumbTitle="即时到账充值")
-
-    <div class="panel panel-default">
-        <div class="panel-body">
-			<ul class="nav nav-pills">
-                <li class="active"><a href="$ctx/user/deposit-online.htm">即时到账充值（自动）</a></li>
-                <li><a href="$ctx/user/deposit-offline.htm">非即时到账充值（人工）</a></li>
-            </ul>
-			<div>&nbsp;</div>
-			
-			<!-- 选择支付机构 -->
-            <div class="body-caption">
-    			<span class="title-caption">第一步：请选择账户充值方式</span>
-    		</div>
-			<div class="body-content instants">
-                <div class="col-xs-12 col-sm-6 col-md-4">
-					<div class="radio">
-                        <label>
-							<input type="radio" name="instant" value="visa" />
-                            <span class="instant visa"></span>
-							<div class="charge-rate text-muted text-center">转账费用：1%</div>
-                        </label>
-                    </div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-4">
-					<div class="radio">
-                        <label>
-							<input type="radio" name="instant" value="alipay" />
-                            <span class="instant alipay"></span>
-							<div class="charge-rate text-muted text-center">转账费用：0.1%</div>
-                        </label>
-                    </div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-4">
-					<div class="radio">
-                        <label>
-							<input type="radio" name="instant" value="tenpay" />
-                            <span class="instant tenpay"></span>
-							<div class="charge-rate text-muted text-center">转账费用：0.9%</div>
-                        </label>
-                    </div>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-4">
-					<div class="radio">
-                        <label>
-							<input type="radio" name="instant" value="shengpay" />
-                            <span class="instant shengpay"></span>
-							<div class="charge-rate text-muted text-center">转账费用：1%</div>
-                        </label>
-                    </div>
-				</div>
-            </div>
-			<div class="clearfix"></div>
-			
-			<!-- 输入充值金额 -->
-            <div class="body-caption">
-    			<span class="title-caption">第二步：输入充值金额并提交</span>
-    		</div>
-			<div class="body-content">
-                <form class="form-horizontal" role="form" #MarginBottomNO()>
-					<div class="form-group">
-                        <label class="col-xs-6 col-sm-4 col-md-2 control-label">账户余额：</label>
-                        <div class="col-xs-6 col-sm-4 col-md-2">
-							<p class="form-control-static">0.00元</p>
-						</div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-xs-6 col-sm-4 col-md-2 control-label" for="amount">充值金额：</label>
-                        <div class="col-xs-6 col-sm-4 col-md-2">
-							<input type="text" id="amount" name="amount" class="form-control" placeholder="单元：元" />
-						</div>
-                    </div>
-					<div class="form-group">
-                        <label class="col-xs-6 col-sm-4 col-md-2 control-label">实际到账金额：</label>
-                        <div class="col-xs-6 col-sm-4 col-md-2">
-							<p class="form-control-static">0.00元</p>
-						</div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-xs-offset-6 col-sm-offset-4 col-md-offset-2 col-xs-6 col-sm-4 col-md-2">
-							<button type="submit" class="btn btn-primary btn-block">下一步</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-			<div class="clearfix"></div>
-			
-			<!-- 提示信息 -->
-        	<div class="panel panel-default" #MarginBottomNO()>
-        		<div class="panel-body bg-warning">
-                    <p><strong><i class="glyphicon glyphicon-headphones"></i> 温馨提示：</strong></p>
-        			<p>1、充值资金可用于进行多项认证、投标、还款等用途；</p>
-                    <p>2、所有资金将由第三方支付平台（如支付宝、财付通、银行等）托管，安众贷本身不存放用户的任何资金；</p>
-                    <p>3、若节省手续费，推荐使用“<a href="$ctx/user/deposit-offline.htm">非即时到账充值</a>”，最高10元/笔，<a href="#">VIP用户</a>单笔充值1千（含）元以上，免手续费；</p>
-                    <p>4、充值失败时，您所使用的免费流量将会有5分钟左右的锁定时长，可等待系统返还免费流量后，再继续使用免费流量充值。</p>
+<div class="panel panel-primary">
+    <div class="panel-body">
+		<ul class="nav nav-pills">
+            <li class="active"><a href="$ctx/user/deposit-online.htm">即时到账充值（自动）</a></li>
+            <li><a href="$ctx/user/deposit-offline.htm">非即时到账充值（人工）</a></li>
+        </ul>
+		<div>&nbsp;</div>
+		
+		<!-- 选择支付机构 -->
+        <div class="body-caption">
+			<span class="title-caption">第一步：请选择账户充值方式</span>
+		</div>
+		<div class="body-content instants">
+            <div class="#LayoutT()">
+				<div class="radio">
+                    <label>
+						<input type="radio" name="instant" value="visa" />
+                        <span class="instant visa"></span>
+						<div class="charge-rate text-muted text-center">转账费用：1%</div>
+                    </label>
                 </div>
-        	</div>
+			</div>
+			<div class="#LayoutT()">
+				<div class="radio">
+                    <label>
+						<input type="radio" name="instant" value="alipay" />
+                        <span class="instant alipay"></span>
+						<div class="charge-rate text-muted text-center">转账费用：0.1%</div>
+                    </label>
+                </div>
+			</div>
+			<div class="#LayoutT()">
+				<div class="radio">
+                    <label>
+						<input type="radio" name="instant" value="tenpay" />
+                        <span class="instant tenpay"></span>
+						<div class="charge-rate text-muted text-center">转账费用：0.9%</div>
+                    </label>
+                </div>
+			</div>
+			<div class="#LayoutT()">
+				<div class="radio">
+                    <label>
+						<input type="radio" name="instant" value="shengpay" />
+                        <span class="instant shengpay"></span>
+						<div class="charge-rate text-muted text-center">转账费用：1%</div>
+                    </label>
+                </div>
+			</div>
         </div>
+		<div class="clearfix"></div>
+		
+		<!-- 输入充值金额 -->
+        <div class="body-caption">
+			<span class="title-caption">第二步：输入充值金额并提交</span>
+		</div>
+		<div class="body-content">
+            <form class="form-horizontal" role="form" #MarginBottomNO()>
+				<div class="form-group">
+                    <label class="#LayoutMS() control-label" for="balance">账户余额：</label>
+                    <div class="#LayoutMS()">
+						<p class="form-control-static" id="balance">0.00元</p>
+					</div>
+                </div>
+                <div class="form-group">
+                    <label class="#LayoutMS() control-label" for="amount">充值金额：</label>
+                    <div class="#LayoutMS()">
+						<input type="text" id="amount" name="amount" class="form-control" placeholder="单元：元" />
+					</div>
+                </div>
+				<div class="form-group">
+                    <label class="#LayoutMS() control-label" for="realAmount">实际到账金额：</label>
+                    <div class="#LayoutMS()">
+						<p class="form-control-static" id="realAmount">0.00元</p>
+					</div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-3 #LayoutSS()">
+						<button type="submit" class="btn btn-primary btn-block">下一步</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+		<div class="clearfix"></div>
+		
+		<!-- 提示信息 -->
+    	<div class="panel panel-default" #MarginBottomNO()>
+    		<div class="panel-body bg-warning">
+                <p><strong><i class="glyphicon glyphicon-headphones"></i> 温馨提示：</strong></p>
+    			<p>1、充值资金可用于进行多项认证、投标、还款等用途；</p>
+                <p>2、所有资金将由第三方支付平台（如支付宝、财付通、银行等）托管，安众贷本身不存放用户的任何资金；</p>
+                <p>3、若节省手续费，推荐使用“<a href="$ctx/user/deposit-offline.htm">非即时到账充值</a>”，最高10元/笔，<a href="#">VIP用户</a>单笔充值1千（含）元以上，免手续费；</p>
+                <p>4、充值失败时，您所使用的免费流量将会有5分钟左右的锁定时长，可等待系统返还免费流量后，再继续使用免费流量充值。</p>
+            </div>
+    	</div>
     </div>
+</div>

@@ -1,128 +1,109 @@
 #set($title="提现 - 资金管理")
-#set($navbar="user")
-#set($userOperation="withdraw")
-
 #set($user=$UserWebX.findSessionUser())
 #set($breadcrumbTitle="提现")
-
-    <div class="panel panel-default">
-        <div class="panel-body">
-			<!-- 填写提现金额 -->
-            <div class="body-caption">
-    			<span class="title-caption">第一步：填写提现信息</span>
-    		</div>
-			<div class="body-content">
-                <form class="form-horizontal" role="form" #MarginBottomNO()>
-					<div class="form-group">
-                        <label class="col-xs-5 col-sm-4 col-md-2 control-label">选择银行卡：</label>
-						<div class="col-xs-7 col-sm-8 col-md-6">
-        					<select class="form-control">
-                                <option value="">支付宝 - obull*******3.com</option>
-            					<option value="">招商银行 - 6226 **** **** 2027</option>
-            					<option value="">财付通 - obull*******3.com</option>
-            				</select>
-                        </div>
-                    </div>
-					<div class="form-group">
-                        <label class="col-xs-5 col-sm-4 col-md-2 control-label">可提现资金：</label>
-                        <div class="col-xs-7 col-sm-8 col-md-6">
-                            <p class="form-control-static"><span class="text-lg">0.00</span>元</p>
-						</div>
-                    </div>
-					<div class="form-group">
-                        <label class="col-xs-5 col-sm-4 col-md-2 control-label" for="amount">提现金额：</label>
-                        <div class="col-xs-7 col-sm-4 col-md-4">
-							<input type="text" id="amount" name="amount" class="form-control" placeholder="单元：元" />
-						</div>
-                    </div>
-					<div class="form-group">
-                        <label class="col-xs-5 col-sm-4 col-md-2 control-label">提现费用：</label>
-                        <div class="col-xs-7 col-sm-8 col-md-6">
-                            <p class="form-control-static"><span class="text-lg">0.00</span>元  <a class="otip" href="#" title="提现费用说明"><i class="glyphicon glyphicon-info-sign"></i></a></p>
-						</div>
-                    </div>
-					<div class="form-group">
-                        <label class="col-xs-5 col-sm-4 col-md-2 control-label" for="payPasswd">支付密码：</label>
-                        <div class="col-xs-7 col-sm-4 col-md-4">
-							<input type="password" id="payPasswd" name="payPasswd" class="form-control" />
-						</div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-4 col-md-offset-2 col-xs-12 col-sm-6 col-md-4">
-							<button type="submit" class="btn btn-primary btn-block">申请提现</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-			<div class="clearfix"></div>
-			
-			<!-- 银行处理列表 -->
-            <div class="body-caption">
-    			<span class="title-caption">第二步：第三方银行处理</span>
-    		</div>
-			<div class="body-content table-responsive">
-				<table class="table table-striped" #MarginBottomNo()>
-                    <thead>
-						<tr>
-                            <th>提交时间</th>
-							<th>提现金额</th>
-							<th>预计到账时间</th>
-							<th>处理状态</th>
-							<th>安众贷交易号</th>
-                        </tr>
-					</thead>
-					<tbody>
-						<tr>
-                            <td>2014-03-09 20:26:13</td>
-							<td>50.00元</td>
-							<td>2014-03-09 20:26:13</td>
-                            <td><div class="text-danger">处理中</div></td>
-							<td>&nbsp;</td>
-                        </tr>
-						<tr>
-                            <td>2014-03-08 17:26:13</td>
-							<td>50.00元</td>
-							<td>2014-03-08 17:26:13</td>
-							<td><div class="text-success">处理成功</div></td>
-							<td>2013122711001004190000226501</td>
-                        </tr>
-						<tr>
-                            <td>2014-03-07 23:04:06</td>
-							<td>50.00元</td>
-							<td>2014-03-07 23:04:06</td>
-							<td><div class="text-success">处理成功</div></td>
-							<td>2013122711001004190000226501</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-			
-			<!-- 提示信息 -->
-        	<div class="panel panel-default" #MarginBottomNO()>
-        		<div class="panel-body bg-warning">
-                    <p><strong><i class="glyphicon glyphicon-headphones"></i> 温馨提示：</strong></p>
-        			<p>1、请确保您输入的提现金额，以及银行帐号信息准确无误；</p>
-                    <p>2、如果您填写的提现信息不正确可能会导致提现失败，由此产生的提现费用将不予返还；</p>
-					<p>3、在双休日和法定节假日期间，用户可以申请提现，安众贷会在下一个工作日进行处理，由此造成的不便，请多多谅解；</p>
-                    <p>4、平台禁止洗钱、信用卡套现、虚假交易等行为，一经发现并确认，将终止该账户的使用；</p>
-					<p>5、对于处理成功的提现记录，安众贷会定期清理，请注意查看交易记录；</p>
-					<p>6、提现常见问题，请至 <a href="$ctx/help/center.htm">帮助中心</a> 查看。</p>
-                </div>
-        	</div>
-        </div>
-    </div>
-
-<!-- 二维码图片 -->
-<div class="modal fade" id="qrcodeDialog" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			<div class="modal-header">
-    			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    			<h4 class="modal-title">支付宝账号二维码</h4>
-            </div>
-			<div class="modal-body">
-				<img src="$ctx/public/img/qrcode-alipay.jpg"/>
-			</div>
+<div class="panel panel-primary">
+    <div class="panel-body">
+		<!-- 填写提现金额 -->
+        <div class="body-caption">
+			<span class="title-caption">第一步：填写提现信息</span>
 		</div>
-	</div>
+		<div class="body-content">
+            <form class="form-horizontal" role="form" #MarginBottomNO()>
+				<div class="form-group">
+                    <label class="#LayoutMS() control-label" for="card">选择银行卡：</label>
+					<div class="#LayoutMX()">
+    					<select class="form-control" id="card" name="card">
+                            <option value="">支付宝 - obull*******3.com</option>
+        					<option value="">招商银行 - 6226 **** **** 2027</option>
+        					<option value="">财付通 - obull*******3.com</option>
+        				</select>
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label class="#LayoutMS() control-label" for="balance">可提现资金：</label>
+                    <div class="#LayoutMS()">
+                        <p class="form-control-static" id="balance"><span class="text-lg">0.00</span>元</p>
+					</div>
+                </div>
+				<div class="form-group">
+                    <label class="#LayoutMS() control-label" for="amount">提现金额：</label>
+                    <div class="#LayoutSS()">
+						<input type="text" id="amount" name="amount" class="form-control" placeholder="单元：元" />
+					</div>
+                </div>
+				<div class="form-group">
+                    <label class="#LayoutMS() control-label" for="charge">提现费用：</label>
+                    <div class="#LayoutMS()">
+                        <p class="form-control-static" id="charge"><span class="text-lg">0.00</span>元  <a class="otip" href="#" title="提现费用说明"><i class="glyphicon glyphicon-info-sign"></i></a></p>
+					</div>
+                </div>
+				<div class="form-group">
+                    <label class="#LayoutMS() control-label" for="payPasswd">支付密码：</label>
+                    <div class="#LayoutMS()">
+						<input type="password" id="payPasswd" name="payPasswd" class="form-control" />
+					</div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-3 #LayoutSS()">
+						<button type="submit" class="btn btn-primary btn-block">申请提现</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+		<div class="clearfix"></div>
+		
+		<!-- 银行处理列表 -->
+        <div class="body-caption">
+			<span class="title-caption">第二步：第三方银行处理</span>
+		</div>
+		<div class="body-content table-responsive">
+			<table class="table table-striped" #MarginBottomNo()>
+                <thead>
+					<tr>
+                        <th>提交时间</th>
+						<th>提现金额</th>
+						<th>预计到账时间</th>
+						<th>处理状态</th>
+						<th>安众贷交易号</th>
+                    </tr>
+				</thead>
+				<tbody>
+					<tr>
+                        <td>2014-03-09 20:26:13</td>
+						<td>50.00元</td>
+						<td>2014-03-09 20:26:13</td>
+                        <td><div class="text-danger">处理中</div></td>
+						<td>&nbsp;</td>
+                    </tr>
+					<tr>
+                        <td>2014-03-08 17:26:13</td>
+						<td>50.00元</td>
+						<td>2014-03-08 17:26:13</td>
+						<td><div class="text-success">处理成功</div></td>
+						<td>2013122711001004190000226501</td>
+                    </tr>
+					<tr>
+                        <td>2014-03-07 23:04:06</td>
+						<td>50.00元</td>
+						<td>2014-03-07 23:04:06</td>
+						<td><div class="text-success">处理成功</div></td>
+						<td>2013122711001004190000226501</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+		
+		<!-- 提示信息 -->
+    	<div class="panel panel-default" #MarginBottomNO()>
+    		<div class="panel-body bg-warning">
+                <p><strong><i class="glyphicon glyphicon-headphones"></i> 温馨提示：</strong></p>
+    			<p>1、请确保您输入的提现金额，以及银行帐号信息准确无误；</p>
+                <p>2、如果您填写的提现信息不正确可能会导致提现失败，由此产生的提现费用将不予返还；</p>
+				<p>3、在双休日和法定节假日期间，用户可以申请提现，安众贷会在下一个工作日进行处理，由此造成的不便，请多多谅解；</p>
+                <p>4、平台禁止洗钱、信用卡套现、虚假交易等行为，一经发现并确认，将终止该账户的使用；</p>
+				<p>5、对于处理成功的提现记录，安众贷会定期清理，请注意查看交易记录；</p>
+				<p>6、提现常见问题，请至 <a href="$ctx/help/center.htm">帮助中心</a> 查看。</p>
+            </div>
+    	</div>
+    </div>
 </div>

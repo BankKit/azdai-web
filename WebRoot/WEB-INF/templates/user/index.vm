@@ -1,49 +1,61 @@
 #set($title="用户中心")
-#set($navbar="user")
-#set($userOperation="index")
-
 #set($user=$UserWebX.findSessionUser())
 #set($breadcrumbTitle="我的帐户")
-
 <!-- 账户信息 -->
 <div class="panel panel-primary">
-    <div class="panel-body table-responsive">
-        <table cellpadding="5" width="100%" class="tdpadding5">
-			<tr>
-				<td rowspan="5" class="col-xs-12 col-sm-5 col-md-2" align="center">
-					<div class="user avatar">
-                		<a href="#"><img src="$ctx/avatar/avatar04.gif" /></a>
-                    </div>
-    				<a href="$ctx/user/deposit-online.htm" class="text-lg">充值</a>
-					&nbsp;|&nbsp;
-					<a href="$ctx/user/withdraw.htm" class="text-lg">提现</a>
-				</td>
-			</tr>
-			<tr>
-				<td width="15%"><div class="text-lg text-bold pull-right nowrap">冰点</div></td>
-				<td>&nbsp;</td>
-				<td width="15%"><span class="text-muted text-sm pull-right nowrap">账户余额</span></td>
-				<td width="15%"><span class="text-lg color-orange nowrap"><strong>0.00</strong></span>元</td>
-			</tr>
-			<tr>
-				<td align="right"><span class="text-muted nowrap">信用等级</span></td>
-				<td><div class="credit bg-danger nowrap">E</div></td>
-				<td align="right"><span class="text-muted nowrap">冻结金额</span></td>
-				<td><span class="text-xs nowrap">100000.00</span>元</td>
-			</tr>
-			<tr>
-                <td align="right"><span class="text-muted">信用额度</span></td>
-				<td><span class="text-xs">100000.00</span>元</td>
-				<td align="right"><span class="text-muted">投资金额</span></td>
-				<td><span class="text-xs">100000.00</span>元</td>
-			</tr>
-			<tr>
-				<td align="right"><span class="text-muted">剩余额度</span></td>
-				<td><span class="text-xs">9876.00</span>元</td>
-				<td align="right"><span class="text-muted">可用金额</span></td>
-				<td><span class="text-xs">9876.00</span>元</td>
-			</tr>
-		</table>
+    <div class="panel-body">
+        <div class="uidx-stats">
+    		<div class="uidx-avatar">
+    			<div class="avatar">
+            		<a href="#"><img src="$ctx$UserWebX.findUserAvatar($user)" /></a>
+                </div>
+    			<a href="$ctx/user/deposit-online.htm" class="text-lg">充值</a>
+    				&nbsp;|&nbsp;
+    			<a href="$ctx/user/withdraw.htm" class="text-lg">提现</a>
+    		</div>
+    		<div class="uidx-block">
+    			<div class="uname">冰点</div>
+				<div class="uidx-item">
+					<div class="rlabel text-muted">信用等级</div>
+                    <div class="value"><div class="credit bg-danger">E</div></div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="uidx-item">
+					<div class="rlabel text-muted">信用额度</div>
+                    <div class="value"><span class="text-xs">100000.00</span>元</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="uidx-item">
+					<div class="rlabel text-muted">剩余额度</div>
+                    <div class="value"><span class="text-xs">9876.00</span>元</div>
+					<div class="clearfix"></div>
+				</div>
+            </div>
+			<div class="uidx-block">
+				<div class="uidx-item item-first">
+					<div class="rlabel text-muted text-sm">账户余额</div>
+                    <div class="value"><span class="text-lg color-orange"><strong>0.00</strong></span>元</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="uidx-item">
+					<div class="rlabel text-muted">冻结金额</div>
+                    <div class="value"><span class="text-xs">10000.00</span>元</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="uidx-item">
+					<div class="rlabel text-muted">投资金额</div>
+                    <div class="value"><span class="text-xs">100000.00</span>元</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="uidx-item">
+					<div class="rlabel text-muted">可用金额</div>
+                    <div class="value"><span class="text-xs">9876.00</span>元</div>
+					<div class="clearfix"></div>
+				</div>
+            </div>
+            <div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
     </div>
 </div>
 
@@ -70,7 +82,7 @@
 			</tr>
 		</table>
     </div>
-	
+
 	<hr #MarginBottomNO()/>
 	
 	<!-- 投资账户 -->

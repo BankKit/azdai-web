@@ -6,141 +6,138 @@
 #set($breadcrumbTitle="交易记录")
 
 <!-- 账户总览 -->
-    <div class="alert alert-info">
-        <table cellpadding="5" width="100%" class="tdpadding">
-			<tr>
-				<td rowspan="2" valign="top" style="border-right:1px solid #ccc">
-					<span class="text-muted text-sm">账户余额</span>
-					<br/>
-					<span class="text-lg color-orange"><strong>0.00</strong></span>元
-				</td>
-				<td><span class="text-muted">可用资金</span><br/>0.00元</td>
-				<td><span class="text-muted">已充值总额</span><br/>0.00元</td>
-				<td><a href="$ctx/user/deposit.htm" class="btn btn-primary">充&nbsp;值</a></td>
-			</tr>
-			<tr>
-				<td><span class="text-muted">冻结资金</span><br/>0.00元</td>
-				<td><span class="text-muted">已提现总额</span><br/>0.00元</td>
-				<td><a href="$ctx/user/withdraw.htm" class="btn btn-danger">提&nbsp;现</a></td>
-			</tr>
-		</table>
-    </div>
+<div class="alert alert-info">
+    <table cellpadding="5" width="100%" class="tdpadding">
+		<tr>
+			<td rowspan="2" valign="top" style="border-right:1px solid #ccc">
+				<span class="text-muted text-sm">账户余额</span>
+				<br/>
+				<span class="text-lg color-orange"><strong>0.00</strong></span>元
+			</td>
+			<td><span class="text-muted">可用资金</span><br/>0.00元</td>
+			<td><span class="text-muted">已充值总额</span><br/>0.00元</td>
+			<td><a href="$ctx/user/deposit.htm" class="btn btn-primary">充&nbsp;值</a></td>
+		</tr>
+		<tr>
+			<td><span class="text-muted">冻结资金</span><br/>0.00元</td>
+			<td><span class="text-muted">已提现总额</span><br/>0.00元</td>
+			<td><a href="$ctx/user/withdraw.htm" class="btn btn-danger">提&nbsp;现</a></td>
+		</tr>
+	</table>
+</div>
 	
 <!-- 交易记录 -->
-    <div class="panel panel-primary">
-        <div class="panel-body">
-			<!-- 查询表单 -->
-			<div class="text-center">
-                <form class="form-inline" role="form">
-                    <div class="form-group">
-                        <label for="type">交易类型</label>
-                        <select id="type" name="type">
-                        	<option value="ALL">---所有---</option>
-                        	<option value="RECHARGE">充值</option>
-                        	<option value="CHECKOUT">投标成功</option>
-                        	<option value="CHECKIN">招标成功</option>
-                        	<option value="REPAY">偿还本息</option>
-                        	<option value="REPAID">回收本息</option>
-                        	<option value="IN_REPAY">提前还款</option>
-                        	<option value="IN_REPAID">提前回收</option>
-                        	<option value="CASH_DRAW">成功提现</option>
-                        	<option value="ID_VALIDATE">身份验证手续费</option>
-                        	<option value="CASH_DRAW_FEE">提现手续费</option>
-                        	<option value="CHECKIN_MGMT_FEE">借款管理费</option>
-                        	<option value="OVER_DUE_MGMT_FEE">逾期管理费</option>
-                        	<option value="GUARANTEE_RECHARGE">担保费用</option>
-                        	<option value="FIELDAUDIT_RECHARGE">实地审核费用</option>
-                        	<option value="ENTURST_RECHARGE">委托待查费用</option>
-                        	<option value="MANUAL_RECHARGE">人工充值</option>
-                        	<option value="RETURN_FEE_FROM_RENRENDAI">返还服务费</option>
-                        	<option value="REGISTER_FINANCE_PLAN">加入优选理财计划</option>
-                        	<option value="FINANCEPLAN_CASHDRAW">优选理财计划提现</option>
-                        	<option value="SALE_DEBT">出售债权</option>
-                        	<option value="BUY_DEBT">购买债权</option>
-                        	<option value="LOAN_TRANSFER_FEE">债权转让管理费</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="year">查询时间</label>
-                        <select id="year" name="year">
-                            <option value="2014">2014</option>
-                            <option value="2013">2013</option>
-                            <option value="2012">2012</option>
-                            <option value="2011">2011</option>
-                            <option value="2010">2010</option>
-                        </select>
-						<span>年</span>
-						<select id="monthBegin" name="monthBegin">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-						<span>月 到</span>
-						<select id="monthFinish" name="monthFinish">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                        </select>
-						<span>月</span>
-                    </div>
-                    <button type="submit" class="btn btn-info">查询</button>
-					<button class="btn btn-info">下载结果</button>
-                </form>
+<div class="panel panel-primary">
+    <div class="panel-body">
+		<!-- 查询表单 -->
+        <form class="form-inline text-center" role="form">
+            <div class="form-group">
+                <label for="type">交易类型</label>
+                <select id="type" name="type">
+                	<option value="ALL">---所有---</option>
+                	<option value="RECHARGE">充值</option>
+                	<option value="CHECKOUT">投标成功</option>
+                	<option value="CHECKIN">招标成功</option>
+                	<option value="REPAY">偿还本息</option>
+                	<option value="REPAID">回收本息</option>
+                	<option value="IN_REPAY">提前还款</option>
+                	<option value="IN_REPAID">提前回收</option>
+                	<option value="CASH_DRAW">成功提现</option>
+                	<option value="ID_VALIDATE">身份验证手续费</option>
+                	<option value="CASH_DRAW_FEE">提现手续费</option>
+                	<option value="CHECKIN_MGMT_FEE">借款管理费</option>
+                	<option value="OVER_DUE_MGMT_FEE">逾期管理费</option>
+                	<option value="GUARANTEE_RECHARGE">担保费用</option>
+                	<option value="FIELDAUDIT_RECHARGE">实地审核费用</option>
+                	<option value="ENTURST_RECHARGE">委托待查费用</option>
+                	<option value="MANUAL_RECHARGE">人工充值</option>
+                	<option value="RETURN_FEE_FROM_RENRENDAI">返还服务费</option>
+                	<option value="REGISTER_FINANCE_PLAN">加入优选理财计划</option>
+                	<option value="FINANCEPLAN_CASHDRAW">优选理财计划提现</option>
+                	<option value="SALE_DEBT">出售债权</option>
+                	<option value="BUY_DEBT">购买债权</option>
+                	<option value="LOAN_TRANSFER_FEE">债权转让管理费</option>
+                </select>
+
+                <label for="year">查询时间</label>
+                <select id="year" name="year">
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                </select>
+				<span>年</span>
+				<select id="monthBegin" name="monthBegin">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+				<span>月 到</span>
+				<select id="monthFinish" name="monthFinish">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+				<span>月</span>
             </div>
-			
-			<hr/>
-			
-			<!-- 查询结果 -->
-			<div class="table-responsive">
-                <table class="table table-striped" #MarginBottomNO()>
-    				<thead>
-                        <tr>
-                            <th>时间</th>
-    						<th>类型</th>
-    						<th>支出</th>
-    						<th>收入</th>
-    						<th>余额</th>
-    						<th>备注</th>
-    					</tr>
-    				</thead>
-    				<tbody>
-    					<tr>
-                            <td>2014-03-08 13:45:32</td>
-    						<td>回收本息<br/>(<a href="#">00123</a>)</td>
-    						<td>&nbsp;</td>
-    						<td>8.60元</td>
-    						<td>23.45元</td>
-    						<td>本息8.60元</td>
-    					</tr>
-    					<tr>
-                            <td>2014-02-01 13:45:32</td>
-    						<td>投标成功<br/>(<a href="#">03453</a>)</td>
-                            <td><span class="text-danger">40.00元</span></td>
-    						<td>&nbsp;</td>
-    						<td>14.85元</td>
-    						<td>&nbsp;</td>
-    					</tr>
-    					<tr>
-                            <td>2014-01-01 13:45:32</td>
-    						<td>充值</td>
-    						<td>&nbsp;</td>
-    						<td>50.00元</td>
-    						<td>54.85元</td>
-    						<td>充值</td>
-    					</tr>
-    				</tbody>
-    			</table>
-                <div class="text-center">
-                    <ul class="pagination" #MarginBottomNO()>
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li class="active"><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                    </ul>
-                </div>
-			</div>
-        </div>
+            <button type="submit" class="btn btn-info">查询</button>
+			<button class="btn btn-info">下载结果</button>
+        </form>
+		
+		<hr/>
+		
+		<!-- 查询结果 -->
+		<div class="table-responsive">
+            <table class="table table-striped" #MarginBottomNO()>
+				<thead>
+                    <tr>
+                        <th>时间</th>
+						<th>类型</th>
+						<th>支出</th>
+						<th>收入</th>
+						<th>余额</th>
+						<th>备注</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+                        <td><div class="nowrap">2014-03-08 13:45:32</div></td>
+						<td><div class="nowrap">回收本息<br/>(<a href="#">00123</a>)</div></td>
+						<td><div class="nowrap">&nbsp;</div></td>
+						<td><div class="nowrap">8.60元</div></td>
+						<td><div class="nowrap">23.45元</div></td>
+						<td><div class="nowrap">本息8.60元</div></td>
+					</tr>
+					<tr>
+                        <td><div class="nowrap">2014-02-01 13:45:32</div></td>
+						<td><div class="nowrap">投标成功<br/>(<a href="#">03453</a>)</div></td>
+                        <td><div class="nowrap"><span class="text-danger">40.00元</span></div></td>
+						<td><div class="nowrap">&nbsp;</div></td>
+						<td><div class="nowrap">14.85元</div></td>
+						<td><div class="nowrap">&nbsp;</div></td>
+					</tr>
+					<tr>
+                        <td><div class="nowrap">2014-01-01 13:45:32</div></td>
+						<td><div class="nowrap">充值</div></td>
+						<td><div class="nowrap">&nbsp;</div></td>
+						<td><div class="nowrap">50.00元</div></td>
+						<td><div class="nowrap">54.85元</div></td>
+						<td><div class="nowrap">充值</div></td>
+					</tr>
+				</tbody>
+			</table>
+            <div class="text-center">
+                <ul class="pagination" #MarginBottomNO()>
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li class="active"><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
+            </div>
+		</div>
     </div>
+</div>

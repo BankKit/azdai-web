@@ -1,11 +1,11 @@
-#set($title="论坛首页")
+#set($title="安装社区首页")
 <div class="container">
     <ol class="breadcrumb">
         <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
         <li>论坛首页</li>
     </ol>
 	
-	<div class="forum_list">#set($rowStart=1) #set($rowFinish=2)
+	<div class="forum-index-list">#set($rowStart=1) #set($rowFinish=2)
 		#foreach($forum in $ForumWebX.findValidForums())
 		#if($velocityCount==$rowStart) <div class="row"> #set($rowStart=$rowStart+2) #end
 		<div class="#LayoutH()">
@@ -37,9 +37,3 @@
 		#end
     </div>
 </div>
-<style type="text/css">
-.forum_list .panel-body {
-	padding-top:0px;
-	padding-bottom:0px;
-}
-</style>

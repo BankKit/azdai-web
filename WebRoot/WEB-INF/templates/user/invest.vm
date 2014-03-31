@@ -1,99 +1,95 @@
 #set($title="我的投资 - 投资管理")
-#set($navbar="user")
-#set($userOperation="invest")
-
 #set($user=$UserWebX.findSessionUser())
 #set($breadcrumbTitle="我的投资记录")
-
 <!-- 账户总览 -->
-    <div class="alert alert-info">
-        <table cellpadding="5" width="100%" class="tdpadding">
-			<tr>
-				<td valign="top" style="border-right:1px solid #ccc">
-					<span class="text-muted">投资已获收益</span>
-					<br/>
-					<span class="text-lg color-orange"><strong>0.00</strong></span>元
-				</td>
-				<td><span class="text-muted">总资金</span><br/>0.00元</td>
-				<td><span class="text-muted">回收中的投资数量</span><br/>0个</td>
-			</tr>
-			<tr>
-				<td valign="top" style="border-right:1px solid #ccc">
-					<span class="text-muted">投资积分</span><br/>0分
-				</td>
-				<td colspan="2">
-                    <div class="well well-sm">没时间亲自投标？试试安众贷自动投标功能吧！
-						<span class="pull-right"><a href="$ctx/user/tool.htm" class="text-lg">自动投标</a></span></div>
-				</td>
-			</tr>
-		</table>
-    </div>
+<div class="alert alert-info">
+    <table cellpadding="5" width="100%" class="tdpadding">
+		<tr>
+			<td valign="top" style="border-right:1px solid #ccc">
+				<span class="text-muted">投资已获收益</span>
+				<br/>
+				<span class="text-lg color-orange"><strong>0.00</strong></span>元
+			</td>
+			<td><span class="text-muted">总资金</span><br/>0.00元</td>
+			<td><span class="text-muted">回收中的投资数量</span><br/>0个</td>
+		</tr>
+		<tr>
+			<td valign="top" style="border-right:1px solid #ccc">
+				<span class="text-muted">投资积分</span><br/>0分
+			</td>
+			<td colspan="2">
+                <div class="well well-sm">没时间亲自投标？试试安众贷自动投标功能吧！
+					<span class="pull-right"><a href="$ctx/user/tool.htm" class="text-lg">自动投标</a></span></div>
+			</td>
+		</tr>
+	</table>
+</div>
 	
-<!-- 交易记录 -->
-    <div class="panel panel-default">
-        <div class="panel-body">
-			<ul class="nav nav-pills">
-                <li id="catg-invest"><a href="$ctx/user/invest.htm?catg=invest">投标中</a></li>
-                <li id="catg-return"><a href="$ctx/user/invest.htm?catg=return">回收中</a></li>
-				<li id="catg-finish"><a href="$ctx/user/invest.htm?catg=finish">已结清</a></li>
-            </ul>
-			
-			<hr/>
-			
-			<!-- 查询结果 -->
-			<div class="table-responsive">
-                <table class="table table-striped" #MarginBottomNO()>
-    				<thead>
-                        <tr>
-                            <th>标的标题</th>
-    						<th>标的总额</th>
-    						<th>投资金额</th>
-    						<th>年利率</th>
-    						<th>期数</th>
-    						<th>进度</th>
-    					</tr>
-    				</thead>
-    				<tbody>
-    					<tr>
-                            <td><a href="$ctx/home/detail.htm">我就是想借点钱啊</a></td>
-    						<td>5000.00元</td>
-    						<td>40.00元</td>
-    						<td>13%</td>
-    						<td>6</td>
-    						<td>70%</td>
-    					</tr>
-    					<tr>
-                            <td><a href="$ctx/home/detail.htm">我就是想借点钱啊</a></td>
-    						<td>5000.00元</td>
-    						<td>40.00元</td>
-    						<td>13%</td>
-    						<td>6</td>
-    						<td>70%</td>
-    					</tr>
-    					<tr>
-                            <td><a href="$ctx/home/detail.htm">我就是想借点钱啊</a></td>
-    						<td>5000.00元</td>
-    						<td>40.00元</td>
-    						<td>13%</td>
-    						<td>6</td>
-    						<td>70%</td>
-    					</tr>
-    				</tbody>
-    			</table>
-                <div class="text-center">
-                    <ul class="pagination" #MarginBottomNO()>
-                        <li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li class="active"><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&raquo;</a></li>
-                    </ul>
-                </div>
-			</div>
-        </div>
+<!-- 投资记录 -->
+<div class="panel panel-primary">
+    <div class="panel-body">
+		<ul class="nav nav-pills">
+            <li id="catg-invest"><a href="$ctx/user/invest.htm?catg=invest">投标中</a></li>
+            <li id="catg-return"><a href="$ctx/user/invest.htm?catg=return">回收中</a></li>
+			<li id="catg-finish"><a href="$ctx/user/invest.htm?catg=finish">已结清</a></li>
+        </ul>
+		
+		<hr/>
+		
+		<!-- 查询结果 -->
+		<div class="table-responsive">
+            <table class="table table-striped" #MarginBottomNO()>
+				<thead>
+                    <tr>
+                        <th>标的标题</th>
+						<th>标的总额</th>
+						<th>投资金额</th>
+						<th>年利率</th>
+						<th>期数</th>
+						<th>进度</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+                        <td><a href="$ctx/home/detail.htm">我就是想借点钱啊</a></td>
+						<td>5000.00元</td>
+						<td>40.00元</td>
+						<td>13%</td>
+						<td>6</td>
+						<td>70%</td>
+					</tr>
+					<tr>
+                        <td><a href="$ctx/home/detail.htm">我就是想借点钱啊</a></td>
+						<td>5000.00元</td>
+						<td>40.00元</td>
+						<td>13%</td>
+						<td>6</td>
+						<td>70%</td>
+					</tr>
+					<tr>
+                        <td><a href="$ctx/home/detail.htm">我就是想借点钱啊</a></td>
+						<td>5000.00元</td>
+						<td>40.00元</td>
+						<td>13%</td>
+						<td>6</td>
+						<td>70%</td>
+					</tr>
+				</tbody>
+			</table>
+            <div class="text-center">
+                <ul class="pagination" #MarginBottomNO()>
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li class="active"><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
+            </div>
+		</div>
     </div>
+</div>
 
 <script type="text/javascript">
 $(document).ready(function() {
