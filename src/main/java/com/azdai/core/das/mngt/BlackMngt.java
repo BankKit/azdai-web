@@ -15,6 +15,6 @@ public interface BlackMngt {
     /**
      * 是否为用户黑名单
      */
-    public boolean isBlackUser(String name);
+    public boolean isBlackUserName(String name);
     
 }

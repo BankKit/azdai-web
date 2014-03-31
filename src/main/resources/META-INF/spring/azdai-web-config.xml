@@ -153,5 +153,14 @@
 			</bean>
 		</property>
 	</bean>
+	
+	<!-- ===================================== -->
+	<!-- 用户名黑名单服务配置 -->
+	<!-- ===================================== -->
+	<bean id="blackMngt" class="com.azdai.core.das.mngt.impl.BlackMngtImpl">
+		<property name="blackUserPath">
+			<value>/WEB-INF/black-users</value>
+		</property>
+	</bean>
 
 </beans>

@@ -52,7 +52,7 @@ public class UserRegistController extends AbstractController {
                 return response;
             }
 
-            if (this.blackMngt.isBlackUser(form.getNickName())) {
+            if (this.blackMngt.isBlackUserName(form.getNickName())) {
                 this.buildResponse(response, "PARAMS", "用户名已经被注册！");
                 return response;
             }

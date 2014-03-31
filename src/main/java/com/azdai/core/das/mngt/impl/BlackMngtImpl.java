@@ -14,7 +14,6 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Component;
 
 import com.azdai.core.das.mngt.BlackMngt;
 import com.github.obullxl.lang.utils.LogUtils;
@@ -25,7 +24,7 @@ import com.github.obullxl.lang.utils.LogUtils;
  * @author obullxl@gmail.com
  * @version $Id: BlackMngtImpl.java, V1.0.1 2014年3月15日 下午6:52:48 $
  */
-@Component("blackMngt")
+// @Component("blackMngt")
 public class BlackMngtImpl implements BlackMngt, InitializingBean {
     private static final Logger logger     = LogUtils.get();
 
@@ -39,9 +38,7 @@ public class BlackMngtImpl implements BlackMngt, InitializingBean {
      * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
      */
     public void afterPropertiesSet() {
-        if (this.blackUserPath == null) {
-            return;
-        }
+        logger.warn("[黑名单]-加载用户黑名单[{}].", this.blackUserPath);
 
         try {
             InputStream input = null;
@@ -75,17 +72,19 @@ public class BlackMngtImpl implements BlackMngt, InitializingBean {
     }
 
     /** 
-     * @see com.azdai.core.das.mngt.BlackMngt#isBlackUser(java.lang.String)
+     * @see com.azdai.core.das.mngt.BlackMngt#isBlackUserName(java.lang.String)
      */
-    public boolean isBlackUser(String name) {
-        for(String black : this.blackUsers) {
-            if(StringUtils.containsIgnoreCase(name, black)) {
+    public boolean isBlackUserName(String name) {
+        for (String black : this.blackUsers) {
+            if (StringUtils.containsIgnoreCase(name, black)) {
                 return true;
             }
         }
-        
+
         return false;
     }
+
+    // ~~~~~~~~~~~~~~~~~~~~~~ 依赖注入 ~~~~~~~~~~~~~~~~~~~~ //
 
     public void setBlackUserPath(Resource blackUserPath) {
         this.blackUserPath = blackUserPath;
