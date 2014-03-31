@@ -327,7 +327,7 @@ $(document).ready(function() {
 		}
 
 		var menuItem = $("#menu-" + hrefOpt);
-		if(menuItem) {
+		if(menuItem.length) {
 			menuItem.addClass("list-group-item-active");
 			menuItem.find("i").attr("class", "glyphicon glyphicon-chevron-right");
 
@@ -342,7 +342,7 @@ $(document).ready(function() {
 		}
 		
 		var dxtNavBar = $("#dxt-nb-help");
-		if(dxtNavBar) {
+		if(dxtNavBar.length) {
 			dxtNavBar.addClass("active");
 		}
 
@@ -360,7 +360,7 @@ $(document).ready(function() {
 		}
 		
 		var menuItem = $("#help-" + id);
-		if(menuItem) {
+		if(menuItem.length) {
 			menuItem.addClass("list-group-item-active");
 			menuItem.find("i").attr("class", "glyphicon glyphicon-chevron-right");
 
@@ -375,7 +375,7 @@ $(document).ready(function() {
 		}
 		
 		var dxtNavBar = $("#dxt-nb-forum");
-		if(dxtNavBar) {
+		if(dxtNavBar.length) {
 			dxtNavBar.addClass("active");
 		}
 	} else if(href.indexOf("/mngt/") >= 0) {
@@ -390,7 +390,7 @@ $(document).ready(function() {
 		}
 		
 		var dxtNavBar = $("#dxt-nb-" + hrefOpt);
-		if(dxtNavBar) {
+		if(dxtNavBar.length) {
 			dxtNavBar.addClass("active");
 		}
 	}
