@@ -315,7 +315,7 @@
 					AND forum=#{forum}
 				</if>
 			ORDER BY
-				reply_count DESC, gmt_post ASC
+				reply_count DESC
 		]]>
 		</sqlmap>
 	</operation>
@@ -368,7 +368,7 @@
 			WHERE
 				forum=#{forum} AND catg=#{catg} AND state=#{state} AND top_flag=#{topFlag}
 			ORDER BY
-				reply_count DESC, gmt_post ASC
+				gmt_modify DESC
 			LIMIT #{offset},#{pageSize}
 		]]>
 		</sqlmap>
@@ -417,7 +417,7 @@
 			WHERE
 				catg=#{catg} AND topic=#{topic}
 			ORDER BY
-				gmt_reply ASC
+				gmt_modify DESC
 			LIMIT #{offset},#{pageSize}
 		]]>
 		</sqlmap>
@@ -460,7 +460,7 @@
 				azdai_forum_topic
 			<include refid="find-fuzzy-WHERE" />
 			ORDER BY
-				reply_count DESC, id DESC
+				gmt_modify DESC
 			LIMIT #{offset},#{pageSize}
 		]]>
 		</sqlmap>

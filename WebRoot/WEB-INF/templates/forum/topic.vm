@@ -95,23 +95,24 @@
 	#if(!$UserWebX.isLogin())
     <div class="alert alert-danger">只有会员登录之后才能发表帖子或回复帖子，请先 <a href="$ctx/login.htm">登录</a> 或免费 <a href="$ctx/regist.htm">注册</a> 会员！</div>
 	#else
-	<div class="panel panel-primary">
-        <div class="panel-heading">
-			<div class="panel-title"><i class="glyphicon glyphicon-edit"></i> 主题回复</div>
-		</div>
-		<div class="panel-body">
-			<form id="form-create-reply" role="form" method="post">
-				<div class="form-group">
-                    <div class="form-control-static"><strong>标题：</strong><span class="text-success">$topic.title</span></div>
-                </div>
-				<div class="form-group">
-					<textarea id="content" name="content" required="required"></textarea>
-                </div>
-				<input type="hidden" name="topic" value="$id" />
-				<input type="hidden" name="forum" value="$topic.forum" />
-				<button type="submit" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-plus-sign"></i> 提交回复</button>
-            </form>
-		</div>
+	<ul class="nav nav-tabs">
+        <li id="tab-create-reply"><a href="javascript:;"><i class="glyphicon glyphicon-edit"></i> 主贴回复</a></li>
+        <li id="tab-create-topic"><a href="javascript:;"><i class="glyphicon glyphicon-plus-sign"></i> 发表新帖</a></li>
+    </ul>
+	<div class="nav-tab-body">
+		<form id="form-create-reply" role="form" method="post">
+			<div class="form-group">
+                <div class="form-control-static"><strong>标题：</strong><span class="text-success">$topic.title</span></div>
+            </div>
+			<div class="form-group">
+				<textarea id="replyContent" name="content" rows="5" required="required"></textarea>
+            </div>
+			<input type="hidden" name="topic" value="$id" />
+			<input type="hidden" name="forum" value="$topic.forum" />
+			<button type="submit" class="btn btn-lg btn-success"><i class="glyphicon glyphicon-plus-sign"></i> 提交回复</button>
+        </form>
+		#parse("/forum/inc/inc-topic-create-form.vm")
+		<div class="clearfix"></div>
     </div>
 	#end
 	#end
@@ -121,45 +122,24 @@
 #set($editor="ON")
 $(document).ready(function() {
 /** 富文本框 */
-UE.getEditor("content");
+UE.getEditor("replyContent", {
+	initialFrameWidth: "100%"
+});
 
-/** 发表回贴 */
-$("#form-create-reply").submit(function(e) {
-	e.preventDefault();
-	
-	var content = $("#content").val();
-	if(content.length < 20 || content.length > 65535) {
-		window.alert("回贴内容长度输入非法，长度必须在20和65535之间，请重新输入！！");
-		$("#content").focus();
-		return false;
-	}
-	
-	jQuery.ajax({
-		type: "POST",
-		dataType: "json",
-		url: "$ctx/forum/topic-reply/create.htm",
-		data: $("#form-create-reply").serialize(),
+UE.getEditor("topicContent", {
+	initialFrameWidth: "100%",
+	initialFrameHeight: "500px"
+});
 
-		success: function(result) {
-			if(result.success) {
-				var id = result.bizData["biz_id"];
-				if(id > 0) {
-					AZD.confirm(function(rtn) {
-                    	if(rtn === "yes") {
-                    		top.location.href = "$ctx/forum/topic.htm?id=" + id + "&page=999999999";
-                    	}
-                    }, "恭喜你，回贴发布成功！", "查看回帖", "继续回复");
-				} else {
-					AZD.modal("恭喜你，回贴发布成功！", "成功提示");
-				}
-				
-				// 清空输入框
-				UE.getEditor("content").setContent("", false);
-			} else {
-				AZD.alert(result.respDesp, "失败提示");
-			}
-		}
-	});
+/** Tab切换 */
+$("#form-create-topic").toggle();
+$("#tab-create-reply").addClass("active");
+$("#tab-create-reply, #tab-create-topic").click(function() {
+	$("#tab-create-reply").toggleClass("active");
+	$("#tab-create-topic").toggleClass("active");
+	
+	$("#form-create-reply").toggle();
+	$("#form-create-topic").toggle();
 });
 //
 });

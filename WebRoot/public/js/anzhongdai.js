@@ -191,7 +191,7 @@ AZD.findHrefOpt = function(href) {
 	if(window.console) {
 		window.console.log("菜单导航-用户后台-B:" + idxBegin + ", DOT:" + idxDot + ", T:" + token);
 	}
-	
+
 	return token;
 };
 
@@ -209,7 +209,7 @@ AZD.findURLParams = function() {
 		vars.push(hash[0]);
 		vars[hash[0]] = hash[1];
 	}
-	
+
 	return vars;
 };
 
@@ -306,13 +306,13 @@ $(document).ready(function() {
 	if(window.console) {
 		window.console.info("菜单导航, HREF: " + href + ", TOKEN: " + hrefOpt);
 	}
-	
+
 	if(href.indexOf("/user/") >= 0) {
 		/* 用户后台 */
 		if(window.console) {
 			window.console.log("菜单导航-用户后台-" + href);
 		}
-		
+
 		$(".user-menus a").attr("class", "list-group-item");
 		$(".user-menus a").prepend("<i class=\"fa fa-caret-right\"></i> ");
 
@@ -340,7 +340,7 @@ $(document).ready(function() {
 		if(window.console) {
 			window.console.info("菜单导航-帮助中心" + href);
 		}
-		
+
 		var dxtNavBar = $("#dxt-nb-help");
 		if(dxtNavBar.length) {
 			dxtNavBar.addClass("active");
@@ -358,7 +358,7 @@ $(document).ready(function() {
 		if(hrefOpt === "detail") {
 			id = AZD.findURLParam("catg");
 		}
-		
+
 		var menuItem = $("#help-" + id);
 		if(menuItem.length) {
 			menuItem.addClass("list-group-item-active");
@@ -373,7 +373,7 @@ $(document).ready(function() {
 		if(window.console) {
 			window.console.info("菜单导航-用户论坛");
 		}
-		
+
 		var dxtNavBar = $("#dxt-nb-forum");
 		if(dxtNavBar.length) {
 			dxtNavBar.addClass("active");
@@ -388,12 +388,97 @@ $(document).ready(function() {
 		if(window.console) {
 			window.console.info("菜单导航-OTHER");
 		}
-		
+
 		var dxtNavBar = $("#dxt-nb-" + hrefOpt);
 		if(dxtNavBar.length) {
 			dxtNavBar.addClass("active");
 		}
 	}
+
+	// 发表主贴
+	$("#form-create-topic").submit(function(e) {
+		e.preventDefault();
+		var title = $("#title").val();
+		if(title.length < 3 || title.length > 128) {
+			window.alert("主贴标题长度输入非法，长度必须在3和128之间，请重新输入！！");
+			// $("#title").focus();
+			return false;
+		}
+
+		var content = $("#topicContent").val();
+		if(content.length < 20 || content.length > 65535) {
+			window.alert("主贴长度输入非法，长度必须在20和65535之间，请重新输入！！");
+			//$("#content").focus();
+			return false;
+		}
+
+		jQuery.ajax({
+			type: "POST",
+			dataType: "json",
+			url: "/forum/forum-topic/create.htm",
+			data: $("#form-create-topic").serialize(),
+
+			success: function(result) {
+				if(result.success) {
+					var id = result.bizData["biz_id"];
+					if(id > 0) {
+						AZD.confirm(function(rtn) {
+							if(rtn === "yes") {
+								top.location.href = "/forum/topic.htm?id=" + id;
+							}
+						}, "恭喜你，主贴发布成功！", "立即查看帖子", "继续发表");
+					} else {
+						AZD.modal("恭喜你，主贴发布成功！", "成功提示");
+					}
+
+					// 清空输入框
+					$("#title").val("");
+					UE.getEditor("topicContent").setContent("", false);
+				} else {
+					AZD.alert(result.respDesp, "失败提示");
+				}
+			}
+		});
+	});
+
+	// 发表回贴
+	$("#form-create-reply").submit(function(e) {
+		e.preventDefault();
+
+		var content = $("#replyContent").val();
+		if(content.length < 20 || content.length > 65535) {
+			window.alert("回贴内容长度输入非法，长度必须在20和65535之间，请重新输入！！");
+			// $("#content").focus();
+			return false;
+		}
+
+		jQuery.ajax({
+			type: "POST",
+			dataType: "json",
+			url: "/forum/topic-reply/create.htm",
+			data: $("#form-create-reply").serialize(),
+
+			success: function(result) {
+				if(result.success) {
+					var id = result.bizData["biz_id"];
+					if(id > 0) {
+						AZD.confirm(function(rtn) {
+							if(rtn === "yes") {
+								top.location.href = "/forum/topic.htm?id=" + id + "&page=999999999";
+							}
+						}, "恭喜你，回贴发布成功！", "查看回帖", "继续回复");
+					} else {
+						AZD.modal("恭喜你，回贴发布成功！", "成功提示");
+					}
+
+					// 清空输入框
+					UE.getEditor("replyContent").setContent("", false);
+				} else {
+					AZD.alert(result.respDesp, "失败提示");
+				}
+			}
+		});
+	});
 
 	//
 	;
