@@ -213,11 +213,11 @@
 			<param name="delta" javatype="int" />
 		</extraparams>
 		<sql>
-			UPDATE azdai_forum_topic SET visit_count='VC', gmt_modify='NOW' WHERE id='ID'
+			UPDATE azdai_forum_topic SET visit_count='VC' WHERE id='ID'
 		</sql>
 		<sqlmap>
 			UPDATE azdai_forum_topic SET
-				visit_count=visit_count+#{delta}, gmt_modify={{DB_NOW}}
+				visit_count=visit_count+#{delta}
 			WHERE
 				id=#{id}
 		</sqlmap>
@@ -315,7 +315,7 @@
 					AND forum=#{forum}
 				</if>
 			ORDER BY
-				reply_count DESC
+				gmt_modify DESC
 		]]>
 		</sqlmap>
 	</operation>
@@ -417,7 +417,7 @@
 			WHERE
 				catg=#{catg} AND topic=#{topic}
 			ORDER BY
-				gmt_modify DESC
+				gmt_reply ASC
 			LIMIT #{offset},#{pageSize}
 		]]>
 		</sqlmap>

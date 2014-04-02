@@ -142,7 +142,7 @@
     <!-- mapped statement for MyBatisForumTopicDAO.updateVisitDelta -->
     <update id="updateVisitDelta" >
         UPDATE azdai_forum_topic SET
-				visit_count=visit_count+#{delta}, gmt_modify=DATETIME('NOW', 'LOCALTIME')
+				visit_count=visit_count+#{delta}
 			WHERE
 				id=#{id}
     </update>
@@ -192,7 +192,7 @@
 					AND forum=#{forum}
 				</if>
 			ORDER BY
-				reply_count DESC
+				gmt_modify DESC
     </select>
 
     <!-- mapped statement for MyBatisForumTopicDAO.findLastTopics -->
@@ -236,7 +236,7 @@
 			WHERE
 				catg=#{catg} AND topic=#{topic}
 			ORDER BY
-				gmt_modify DESC
+				gmt_reply ASC
 			LIMIT #{offset},#{pageSize}
     </select>
 

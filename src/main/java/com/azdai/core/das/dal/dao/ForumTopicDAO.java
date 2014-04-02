@@ -115,7 +115,7 @@ public interface ForumTopicDAO extends BaseDAO {
 	 *
 	 *  <p>
 	 *  The sql statement for this operation is <br>
-	 *  <tt>update azdai_forum_topic set visit_count='VC', gmt_modify='NOW' where (id = 'ID')</tt>
+	 *  <tt>update azdai_forum_topic set visit_count='VC' where (id = 'ID')</tt>
 	 *
 	 *	@param id
 	 *	@param delta
