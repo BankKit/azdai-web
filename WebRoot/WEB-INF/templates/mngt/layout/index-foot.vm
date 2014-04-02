@@ -17,6 +17,18 @@ $screen_placeholder
 body {
 	background:#000000;
 }
+
+.stats {
+	color: #fff;
+}
+
+.stats a {
+	color: #fff;
+}
+
+.stats a:hover {
+	color: #f00;
+}
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
