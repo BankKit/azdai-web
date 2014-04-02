@@ -17,7 +17,7 @@
 <script type="text/javascript" charset="utf-8" src="$ctx/public/js/jquery.password-strength.js"></script>
 #end
 <!--[if (gte IE 6)&(lte IE 8)]>
-	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/selectivizr.js?v=1.0.3"></script>
+	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/selectivizr.min.js?v=1.0.3"></script>
 <![endif]-->
 <!--[if lt IE 9]>
 	<script type="text/javascript" charset="utf-8" src="$ctx/public/js/html5shiv.js?v=3.7.0"></script>

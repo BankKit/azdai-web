@@ -1,6 +1,7 @@
 #set($layout="/mngt/layout/index-foot.vm")
 <table cellpadding="3" cellspacing="0" width="100%" height="100%" style="width:100%;height:100%">
 	<tr>
+		<td><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000350072'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000350072%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script></td>
 		<td>&nbsp;</td>
 		<td><div class="pull-right">登录同步<span id="tickTime" class="hide"></span>：</div></td>
 		<td width="60"><strong><div id="tickMsg" class="text-success">正常</div></strong></td>

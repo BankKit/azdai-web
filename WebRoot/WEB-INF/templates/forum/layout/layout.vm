@@ -12,7 +12,6 @@
 #parse("/public/uniform-header.vm")
 $screen_placeholder
 </div>
-#set($navbar="forum")
 #parse("/public/uniform-footer.vm")
 </body>
 </html>

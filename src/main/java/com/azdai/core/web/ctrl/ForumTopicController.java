@@ -5,6 +5,8 @@
 package com.azdai.core.web.ctrl;
 
 import org.apache.commons.lang.StringUtils;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -84,7 +86,10 @@ public class ForumTopicController extends AbstractController {
             model.setPostUserNo(user.getUserNo());
             model.setPostNickName(user.getUserName());
 
+            title = Jsoup.clean(title, Whitelist.relaxed());
             model.setTitle(TextUtils.truncate(title, DBSize.FORUM_TOPIC.TITLE_MAX));
+            
+            content = Jsoup.clean(content, Whitelist.relaxed());
             model.setContent(TextUtils.truncate(content, DBSize.FORUM_TOPIC.CONTENT_MAX));
 
             this.forumMngt.createForumTopic(model);
@@ -129,6 +134,7 @@ public class ForumTopicController extends AbstractController {
             model.setReplyUserNo(user.getUserNo());
             model.setReplyNickName(user.getUserName());
 
+            content = Jsoup.clean(content, Whitelist.relaxed());
             model.setContent(TextUtils.truncate(content, DBSize.FORUM_TOPIC.CONTENT_MAX));
 
             this.forumMngt.createTopicReply(model);
