@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <title>#if($title)$title -#end 管理后台</title>
 #parse("/mngt/inc/inc-header.vm")
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="refresh" content="180;URL=$ctx/mngt/index-foot.htm" />
 </head>
 <body>
 $screen_placeholder
@@ -15,7 +17,7 @@ $screen_placeholder
 }
 
 body {
-	background:#000000;
+	background: #000;
 }
 
 .stats {
@@ -29,42 +31,10 @@ body {
 .stats a:hover {
 	color: #f00;
 }
-</style>
-<script type="text/javascript">
-$(document).ready(function() {
-    timerTick();
-    var interval;
-	
-    function timerTick() {
-		// 1分钟一次
-    	interval = setInterval(onTimerTick, "60000");
-    }
-	
-    function onTimerTick() {
-    	jQuery.post("$ctx/admin/tick.htm", {stamp: new Date().getTime()}, function(rtn) {
-			if(rtn && rtn.bizData && rtn.bizData.stamp) {
-				$("#tickTime").text("(" + rtn.bizData.stamp + ")");
-				if($("#tickTime").hasClass("hide")) {
-					$("#tickTime").removeClass("hide")
-				}
-			}
-			
-			if(rtn && rtn.success) {
-				$("#tickMsg").text("正常");
-				$("#tickMsg").attr("class", "text-success");
-			} else {
-				$("#tickMsg").text("异常");
-				$("#tickMsg").attr("class", "text-danger");
-			}
-		});
-    }
 
-	/*
-    $("#closeChat").click(function() {
-    	clearTimeout(interval);
-    });
-	*/
-});
-</script>
+.datetime {
+	color: #fff;
+}
+</style>
 </body>
 </html>

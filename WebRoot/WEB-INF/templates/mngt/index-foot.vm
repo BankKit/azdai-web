@@ -3,7 +3,29 @@
 	<tr>
 		<td><div class="stats"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1000350072'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1000350072%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script></div></td>
 		<td>&nbsp;</td>
-		<td><div class="pull-right">登录同步<span id="tickTime" class="hide"></span>：</div></td>
-		<td width="60"><strong><div id="tickMsg" class="text-success">正常</div></strong></td>
+		<td><div id="tickTime" class="datetime pull-right"></div></td>
     </tr>
 </table>
+<script type="text/javascript" charset="utf-8" src="$ctx/public/js/date.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	/*
+    timerTick();
+    var interval;
+	
+    function timerTick() {
+    	interval = setInterval(onTimerTick, "60000");
+    }
+	*/
+	
+	var date = Date.today().toString("yyyy年MM月dd日");
+	var week = "日一二三四五六".charAt(new Date().getDay());
+	$("#tickTime").text(date + " 星期" + week);
+
+	/*
+    $("#closeChat").click(function() {
+    	clearTimeout(interval);
+    });
+	*/
+});
+</script>
