@@ -51,7 +51,7 @@
 				</thead>
 				<tbody>
 					<tr>
-                        <td><a href="$ctx/home/detail.htm">我就是想借点钱啊</a></td>
+                        <td><a href="/detail.htm">我就是想借点钱啊</a></td>
 						<td>5000.00元</td>
 						<td>40.00元</td>
 						<td>13%</td>
@@ -59,7 +59,7 @@
 						<td>70%</td>
 					</tr>
 					<tr>
-                        <td><a href="$ctx/home/detail.htm">我就是想借点钱啊</a></td>
+                        <td><a href="/detail.htm">我就是想借点钱啊</a></td>
 						<td>5000.00元</td>
 						<td>40.00元</td>
 						<td>13%</td>
@@ -67,7 +67,7 @@
 						<td>70%</td>
 					</tr>
 					<tr>
-                        <td><a href="$ctx/home/detail.htm">我就是想借点钱啊</a></td>
+                        <td><a href="/detail.htm">我就是想借点钱啊</a></td>
 						<td>5000.00元</td>
 						<td>40.00元</td>
 						<td>13%</td>

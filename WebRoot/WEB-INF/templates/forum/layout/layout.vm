@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>#if($title) $title -#end 安众贷论坛</title>
+<title>#if($title) $title -#end 安众社区-安众贷论坛-安众贷(www.anzhongdai.com)-安全、大众、不等贷！</title>
 #parse("/public/uniform-resources.vm")
 </head>
 <body id="body">

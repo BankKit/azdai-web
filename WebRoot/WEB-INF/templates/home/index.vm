@@ -1,4 +1,4 @@
-#set($title="安众贷首页-安全 大众 不等贷")
+#set($title="安众贷(www.anzhongdai.com)安众贷首页-安全-大众-不等贷")
 <div class="container">
 	<div class="index-head">
 		<div class="index-banner">
@@ -47,9 +47,9 @@
 
 <div class="container">
 	<!-- 投资列表 -->
-	<div class="panel panel-primary">
+	<div class="panel panel-default">
 		<div class="panel-heading">
-			<div class="panel-title"><strong>投资列表</strong></div>
+			<div class="panel-title"><div class="pull-right"><a href="/projects.htm" target="_blank"><i class="fa fa-bars"></i> 更多</a></div>投资列表</div>
         </div>
         <div class="table-responsive">
     		<table class="table table-hover lend-projects" #MarginBottomNO()>
@@ -68,7 +68,7 @@
     				<td>
 						<div class="pull-left avatar"><img width="52" height="52" src="$ctx/avatar/tstuser/avatar_120.jpg" /></div>
 						<div>
-                            <p><a href="$ctx/home/project-detail.htm" target="_blank" title="【其他】有时会出现点小资金问题。因本人平时花销没依据。所以。。。"><strong>【其他】有时会出现点小资金问题...</strong></a></p>
+                            <p><a href="/project-detail.htm" target="_blank" title="【其他】有时会出现点小资金问题。因本人平时花销没依据。所以。。。"><strong>【其他】有时会出现点小资金问题...</strong></a></p>
                     		<p><a href="#" target="_blank">leilei3733</a></p>
 						</div>
 					</td>
@@ -95,7 +95,7 @@
     				<td>
 						<div class="pull-left avatar"><img width="52" height="52" src="$ctx/avatar/avatar01.gif" /></div>
 						<div>
-							<p><a href="$ctx/home/project-detail.htm" target="_blank" title="第三标，非提现，积累信用，增加额度"><strong>第三标，非提现，积累信用，增加额度</strong></a></p>
+							<p><a href="/project-detail.htm" target="_blank" title="第三标，非提现，积累信用，增加额度"><strong>第三标，非提现，积累信用，增加额度</strong></a></p>
                     		<p><a href="#" target="_blank">tingfeng00</a></p>
 						</div>
 					</td>
@@ -121,7 +121,7 @@
     				<td>
 						<div class="pull-left avatar"><img width="52" height="52" src="$ctx/avatar/avatar02.gif" /></div>
 						<div>
-							<p><a href="$ctx/home/project-detail.htm" target="_blank" title="149标 非提现 安全标 稳健投资 收益保障 6000标2"><strong>149标 非提现 安全标 稳健投资 收益保障 6000标2</strong></a></p>
+							<p><a href="/project-detail.htm" target="_blank" title="149标 非提现 安全标 稳健投资 收益保障 6000标2"><strong>149标 非提现 安全标 稳健投资 收益保障 6000标2</strong></a></p>
                     		<p><a href="#" target="_blank">sk63</a></p>
 						</div>
 					</td>
@@ -151,7 +151,7 @@
     				<td>
 						<div class="pull-left avatar"><img width="52" height="52" src="$ctx/avatar/avatar03.gif" /></div>
 						<div>
-							<p><a href="$ctx/home/project-detail.htm" target="_blank" title="安非周转，谢谢大家。"><strong>安非周转，谢谢大家。</strong></a></p>
+							<p><a href="/project-detail.htm" target="_blank" title="安非周转，谢谢大家。"><strong>安非周转，谢谢大家。</strong></a></p>
                     		<p><a href="#" target="_blank">wujixian8</a></p>
 						</div>
 					</td>
@@ -178,7 +178,7 @@
     				<td>
 						<div class="pull-left avatar"><img width="52" height="52" src="$ctx/avatar/avatar04.gif" /></div>
 						<div>
-							<p><a href="$ctx/home/project-detail.htm" target="_blank" title="应收款保证标 请大家支持 非提现 A003"><strong>应收款保证标 请大家支持 非提现 A003</strong></a></p>
+							<p><a href="/project-detail.htm" target="_blank" title="应收款保证标 请大家支持 非提现 A003"><strong>应收款保证标 请大家支持 非提现 A003</strong></a></p>
                     		<p><a href="#" target="_blank">lzwanghb</a></p>
 						</div>
 					</td>
@@ -206,35 +206,17 @@
     		</table>
         </div>
     </div>
+	
+	<!-- 社区动态 -->
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="panel-title"><div class="pull-right"><a href="/forum/index.htm" target="_blank"><i class="fa fa-bars"></i> 更多</a></div>安众社区</div>
+        </div>
+        #set($lastTopics=$ForumWebX.findLastTopics())
+		<div class="list-group">
+			#foreach($topic in $lastTopics)
+            <a href="$ctx/forum/topic.htm?id=$!topic.id" class="list-group-item" target="_blank"><span class="pull-right">$DateUtils.toStringDL($topic.gmtModify)</span><i class="fa fa-angle-right"></i> $!topic.title</a>
+			#end
+        </div>
+    </div>
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-// 幻灯片
-$(".index-carousel").kinMaxShow({
-	height: 280,
-	button: {
-		showIndex: true,
-		normal: {
-			width: "18px",
-			height: "18px",
-			lineHeight: "18px",
-			right: "16px",
-			bottom: "6px",
-			fontSize: "12px",
-			opacity: 0.8,
-			background: "#666666",
-			border: "1px solid #999999",
-			color: "#CCCCCC",
-			marginRight: "6px"
-		},
-		focus: {
-			background: "#CC0000",
-			border: "1px solid #FF0000",
-			color: "#000000"
-		}
-	}
-});
-//
-});
-</script>
-

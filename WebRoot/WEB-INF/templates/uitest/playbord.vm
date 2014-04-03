@@ -8,7 +8,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="$ctx/home/index.htm"><img src="$ctx/public/logo.png" /></a>
+                <a class="navbar-brand" href="/index.htm"><img src="$ctx/public/logo.png" /></a>
             </div>
 			
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -49,7 +49,7 @@
 			
 			<div class="collapse navbar-collapse navbar-subnav" id="navbar-collapse-2">
                 <ul class="nav navbar-nav">
-                    <li><a class="otip subnavbar" href="$ctx/home/product.htm" title="我要理财"><i class="glyphicon glyphicon-share"></i> 我要投资</a></li>
+                    <li><a class="otip subnavbar" href="/product.htm" title="我要理财"><i class="glyphicon glyphicon-share"></i> 我要投资</a></li>
                     <li><a class="otip" href="#" title="我要资金周转"><i class="glyphicon glyphicon-check"></i> 我要借入</a></li>
 					<li><a class="otip" href="$ctx/user/blacklist.htm" title="黑名单"><i class="glyphicon glyphicon-remove-circle"></i> 黑名单</a></li>
 					<li class="active"><a class="otip" href="$ctx/user/regist.htm" title="免费注册"><i class="glyphicon glyphicon-heart"></i> 注册</a></li>

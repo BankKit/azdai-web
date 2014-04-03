@@ -8,17 +8,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="$ctx/home/index.htm"><img src="$ctx/public/logo.png" /></a>
+            <a class="navbar-brand" href="/index.htm"><img src="$ctx/public/logo.png" /></a>
         </div>
 		
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li id="dxt-nb-lend"><a href="$ctx/home/lend-projects.htm"><i class="glyphicon glyphicon-share"></i> 我要投资</a></li>
-                <li id="dxt-nb-borrow"><a href="$ctx/home/borrow-projects.htm"><i class="glyphicon glyphicon-check"></i> 我要借款</a></li>
+                <li id="dxt-nb-lend"><a href="/projects.htm"><i class="glyphicon glyphicon-share"></i> 我要投资</a></li>
+                <li id="dxt-nb-borrow"><a href="/borrow-projects.htm"><i class="glyphicon glyphicon-check"></i> 我要借款</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li id="dxt-nb-black"><a class="otip" href="$ctx/black.htm?year=2014" title="黑名单"><i class="glyphicon glyphicon-remove-circle"></i> 黑名单</a></li>
-				<li id="dxt-nb-forum"><a class="otip" href="$ctx/forum/index.htm" title="会员论坛"><i class="glyphicon glyphicon-fire"></i> 会员论坛</a></li>
+				<li id="dxt-nb-forum"><a class="otip" href="$ctx/forum/index.htm" title="会员论坛"><i class="glyphicon glyphicon-fire"></i> 安众社区</a></li>
 				<li id="dxt-nb-help"><a class="otip" href="$ctx/help/center.htm" title="帮助中心"><i class="glyphicon glyphicon-question-sign"></i> 帮助中心</a></li>
 				
 				#if($!UserWebX.isLogin())
@@ -32,8 +32,8 @@
                     </ul>
                 </li>
 				#else
-				<li id="dxt-nb-regist"><a class="otip" href="$ctx/home/regist.htm" title="新用户注册"><i class="fa fa-user"></i> 免费注册</a></li>
-				<li id="dxt-nb-login"><a class="otip" href="$ctx/home/login.htm" title="已有账号登陆"><i class="fa fa-lock"></i> 用户登录</a></li>
+				<li id="dxt-nb-regist"><a class="otip" href="/regist.htm" title="新用户注册"><i class="fa fa-user"></i> 免费注册</a></li>
+				<li id="dxt-nb-login"><a class="otip" href="/login.htm" title="已有账号登陆"><i class="fa fa-lock"></i> 用户登录</a></li>
 				#end
 			</ul>
         </div>

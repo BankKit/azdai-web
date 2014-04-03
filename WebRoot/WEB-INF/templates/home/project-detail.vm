@@ -2,7 +2,7 @@
 <div class="container">
     <ol class="breadcrumb">
         <li><a href="$ctx/index.htm"><i class="glyphicon glyphicon-hand-right"></i> 安众贷</a></li>
-        <li><a href="$ctx/lend-projects.htm">我要投资</a></li>
+        <li><a href="/projects.htm">我要投资</a></li>
 		<li>【个人消费】想换台理想的液晶电视</li>
     </ol>
 	

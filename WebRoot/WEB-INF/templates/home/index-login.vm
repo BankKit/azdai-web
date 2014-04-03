@@ -16,14 +16,14 @@
 				<table class="table" #MarginBottomNO()>
                     <tbody>
                         <tr>
-                            <td colspan="2"><a href="$ctx/home/product.htm" class="btn btn-success btn-lg btn-block">生意贷</a></td>
+                            <td colspan="2"><a href="/product.htm" class="btn btn-success btn-lg btn-block">生意贷</a></td>
 						</tr>
 						<tr>
-                            <td><a href="$ctx/home/product.htm" class="btn btn-info btn-lg btn-block">工薪贷</a></td>
-							<td><a href="$ctx/home/product.htm" class="btn btn-info btn-lg btn-block">学生贷</a></td>
+                            <td><a href="/product.htm" class="btn btn-info btn-lg btn-block">工薪贷</a></td>
+							<td><a href="/product.htm" class="btn btn-info btn-lg btn-block">学生贷</a></td>
 						</tr>
 						<tr>
-                            <td colspan="2"><a href="$ctx/home/product.htm" class="btn btn-primary btn-lg btn-block">网商贷</a></td>
+                            <td colspan="2"><a href="/product.htm" class="btn btn-primary btn-lg btn-block">网商贷</a></td>
 						</tr>
 					</tbody>
 				</table>

@@ -2,9 +2,35 @@
 #set($title="管理首页")
 <table id="SetBox" cellpadding="0" cellspacing="0" width="100%" height="100%" style="width:100%;height:100%">
     <tr>
-        <td id="own-head-box" colspan="2" height="55" style="width:100%;height:55px;">
-            <div id="HeadBox" class="HeadBox" #MarginBottomNO()>
-            	#parse("/public/uniform-header.vm")
+        <td id="own-head-box" colspan="2" height="30" style="width:100%;height:30px;">
+            <div id="HeadBox" class="HeadBox top-nav" #MarginBottomNO()>
+            	##parse("/public/uniform-header.vm")
+				<div class="top-login-state">
+    				<div class="tool-navs">
+    					<div class="tool-nav pull-left">
+							<em>|</em>
+    						<a href="/index.htm" #TargetURL()>首页</a>
+    						<em>|</em>
+    						<a href="/projects.htm" #TargetURL()>我要投资</a>
+                            <em>|</em>
+                            <a href="/borrow-projects.htm" #TargetURL()>我要借款</a>
+							<em>|</em>
+                            <a href="/forum/index.htm" #TargetURL()>安众社区</a>
+							<em>|</em>
+                            <a href="/help/center.htm" #TargetURL()>帮助中心</a>
+							<em>|</em>
+    					</div>
+						<div class="tool-nav">
+							<em>|</em>
+    						<a href="/mngt/index.htm" target="_top">后台首页</a>
+    						<em>|</em>
+    						<a href="/user-logout.htm" target="_top">登出系统</a>
+                            <em>|</em>
+                            <a href="javascript:;" id="btn-hide-menu"><i class="fa fa-arrows-alt"></i><span>隐藏</span></a>
+							<em>|</em>
+    					</div>
+    				</div>
+				</div>
             </div>
         </td>
     </tr>

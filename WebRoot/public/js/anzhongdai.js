@@ -169,6 +169,30 @@ AZD.confirm = function(callback, msg, btnYes, btnNo) {
 	});
 };
 
+// 根据URL获取URI
+AZD.findHrefURI = function(href) {
+	if(!href) {
+		var href = self.location.href;
+		if(href.indexOf("http://") == 0) {
+			href = href.substr(7);
+		} else if(href.indexOf("https://") == 0) {
+			href = href.substr(8);
+		}
+	}
+	
+	// www.127.com/user/deposit-online.htm -> /user/deposit-online.htm
+	var idx = href.indexOf("/");
+	var idxDot = href.indexOf(".htm", idx);
+	var token = href.substring(idx, idxDot) + ".htm";
+	
+
+	if(window.console) {
+		window.console.log("获取URI-URL:" + href + ", URI:" + token);
+	}
+
+	return token;
+};
+
 // 根据URL获取操作值
 AZD.findHrefOpt = function(href) {
 	if(!href) {
@@ -305,6 +329,36 @@ $(document).ready(function() {
 	var hrefOpt = AZD.findHrefOpt(href);
 	if(window.console) {
 		window.console.info("菜单导航, HREF: " + href + ", TOKEN: " + hrefOpt);
+	}
+	
+	// 首页
+	if(AZD.findHrefURI(href) === "index.htm") {
+		// 幻灯片
+		$(".index-carousel").kinMaxShow({
+			height: 280,
+			button: {
+				showIndex: true,
+				normal: {
+					width: "18px",
+					height: "18px",
+					lineHeight: "18px",
+					right: "16px",
+					bottom: "6px",
+					fontSize: "12px",
+					opacity: 0.8,
+					background: "#666666",
+					border: "1px solid #999999",
+					color: "#CCCCCC",
+					marginRight: "6px"
+				},
+				focus: {
+					background: "#CC0000",
+					border: "1px solid #FF0000",
+					color: "#000000"
+				}
+			}
+		});
+		//
 	}
 
 	if(href.indexOf("/user/") >= 0) {

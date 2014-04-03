@@ -18,8 +18,8 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
             <ul class="nav nav-pills">
-                <li id="black2014"><a href="$ctx/home/black.htm?year=2014"><strong><i class="glyphicon glyphicon-remove-sign"></i> 2014</strong></a></li>
-				<li id="black2013"><a href="$ctx/home/black.htm?year=2013"><strong><i class="glyphicon glyphicon-remove-sign"></i> 2013</strong></a></li>
+                <li id="black2014"><a href="/black.htm?year=2014"><strong><i class="glyphicon glyphicon-remove-sign"></i> 2014</strong></a></li>
+				<li id="black2013"><a href="/black.htm?year=2013"><strong><i class="glyphicon glyphicon-remove-sign"></i> 2013</strong></a></li>
             </ul>
             <div>&nbsp;</div>
 			<div class="table-responsive">

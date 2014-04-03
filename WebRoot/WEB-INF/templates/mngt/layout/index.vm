@@ -34,7 +34,7 @@ table, tbody, th, tr, td, div, iframe {
 
 #SetBox .HeadBox {
 	width:100%;
-	height:55px;
+	height:30px;
 }
 
 #SetBox .MenuBox {
@@ -47,6 +47,67 @@ table, tbody, th, tr, td, div, iframe {
 	height:25px;
 	background:#000;
 }
+
+.top-nav {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.top-nav .top-login-state {
+    min-width: 1024px;
+    width: 100%;
+    height: 30px;
+    background: #3d474a;
+    border-bottom: #dcdcdc 1px solid;
+    color: #f2f2f2;
+    letter-spacing: 1px;
+    font-size: 12px;
+    line-height: 30px;
+    text-align: right;
+}
+
+.top-nav .top-login-state .tool-navs {
+    /*min-width: 1024px;*/
+    width: 100%;
+    margin: 0 auto;
+    min-width: 480px;
+    overflow: hidden;
+}
+
+.top-nav .top-login-state .tool-nav {
+	margin-right: 10px;
+    width: auto;
+    float: right;
+}
+
+.top-nav .top-login-state a {
+    color: #f2f2f2;
+    float: left;
+    margin: 0 5px;
+    border: 1px solid #3d474a;
+    padding: 0 3px;
+    display: block;
+    height: 28px;
+    line-height: 29px;
+}
+
+.top-nav .top-login-state a:hover {
+    color: #f00;
+}
+
+.top-nav .top-login-state em {
+    font-style: normal;
+    margin-left: 0;
+    color: #666;
+    width: 10px;
+    font-size: 12px;
+    display: inline-block;
+    float: left;
+    text-align: center;
+    line-height: 30px;
+    height: 30px;
+}
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -56,7 +117,7 @@ $(document).ready(function() {
 	});
 	
 	var speed = 100;
-	var headBoxHeight = 55;
+	var headBoxHeight = 30;
 	var footBoxHeight = 25;
 	var menuBoxWidth = 170;
 	

@@ -71,7 +71,7 @@
 					<strong><i class="glyphicon glyphicon-upload"></i> 已有账号登陆</strong>
 				</div>
             </div>
-			<div class="panel-body">已经是<kbd>安众贷</kbd>的会员？快速 <a href="$ctx/home/login.htm" class="text-xxlg">登录</a> ！！</div>
+			<div class="panel-body">已经是<kbd>安众贷</kbd>的会员？快速 <a href="/login.htm" class="text-xxlg">登录</a> ！！</div>
         </div>
     </div>
     </div>

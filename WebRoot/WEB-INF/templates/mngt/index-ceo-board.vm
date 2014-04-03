@@ -39,27 +39,32 @@ require(["echarts", "echarts/chart/bar", "echarts/chart/line", "echarts/chart/ma
 	// --- 折柱 ---
 	var chartBar = ec.init(document.getElementById("chartBar"));
 	chartBar.setOption({
+		grid: {
+			x: 15,
+			y: 40,
+			x2: 15,
+			y2: 30
+		},
 		tooltip: {
 			trigger: "axis"
 		},
 		legend: {
+			x: 'left', // 'center' | 'left' | {number},
+            y: 'top', // 'center' | 'bottom' | {number}
+            borderColor: '#ccc',
+            borderWidth: 1,
 			data: ["蒸发量", "降水量"]
 		},
 		toolbox: {
 			show: true,
 			feature: {
-				/*
-				mark: {
-					show: true
-				},
-				*/
 				dataView: {
 					show: true,
 					readOnly: false
 				},
 				magicType: {
 					show: true,
-					type: ["line", "bar"]
+					type: ["line", "bar", "stack", "tiled"]
 				},
 				restore: {
 					show: true
@@ -94,6 +99,12 @@ require(["echarts", "echarts/chart/bar", "echarts/chart/line", "echarts/chart/ma
 	// --- 地图 ---
 	var chartMap = ec.init(document.getElementById("chartMap"));
 	chartMap.setOption({
+		grid: {
+			x: 15,
+			y: 15,
+			x2: 15,
+			y2: 30
+		},
 		tooltip: {
 			trigger: "item",
 			formatter: "{b}"

@@ -61,6 +61,9 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
     /** 全局置顶主贴缓存KEY */
     public static final String                          GLOBAL_TOPICS_KEY = "_global_topics_key_";
 
+    /** 全局最新主贴缓存KEY */
+    public static final String                          GLAST_TOPICS_KEY  = "_glast_topics_key_";
+
     /** 论坛信息DAO */
     @Autowired
     private ForumInfoDAO                                forumInfoDAO;
@@ -152,8 +155,14 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
                     public List<ForumTopicModel> load(String forum) {
                         String catg = ForumTopicCatgEnum.TOPIC.code();
                         String state = ForumTopicStateEnum.ACTIVE.code();
+                        int pageSize = LAST_TOPIC_SIZE;
 
-                        List<ForumTopicDTO> srcObjs = forumTopicDAO.findLastTopics(LAST_TOPIC_SIZE, forum, catg, state);
+                        if (StringUtils.equals(forum, GLAST_TOPICS_KEY)) {
+                            forum = null;
+                            pageSize = GLAST_TOPIC_SIZE;
+                        }
+
+                        List<ForumTopicDTO> srcObjs = forumTopicDAO.findLastTopics(pageSize, forum, catg, state);
                         return ForumTopicConvert.convert(srcObjs);
                     }
                 });
@@ -167,6 +176,18 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
             return this.forumCache.get(FORUM_CACHE_KEY);
         } catch (Exception e) {
             logger.error("[论坛]-缓存获取有效论坛列表异常！", e);
+            return Lists.newArrayList();
+        }
+    }
+
+    /** 
+     * @see com.azdai.core.das.mngt.ForumMngt#findLastTopics()
+     */
+    public List<ForumTopicModel> findLastTopics() {
+        try {
+            return this.lastTopicCache.get(GLAST_TOPICS_KEY);
+        } catch (Exception e) {
+            logger.error("[论坛]-缓存获取全局最新主题列表异常！", e);
             return Lists.newArrayList();
         }
     }

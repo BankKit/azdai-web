@@ -12,7 +12,7 @@
         </div>
         <div class="col-xs-12 col-sm-5 col-md-3 loginbox">
             <div class="loginwrap">
-                <form role="form" method="get" action="$ctx/home/index-login.htm">
+                <form role="form" method="get" action="/index-login.htm">
                     <div class="form-group">
 						<label for="userName">用户名：</label>
 						<input id="userName" name="userName" type="text" class="form-control" placeholder="注册用户名" />
@@ -52,7 +52,7 @@
         				<td>
 							<div class="pull-left avatar"><img width="52" height="52" src="$ctx/avatar/tstuser/avatar_120.jpg" /></div>
 							<div>
-                                <p><a href="$ctx/home/project-detail.htm" target="_blank" title="【其他】有时会出现点小资金问题。因本人平时花销没依据。所以。。。"><strong>【其他】有时会出现点小资金问题...</strong></a></p>
+                                <p><a href="/project-detail.htm" target="_blank" title="【其他】有时会出现点小资金问题。因本人平时花销没依据。所以。。。"><strong>【其他】有时会出现点小资金问题...</strong></a></p>
                         		<p><a href="#" target="_blank">leilei3733</a></p>
 							</div>
 						</td>

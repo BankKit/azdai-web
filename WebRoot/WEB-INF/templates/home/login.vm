@@ -53,7 +53,7 @@
 					<strong><i class="glyphicon glyphicon-upload"></i> 新用户免费注册</strong>
 				</div>
             </div>
-			<div class="panel-body">还不是<kbd>安众贷</kbd>会员？快速免费 <a href="$ctx/home/regist.htm" class="text-xxlg">注册</a> ！！</div>
+			<div class="panel-body">还不是<kbd>安众贷</kbd>会员？快速免费 <a href="/regist.htm" class="text-xxlg">注册</a> ！！</div>
         </div>
     </div>
     </div>
@@ -89,7 +89,6 @@ $("#form-user-login").submit(function(e) {
 
 		success: function(result) {
 			if(result.success) {
-				window.alert("会员登录成功，欢迎光临安众社区！！");
 				var url = "$ctx/forum/index.htm";
 				if(result.bizData && result.bizData["url.login.goto"]) {
 					url = result.bizData["url.login.goto"];

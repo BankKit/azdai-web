@@ -201,7 +201,10 @@
 			FROM
 				azdai_forum_topic
 			WHERE
-				forum=#{forum} AND catg=#{catg} AND state=#{state}
+				catg=#{catg} AND state=#{state}
+				<if test="forum != null">
+					AND forum=#{forum}
+				</if>
 			ORDER BY
 				gmt_modify DESC
 			LIMIT 0,#{limit}

@@ -33,6 +33,9 @@ public interface ForumMngt {
 
     /** 前台：最新主贴条数 */
     public static final int    LAST_TOPIC_SIZE = 5;
+    
+    /** 前台：全局最新主贴条数 */
+    public static final int    GLAST_TOPIC_SIZE = 10;
 
     /** 统计 */
     public static final String STAT_FORUM_KEY  = "forum";
@@ -42,6 +45,11 @@ public interface ForumMngt {
      * 获取有效论坛模型
      */
     public List<ForumInfoModel> findValidForums();
+    
+    /**
+     * 获取论坛最新主贴
+     */
+    public List<ForumTopicModel> findLastTopics();
 
     /**
      * 获取论坛最新主贴

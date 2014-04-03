@@ -96,6 +96,13 @@ public class ForumWebX implements WebX {
     }
 
     /**
+     * 获取最新主贴
+     */
+    public List<ForumTopicModel> findLastTopics() {
+        return this.forumMngt.findLastTopics();
+    }
+    
+    /**
      * 获取论坛最新主贴
      */
     public List<ForumTopicModel> findForumLastTopics(String forum) {

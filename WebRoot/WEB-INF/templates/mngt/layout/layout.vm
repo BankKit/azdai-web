@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<title>#if($title)$title -#end 后台管理</title>
+<title>#if($title)$title -#end 后台管理-安众贷(www.anzhongdai.com)-安全、大众、不等贷！</title>
 #parse("/mngt/inc/inc-header.vm")
 </head>
 <body id="body">
