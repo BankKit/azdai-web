@@ -332,34 +332,10 @@ $(document).ready(function() {
 	}
 	
 	// 首页
+	/*
 	if(AZD.findHrefURI(href) === "index.htm") {
-		// 幻灯片
-		$(".index-carousel").kinMaxShow({
-			height: 280,
-			button: {
-				showIndex: true,
-				normal: {
-					width: "18px",
-					height: "18px",
-					lineHeight: "18px",
-					right: "16px",
-					bottom: "6px",
-					fontSize: "12px",
-					opacity: 0.8,
-					background: "#666666",
-					border: "1px solid #999999",
-					color: "#CCCCCC",
-					marginRight: "6px"
-				},
-				focus: {
-					background: "#CC0000",
-					border: "1px solid #FF0000",
-					color: "#000000"
-				}
-			}
-		});
-		//
 	}
+	*/
 
 	if(href.indexOf("/user/") >= 0) {
 		/* 用户后台 */
