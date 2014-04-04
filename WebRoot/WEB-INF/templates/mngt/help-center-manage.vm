@@ -24,7 +24,7 @@
 #set($count = $catgs.size())
 var ztreeNodes = [
 #foreach($catg in $catgs)
-	{id:$catg.id, pId:$catg.catg, name:"($catg.id)($catg.title)", open:true} #if($velocityCount<$count),#end
+	{id:$catg.id, pId:$catg.catg, name:"[$catg.id]$catg.title", open:true} #if($velocityCount<$count),#end
 #end
 ];
 	
