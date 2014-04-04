@@ -81,17 +81,20 @@ $("#btn-delete").click(function(e) {
 		return;
 	}
 	
-    if(AZD.confirm(function() {
+	AZD.confirm(function(rtn) {
+		if(rtn !== "yes") {
+			return;
+		}
 		jQuery.post("$ctx/mngt/help-center/delete.htm", {
-    		id: id
-    	}, function(result) {
-    		if(result.success) {
-    			AZD.modal("帮助中心删除成功，请刷新数结构！", "成功提示");
-    		} else {
-    			AZD.alert("错误码：<b>" + result.respCode + "</b><br/>错误描述：<b>" + result.respDesp + "</b>", "失败提示");
-    		}
-    	});
-    }, "确定删除ID为[" + id + "]节点吗，删除操作不可撤销？"));
+			"id": id
+		}, function(result) {
+			if(result.success) {
+				location.href = location.href;
+			} else {
+				AZD.alert("错误码：<b>" + result.respCode + "</b><br/>错误描述：<b>" + result.respDesp + "</b>", "失败提示");
+			}
+		});
+	}, "确定删除ID为[" + id + "]节点吗？删除操作不可撤销！");
 });
 //
 });
