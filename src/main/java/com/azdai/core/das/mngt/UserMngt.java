@@ -5,6 +5,8 @@
 package com.azdai.core.das.mngt;
 
 import com.azdai.core.model.UserInfoModel;
+import com.azdai.core.model.UserInfoPageList;
+import com.azdai.core.web.form.UserInfoQueryForm;
 
 /**
  * 用户管理器
@@ -43,6 +45,11 @@ public interface UserMngt {
      * 获取用户信息
      */
     public UserInfoModel findByNickName(String nickName);
+
+    /**
+     * 模糊查询会员信息
+     */
+    public UserInfoPageList findUserInfoFuzzy(UserInfoQueryForm form);
 
     /**
      * 新增用户信息

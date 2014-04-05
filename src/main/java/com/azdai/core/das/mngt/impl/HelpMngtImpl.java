@@ -71,6 +71,16 @@ public class HelpMngtImpl implements HelpMngt, InitializingBean {
     }
 
     /** 
+     * @see com.azdai.core.das.mngt.HelpMngt#cleanCache()
+     */
+    public boolean cleanCache() {
+        this.helpCenterCache.invalidateAll();
+        this.helpContentCache.invalidateAll();
+        
+        return true;
+    }
+    
+    /** 
      * @see com.azdai.core.das.mngt.HelpMngt#find(long)
      */
     public HelpCenterModel find(long id) {

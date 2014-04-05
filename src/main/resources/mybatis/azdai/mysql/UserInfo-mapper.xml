@@ -4,6 +4,35 @@
 	<!-- ============================================= -->
     <!-- Public SQLS                                   -->
     <!-- ============================================= -->
+	<sql id="find-fuzzy-WHERE">
+		<where>
+		<if test="no != null">
+			AND no=#{no}
+		</if>
+		<if test="nickName != null">
+			AND nick_name=#{nickName}
+		</if>
+		<if test="state != null">
+			AND state=#{state}
+		</if>
+		<if test="loginState != null">
+			AND login_state=#{loginState}
+		</if>
+		<if test="passwdErrCount != null">
+			AND passwd_err_count&gt;=#{passwdErrCount}
+		</if>
+		<if test="registDateBegin != null">
+			AND regist_date&gt;=#{registDateBegin}
+		</if>
+		<if test="registDateFinish != null">
+			AND regist_date&lt;=#{registDateFinish}
+		</if>
+		<if test="email != null">
+			AND email=#{email}
+		</if>
+	</where>
+	</sql>
+
 
 	<!-- ============================================= -->
     <!-- Public CopyS                                  -->
@@ -85,6 +114,25 @@
     <![CDATA[
         select * from azdai_user_info order by no ASC
     ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisUserInfoDAO.findFuzzy -->
+    <select id="findFuzzy" resultMap="RMS.RM-USER-INFO" >
+        SELECT 				*
+			FROM
+				azdai_user_info
+			<include refid="find-fuzzy-WHERE" />
+			ORDER BY
+				no ASC
+			LIMIT #{offset},#{pageSize}
+    </select>
+
+    <!-- mapped statement for MyBatisUserInfoDAO.findFuzzyCount -->
+    <select id="findFuzzyCount" resultType="long" >
+        SELECT 				COUNT(*)
+			FROM
+				azdai_user_info
+			<include refid="find-fuzzy-WHERE" />
     </select>
 
     <!-- mapped statement for MyBatisUserInfoDAO.delete -->

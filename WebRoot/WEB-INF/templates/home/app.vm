@@ -11,7 +11,7 @@
 		<div class="well well-sm">
     		<form class="form-inline" role="form" method="post" action="$ctx/app-upload.htm" enctype="multipart/form-data" #MarginBottomNO()>
     			<div class="form-group">
-                    <label for="exampleInputFile">选择APP文件</label>
+                    <label for="file">选择APP文件</label>
                     <input type="file" name="app" />
                 </div>
     			<button type="submit" class="btn btn-primary">上传APP</button>

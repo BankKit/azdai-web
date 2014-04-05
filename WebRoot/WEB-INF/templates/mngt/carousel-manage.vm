@@ -1,0 +1,69 @@
+<div class="container-fluid">
+	<div class="top-menu-box">
+    	<ul class="nav nav-pills">
+            <li class="active"><a href="$ctx/mngt/carousel-manage.htm"><i class="fa fa-bars"></i> 图片列表</a></li>
+			<li><a href="$ctx/mngt/carousel-store.htm?no="><i class="fa fa-plus"></i> 存储图片</a></li>
+        </ul>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+            <div class="panel-title">图片列表</div>
+		</div>
+		<div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+    					<th><div class="nowrap">&nbsp;</div></th>
+    					<th><div class="nowrap">编号</div></th>
+    					<th><div class="nowrap">分类</div></th>
+                        <th><div class="nowrap">显示</div></th>
+    					<th><div class="nowrap">排序</div></th>
+    					<th><div class="nowrap">标题</div></th>
+    					<th><div class="nowrap">图片地址</div></th>
+    					<th><div class="nowrap">链接</div></th>
+    				</tr>
+    			</thead>
+                <tbody>
+    				#foreach($carousel in $CarouselWebX.findAll())
+                    <tr>
+    					<td><div class="nowrap"><a href="$ctx/mngt/carousel-store.htm?no=$carousel.no">修改</a> | <a class="carousel-delete" href="javascript:;" data-no="$carousel.no">删除</a></div></td>
+    					<td><div class="nowrap">$carousel.no</div></td>
+    					<td><div class="nowrap">$!carousel.catgEnum.desp()</div></td>
+    					<td><div class="nowrap">$!carousel.showEnum.desp()</div></td>
+    					<td><div class="nowrap">$carousel.sort</div></td>
+    					<td><div class="nowrap">$carousel.title</div></td>
+    					<td><div class="nowrap"><a href="$carousel.imgPath" target="_blank">$carousel.imgPath</a></div></td>
+    					<td><div class="nowrap"><a href="$carousel.linkUrl" target="_blank">$carousel.linkUrl</a></div></td>
+    				</tr>
+    				#end
+    			</tbody>
+    		</table>
+        </div>
+    </div>
+	<div class="clearfix"></div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+/** 删除幻灯片图片 */
+$(".carousel-delete").click(function(e) {
+	e.preventDefault();
+	var no = $(this).data("no");
+	AZD.confirm(function(rtn) {
+		if(rtn !== "yes") {
+			return;
+		}
+		jQuery.post("$ctx/mngt/carousel/delete.htm", {
+			"no": no
+		}, function(result) {
+			if(result.success) {
+				self.location = self.location;
+			} else {
+				AZD.alert("错误码：<b>" + result.respCode + "</b><br/>错误描述：<b>" + result.respDesp + "</b>", "失败提示");
+			}
+		});
+	}, "确定要删除图片配置（" + no + "）吗？删除数据不可恢复！");
+});
+//
+});
+</script>

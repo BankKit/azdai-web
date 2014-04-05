@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.azdai.AZD;
 import com.azdai.core.model.convert.ParamConfigConvert;
 import com.azdai.core.model.enums.BizResponseEnum;
 import com.azdai.core.web.form.ParamConfigStoreForm;
-import com.azdai.core.web.webx.ParamWebX;
 import com.github.obullxl.lang.biz.BizResponse;
 import com.github.obullxl.model.cfg.CfgModel;
 import com.github.obullxl.model.cfg.CfgUtils;
@@ -90,7 +90,7 @@ public class ParamMngtController extends AbstractController {
             logger.warn("[参数配置]-删除参数配置[{}].", name);
 
             // 删除
-            this.paramService.remove(ParamWebX.CATG, name);
+            this.paramService.remove(AZD.CFG_CATG, name);
 
             response.getBizData().put(BizResponse.BIZ_ID_KEY, name);
         } catch (Exception e) {

@@ -3,18 +3,12 @@
 	<div class="index-head">
 		<div class="index-banner">
             <div class="index-carousel">
+				#foreach($carousel in $CarouselWebX.findHome())
                 <div>
-                    <a href="/forum/index.htm" target="_blank"><img src="$ctx/upload/testimgs/01.jpg"/></a>
-                    <p class="title">美国称将绕过联合国安理会自行惩罚叙利亚</p>
+                    <a href="$!carousel.linkUrl" target="_blank"><img src="$!carousel.imgPath" alt="$!carousel.title"/></a>
+                    <p class="title">$!carousel.title</p>
                 </div>
-                <div>
-                    <a href="/forum/index.htm" target="_blank"><img src="$ctx/upload/testimgs/02.jpg"/></a>
-                    <p class="title">西安军工企业夫妻藏匿国家机密资料被判刑</p>
-                </div>
-                <div>
-                    <a href="/forum/index.htm" target="_blank"><img src="$ctx/upload/testimgs/03.jpg"/></a>
-                    <p class="title">首都机场爆炸案嫌犯冀中星涉爆炸罪被公诉</p>
-                </div>
+				#end
 			</div>
         </div>
 

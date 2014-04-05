@@ -42,6 +42,14 @@
     <bean id="roleRightDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisRoleRightDAO">
     </bean>
 	
+    <bean id="uploadFileDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisUploadFileDAO">
+		<property name="ticketService">
+			<bean class="com.github.obullxl.ticket.support.DefaultTicketService" parent="abstractTicket">
+				<property name="name" value="TB-UploadFile-ID" />
+			</bean>
+    	</property>
+    </bean>
+	
     <bean id="userInfoDAO" parent="abstractDAO" class="com.azdai.core.das.dal.mybatis.MyBatisUserInfoDAO">
     </bean>
 	

@@ -5,6 +5,8 @@ package com.azdai.core.das.dal.dao;
 
 import java.util.List;
 
+import com.azdai.core.das.dal.query.UserInfoQuery;
+
 import org.springframework.dao.DataAccessException;
 
 import com.azdai.core.das.dal.dto.UserInfoDTO;
@@ -146,6 +148,32 @@ public interface UserInfoDAO extends BaseDAO {
 	 *	@throws DataAccessException
 	 */	 
     public List<UserInfoDTO> findAll() throws DataAccessException;
+
+	/**
+	 *  Query DB table <tt>azdai_user_info</tt> for records.
+	 *
+	 *  <p>
+	 *  The sql statement for this operation is <br>
+	 *  <tt>select * from azdai_user_info where (no = 'FUZZY')</tt>
+	 *
+	 *	@param args
+	 *	@return List<UserInfoDTO>
+	 *	@throws DataAccessException
+	 */	 
+    public List<UserInfoDTO> findFuzzy(UserInfoQuery args) throws DataAccessException;
+
+	/**
+	 *  Query DB table <tt>azdai_user_info</tt> for records.
+	 *
+	 *  <p>
+	 *  The sql statement for this operation is <br>
+	 *  <tt>select COUNT(*) from azdai_user_info where (no = 'FUZZY')</tt>
+	 *
+	 *	@param args
+	 *	@return long
+	 *	@throws DataAccessException
+	 */	 
+    public long findFuzzyCount(UserInfoQuery args) throws DataAccessException;
 
 	/**
 	 *  Delete records from DB table <tt>azdai_user_info</tt>.

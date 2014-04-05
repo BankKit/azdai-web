@@ -1,0 +1,155 @@
+<div class="container-fluid">
+	<div class="top-menu-box">
+    	<ul class="nav nav-pills">
+            <li class="active"><a href="$ctx/mngt/upload-file/manage.htm"><i class="fa fa-bars"></i> 资源列表</a></li>
+			<li><a href="$ctx/mngt/upload-file-upload.htm"><i class="fa fa-upload"></i> 上传文件</a></li>
+        </ul>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+            <div class="panel-title">系统资源列表<span class="pull-right"><a id="search-form-toggle" href="javascript:;"><i class="fa fa-minus-square-o"></i> 查询条件</a></span></div>
+		</div>
+		<form id="upload-file-search" method="get" action="$ctx/mngt/upload-file/manage.htm">
+		<input type="hidden" id="pageNo" name="pageNo" value="$!form.pageNo" />
+        <div class="panel-footer">
+            <table width="100%" cellpadding="5" class="tdpadding5">
+				<tbody>
+					<tr>
+						<td class="form-text">ID：</td>
+                        <td><input name="id" type="text" value="$!form.id" placeholder="ID" /></td>
+						<td class="form-text">用户编号：</td>
+                        <td><input name="userNo" type="text" value="$!form.userNo" placeholder="上传用户编号" /></td>
+                    </tr>
+					<tr>
+						<td class="form-text">文件分类：</td>
+                        <td>
+							<label class="radio-inline">
+								<input type="radio" name="catg" checked="checked" value=""/>所有
+                            </label>
+                            #foreach($enm in $EnumWebX.findUploadFileCatgEnums())
+                            <label class="radio-inline">
+								<input type="radio" name="catg" #if($!StringUtils.equals($enm.code(), $form.state))checked="checked"#end value="$enm.code()"/>$enm.desp()
+                            </label>
+							#end
+						</td>
+						<td>&nbsp;</td>
+                        <td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="form-text">标题：</td>
+                        <td><input name="title" type="text" value="$!form.title" /></td>
+						<td class="form-text">备注：</td>
+                        <td><input name="memo" type="text" value="$!form.memo" /></td>
+					</tr>
+					<tr>
+                        <td colspan="4" align="center"><button type="submit" class="btn btn-lg btn-primary">查询上传文件信息</button></td>
+					</tr>
+                </tbody>
+			</table>
+		</div>
+        </form>
+		#if(!$uploadPageList.items.isEmpty())
+		#set($pager=$uploadPageList.pager)
+		<div class="text-center">
+            <ul class="pagination" #MarginBottomNO()>
+                #set($pages=$pager.getSlider(11))
+				#foreach($idx in $pages)
+				#if($pager.isDisabledPage($idx))
+				<li class="active"><a href="javascript:;">$idx <span class="sr-only">(current)</span></a></li>
+				#else
+				<li><a class="page-idx" data-page="$idx" href="javascript:;">$idx</a></li>
+				#end
+				#end
+            </ul>
+		</div>
+		#end
+    	<div class="table-responsive">
+            <table class="table table-hover" #MarginBottomNO()>
+                <thead>
+                    <tr>
+						<th><div class="nowrap">&nbsp;</div></th>
+                        <th><div class="nowrap">ID</div></th>
+    					<th><div class="nowrap">上传用户</div></th>
+    					<th><div class="nowrap">分类</div></th>
+    					<th><div class="nowrap">文件类型</div></th>
+						<th><div class="nowrap">标题</div></th>
+						<th><div class="nowrap">大小</div></th>
+						<th><div class="nowrap">路径</div></th>
+						<th><div class="nowrap">源文件名</div></th>
+						<th><div class="nowrap">备注</div></th>
+						<th><div class="nowrap">上传时间</div></th>
+    				</tr>
+    			</thead>
+                <tbody>
+    				#foreach($upload in $uploadPageList.items)
+                    <tr>
+						<td><div class="nowrap"><a class="upload-delete" href="javascript:;" data-uid="$upload.id">删除</a></div></td>
+    					<td><div class="nowrap">$upload.id</div></td>
+    					<td><div class="nowrap"><a href="#">$upload.nickName</a></div></td>
+    					<td><div class="nowrap">$!upload.catgEnum.desp()</div></td>
+						<td><div class="nowrap">$upload.fileType</div></td>
+						<td><div class="nowrap">$upload.title</div></td>
+						<td><div class="nowrap">$!FileUtils.byteCountToDisplaySize($upload.length)</div></td>
+						#set($url=${upload.path}+"/"+${upload.name}+"."+${upload.ext})
+						<td><div class="nowrap">$url</div></td>
+						<td><div class="nowrap">$upload.srcName</div></td>
+						<td><div class="nowrap">$upload.memo</div></td>
+						<td><div class="nowrap">$!DateUtils.toStringDL($upload.gmtCreate)</div></td>
+    				</tr>
+    				#end
+    			</tbody>
+    		</table>
+        </div>
+		#if(!$uploadPageList.items.isEmpty())
+		<div class="text-center">
+            <ul class="pagination" #MarginBottomNO()>
+                #set($pages=$pager.getSlider(11))
+				#foreach($idx in $pages)
+				#if($pager.isDisabledPage($idx))
+				<li class="active"><a href="javascript:;">$idx <span class="sr-only">(current)</span></a></li>
+				#else
+				<li><a class="page-idx" data-page="$idx" href="javascript:;">$idx</a></li>
+				#end
+				#end
+            </ul>
+		</div>
+		#end
+		<div class="clearfix"></div>
+    </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+/** 线上/隐藏查询表单 */
+$("#search-form-toggle").click(function(e) {
+	$("#upload-file-search").toggleClass("hide");
+	$(this).find(".fa").toggleClass("fa-plus-square-o").toggleClass("fa-minus-square-o");
+});
+
+/** 分页查询 */
+$(".page-idx").click(function(e) {
+	$("#pageNo").val($(this).data("page"));
+	$("#upload-file-search").submit();
+});
+
+/** 删除上传文件 */
+$(".upload-delete").click(function(e) {
+	e.preventDefault();
+	var id = $(this).data("uid");
+	AZD.confirm(function(rtn) {
+		if(rtn !== "yes") {
+			return;
+		}
+		jQuery.post("$ctx/mngt/upload-file/delete.htm", {
+			"id": id
+		}, function(result) {
+			if(result.success) {
+				self.location = self.location;
+			} else {
+				AZD.alert("错误码：<b>" + result.respCode + "</b><br/>错误描述：<b>" + result.respDesp + "</b>", "失败提示");
+			}
+		});
+	}, "确定要删除上传文件（" + id + "）吗？删除数据不可恢复！");
+});
+//
+});
+</script>

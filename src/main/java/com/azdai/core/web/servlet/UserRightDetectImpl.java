@@ -27,8 +27,8 @@ import com.github.obullxl.lang.Consts;
 import com.github.obullxl.lang.user.UserContext;
 import com.github.obullxl.lang.user.UserContextHolder;
 import com.github.obullxl.lang.user.UserContextUtils;
-import com.github.obullxl.lang.user.UserRightRequest;
 import com.github.obullxl.lang.utils.LogUtils;
+import com.github.obullxl.lang.web.AbstractUserRightDetect;
 import com.github.obullxl.lang.web.servlet.ServletUtils;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
@@ -37,9 +37,9 @@ import com.google.common.collect.Sets;
  * 用户权限检测器
  * 
  * @author obullxl@gmail.com
- * @version $Id: UserRightRequestImpl.java, V1.0.1 2014年3月30日 下午7:19:40 $
+ * @version $Id: UserRightDetectImpl.java, V1.0.1 2014年3月30日 下午7:19:40 $
  */
-public class UserRightRequestImpl implements InitializingBean, UserRightRequest {
+public class UserRightDetectImpl extends AbstractUserRightDetect implements InitializingBean {
     private static final Logger                   logger  = LogUtils.get();
 
     /** 路径匹配器 */

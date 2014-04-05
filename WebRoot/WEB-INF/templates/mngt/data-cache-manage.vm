@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="top-menu-box">
+    	<ul class="nav nav-pills">
+            <li class="active"><a href="$ctx/mngt/data-cache-manage.htm"><i class="fa fa-refresh"></i> 刷新缓存</a></li>
+        </ul>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+            <div class="panel-title">系统数据缓存</div>
+		</div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+					<th>缓存</th>
+                    <th>&nbsp;</th>
+				</tr>
+			</thead>
+            <tbody>
+				#foreach($cache in $EnumWebX.findDataCacheCatgEnums())
+                <tr>
+					<td>$cache.code()</td>
+					<td>$cache.desp()</td>
+                    <td><div class="pull-right"><button type="button" class="btn btn-danger btn-cache" data-catg="$cache.code()" data-desp="$cache.desp()">刷新缓存</button></div></td>
+				</tr>
+				#end
+			</tbody>
+		</table>
+		<div class="clearfix"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+/** 刷新缓存 */
+$(".btn-cache").click(function(e) {
+	e.preventDefault();
+	var catg = $(this).data("catg");
+	var desp = $(this).data("desp");
+	AZD.confirm(function(rtn) {
+		if(rtn !== "yes") {
+			return;
+		}
+		jQuery.post("$ctx/mngt/data-cache/invalidate.htm", {
+			"catg": catg
+		}, function(result) {
+			if(result.success) {
+				AZD.modal("刷新成功！<br/>为保证系统稳定性，请不要频繁刷新缓存！", "成功提示");
+			} else {
+				AZD.alert("错误码：<b>" + result.respCode + "</b><br/>错误描述：<b>" + result.respDesp + "</b>", "失败提示");
+			}
+		});
+	}, "缓存是提升系统性能的重要技术保障，请不要频繁地进行刷新操作！<br/>确定要刷新缓存（" + desp + "）吗？！");
+});
+//
+});
+</script>

@@ -1,0 +1,85 @@
+<div class="container-fluid">
+	<div class="top-menu-box">
+    	<ul class="nav nav-pills">
+            <li><a href="$ctx/mngt/carousel-manage.htm"><i class="fa fa-bars"></i> 图片列表</a></li>
+			<li class="active"><a href="$ctx/mngt/carousel-store.htm?no=$!no"><i class="fa fa-plus"></i> 存储图片</a></li>
+        </ul>
+	</div>
+	<div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">新增/修改图片配置</div>
+		</div>
+		#set($carousel=$CarouselWebX.findOne($!no))
+		<form id="form-create-carousel" role="form" method="post" #MarginBottomNO()>
+		<div class="panel-body">
+            <div class="form-group">
+                <label for="no">编号</label>
+                <input id="no" name="no" type="text" class="form-control" value="$!carousel.no" />
+                <p class="help-block">唯一编号！</p>
+            </div>
+            <div class="form-group">
+                <label>分类 &nbsp;&nbsp;</label>
+				#foreach($enm in $EnumWebX.findCarouselCatgEnums())
+                <label class="radio-inline">
+					<input type="radio" name="catg" #if($!StringUtils.equals($enm.code(), $!carousel.catgEnum.code()))checked="checked"#end value="$enm.code()"/>$enm.desp()
+                </label>
+				#end
+            </div>
+			<div class="form-group">
+                <label>显示 &nbsp;&nbsp;</label>
+				#foreach($enm in $EnumWebX.findCarouselShowEnums())
+                <label class="radio-inline">
+					<input type="radio" name="show" #if($!StringUtils.equals($enm.code(), $!carousel.showEnum.code()))checked="checked"#end value="$enm.code()"/>$enm.desp()
+                </label>
+				#end
+            </div>
+			<div class="form-group">
+                <label for="sort">排序</label>
+                <input id="sort" name="sort" type="text" class="form-control" value="$!carousel.sort" />
+            </div>
+			<div class="form-group">
+                <label for="title">标题</label>
+                <input id="title" name="title" type="text" class="form-control" value="$!carousel.title" />
+            </div>
+			<div class="form-group">
+                <label for="imgPath">图片</label>
+                <input id="imgPath" name="imgPath" type="text" class="form-control" value="$!carousel.imgPath" />
+				<p class="help-block">图片大小必须固定: 系统首页700×280像素！</p>
+			</div>
+			<div class="form-group">
+                <label for="linkUrl">链接</label>
+                <input id="linkUrl" name="linkUrl" type="text" class="form-control" value="$!carousel.linkUrl" />
+				<p class="help-block">建议使用安装社区帖子地址: http://www.anzhongdai.com/forum/topic.htm?id=帖子ID</p>
+            </div>
+        </div>
+        <div class="panel-footer text-center">
+			<button type="submit" class="btn btn-lg btn-success"><i class="fa fa-plus"></i> 保存图片配置</button>
+		</div>
+		</form>
+        <div class="clearfix"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+/** 保存参数配置 */
+$("#form-create-carousel").submit(function(e) {
+	e.preventDefault();
+	jQuery.ajax({
+		type: "POST",
+		dataType: "json",
+		url: "$ctx/mngt/carousel/store.htm",
+		data: $("#form-create-carousel").serialize(),
+
+		success: function(result) {
+			if(result.success) {
+				AZD.modal("图片配置保存成功", "成功提示");
+			} else {
+				AZD.alert("错误码：<b>" + result.respCode + "</b><br/>错误描述：<b>" + result.respDesp + "</b>", "失败提示");
+			}
+		}
+	});
+});
+//
+});
+</script>

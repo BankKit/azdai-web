@@ -7,6 +7,7 @@ import com.azdai.core.das.dal.dao.UserInfoDAO;
 
 import java.util.Map;
 import java.util.List;
+import com.azdai.core.das.dal.query.UserInfoQuery;
 import com.azdai.core.das.dal.dto.UserInfoDTO;
 import org.springframework.dao.DataAccessException;
 import java.util.HashMap;
@@ -239,6 +240,54 @@ public class MyBatisUserInfoDAO extends org.mybatis.spring.support.SqlSessionDao
 	try {
 
         return this.getSqlSession().selectList("AZDAI-USER-INFO.findAll", null);
+
+	} finally {
+		Profiler.release();
+	}
+}
+	/**
+	 *  Query DB table <tt>azdai_user_info</tt> for records.
+	 *
+	 *  <p>
+	 *  The sql statement for this operation is <br>
+	 *  <tt>select * from azdai_user_info where (no = 'FUZZY')</tt>
+	 *
+	 *	@param args
+	 *	@return List<UserInfoDTO>
+	 *	@throws DataAccessException
+	 */	 
+    public List<UserInfoDTO> findFuzzy(UserInfoQuery args) throws DataAccessException{
+	Profiler.enter("DAO: AZDAI-USER-INFO.findFuzzy");
+	try {
+
+        return this.getSqlSession().selectList("AZDAI-USER-INFO.findFuzzy", args);
+
+	} finally {
+		Profiler.release();
+	}
+}
+	/**
+	 *  Query DB table <tt>azdai_user_info</tt> for records.
+	 *
+	 *  <p>
+	 *  The sql statement for this operation is <br>
+	 *  <tt>select COUNT(*) from azdai_user_info where (no = 'FUZZY')</tt>
+	 *
+	 *	@param args
+	 *	@return long
+	 *	@throws DataAccessException
+	 */	 
+    public long findFuzzyCount(UserInfoQuery args) throws DataAccessException{
+	Profiler.enter("DAO: AZDAI-USER-INFO.findFuzzyCount");
+	try {
+
+	    Long retObj = (Long) this.getSqlSession().selectOne("AZDAI-USER-INFO.findFuzzyCount", args);
+
+		if (retObj == null) {
+		    return 0;
+		} else {
+		    return retObj.longValue();
+		}
 
 	} finally {
 		Profiler.release();

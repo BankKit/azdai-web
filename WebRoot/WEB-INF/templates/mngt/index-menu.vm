@@ -1,47 +1,63 @@
 #set($layout="/mngt/layout/index-menu.vm")
 <div id="wrap">
     <div class="panel panel-primary" #MarginBottom(3)>
-    	<div class="panel-heading"><strong><i class="glyphicon glyphicon-minus-sign"></i> 系统管理</strong></div>
+    	<div class="panel-heading">
+			<div class="panel-title">系统管理</div>
+        </div>
         <div class="list-group">
-			<a class="list-group-item" href="$ctx/mngt/index-ceo-board.htm" #TargetURL()>CEO驾驶舱</a>
-			<a class="list-group-item" href="$ctx/mngt/param-config-manage.htm" #TargetURL()>系统参数管理</a>
-			<a class="list-group-item" href="$ctx/mngt/user-info-manage.htm" #TargetURL()>会员信息管理</a>
-			<a class="list-group-item" href="$ctx/mngt/forum-info-manage.htm" #TargetURL()>论坛信息管理</a>
-			<a class="list-group-item" href="$ctx/mngt/forum-topic/manage.htm" #TargetURL()>论坛帖子管理</a>
-			<a class="list-group-item" href="$ctx/mngt/help-center-manage.htm" #TargetURL()>帮助中心管理</a>
-			<a class="list-group-item" href="$ctx/mngt/remote-file-manage.htm" #TargetURL()>远程文件管理</a>
-            <a class="list-group-item" href="$ctx/mngt/config/create.htm" #TargetURL()>新增参数</a>
-            <a class="list-group-item" href="$ctx/mngt/tmpt/create.htm" #TargetURL()>新增模板</a>
-            <a class="list-group-item" href="$ctx/mngt/tmpt/manage.htm" #TargetURL()>模板管理</a>
-            <a class="list-group-item" href="$ctx/mngt/user/create.htm" #TargetURL()>新增用户</a>
-            <a class="list-group-item" href="$ctx/mngt/user/manage.htm" #TargetURL()>用户管理</a>
-            <a class="list-group-item" href="$ctx/mngt/right/create.htm" #TargetURL()>新增权限</a>
-            <a class="list-group-item" href="$ctx/mngt/right/manage.htm" #TargetURL()>权限管理</a>
-            <a class="list-group-item" href="$ctx/mngt/catg/create.htm" #TargetURL()>新增分类</a>
-            <a class="list-group-item" href="$ctx/mngt/catg/manage.htm" #TargetURL()>分类管理</a>
-            <a class="list-group-item" href="$ctx/mngt/topic/create.htm" #TargetURL()>新增主题</a>
-            <a class="list-group-item" href="$ctx/mngt/topic/manage.htm" #TargetURL()>主题管理</a>
-            <a class="list-group-item" href="$ctx/mngt/crawl/manage.htm" #TargetURL()>爬虫管理</a>
-            <a class="list-group-item" href="$ctx/mngt/crawl/create.htm" #TargetURL()>新增爬虫</a>
-            <a class="list-group-item" href="$ctx/mngt/crawl/input.htm" #TargetURL()>数据抓取</a>
-            <a class="list-group-item" href="$ctx/mngt/file/fetch.htm" #TargetURL()>文件下载</a>
-			<a class="list-group-item" href="$ctx/uitest/twbs-modal.htm" #TargetURL()>模态对话框</a>
+			<a href="$ctx/mngt/index-ceo-board.htm" #TargetURL()>CEO驾驶舱</a>
+			<a href="$ctx/mngt/param-config-manage.htm" #TargetURL()>系统参数管理</a>
+			<a href="$ctx/mngt/data-cache-manage.htm" #TargetURL()>数据缓存管理</a>
+			<a href="$ctx/mngt/user-info/manage.htm" #TargetURL()>会员信息管理</a>
+			<a href="$ctx/mngt/forum-info-manage.htm" #TargetURL()>论坛信息管理</a>
+			<a href="$ctx/mngt/forum-topic/manage.htm" #TargetURL()>论坛帖子管理</a>
+			<a href="$ctx/mngt/help-center-manage.htm" #TargetURL()>帮助中心管理</a>
+			<a href="$ctx/mngt/remote-file-manage.htm" #TargetURL()>远程文件管理</a>
         </div>
     </div>
 	
 	<div class="panel panel-primary" #MarginBottom(3)>
-    	<div class="panel-heading"><strong><i class="glyphicon glyphicon-plus-sign"></i> 用户中心</strong></div>
-        <div class="list-group hide">
-            <a class="list-group-item" href="$ctx/user/detail-basic.htm" #TargetURL()>基本设置</a>
-            <a class="list-group-item" href="$ctx/user/detail-basic.htm" #TargetURL()>编辑资料</a>
-            <a class="list-group-item" href="$ctx/user/safety.htm" #TargetURL()>安全中心</a>
-        	<a class="list-group-item" href="$ctx/user/identify.htm" #TargetURL()>身份认证</a>
-            <a class="list-group-item" href="$ctx/user/binding.htm" #TargetURL()>关联账户</a>
-        	<a class="list-group-item" href="$ctx/user/mobile.htm" #TargetURL()>手机绑定</a>
-        	<a class="list-group-item" href="$ctx/user/email.htm" #TargetURL()>邮箱绑定</a>
-            <a class="list-group-item" href="$ctx/user/userface.htm" #TargetURL()>更新头像</a>
-        	<a class="list-group-item" href="$ctx/user/question.htm" #TargetURL()>密保问题</a>
-            <a class="list-group-item" href="$ctx/user/password.htm" #TargetURL()>修改密码</a>
+    	<div class="panel-heading">
+			<div class="panel-title">内容管理</div>
+        </div>
+        <div class="list-group">
+			<a href="$ctx/mngt/carousel-manage.htm" #TargetURL()>首页图片管理</a>
+			<a href="$ctx/mngt/upload-file/manage.htm" #TargetURL()>上传文件管理</a>
+        </div>
+    </div>
+	
+	<div class="panel panel-primary" #MarginBottom(3)>
+    	<div class="panel-heading">
+			<div class="panel-title">用户中心</div>
+        </div>
+        <div class="list-group">
+			<a href="$ctx/mngt/config/create.htm" #TargetURL()>新增参数</a>
+            <a href="$ctx/mngt/tmpt/create.htm" #TargetURL()>新增模板</a>
+            <a href="$ctx/mngt/tmpt/manage.htm" #TargetURL()>模板管理</a>
+            <a href="$ctx/mngt/user/create.htm" #TargetURL()>新增用户</a>
+            <a href="$ctx/mngt/user/manage.htm" #TargetURL()>用户管理</a>
+            <a href="$ctx/mngt/right/create.htm" #TargetURL()>新增权限</a>
+            <a href="$ctx/mngt/right/manage.htm" #TargetURL()>权限管理</a>
+            <a href="$ctx/mngt/catg/create.htm" #TargetURL()>新增分类</a>
+            <a href="$ctx/mngt/catg/manage.htm" #TargetURL()>分类管理</a>
+            <a href="$ctx/mngt/topic/create.htm" #TargetURL()>新增主题</a>
+            <a href="$ctx/mngt/topic/manage.htm" #TargetURL()>主题管理</a>
+            <a href="$ctx/mngt/crawl/manage.htm" #TargetURL()>爬虫管理</a>
+            <a href="$ctx/mngt/crawl/create.htm" #TargetURL()>新增爬虫</a>
+            <a href="$ctx/mngt/crawl/input.htm" #TargetURL()>数据抓取</a>
+            <a href="$ctx/mngt/file/fetch.htm" #TargetURL()>文件下载</a>
+			<a href="$ctx/uitest/twbs-modal.htm" #TargetURL()>模态对话框</a>
+			
+            <a href="$ctx/user/detail-basic.htm" #TargetURL()>基本设置</a>
+            <a href="$ctx/user/detail-basic.htm" #TargetURL()>编辑资料</a>
+            <a href="$ctx/user/safety.htm" #TargetURL()>安全中心</a>
+        	<a href="$ctx/user/identify.htm" #TargetURL()>身份认证</a>
+            <a href="$ctx/user/binding.htm" #TargetURL()>关联账户</a>
+        	<a href="$ctx/user/mobile.htm" #TargetURL()>手机绑定</a>
+        	<a href="$ctx/user/email.htm" #TargetURL()>邮箱绑定</a>
+            <a href="$ctx/user/userface.htm" #TargetURL()>更新头像</a>
+        	<a href="$ctx/user/question.htm" #TargetURL()>密保问题</a>
+            <a href="$ctx/user/password.htm" #TargetURL()>修改密码</a>
         </div>
     </div>
 </div>
@@ -62,25 +78,21 @@
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
+	$(".panel-title:eq(0)").prepend("<i class=\"glyphicon glyphicon-minus-sign\"></i> ");
+	$(".panel-title:not(':first')").prepend("<i class=\"glyphicon glyphicon-plus-sign\"></i> ");
+	$(".list-group a").attr("class", "list-group-item");
 	$(".list-group a").prepend("<i class=\"fa fa-caret-right\"></i> ");
 
-	var speed = 300;
-	
-	var init = function() {
-		$(".list-group").hide(speed);
-		AZD.setClass($(".panel-heading i"), "glyphicon glyphicon-plus-sign");
-	};
-	
-	// init();
+	$(".list-group:not(':first')").toggle();
 	
 	$(".panel-heading").click(function() {
+		var speed = 300;
+		
+		$(".list-group").hide(speed);
+		AZD.setClass($(".panel-heading i"), "glyphicon glyphicon-plus-sign");
+		
 		var listGrp = $(this).next();
-		var hidden = listGrp.is(":hidden");
-		
-		init();
-		
-		if(hidden) {
-			listGrp.removeClass("hide");
+		if(listGrp.is(":hidden")) {
 			listGrp.show(speed);
 			AZD.toggleClass($(this).find("i"), "glyphicon-plus-sign", "glyphicon-minus-sign");
 		} else {

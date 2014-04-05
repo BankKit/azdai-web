@@ -17,6 +17,11 @@ import com.azdai.core.model.HelpCenterModel;
 public interface HelpMngt {
 
     /**
+     * 刷新缓存
+     */
+    public boolean cleanCache();
+    
+    /**
      * 获取单条记录
      */
     public HelpCenterModel find(long id);

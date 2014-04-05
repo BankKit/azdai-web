@@ -18,6 +18,7 @@
     <include table="tables/azdai_right_info.xml" />
     <include table="tables/azdai_role_info.xml" />
     <include table="tables/azdai_role_right.xml" />
+    <include table="tables/azdai_upload_file.xml" />
     <include table="tables/azdai_user_info.xml" />
     <include table="tables/azdai_user_role.xml" />
 </tables>

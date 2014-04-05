@@ -5,16 +5,21 @@
 package com.azdai.core.model.convert;
 
 import java.util.Date;
+import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 
 import com.azdai.core.das.dal.dto.UserInfoDTO;
+import com.azdai.core.das.dal.query.UserInfoQuery;
 import com.azdai.core.model.UserInfoModel;
 import com.azdai.core.model.enums.UserStateEnum;
+import com.azdai.core.web.form.UserInfoQueryForm;
 import com.azdai.core.web.form.UserRegistForm;
 import com.github.obullxl.lang.enums.ValveBoolEnum;
 import com.github.obullxl.lang.user.UserContext;
 import com.github.obullxl.lang.utils.DateUtils;
+import com.google.common.collect.Lists;
 
 /**
  * 用户信息转换器
@@ -40,6 +45,26 @@ public class UserInfoConvert {
         dstObj.setLoginEnum(ValveBoolEnum.findDefault(srcObj.getLoginState()));
 
         return dstObj;
+    }
+
+    /**
+     * 数据对象列表到模型对象列表
+     */
+    public static List<UserInfoModel> convert(List<UserInfoDTO> srcObjs) {
+        List<UserInfoModel> dstObjs = Lists.newArrayList();
+
+        if (srcObjs == null) {
+            return dstObjs;
+        }
+
+        for (UserInfoDTO srcObj : srcObjs) {
+            UserInfoModel dstObj = convert(srcObj);
+            if (dstObj != null) {
+                dstObjs.add(dstObj);
+            }
+        }
+
+        return dstObjs;
     }
 
     /**
@@ -114,6 +139,28 @@ public class UserInfoConvert {
         dstObj.setNo(srcObj.getUserNo());
         dstObj.setNickName(srcObj.getUserName());
         dstObj.setEmail(srcObj.getUserEmail());
+
+        return dstObj;
+    }
+
+    /**
+     * 会员信息查询对象转换
+     */
+    public static UserInfoQuery convert(UserInfoQueryForm srcObj) {
+        UserInfoQuery dstObj = new UserInfoQuery();
+
+        if (srcObj == null) {
+            return dstObj;
+        }
+
+        dstObj.setNo(StringUtils.trimToNull(srcObj.getNo()));
+        dstObj.setNickName(StringUtils.trimToNull(srcObj.getNickName()));
+        dstObj.setState(StringUtils.trimToNull(srcObj.getState()));
+        dstObj.setLoginState(StringUtils.trimToNull(srcObj.getLoginState()));
+        dstObj.setPasswdErrCount(srcObj.getPasswdErrCount());
+        dstObj.setRegistDateBegin(StringUtils.trimToNull(srcObj.getRegistDateBegin()));
+        dstObj.setRegistDateFinish(StringUtils.trimToNull(srcObj.getRegistDateFinish()));
+        dstObj.setEmail(StringUtils.trimToNull(srcObj.getEmail()));
 
         return dstObj;
     }

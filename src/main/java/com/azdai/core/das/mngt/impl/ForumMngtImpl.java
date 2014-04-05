@@ -17,6 +17,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.azdai.AZD;
 import com.azdai.core.das.dal.dao.ForumInfoDAO;
 import com.azdai.core.das.dal.dao.ForumTopicDAO;
 import com.azdai.core.das.dal.dao.ForumUserDAO;
@@ -166,6 +167,17 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
                         return ForumTopicConvert.convert(srcObjs);
                     }
                 });
+    }
+
+    /** 
+     * @see com.azdai.core.das.mngt.ForumMngt#cleanCache()
+     */
+    public boolean cleanCache() {
+        this.forumCache.invalidateAll();
+        this.topTopicCache.invalidateAll();
+        this.lastTopicCache.invalidateAll();
+
+        return true;
     }
 
     /** 
@@ -356,11 +368,11 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
         } else {
             view.setExist(true);
             int count = (int) this.forumTopicDAO.findTopicViewCount(catg, id);
-            Paginator paginator = new Paginator(PAGE_SIZE, count);
+            Paginator paginator = new Paginator(AZD.PAGE_SIZE, count);
             paginator.setPageNo(page);
 
             if (count > 0) {
-                List<ForumTopicDTO> list = this.forumTopicDAO.findTopicView(paginator.getOffset(), PAGE_SIZE, catg, id);
+                List<ForumTopicDTO> list = this.forumTopicDAO.findTopicView(paginator.getOffset(), AZD.PAGE_SIZE, catg, id);
                 pageList = new ForumTopicPageList(paginator, ForumTopicConvert.convert(list));
             } else {
                 pageList = new ForumTopicPageList(paginator, new ArrayList<ForumTopicModel>());
@@ -387,12 +399,12 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
         ForumTopicPageList pageList = null;
 
         int count = (int) this.forumTopicDAO.findFuzzyCount(query);
-        Paginator paginator = new Paginator(PAGE_SIZE_MNGT, count);
+        Paginator paginator = new Paginator(AZD.PAGE_SIZE_MNGT, count);
         paginator.setPageNo(form.getPageNo());
 
         if (count > 0) {
             query.setOffset(paginator.getOffset());
-            query.setPageSize(PAGE_SIZE_MNGT);
+            query.setPageSize(AZD.PAGE_SIZE_MNGT);
 
             List<ForumTopicDTO> list = this.forumTopicDAO.findFuzzy(query);
             pageList = new ForumTopicPageList(paginator, ForumTopicConvert.convert(list));
@@ -435,11 +447,11 @@ public class ForumMngtImpl implements ForumMngt, InitializingBean {
         ForumTopicPageList pageList = null;
 
         int count = (int) this.forumTopicDAO.findNormalTopicCount(forum, catgEnum.code(), stateEnum.code(), topEnum.code());
-        Paginator paginator = new Paginator(PAGE_SIZE, count);
+        Paginator paginator = new Paginator(AZD.PAGE_SIZE, count);
         paginator.setPageNo(pageNo);
 
         if (count > 0) {
-            List<ForumTopicDTO> list = this.forumTopicDAO.findNormalTopics(paginator.getOffset(), PAGE_SIZE, forum, catgEnum.code(), stateEnum.code(), topEnum.code());
+            List<ForumTopicDTO> list = this.forumTopicDAO.findNormalTopics(paginator.getOffset(), AZD.PAGE_SIZE, forum, catgEnum.code(), stateEnum.code(), topEnum.code());
             pageList = new ForumTopicPageList(paginator, ForumTopicConvert.convert(list));
         } else {
             // 没有记录

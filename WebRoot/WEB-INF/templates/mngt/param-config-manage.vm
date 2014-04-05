@@ -1,51 +1,48 @@
 <div class="container-fluid">
+	<div class="top-menu-box">
+    	<ul class="nav nav-pills">
+            <li class="active"><a href="$ctx/mngt/param-config-manage.htm"><i class="fa fa-bars"></i> 参数列表</a></li>
+			<li><a href="$ctx/mngt/param-config-store.htm?name="><i class="fa fa-plus"></i> 存储参数</a></li>
+        </ul>
+	</div>
 	<div class="panel panel-primary">
 		<div class="panel-heading">
             <div class="panel-title">参数配置列表</div>
 		</div>
-    	<div class="table-responsive">
+		<div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr>
-						<th><div class="nowrap">操作</div></th>
+    					<th><div class="nowrap">操作</div></th>
                         <th><div class="nowrap">参数名</div></th>
     					<th><div class="nowrap">参数描述</div></th>
     					<th><div class="nowrap">参数值</div></th>
-						<th><div class="nowrap">增加时间</div></th>
-						<th><div class="nowrap">修改时间</div></th>
+    					<th><div class="nowrap">增加时间</div></th>
+    					<th><div class="nowrap">修改时间</div></th>
     					<th><div class="nowrap">参数扩展内容</div></th>
     				</tr>
     			</thead>
                 <tbody>
     				#foreach($param in $ParamWebX.findAll())
                     <tr>
-						<td><div class="nowrap"><a href="$ctx/mngt/param-config-store.htm?name=$param.name">修改</a> | <a class="param-delete" href="javascript:;" data-name="$param.name">删除</a></div></td>
+    					<td><div class="nowrap"><a href="$ctx/mngt/param-config-store.htm?name=$param.name">修改</a> | <a class="param-delete" href="javascript:;" data-name="$param.name">删除</a></div></td>
     					<td><div class="nowrap">$param.name</div></td>
     					<td><div class="nowrap">$param.title</div></td>
     					<td><div class="nowrap">$param.value</div></td>
-						<td><div class="nowrap">$!DateUtils.toStringDL($param.gmtCreate)</div></td>
-						<td><div class="nowrap">$!DateUtils.toStringDL($param.gmtModify)</div></td>
+    					<td><div class="nowrap">$!DateUtils.toStringDL($param.gmtCreate)</div></td>
+    					<td><div class="nowrap">$!DateUtils.toStringDL($param.gmtModify)</div></td>
     					<td><div class="nowrap">$param.valueExt</div></td>
     				</tr>
     				#end
     			</tbody>
     		</table>
         </div>
-		<div class="panel-footer text-center">
-			<button id="btn-refresh" class="btn btn-lg btn-success pull-left"><i class="fa fa-refresh"></i> 刷新参数列表</button>
-			<a class="btn btn-lg btn-primary" href="$ctx/mngt/param-config-store.htm?name="><i class="fa fa-plus"></i> 新增参数配置</a>
-		</div>
-		<div class="clearfix"></div>
     </div>
+	<div class="clearfix"></div>
 </div>
 
 <script type="text/javascript">
 $(document).ready(function() {
-/** 刷新参数配置 */
-$("#btn-refresh").click(function(e) {
-	self.location.href = self.location.href;
-});
-
 /** 删除参数配置 */
 $(".param-delete").click(function(e) {
 	e.preventDefault();

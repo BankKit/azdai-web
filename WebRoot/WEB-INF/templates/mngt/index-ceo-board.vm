@@ -1,23 +1,23 @@
 <script type="text/javascript" charset="utf-8" src="/public/echarts/esl.min.js?v=1.6.10"></script>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <div class="panel-title">测试-柱状图</div>
+                    <div class="panel-title chart-title">新增会员趋势</div>
                 </div>
 				<div class="panel-body">
-					<div id="chartBar" style="height:500px;padding:0"></div>
+					<div id="chartBar" style="height:300px;padding:0"></div>
                 </div>
     		</div>
         </div>
-		<div class="col-md-6">
+		<div class="col-md-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <div class="panel-title">测试-地图</div>
+                    <div class="panel-title chart-title">论坛活跃度趋势</div>
                 </div>
 				<div class="panel-body">
-					<div id="chartMap" style="height:500px;padding:0"></div>
+					<div id="chartMap" style="height:300px;padding:0"></div>
                 </div>
     		</div>
         </div>
@@ -37,23 +37,23 @@ require.config({
 // 使用
 require(["echarts", "echarts/chart/bar", "echarts/chart/line", "echarts/chart/map"], function(ec) {
 	// --- 折柱 ---
+	#set($userData=$UserWebX.findUserRegistChartData())
+	#set($userDataCount = $userData.size())
 	var chartBar = ec.init(document.getElementById("chartBar"));
 	chartBar.setOption({
 		grid: {
-			x: 15,
+			x: 40,
 			y: 40,
-			x2: 15,
-			y2: 30
+			x2: 5,
+			y2: 25
 		},
 		tooltip: {
 			trigger: "axis"
 		},
 		legend: {
-			x: 'left', // 'center' | 'left' | {number},
-            y: 'top', // 'center' | 'bottom' | {number}
-            borderColor: '#ccc',
-            borderWidth: 1,
-			data: ["蒸发量", "降水量"]
+			x: "left", // 'center' | "left" | {number},
+            y: "top", // 'center' | 'bottom' | {number}
+			data: ["新增会员"]
 		},
 		toolbox: {
 			show: true,
@@ -77,7 +77,7 @@ require(["echarts", "echarts/chart/bar", "echarts/chart/line", "echarts/chart/ma
 		calculable: true,
 		xAxis: [{
 			type: "category",
-			data: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+			data: [#foreach($ext in $userData) "$ext.date" #if($velocityCount<$userDataCount),#end #end]
 		}],
 		yAxis: [{
 			type: "value",
@@ -86,52 +86,137 @@ require(["echarts", "echarts/chart/bar", "echarts/chart/line", "echarts/chart/ma
 			}
 		}],
 		series: [{
-			name: "蒸发量",
+			name: "新增会员",
 			type: "bar",
-			data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-		}, {
-			name: "降水量",
-			type: "bar",
-			data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
+			data: [#foreach($ext in $userData) "$ext.count" #if($velocityCount<$userDataCount),#end #end],
+			markPoint : {
+                data: [
+                    {type: "max", name: "最大值"},
+                    {type: "min", name: "最小值"}
+                ]
+            },
+            markLine: {
+                data: [
+                    {type: "average", name: "平均值"}
+                ]
+            }
 		}]
 	});
 
 	// --- 地图 ---
 	var chartMap = ec.init(document.getElementById("chartMap"));
 	chartMap.setOption({
+		/*
+    	title: {
+    		text: "某地区蒸发量和降水量"
+    	},
+		*/
 		grid: {
-			x: 15,
-			y: 15,
-			x2: 15,
-			y2: 30
+			x: 40,
+			y: 40,
+			x2: 5,
+			y2: 25
 		},
-		tooltip: {
-			trigger: "item",
-			formatter: "{b}"
-		},
-		series: [{
-			name: "中国",
-			type: "map",
-			mapType: "china",
-			selectedMode: "multiple",
-			itemStyle: {
-				normal: {
-					label: {
-						show: true
-					}
-				},
-				emphasis: {
-					label: {
-						show: true
-					}
-				}
-			},
-			data: [{
-				name: "广东",
-				selected: true
-			}]
-		}]
-	});
+    	tooltip: {
+    		trigger: "axis"
+    	},
+    	legend: {
+			x: "left", // 'center' | "left" | {number},
+            y: "top", // 'center' | 'bottom' | {number}
+    		data: ["蒸发量", "降水量"]
+    	},
+    	toolbox: {
+    		show: true,
+    		feature: {
+				/*
+    			mark: {
+    				show: true
+    			},*/
+    			dataView: {
+    				show: true,
+    				readOnly: false
+    			},
+    			magicType: {
+    				show: true,
+    				type: ["line", "bar"]
+    			},
+    			restore: {
+    				show: true
+    			},
+    			saveAsImage: {
+    				show: true
+    			}
+    		}
+    	},
+    	calculable: true,
+    	xAxis: [{
+    		type: "category",
+    		data: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+    	}],
+    	yAxis: [{
+    		type: "value",
+    		splitArea: {
+    			show: true
+    		}
+    	}],
+    	series: [{
+    		name: "蒸发量",
+    		type: "bar",
+    		data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+    		markPoint: {
+    			data: [{
+    				type: "max",
+    				name: "最大值"
+    			}, {
+    				type: "min",
+    				name: "最小值"
+    			}]
+    		},
+    		markLine: {
+    			data: [{
+    				type: "average",
+    				name: "平均值"
+    			}]
+    		}
+    	}, {
+    		name: "降水量",
+    		type: "bar",
+    		data: [2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+    		markPoint: {
+    			data: [{
+    				name: "年最高",
+    				value: 182.2,
+    				xAxis: 7,
+    				yAxis: 183,
+    				symbolSize: 18
+    			}, {
+    				name: "年最低",
+    				value: 2.3,
+    				xAxis: 11,
+    				yAxis: 3
+    			}]
+    		},
+    		markLine: {
+    			data: [{
+    				type: "average",
+    				name: "平均值"
+    			}]
+    		}
+    	}]
+    });
+	//
 });
 //
+
+$(document).ready(function() {
+/** 增加图标 */
+$(".chart-title").append("<span class=\"pull-right\"><i class=\"fa fa-minus\"></i></span>");
+
+/** 事件处理 */
+$(".chart-title").click(function(e) {
+	$(this).parent("div").next(".panel-body").slideToggle("fast");
+	$(this).find(".fa").toggleClass("fa-plus").toggleClass("fa-minus");
+});
+//
+});
 </script>

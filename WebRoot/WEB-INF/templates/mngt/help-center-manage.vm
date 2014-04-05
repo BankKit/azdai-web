@@ -1,4 +1,10 @@
 <div class="container-fluid">
+	<div class="top-menu-box">
+    	<ul class="nav nav-pills">
+            <li class="active"><a href="$ctx/mngt/help-center-manage.htm"><i class="fa fa-refresh"></i> 刷新节点</a></li>
+			<li><a href="$ctx/mngt/help-center-create.htm"><i class="fa fa-plus"></i> 增加节点</a></li>
+        </ul>
+	</div>
 	<div class="panel panel-primary">
 		<div class="panel-heading">
             <div class="panel-title">帮助中心结构树</div>
@@ -8,10 +14,8 @@
 			<input type="hidden" id="helpId" name="helpId" value="0" />
 		</div>
         <div class="panel-footer text-center">
-            <button id="btn-refresh" class="btn btn-lg btn-success pull-left"><i class="fa fa-refresh"></i> 刷新节点</button>
-			<a class="btn btn-lg btn-primary" href="$ctx/mngt/help-center-create.htm"><i class="fa fa-plus-circle"></i> 增加节点</a>
 			<button id="btn-update" class="btn btn-lg btn-info"><i class="fa fa-edit"></i> 修改节点</button>
-    		<button id="btn-delete" class="btn btn-lg btn-danger pull-right"><i class="fa fa-minus-circle"></i> 删除节点</button>
+    		<button id="btn-delete" class="btn btn-lg btn-danger"><i class="fa fa-minus-circle"></i> 删除节点</button>
 		</div>
 		<div class="clearfix"></div>
     </div>
@@ -54,11 +58,6 @@ var ztreeSetting = {
 $(document).ready(function(){
 /** 构建树结构 */
 AZD.constructTree("ztreeMngt", ztreeSetting, ztreeNodes);
-
-/** 树刷新 */
-$("#btn-refresh").click(function(e) {
-	self.location.href = self.location.href;
-});
 
 /** 修改节点 */
 $("#btn-update").click(function(e) {

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AZDAI-UPLOAD-FILE">
+	<!-- ============================================= -->
+    <!-- Public SQLS                                   -->
+    <!-- ============================================= -->
+	<sql id="find-fuzzy-WHERE">
+		<where>
+		<if test="id != null">
+			AND id=#{id}
+		</if>
+		<if test="userNo != null">
+			AND user_no=#{userNo}
+		</if>
+		<if test="catg != null">
+			AND catg=#{catg}
+		</if>
+		<if test="title != null">
+			AND title LIKE #{title}
+		</if>
+		<if test="memo != null">
+			AND memo LIKE #{memo}
+		</if>
+	</where>
+	</sql>
+
+
+	<!-- ============================================= -->
+    <!-- Public CopyS                                  -->
+    <!-- ============================================= -->
+
+    <!-- ============================================= -->
+    <!-- mapped statements for MyBatisUploadFileDAO -->
+    <!-- ============================================= -->
+    
+    <!-- mapped statement for MyBatisUploadFileDAO.insert -->
+    <insert id="insert">
+        INSERT INTO azdai_upload_file(
+				id, user_no, nick_name, catg, file_type, title, length, path, name, ext, src_name, memo, gmt_create, gmt_modify
+			) VALUES(
+				#{id}, #{userNo}, #{nickName}, #{catg}, #{fileType}, #{title}, #{length}, #{path}, #{name}, #{ext}, #{srcName}, #{memo}, NOW(), NOW()
+			)
+    </insert>
+
+    <!-- mapped statement for MyBatisUploadFileDAO.update -->
+    <update id="update" >
+        UPDATE azdai_upload_file SET
+				catg=#{catg}, file_type=#{fileType}, title=#{title}, path=#{path}, name=#{name}, ext=#{ext}, src_name=#{srcName}, memo=#{memo}, gmt_modify=NOW()
+			WHERE
+				id=#{id}
+    </update>
+
+    <!-- mapped statement for MyBatisUploadFileDAO.updateName -->
+    <update id="updateName" >
+        UPDATE azdai_upload_file SET
+				name=#{name}, gmt_modify=NOW()
+			WHERE
+				id=#{id}
+    </update>
+
+    <!-- mapped statement for MyBatisUploadFileDAO.find -->
+    <select id="find" resultMap="RMS.RM-UPLOAD-FILE" >
+    <![CDATA[
+        select * from azdai_upload_file where (id = #{value})
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisUploadFileDAO.findByUser -->
+    <select id="findByUser" resultMap="RMS.RM-UPLOAD-FILE" >
+    <![CDATA[
+        select * from azdai_upload_file where (user_no = #{value}) order by gmt_create DESC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisUploadFileDAO.findByCatg -->
+    <select id="findByCatg" resultMap="RMS.RM-UPLOAD-FILE" >
+    <![CDATA[
+        select * from azdai_upload_file where (catg = #{value}) order by gmt_create DESC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisUploadFileDAO.findByFileType -->
+    <select id="findByFileType" resultMap="RMS.RM-UPLOAD-FILE" >
+    <![CDATA[
+        select * from azdai_upload_file where (file_type = #{value}) order by gmt_create DESC
+    ]]>
+    </select>
+
+    <!-- mapped statement for MyBatisUploadFileDAO.findFuzzy -->
+    <select id="findFuzzy" resultMap="RMS.RM-UPLOAD-FILE" >
+        SELECT 				*
+			FROM
+				azdai_upload_file
+			<include refid="find-fuzzy-WHERE" />
+			ORDER BY
+				gmt_create DESC
+			LIMIT #{offset},#{pageSize}
+    </select>
+
+    <!-- mapped statement for MyBatisUploadFileDAO.findFuzzyCount -->
+    <select id="findFuzzyCount" resultType="long" >
+        SELECT 				COUNT(*)
+			FROM
+				azdai_upload_file
+			<include refid="find-fuzzy-WHERE" />
+    </select>
+
+    <!-- mapped statement for MyBatisUploadFileDAO.delete -->
+    <delete id="delete" >
+    <![CDATA[
+        delete from azdai_upload_file where (id = #{value})
+    ]]>
+    </delete>
+
+    <!-- mapped statement for MyBatisUploadFileDAO.deleteByUser -->
+    <delete id="deleteByUser" >
+    <![CDATA[
+        delete from azdai_upload_file where (user_no = #{value})
+    ]]>
+    </delete>
+
+</mapper>

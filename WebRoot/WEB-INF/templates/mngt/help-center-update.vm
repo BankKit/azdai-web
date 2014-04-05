@@ -1,5 +1,12 @@
 #set($help=$HelpWebX.fetch($NumberUtils.toLong($id)))
 <div class="container-fluid">
+	<div class="top-menu-box">
+    	<ul class="nav nav-pills">
+            <li><a href="$ctx/mngt/help-center-manage.htm"><i class="fa fa-refresh"></i> 刷新节点</a></li>
+			<li><a href="$ctx/mngt/help-center-create.htm"><i class="fa fa-plus"></i> 增加节点</a></li>
+			<li class="active"><a href="$ctx/mngt/help-center-update.htm?id=$id"><i class="fa fa-edit"></i> 修改节点</a></li>
+        </ul>
+	</div>
 	<div class="panel panel-primary">
         <div class="panel-heading">
             <div class="panel-title">修改帮助中心（$help.id）</div>

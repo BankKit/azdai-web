@@ -64,12 +64,8 @@
 			<param-value>/WEB-INF/config/spring-*.xml;classpath*:/spring/tick-timer-config.xml;classpath*:/META-INF/spring/azdai-*.xml</param-value>
 		</init-param>
 		<init-param>
-			<param-name>user.context</param-name>
-			<param-value>true</param-value>
-		</init-param>
-		<init-param>
-			<param-name>user.right.bean</param-name>
-			<param-value>userRightRequestImpl</param-value>
+			<param-name>perf.threshold</param-name>
+			<param-value>3000</param-value>
 		</init-param>
 		<load-on-startup>2</load-on-startup>
 	</servlet>

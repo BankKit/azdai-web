@@ -16,6 +16,7 @@ INSERT INTO atom_ticket VALUES ('TB-ForumTopic-ID', 6, 10, 50, 1, 9999999999, 'T
 INSERT INTO atom_ticket VALUES ('TB-HelpCenter-ID', 1, 10, 1, 1, 9999999999, 'TRUE');
 INSERT INTO atom_ticket VALUES ('TB-UserInfo-ID', 5, 10, 41, 1, 9999999999, 'TRUE');
 INSERT INTO atom_ticket VALUES ('TB-RoleInfo-ID', 5, 10, 1, 1, 9999999999, 'TRUE');
+INSERT INTO atom_ticket VALUES ('TB-UploadFile-ID', 5, 10, 1, 1, 9999999999, 'TRUE');
 
 /**
  * 系统参数数据表
@@ -201,3 +202,28 @@ CREATE TABLE azdai_user_role (
   PRIMARY KEY (user_no, role_id)
 /**);*/
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+/**
+ * 角色权限数据表
+ */
+CREATE TABLE azdai_upload_file (
+  id				BIGINT,
+  user_no			VARCHAR(32),
+  nick_name			VARCHAR(32),
+  catg				VARCHAR(20),
+  file_type			VARCHAR(20),
+  title				VARCHAR(128),
+  length			BIGINT,
+  path				VARCHAR(128),
+  name				VARCHAR(128),
+  ext				VARCHAR(20),
+  src_name			VARCHAR(128),
+  memo				VARCHAR(256),
+  gmt_create 		DATETIME,
+  gmt_modify 		DATETIME,
+  PRIMARY KEY (id)
+/**);*/
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+CREATE INDEX azdai_upload_file_uno_idx ON azdai_upload_file (user_no);
+

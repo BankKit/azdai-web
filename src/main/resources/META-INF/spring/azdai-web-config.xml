@@ -23,10 +23,15 @@
 	<context:component-scan base-package="com.azdai" />
 
 	<!-- ================================================= -->
+	<!-- 消息发送器 -->
+	<!-- ================================================= -->
+	<!-- <bean class="com.github.obullxl.lang.events.EventBroke" /> -->
+
+	<!-- ================================================= -->
 	<!-- 注解配置扫描 -->
 	<!-- ================================================= -->
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
-	
+
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="messageConverters">
 			<list>
@@ -45,9 +50,15 @@
 	</bean>
 
 	<!-- ================================================= -->
+	<!-- IP防御器 -->
+	<!-- ================================================= -->
+	<bean id="client_ip_detect_impl" class="com.azdai.core.web.servlet.ClientIpDetectImpl" />
+	<alias name="client_ip_detect_impl" alias="clientIpDetect" />
+
+	<!-- ================================================= -->
 	<!-- 权限检查器 -->
 	<!-- ================================================= -->
-	<bean id="userRightRequestImpl" class="com.azdai.core.web.servlet.UserRightRequestImpl">
+	<bean id="user_right_detect_impl" class="com.azdai.core.web.servlet.UserRightDetectImpl">
 		<property name="uriPrefixs">
 			<set>
 				<value>/user/</value>
@@ -57,6 +68,11 @@
 		<property name="gotoUrl" value="${adminLoginUrl}" />
 		<property name="rightConfig" value="/WEB-INF/uri-rights.acl" />
 	</bean>
+
+	<!-- ================================================= -->
+	<!-- Web工具箱 -->
+	<!-- ================================================= -->
+	<bean id="web_tool_box_impl" class="com.azdai.core.web.servlet.WebToolBoxImpl" />
 
 	<!-- ================================================= -->
 	<!-- 模型视图配置 -->
@@ -153,7 +169,7 @@
 			</bean>
 		</property>
 	</bean>
-	
+
 	<!-- ===================================== -->
 	<!-- 用户名黑名单服务配置 -->
 	<!-- ===================================== -->

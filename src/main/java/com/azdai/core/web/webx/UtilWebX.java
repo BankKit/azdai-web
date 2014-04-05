@@ -9,7 +9,7 @@ import java.util.Date;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
-import com.azdai.core.das.mngt.ForumMngt;
+import com.azdai.AZD;
 import com.github.obullxl.lang.utils.DateUtils;
 import com.github.obullxl.lang.webx.WebX;
 
@@ -41,7 +41,7 @@ public class UtilWebX implements WebX {
      * 获取回帖楼层数
      */
     public static final int findReplyNo(int page, int vcount) {
-        return (page - 1) * ForumMngt.PAGE_SIZE + vcount;
+        return (page - 1) * AZD.PAGE_SIZE + vcount;
     }
 
 }

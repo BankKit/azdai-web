@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.azdai.AZD;
 import com.github.obullxl.lang.webx.WebX;
 import com.github.obullxl.model.cfg.CfgModel;
 import com.github.obullxl.model.cfg.CfgUtils;
@@ -21,14 +22,12 @@ import com.github.obullxl.model.cfg.CfgUtils;
  */
 @Component("paramWebX")
 public class ParamWebX implements WebX {
-    /** 分类 */
-    public static final String CATG = "AZDAI";
 
     /**
      * 获取所有参数配置
      */
-    public List<CfgModel> findAll() {
-        List<CfgModel> models = CfgUtils.find();
+    public static List<CfgModel> findAll() {
+        List<CfgModel> models = CfgUtils.find(AZD.CFG_CATG);
         Collections.sort(models);
         return models;
     }
@@ -36,8 +35,8 @@ public class ParamWebX implements WebX {
     /**
      * 获取单个系统参数
      */
-    public CfgModel find(String name) {
-        return CfgUtils.find(CATG, name);
+    public static CfgModel find(String name) {
+        return CfgUtils.find(AZD.CFG_CATG, name);
     }
 
 }

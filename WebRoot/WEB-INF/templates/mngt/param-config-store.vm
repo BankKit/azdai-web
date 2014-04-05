@@ -1,4 +1,10 @@
 <div class="container-fluid">
+	<div class="top-menu-box">
+    	<ul class="nav nav-pills">
+            <li><a href="$ctx/mngt/param-config-manage.htm"><i class="fa fa-bars"></i> 参数列表</a></li>
+			<li class="active"><a href="$ctx/mngt/param-config-store.htm?name="><i class="fa fa-plus"></i> 存储参数</a></li>
+        </ul>
+	</div>
 	<div class="panel panel-primary">
         <div class="panel-heading">
             <div class="panel-title">新增/修改参数配置</div>
@@ -20,7 +26,7 @@
             </div>
 			<div class="form-group" #MarginBottomNO()>
 				<label for="valueExt">参数扩展内容</label>
-                <textarea id="valueExt" name="valueExt" rows="3">$!param.valueExt</textarea>
+                <textarea id="valueExt" name="valueExt" class="form-control" rows="5">$!param.valueExt</textarea>
             </div>
         </div>
         <div class="panel-footer text-center">
@@ -32,11 +38,7 @@
 </div>
 
 <script type="text/javascript">
-#set($editor="ON")
 $(document).ready(function() {
-/** 富文本框 */
-UE.getEditor("valueExt");
-
 /** 保存参数配置 */
 $("#form-create-param").submit(function(e) {
 	e.preventDefault();

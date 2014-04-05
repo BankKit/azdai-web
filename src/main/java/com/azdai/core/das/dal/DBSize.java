@@ -231,6 +231,58 @@ public interface DBSize {
 	}
 	
 	//
+	public static interface UPLOAD_FILE {
+		//
+		public static final String ID = "id";
+		//
+		public static final String USER_NO = "user_no";
+		//
+		public static final int USER_NO_MAX = 32;
+		//
+		public static final String NICK_NAME = "nick_name";
+		//
+		public static final int NICK_NAME_MAX = 32;
+		//
+		public static final String CATG = "catg";
+		//
+		public static final int CATG_MAX = 20;
+		//
+		public static final String FILE_TYPE = "file_type";
+		//
+		public static final int FILE_TYPE_MAX = 20;
+		//
+		public static final String TITLE = "title";
+		//
+		public static final int TITLE_MAX = 128;
+		//
+		public static final String LENGTH = "length";
+		//
+		public static final String PATH = "path";
+		//
+		public static final int PATH_MAX = 128;
+		//
+		public static final String NAME = "name";
+		//
+		public static final int NAME_MAX = 128;
+		//
+		public static final String EXT = "ext";
+		//
+		public static final int EXT_MAX = 20;
+		//
+		public static final String SRC_NAME = "src_name";
+		//
+		public static final int SRC_NAME_MAX = 128;
+		//
+		public static final String MEMO = "memo";
+		//
+		public static final int MEMO_MAX = 256;
+		//
+		public static final String GMT_CREATE = "gmt_create";
+		//
+		public static final String GMT_MODIFY = "gmt_modify";
+	}
+	
+	//
 	public static interface USER_INFO {
 		//
 		public static final String NO = "no";

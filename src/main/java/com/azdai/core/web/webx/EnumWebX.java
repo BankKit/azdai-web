@@ -10,12 +10,16 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
+import com.azdai.core.model.enums.CarouselCatgEnum;
+import com.azdai.core.model.enums.DataCacheCatgEnum;
 import com.azdai.core.model.enums.ForumInfoOpenEnum;
 import com.azdai.core.model.enums.ForumTopicCatgEnum;
 import com.azdai.core.model.enums.ForumTopicReplyEnum;
 import com.azdai.core.model.enums.ForumTopicStateEnum;
 import com.azdai.core.model.enums.ForumTopicTopEnum;
 import com.azdai.core.model.enums.ForumUserRightEnum;
+import com.azdai.core.model.enums.UploadFileCatgEnum;
+import com.azdai.core.model.enums.UserStateEnum;
 import com.github.obullxl.lang.enums.EnumBase;
 import com.github.obullxl.lang.enums.ValveBoolEnum;
 import com.github.obullxl.lang.webx.WebX;
@@ -38,6 +42,13 @@ public class EnumWebX implements WebX {
         }
 
         return enm.code();
+    }
+
+    /**
+     * 数据缓存枚举列表
+     */
+    public List<DataCacheCatgEnum> findDataCacheCatgEnums() {
+        return Arrays.asList(DataCacheCatgEnum.values());
     }
 
     /**
@@ -67,40 +78,75 @@ public class EnumWebX implements WebX {
     public List<ForumTopicCatgEnum> findForumTopicCatgEnums() {
         return Arrays.asList(ForumTopicCatgEnum.values());
     }
-    
+
     /**
      * 论坛主贴状态枚举列表
      */
     public List<ForumTopicStateEnum> findForumTopicStateEnums() {
         return Arrays.asList(ForumTopicStateEnum.values());
     }
-    
+
     /**
      * 论坛主贴置顶枚举列表
      */
     public List<ForumTopicTopEnum> findForumTopicTopEnums() {
         return Arrays.asList(ForumTopicTopEnum.values());
     }
-    
+
     /**
      * 论坛主贴加精枚举列表
      */
     public List<ValveBoolEnum> findForumTopicEliteEnums() {
         return Arrays.asList(ValveBoolEnum.values());
     }
-    
+
     /**
      * 论坛主贴回复枚举列表
      */
     public List<ForumTopicReplyEnum> findForumTopicReplyEnums() {
         return Arrays.asList(ForumTopicReplyEnum.values());
     }
-    
+
     /**
      * 帮助中心前台显示枚举列表
      */
     public List<ValveBoolEnum> findHelpCenterShowEnums() {
         return Arrays.asList(ValveBoolEnum.values());
+    }
+
+    /**
+     * 会员信息激活状态枚举列表
+     */
+    public List<UserStateEnum> findUserInfoStateEnums() {
+        return Arrays.asList(UserStateEnum.values());
+    }
+
+    /**
+     * 会员信息登录状态枚举列表
+     */
+    public List<ValveBoolEnum> findUserLoginStateEnums() {
+        return Arrays.asList(ValveBoolEnum.values());
+    }
+
+    /**
+     * 幻灯片图片分类枚举列表
+     */
+    public List<CarouselCatgEnum> findCarouselCatgEnums() {
+        return Arrays.asList(CarouselCatgEnum.values());
+    }
+
+    /**
+     * 幻灯片图片显示枚举列表
+     */
+    public List<ValveBoolEnum> findCarouselShowEnums() {
+        return Arrays.asList(ValveBoolEnum.values());
+    }
+    
+    /**
+     * 上传文件分类枚举列表
+     */
+    public List<UploadFileCatgEnum> findUploadFileCatgEnums() {
+        return Arrays.asList(UploadFileCatgEnum.values());
     }
 
 }

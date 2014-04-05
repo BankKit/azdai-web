@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="$ctx/public/twbs/css/bootstrap-theme.min.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="$ctx/public/fa/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="$ctx/public/css/toastr.min.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="$ctx/public/css/azdai-mngt.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="$ctx/public/css/azdai-mngt.css?v=2.1.2" />
 <script type="text/javascript" charset="utf-8" src="$ctx/public/twbs/js/bootstrap.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="$ctx/public/js/toastr.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="$ctx/public/js/anzhongdai.js"></script>

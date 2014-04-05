@@ -1,5 +1,12 @@
 #set($forum=$ForumWebX.fetchForum($code))
 <div class="container-fluid">
+	<div class="top-menu-box">
+    	<ul class="nav nav-pills">
+            <li><a href="$ctx/mngt/forum-info-manage.htm"><i class="fa fa-bars"></i> 论坛列表</a></li>
+			<li><a href="$ctx/mngt/forum-info-create.htm"><i class="fa fa-plus"></i> 新增论坛</a></li>
+			<li class="active"><a href="$ctx/mngt/forum-info-update.htm?code=$code"><i class="fa fa-edit"></i> 更新论坛</a></li>
+        </ul>
+	</div>
 	<div class="panel panel-primary">
         <div class="panel-heading">
             <div class="panel-title">更新论坛（$forum.title）</div>

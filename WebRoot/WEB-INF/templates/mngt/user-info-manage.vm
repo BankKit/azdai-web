@@ -1,0 +1,146 @@
+<div class="container-fluid">
+	<div class="top-menu-box">
+    	<ul class="nav nav-pills">
+            <li class="active"><a href="$ctx/mngt/user-info/manage.htm"><i class="fa fa-bars"></i> 会员列表</a></li>
+			<li><a href="javascript:;"><i class="fa fa-plus"></i> 新增会员</a></li>
+        </ul>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+            <div class="panel-title">会员信息列表<span class="pull-right"><a id="search-form-toggle" href="javascript:;"><i class="fa fa-plus-square-o"></i> 查询条件</a></span></div>
+		</div>
+		<form id="user-info-search" class="hide" method="get" action="$ctx/mngt/user-info/manage.htm">
+		<input type="hidden" id="pageNo" name="pageNo" value="$!form.pageNo" />
+        <div class="panel-footer">
+            <table width="100%" cellpadding="5" class="tdpadding5">
+				<tbody>
+					<tr>
+						<td class="form-text">NO：</td>
+                        <td><input name="no" type="text" value="$!form.no" placeholder="会员编号" /></td>
+						<td class="form-text">昵称：</td>
+                        <td><input name="nickName" type="text" value="$!form.nickName" placeholder="会员昵称" /></td>
+                    </tr>
+					<tr>
+						<td class="form-text">用户状态：</td>
+                        <td>
+							<label class="radio-inline">
+								<input type="radio" name="state" checked="checked" value=""/>所有
+                            </label>
+                            #foreach($enm in $EnumWebX.findUserInfoStateEnums())
+                            <label class="radio-inline">
+								<input type="radio" name="state" #if($!StringUtils.equals($enm.code(), $form.state))checked="checked"#end value="$enm.code()"/>$enm.desp()
+                            </label>
+							#end
+						</td>
+						<td class="form-text">登录状态：</td>
+                        <td>
+							<label class="radio-inline">
+								<input type="radio" name="loginState" checked="checked" value=""/>所有
+                            </label>
+                            #foreach($enm in $EnumWebX.findUserLoginStateEnums())
+                            <label class="radio-inline">
+								<input type="radio" name="loginState" #if($!StringUtils.equals($enm.code(), $form.state))checked="checked"#end value="$enm.code()"/>$enm.desp()
+                            </label>
+							#end
+						</td>
+					</tr>
+					<tr>
+						<td class="form-text">错误次数大于：</td>
+                        <td><input name="passwdErrCount" type="text" value="$!form.passwdErrCount" /></td>
+						<td class="form-text">邮箱：</td>
+                        <td><input name="email" type="text" value="$!form.email" /></td>
+					</tr>
+					<tr>
+                        <td class="form-text"><div class="nowrap">注册开始日期：</div></td>
+                        <td><input name="registDateBegin" type="text" value="$!form.registDateBegin" class="Wdate" readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></td>
+                        <td class="form-text"><div class="nowrap">注册结束日期：</div></td>
+                        <td><input name="registDateFinish" type="text" value="$!form.registDateFinish" class="Wdate" readonly="readonly" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></td>
+					</tr>
+					<tr>
+                        <td colspan="4" align="center"><button type="submit" class="btn btn-lg btn-primary">查询会员信息</button></td>
+					</tr>
+                </tbody>
+			</table>
+		</div>
+        </form>
+		#if(!$userPageList.items.isEmpty())
+		#set($pager=$userPageList.pager)
+		<div class="text-center">
+            <ul class="pagination" #MarginBottomNO()>
+                #set($pages=$pager.getSlider(11))
+				#foreach($idx in $pages)
+				#if($pager.isDisabledPage($idx))
+				<li class="active"><a href="javascript:;">$idx <span class="sr-only">(current)</span></a></li>
+				#else
+				<li><a class="page-idx" data-page="$idx" href="javascript:;">$idx</a></li>
+				#end
+				#end
+            </ul>
+		</div>
+		#end
+    	<div class="table-responsive">
+            <table class="table table-hover" #MarginBottomNO()>
+                <thead>
+                    <tr>
+						<th><div class="nowrap">&nbsp;</div></th>
+                        <th><div class="nowrap">NO</div></th>
+    					<th><div class="nowrap">昵称</div></th>
+    					<th><div class="nowrap">用户状态</div></th>
+    					<th><div class="nowrap">登录状态</div></th>
+						<th><div class="nowrap">登录错误次数</div></th>
+						<th><div class="nowrap">注册日期</div></th>
+						<th><div class="nowrap">电子邮箱</div></th>
+						<th><div class="nowrap">头像路径</div></th>
+    				</tr>
+    			</thead>
+                <tbody>
+    				#foreach($user in $userPageList.items)
+                    <tr>
+						<td><div class="nowrap"><a href="javascript:;">修改</a></div></td>
+    					<td><div class="nowrap">$user.no</div></td>
+    					<td><div class="nowrap">$user.nickName</div></td>
+    					<td><div class="nowrap">$!user.stateEnum.desp()</div></td>
+						<td><div class="nowrap">$!user.loginEnum.desp()</div></td>
+						<td><div class="nowrap">$user.passwdErrCount</div></td>
+						<td><div class="nowrap">$user.registDate</div></td>
+						<td><div class="nowrap">$user.email</div></td>
+						<td><div class="nowrap">$!user.avatar &nbsp;</div></td>
+    				</tr>
+    				#end
+    			</tbody>
+    		</table>
+        </div>
+		#if(!$userPageList.items.isEmpty())
+		<div class="text-center">
+            <ul class="pagination" #MarginBottomNO()>
+                #set($pages=$pager.getSlider(11))
+				#foreach($idx in $pages)
+				#if($pager.isDisabledPage($idx))
+				<li class="active"><a href="javascript:;">$idx <span class="sr-only">(current)</span></a></li>
+				#else
+				<li><a class="page-idx" data-page="$idx" href="javascript:;">$idx</a></li>
+				#end
+				#end
+            </ul>
+		</div>
+		#end
+		<div class="clearfix"></div>
+    </div>
+</div>
+<script type="text/javascript" src="$ctx/public/datepicker/WdatePicker.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+/** 线上/隐藏查询表单 */
+$("#search-form-toggle").click(function(e) {
+	$("#user-info-search").toggleClass("hide");
+	$(this).find(".fa").toggleClass("fa-plus-square-o").toggleClass("fa-minus-square-o");
+});
+
+/** 分页查询 */
+$(".page-idx").click(function(e) {
+	$("#pageNo").val($(this).data("page"));
+	$("#user-info-search").submit();
+});
+//
+});
+</script>

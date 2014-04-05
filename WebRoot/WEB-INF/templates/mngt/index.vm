@@ -9,7 +9,7 @@
     				<div class="tool-navs">
     					<div class="tool-nav pull-left">
 							<em>|</em>
-    						<a href="/index.htm" #TargetURL()>首页</a>
+    						<a href="/index.htm" #TargetURL()>网站首页</a>
     						<em>|</em>
     						<a href="/projects.htm" #TargetURL()>我要投资</a>
                             <em>|</em>

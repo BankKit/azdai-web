@@ -4,7 +4,9 @@
  */
 package com.azdai.core.das.mngt.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang.StringUtils;
@@ -12,11 +14,16 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.azdai.AZD;
 import com.azdai.core.das.dal.dao.UserInfoDAO;
 import com.azdai.core.das.dal.dto.UserInfoDTO;
+import com.azdai.core.das.dal.query.UserInfoQuery;
 import com.azdai.core.das.mngt.UserMngt;
 import com.azdai.core.model.UserInfoModel;
+import com.azdai.core.model.UserInfoPageList;
 import com.azdai.core.model.convert.UserInfoConvert;
+import com.azdai.core.web.form.UserInfoQueryForm;
+import com.github.obullxl.lang.Paginator;
 import com.github.obullxl.lang.utils.DateUtils;
 import com.github.obullxl.lang.utils.LogUtils;
 import com.github.obullxl.lang.utils.MD5Utils;
@@ -108,6 +115,31 @@ public class UserMngtImpl implements UserMngt {
     public UserInfoModel findByNickName(String nickName) {
         UserInfoDTO srcObj = this.userInfoDAO.findByNickName(nickName);
         return UserInfoConvert.convert(srcObj);
+    }
+    
+    /** 
+     * @see com.azdai.core.das.mngt.UserMngt#findUserInfoFuzzy(com.azdai.core.web.form.UserInfoQueryForm)
+     */
+    public UserInfoPageList findUserInfoFuzzy(UserInfoQueryForm form) {
+        UserInfoQuery query = UserInfoConvert.convert(form);
+        UserInfoPageList pageList = null;
+
+        int count = (int) this.userInfoDAO.findFuzzyCount(query);
+        Paginator paginator = new Paginator(AZD.PAGE_SIZE_MNGT, count);
+        paginator.setPageNo(form.getPageNo());
+
+        if (count > 0) {
+            query.setOffset(paginator.getOffset());
+            query.setPageSize(AZD.PAGE_SIZE_MNGT);
+
+            List<UserInfoDTO> list = this.userInfoDAO.findFuzzy(query);
+            pageList = new UserInfoPageList(paginator, UserInfoConvert.convert(list));
+        } else {
+            // 没有记录
+            pageList = new UserInfoPageList(paginator, new ArrayList<UserInfoModel>());
+        }
+
+        return pageList;
     }
 
     /** 
